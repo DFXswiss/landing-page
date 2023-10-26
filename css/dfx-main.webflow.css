@@ -551,8 +551,9 @@
 }
 
 .hero-split {
-  max-width: 46%;
+  max-width: 100%;
   flex-direction: column;
+  flex: 1;
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
@@ -620,6 +621,12 @@
   border: 1px #000;
   padding: 20px 30px;
   position: relative;
+}
+
+.html-embed {
+  width: 100%;
+  justify-content: center;
+  display: flex;
 }
 
 .heading {
@@ -2131,6 +2138,7 @@
   }
 
   .hero-split {
+    width: 100%;
     max-width: 100%;
     margin-bottom: 40px;
   }
