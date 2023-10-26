@@ -1,33 +1,16 @@
+RewriteEngine On
 
-# Weiterleitungen nur für das REF System zur API.
+# Weiterleitungen für das REF System zur API
 RewriteRule ^app$ https://api.dfx.swiss/v1/app [R=301,L]
 RewriteRule ^(.+)/app$ https://api.dfx.swiss/v1/app?orig=$1 [R=301,NC,L,QSA]
 RewriteRule ^app/(.+)/(.+)$ https://api.dfx.swiss/v1/app/$1?code=$2 [R=301,NC,L,QSA]
 RewriteRule ^app/(.+)$ https://api.dfx.swiss/v1/app/$1 [R=301,NC,L,QSA]
 
 # Weiterleitung für alte Websiten
-RewriteRule ^terms-and-conditions/$ https://docs.dfx.swiss/en/tnc.html [R=301,L]
-RewriteRule ^privacy-policy/$ https://docs.dfx.swiss/en/privacy.html [R=301,L]
-RewriteRule ^imprint/$ https://docs.dfx.swiss/en/imprint.html [R=301,L]
+RewriteRule ^terms-and-conditions https://docs.dfx.swiss/en/tnc.html [R=301,L]
+RewriteRule ^privacy-policy https://docs.dfx.swiss/en/privacy.html [R=301,L]
+RewriteRule ^imprint https://docs.dfx.swiss/en/imprint.html [R=301,L]
 RewriteRule ^de$ https://dfx.swiss/ [R=301,L]
 RewriteRule ^en$ https://dfx.swiss/ [R=301,L]
 RewriteRule ^fr$ https://dfx.swiss/ [R=301,L]
 RewriteRule ^it$ https://dfx.swiss/ [R=301,L]
-
-# This file was updated by Duplicator on 2023-08-25 15:35:50.
-# See the original_files_ folder for the original source_site_htaccess file.
-# BEGIN WordPress
-# Die Anweisungen (Zeilen) zwischen „BEGIN WordPress“ und „END WordPress“ sind
-# dynamisch generiert und sollten nur über WordPress-Filter geändert werden.
-# Alle Änderungen an den Anweisungen zwischen diesen Markierungen werden überschrieben.
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
-
-# END WordPress
