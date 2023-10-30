@@ -1,1 +1,1 @@
-Dasd
+{"tag":"payRequest","callback":"https://lightning.space/v1/lnurlp/cb/5d306e","minSendable":1000,"maxSendable":100000000000,"metadata":"[[\"text/plain\", \"Sats for Cyrill\"]]","commentAllowed":799}
