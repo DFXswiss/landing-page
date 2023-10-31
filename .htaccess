@@ -20,4 +20,4 @@ RewriteRule ^fr$ https://dfx.swiss/ [R=301,L]
 RewriteRule ^it$ https://dfx.swiss/ [R=301,L]
 
 # Weiterleitung für Services Direkt Links
-RewriteRule ^buy-fox$ https://services.dfx.swiss/?mode=shapeshift&asset-out=Ethereum/ETH&flags=Card [R=301,L]
+RewriteRule ^buy-fox$ https://services.dfx.swiss/?mode=shapeshift&asset-out=Ethereum/ETH&amount-in=300 [R=301,L]
