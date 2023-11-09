@@ -21,3 +21,4 @@ RewriteRule ^it$ https://dfx.swiss/ [R=301,L]
 
 # Weiterleitung für Services Direkt Links
 RewriteRule ^buy-fox$ https://services.dfx.swiss/?mode=buy-fox&asset-out=Ethereum/FOX&amount-in=300 [R=301,L]
+RewriteRule ^buy-lightning$ https://services.dfx.swiss/?mode=lightning-wallets [R=301,L]
