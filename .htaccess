@@ -22,3 +22,10 @@ RewriteRule ^it$ https://dfx.swiss/ [R=301,L]
 # Weiterleitung für Services Direkt Links
 RewriteRule ^buy-fox$ https://services.dfx.swiss/?mode=buy-fox&asset-out=Ethereum/FOX&amount-in=300 [R=301,L]
 RewriteRule ^buy-lightning$ https://services.dfx.swiss/?mode=lightning-wallets [R=301,L]
+
+RewriteRule ^metamask$ https://services.dfx.swiss/?mode=only-metamask-wallet [R=301,L]
+RewriteRule ^walletConnect$ https://services.dfx.swiss/?mode=only-walletconnect-wallet [R=301,L]
+RewriteRule ^hardwareWallets$ https://services.dfx.swiss/?mode=hw-wallets [R=301,L]
+RewriteRule ^cakeWallet$ https://services.dfx.swiss/?mode=only-cake-wallet [R=301,L]
+RewriteRule ^moneroWallet$ https://services.dfx.swiss/?mode=only-monero-wallet [R=301,L]
+RewriteRule ^commandLine$ https://services.dfx.swiss/?mode=only-cli-wallet [R=301,L]
