@@ -1,0 +1,15 @@
+# In case of security incidents please contact the
+
+# DFX.swiss Support Team
+
+Contact: mailto: support@DFX.swiss
+
+# For vulnerability reports please contact the Compass Security Bug Bounty Team
+
+Contact: https://bugbounty.compass-security.com/bug-bounties/dfx-bug-bounty
+
+Policy: https://bugbounty.compass-security.com/bug-bounties/dfx-bug-bounty
+
+Expires: 2026-12-20T00:00:00.000Z
+
+Preferred-Languages: en, de
