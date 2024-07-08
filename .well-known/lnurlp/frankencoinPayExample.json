@@ -1,0 +1,53 @@
+{ 
+  "tag": "payRequest", 
+  "callback": "https://lightning.space/.well-known/lnurlp/60d13e/cb", 
+  "minSendable": 1000, 
+  "maxSendable": 100000000000, 
+  "metadata": "[[\"text/plain\", \"BTC payment to 60d13e@lightning.space\"]]", 
+  "commentAllowed": 799, 
+  "currencies": [ 
+    { 
+      "symbol": "B", 
+      "code": "BTC", 
+      "name": "Bitcoin", 
+      "minSendable": 1, 
+      "maxSendable": "100000000", 
+      "decimals": 8, 
+      "multiplier": 0 
+    }, 
+    { 
+      "symbol": "₣", 
+      "code": "CHF", 
+      "name": "Schweizer Franken", 
+      "minSendable": 1, 
+      "maxSendable": "1000000", 
+      "decimals": 2, 
+      "multiplier": 19681 
+    } 
+  ], 
+  "methods": [ 
+    "lightning", 
+    "evm", 
+    "monero" 
+  ], 
+  "evm": [ 
+    { 
+      "chainId": 1, 
+      "decimals": 18, 
+      "symbol": "ZCHF", 
+      "name": "Frankencoin", 
+      "address": "0xB58E61C3098d85632Df34EecfB899A1Ed80921cB", 
+      "receiverAddress": "0xCf99569890771d869BfC28C776D07F59b0636D72",
+ “amount”: “10000000000000000000”}, 
+    { 
+      "chainId": 137, 
+      "decimals": 18, 
+      "symbol": "ZCHF", 
+      "name": "Frankencoin", 
+      "address": "0x02567e4b14b25549331fCEe2B56c647A8bAB16FD", 
+      "receiverAddress": "0xCf99569890771d869BfC28C776D07F59b0636D72",
+“amount”: “10000000000000000000” 
+    } 
+  ], 
+  "monero": {“address”: "4ALHgLVLwjoEeQK4CxjkgcMM61YQtzDMCRVatc9bBPNM4BDpt9p61qRM7DzStUftucGHoxfNw5yx5f5So3LUSCNsBEyy5Co", “amount”: “100000000000000000”} 
+}
