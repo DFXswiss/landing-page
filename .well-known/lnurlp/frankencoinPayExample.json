@@ -50,5 +50,5 @@
       "amount": "10000000000000000000" 
     } 
   ], 
-  "monero": {"address": "4ALHgLVLwjoEeQK4CxjkgcMM61YQtzDMCRVatc9bBPNM4BDpt9p61qRM7DzStUftucGHoxfNw5yx5f5So3LUSCNsBEyy5Co", "amount": “100000000000000000”} 
+  "monero": {"address": "4ALHgLVLwjoEeQK4CxjkgcMM61YQtzDMCRVatc9bBPNM4BDpt9p61qRM7DzStUftucGHoxfNw5yx5f5So3LUSCNsBEyy5Co", "amount": "100"} 
 }
