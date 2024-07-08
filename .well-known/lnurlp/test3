@@ -1,0 +1,1 @@
+{"tag":"payRequest","callback":"https://lightning.space/.well-known/lnurlp/973b3c/cb","minSendable":3000000,"maxSendable": 3000000,"metadata":"[[\"text/plain\", \"Sats for Test1, Bahnhofstrasse 7, 6300 Zug\"]]","commentAllowed":300}
