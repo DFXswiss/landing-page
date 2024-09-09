@@ -2,7 +2,7 @@
 
 # DFX.swiss Support Team
 
-Contact: mailto: support@DFX.swiss
+Contact: https://services.dfx.swiss/support
 
 # For vulnerability reports please contact the Compass Security Bug Bounty Team
 
