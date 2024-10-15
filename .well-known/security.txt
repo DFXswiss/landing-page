@@ -13,3 +13,7 @@ Policy: https://bugbounty.compass-security.com/bug-bounties/dfx-bug-bounty
 Expires: 2026-12-20T00:00:00.000Z
 
 Preferred-Languages: en, de
+
+# Note
+
+It was decided to allow integration of DFX.swiss into external pages to support decentralization and cross-domain embedding. While aware of potential security risks (e.g., clickjacking), this model was chosen deliberately. Users are responsible for verifying transaction data, especially with non-open-source integrations.
