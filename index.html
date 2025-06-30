@@ -1,26 +1,13 @@
-<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Mon Mar 03 2025 10:30:49 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="6523f2425f797f286b51fb63" data-wf-site="6523f2425f797f286b51fb5a" lang="en">
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Mon Jun 30 2025 13:12:04 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="6858f1072bf539f3881c6a09" data-wf-site="6858f1072bf539f3881c69f8">
 <head>
   <meta charset="utf-8">
-  <title>DFX - Buy and Sell Bitcoin and Crypto</title>
-  <meta content="Your service from Switzerland for everything around Bitcoin and Crypto" name="description">
-  <meta content="DFX - Buy and Sell Bitcoin and Crypto" property="og:title">
-  <meta content="Your service from Switzerland for everything around Bitcoin and Crypto" property="og:description">
-  <meta content="https://content.dfx.swiss/img/v1/website/dfx-home.png" property="og:image">
-  <meta content="DFX - Buy and Sell Bitcoin and Crypto" property="twitter:title">
-  <meta content="Your service from Switzerland for everything around Bitcoin and Crypto" property="twitter:description">
-  <meta content="https://content.dfx.swiss/img/v1/website/dfx-home.png" property="twitter:image">
-  <meta property="og:type" content="website">
-  <meta content="summary_large_image" name="twitter:card">
+  <title>DFX</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
-  <link href="css/dfx-main.webflow.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-  <script type="text/javascript">WebFont.load({  google: {    families: ["Inter:100,200,300,regular,500,600,700,800,900"]  }});</script>
+  <link href="css/dfx-new.webflow.css" rel="stylesheet" type="text/css">
   <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
@@ -30,206 +17,1110 @@
         api_key: 'wg_6a1fdb9f6a9d666813d27491e2370de39'
     });
 </script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.weglot.com/weglot.min.css?v=9">
+  <style id="weglot-custom-style" type="text/css">
+.weglot-container {
+display: none!important;
+}
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+  <style>
+.news-card_text-dots {
+	overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.splide__pagination.a-override {
+  flex: 1;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: 0;
+  padding-right: 10rem;
+  display: flex;
+  gap: .5rem;
+  position: relative;
+  list-style: none;
+}
+.splide__pagination__page.a-override {
+  background: #feffff;
+  border: 0;
+  border-radius: 50%;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 3px;
+  opacity: 1;
+  padding: 0;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.splide__pagination__page.a-override.is-active {
+  background: #F5516C;
+  transform: scale(1.4);
+}
+.splide__pagination.b-override {
+  flex: 1;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: 0;
+  padding-right: 10rem;
+  display: flex;
+  gap: .5rem;
+  position: relative;
+  list-style: none;
+}
+.splide__pagination__page.b-override {
+  background: #D3DAE5;
+  border: 0;
+  border-radius: 50%;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 3px;
+  opacity: 1;
+  padding: 0;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.splide__pagination__page.b-override.is-active {
+  background: #F5516C;
+  transform: scale(1.4);
+}
+@media (max-width: 991px) {
+  .splide__pagination.a-override {
+    padding-right: 5rem;
+  }
+  .splide__pagination.b-override {
+    padding-right: 5rem;
+  }
+}
+@media (max-width: 767px) {
+  .splide__pagination.a-override {
+    padding-right: 0rem;
+  }
+  .splide__pagination.b-override {
+    padding-right: 0rem;
+  }
+}
+</style>
 </head>
-<body class="body-2">
-  <div class="navbar-logo-center-2">
-    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-logo-center-container-2 shadow-three w-nav">
-      <div class="container-8">
-        <div class="navbar-wrapper-three-2">
-          <a href="#" class="navbar-brand-three-2 w-nav-brand"><img src="images/DFX-Logo-white-6.svg" loading="lazy" width="89" alt="" class="image-10"></a>
-          <nav role="navigation" class="nav-menu-wrapper-three-2 w-nav-menu">
-            <div class="nav-menu-three-2">
-              <ul role="list" class="nav-menu-block-2 w-list-unstyled">
-                <li>
-                  <a href="index.html" aria-current="page" class="nav-link-3 w--current">Home</a>
-                </li>
-                <li>
-                  <a href="bitcoin.html" class="nav-link-3">Bitcoin</a>
-                </li>
-                <li>
-                  <a href="multichain.html" class="nav-link-3">Multichain</a>
-                </li>
-              </ul>
-              <ul role="list" class="nav-menu-block-2 w-list-unstyled">
-                <li>
-                  <a href="https://app.dfx.swiss/?mode=login" target="_blank" class="nav-link-accent-2">Log-in</a>
-                  <a href="help.html" class="nav-link-accent-2">Help</a>
-                </li>
-                <li class="mobile-margin-top-12">
-                  <a href="https://app.dfx.swiss/?lang=en" target="_blank" class="button-primary w-button">Buy now</a>
-                </li>
-              </ul>
+<body class="body">
+  <div class="page-wrapper">
+    <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
+      <div class="padding-global padding-section-nav">
+        <div class="container-large">
+          <div class="nav-wrapper">
+            <div class="nav-logo_wrapper">
+              <a href="index.html" aria-current="page" class="nav-logo_link w-nav-brand w--current"><img width="124" height="Auto" alt="" src="images/DFX-Logos.svg" loading="lazy" class="nav-logo"></a>
             </div>
-          </nav>
-          <div class="menu-button-3 w-nav-button">
-            <div class="w-icon-nav-menu"></div>
+            <nav role="navigation" class="nav-menu w-nav-menu">
+              <div class="nav_links-wrapper">
+                <a href="dfx-services.html" class="nav-link w-nav-link">DFX Services</a>
+                <a href="dfx-toolbox.html" class="nav-link w-nav-link">DFX Toolbox</a>
+                <a href="dfx-taro-app.html" class="nav-link w-nav-link">BTC Taro App</a>
+                <a href="https://dfx.shop/" target="_blank" class="nav-link w-nav-link">Shop</a>
+              </div>
+              <div class="nav_button-wrapper">
+                <a data-figma-id="7571:10030" href="https://app.deuro.com/" target="_blank" class="nav-button hide-desktop w-inline-block">
+                  <div>Jetzt kaufen</div>
+                </a>
+                <div data-delay="0" data-hover="false" class="wg-element hide-desktop w-dropdown">
+                  <div class="wg-dropdown-toggle w-dropdown-toggle">
+                    <div class="wg-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewbox="0 0 25 25">
+                        <style>
+    .st0-globe {
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+                        <g style="clip-path:url(#clip0_2920_18870)">
+                          <path d="M2.836 12.035c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10" class="st0-globe"></path>
+                          <path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"></path>
+                        </g>
+                        <defs>
+                          <clippath id="clip0_2920_18870">
+                            <path fill="#000000" d="M.836.035h26v26h-26z"></path>
+                          </clippath>
+                        </defs>
+                      </svg></div>
+                  </div>
+                  <nav class="wg-dropdown w-dropdown-list">
+                    <div class="wg-wrapper">
+                      <div class="language">Language</div>
+                      <div class="weglot-switcher-component">
+                        <div class="weglot-switcher">
+                          <a lang="en" href="#" class="switcher_link w-inline-block">
+                            <div class="switcher_text">en</div>
+                          </a>
+                          <a lang="de" href="#" class="switcher_link w-inline-block">
+                            <div class="switcher_text">de</div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="wg-dropdown_arrow"></div>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+            </nav>
+            <div class="nav-button_wrapper">
+              <a data-figma-id="7571:10030" href="https://app.dfx.swiss/?lang=en" target="_blank" class="nav-button hide-tablet w-inline-block">
+                <div>Jetzt kaufen</div>
+              </a>
+              <div class="menu-button w-nav-button">
+                <div class="icon w-icon-nav-menu"></div>
+              </div>
+            </div>
+            <div data-delay="0" data-hover="false" class="wg-element hide-tablet w-dropdown">
+              <div class="wg-dropdown-toggle w-dropdown-toggle">
+                <div class="wg-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewbox="0 0 25 25">
+                    <style>
+    .st0-globe {
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+                    <g style="clip-path:url(#clip0_2920_18870)">
+                      <path d="M2.836 12.035c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10" class="st0-globe"></path>
+                      <path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"></path>
+                    </g>
+                    <defs>
+                      <clippath id="clip0_2920_18870">
+                        <path fill="#000000" d="M.836.035h26v26h-26z"></path>
+                      </clippath>
+                    </defs>
+                  </svg></div>
+              </div>
+              <nav class="wg-dropdown w-dropdown-list">
+                <div class="wg-wrapper">
+                  <div class="language">Language</div>
+                  <div class="weglot-switcher-component">
+                    <div class="weglot-switcher">
+                      <a lang="en" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">en</div>
+                      </a>
+                      <a lang="de" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">de</div>
+                      </a>
+                      <a lang="it" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">it</div>
+                      </a>
+                      <a lang="fr" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">fr</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="wg-dropdown_arrow"></div>
+                </div>
+              </nav>
+            </div>
+            <div class="hide w-embed w-script">
+              <script>
+// Close dropdown
+var Webflow = Webflow || [];
+Webflow.push(function () {
+  $(document).ready(function() {
+    $('.switcher_link').on('click', function () {
+      $(".w-dropdown").trigger("w-close");
+    });
+    $(document).on('keydown', function (e) {
+      if (e.key === 'Escape') {
+        $(".w-dropdown").trigger("w-close");
+      }
+    });
+  });
+});
+</script>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <main class="main-wrapper">
+      <section class="section_home-hero">
+        <div class="padding-global padding-section-hero home">
+          <div class="container-main">
+            <div class="hero-layout">
+              <div class="hero_heading">
+                <h1 class="heading-style-h1">Krypto kaufen und verkaufen direkt <span class="text-span">mit deiner Wallet.</span></h1>
+                <p class="text-color-g500 text-size-2xl text-weight-light">DFX - Deine Brücke zwischen Fiat und Krypto: Einfach. Sicher. Non-Custodial.</p>
+                <div class="hero_buttons-wrapper">
+                  <a href="https://app.dfx.swiss/?lang=en" target="_blank" class="button-hero w-button">Krypto kaufen &amp; verkaufen</a>
+                  <a href="https://dfx.swiss/app/btc" target="_blank" class="button-hero-secondary w-inline-block">
+                    <div>BTC Taro App</div>
+                    <div class="button-hero-secondary_image w-embed"><svg width="34" height="16" style="" viewbox="0 0 34 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_6001_1522)">
+                          <path d="M11.5115 7.25803C11.5186 6.70609 11.6652 6.16491 11.9377 5.68485C12.2101 5.20479 12.5996 4.80145 13.0698 4.51236C12.7711 4.08573 12.377 3.73463 11.9189 3.48694C11.4607 3.23926 10.9511 3.10182 10.4305 3.08553C9.3201 2.96897 8.24357 3.75 7.67771 3.75C7.10089 3.75 6.22966 3.0971 5.29148 3.1164C4.68464 3.13601 4.09323 3.31247 3.57487 3.6286C3.05651 3.94473 2.62887 4.38975 2.33363 4.92029C1.05472 7.13453 2.00867 10.3887 3.23377 12.1785C3.84671 13.055 4.56306 14.034 5.50039 13.9992C6.41762 13.9612 6.76019 13.4144 7.86737 13.4144C8.96427 13.4144 9.28568 13.9992 10.242 13.9772C11.2263 13.9612 11.8464 13.0968 12.4378 12.2121C12.8782 11.5876 13.2171 10.8974 13.4419 10.1671C12.8701 9.92526 12.3821 9.52044 12.0388 9.00312C11.6956 8.48581 11.5121 7.87888 11.5115 7.25803Z" fill="currentColor"></path>
+                          <path d="M9.70523 1.90831C10.2419 1.26409 10.5063 0.436048 10.4422 -0.399963C9.62236 -0.313851 8.86503 0.0779959 8.32113 0.697503C8.05521 1.00015 7.85153 1.35224 7.72176 1.73364C7.59199 2.11505 7.53866 2.51829 7.56482 2.92032C7.97491 2.92454 8.3806 2.83566 8.75136 2.66036C9.12211 2.48507 9.44826 2.22793 9.70523 1.90831Z" fill="currentColor"></path>
+                        </g>
+                        <path d="M27.7793 10.5574L22.1748 13.7928L22.1582 13.8026C21.9452 13.9281 21.6962 13.9998 21.4316 13.9998C20.9287 13.9998 20.4814 13.7245 20.2256 13.324L20.2979 13.2527L25.3857 8.16486L27.7793 10.5574ZM24.8193 7.59943L20 12.4188V2.78009L24.8193 7.59943ZM30.7021 6.35236L30.707 6.35529C31.1515 6.59842 31.453 7.06938 31.4531 7.61115C31.4531 8.15683 31.148 8.63038 30.6992 8.87286L28.4961 10.1434L25.9512 7.59943L28.4844 5.06622L30.7021 6.35236ZM21.4316 1.20001C21.7018 1.20001 21.9545 1.27463 22.1709 1.40411L27.7686 4.65021L25.3857 7.03302L20.2979 1.94611L20.2266 1.87482C20.4825 1.47509 20.9291 1.20004 21.4316 1.20001Z" fill="currentColor"></path>
+                        <defs>
+                          <clippath id="clip0_6001_1522">
+                            <rect width="16" height="16" fill="currentColor"></rect>
+                          </clippath>
+                        </defs>
+                      </svg></div>
+                  </a>
+                </div>
+              </div>
+              <div id="composition" class="hero_image-wrapper"><img src="images/hero-1.png" loading="lazy" id="hero" alt="dfx hero" class="hero"><img src="images/logo.svg" loading="eager" id="logo" alt="" class="logo"><img src="images/Bitcoin-icon.svg" loading="eager" id="btc" alt="" class="btc"><img src="images/Ethereum-ETH.svg" loading="eager" id="eth" alt="" class="eth"><img src="images/Group-427322441.svg" loading="eager" id="fiat" alt="" class="fiat">
+                <div class="code-embed-4 w-embed"><svg width="100%" style="" viewbox="0 0 442 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="path" d="M198.777 1C87.5304 5.45048 0.7771 41.8264 0.7771 86.042C0.7771 133.262 99.7222 171.542 221.777 171.542C343.832 171.542 442.777 133.262 442.777 86.042C442.777 67.0697 426.804 49.5422 399.777 35.3594" fill="currentColor"></path>
+                  </svg></div><img src="images/line.svg" loading="eager" id="path-img" alt="" class="path"><img src="images/liner.svg" loading="eager" id="path-r-img" alt="" class="path">
+              </div>
+            </div>
+            <div class="spacer-huge"></div>
+            <div class="hero-layout-bottom">
+              <div class="bottom-card">
+                <h2 class="text-color-red text-align-center">80+ Coins</h2>
+                <p class="text-color-g400 text-size-l text-weight-light text-align-center">Unterstützung für mehr als 80 Kryptowährungen auf 9 Blockchains</p>
+              </div>
+              <div class="bottom-card">
+                <h2 class="text-color-red text-align-center">$100M+</h2>
+                <p class="text-color-g400 text-size-l text-weight-light text-align-center">Über 100 Mio. Transaktionsvolumen und über 20.000 monatlich aktive Kunden</p>
+              </div>
+              <div class="bottom-card">
+                <h2 class="text-color-red text-align-center">B2C &amp; B2B</h2>
+                <p class="text-color-g400 text-size-l text-weight-light text-align-center">On-/Off-Ramp- und mehr Services für private Kunden und Unternehmen</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_home-apps">
+        <div class="padding-global padding-section-apps">
+          <div class="container-main">
+            <div class="apps-layout">
+              <div class="apps-card"><img src="images/swiss-flag.svg" loading="lazy" alt="schweizer regulierung" class="apps-card_image">
+                <p class="text-size-s hide-tablet">Schweizer Regulierung</p>
+              </div>
+              <div class="apps-card"><img src="images/Sepa.svg" loading="lazy" alt="sepa" class="apps-card_image">
+                <p class="text-size-s hide-tablet">Banküberweisung</p>
+              </div>
+              <div class="apps-card"><img src="images/credit-cards.svg" loading="lazy" alt="visa master card" class="apps-card_image">
+                <p class="text-size-s hide-tablet">Kreditkartenzahlung</p>
+              </div>
+              <div class="apps-card"><img src="images/gpay-logo.svg" loading="lazy" alt="google pay" class="apps-card_image">
+                <p class="text-size-s hide-tablet">Google Pay</p>
+              </div>
+              <div class="apps-card"><img src="images/Apple_Pay_logo.svg" loading="lazy" alt="apple pay" class="apps-card_image">
+                <p class="text-size-s hide-tablet">Apple Pay</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_home-use">
+        <div class="padding-global padding-section-use">
+          <div class="container-main">
+            <h2 class="text-aling-center">Mit DFX einfach Krypto nutzen</h2>
+            <div class="spacer-l"></div>
+            <div class="use-layout">
+              <a href="dfx-services.html" class="use-card w-inline-block">
+                <div class="use-card_top">
+                  <div class="use-card_heading-wrapper">
+                    <div class="text-style-allcaps text-size-s text-color-g950">On- / Off Ramp</div>
+                    <h4 class="text-color-g950">DFX Services</h4>
+                  </div>
+                  <p class="paragraph-3">Kaufe, Tausche oder Verkaufe direkt in Web3- und Hardware-Wallets</p>
+                  <div class="button-arrow">
+                    <div class="text-block">Mehr erfahren</div>
+                    <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                </div>
+                <div class="use-card_bottom"><img src="images/DFX-exchange.png" loading="lazy" width="302" sizes="(max-width: 479px) 100vw, 302px" alt="" srcset="images/DFX-exchange-p-500.png 500w, images/DFX-exchange.png 604w" class="use_card-image"></div>
+              </a>
+              <a href="dfx-toolbox.html" class="use-card w-inline-block">
+                <div class="use-card_top">
+                  <div class="use-card_heading-wrapper">
+                    <div class="text-style-allcaps text-size-s text-color-g950">On- / Off Ramp</div>
+                    <h4 class="text-color-g950">DFX Toolbox</h4>
+                  </div>
+                  <p class="paragraph-3">Die Integrationslösung für Ihre Wallet- und Webseitenbetreiber – in wenigen Minuten startklar</p>
+                  <div class="button-arrow">
+                    <div>Mehr erfahren</div>
+                    <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                </div>
+                <div class="use-card_bottom"><img src="images/img-toolbox.png" loading="lazy" width="255" sizes="(max-width: 479px) 100vw, 255px" alt="" srcset="images/0c78223ba4558ebfb2f0b760a78ea788_img-toolbox-p-500.png 500w, images/img-toolbox.png 510w" class="use_card-image"></div>
+              </a>
+              <a href="dfx-taro-app.html" class="use-card w-inline-block">
+                <div class="use-card_top">
+                  <div class="use-card_heading-wrapper">
+                    <div class="text-style-allcaps text-size-s text-color-g950">BItcoin wallet</div>
+                    <h4 class="text-color-g950">BTC Taro App</h4>
+                  </div>
+                  <p class="paragraph-3">Eine self-custody Bitcoin-Wallet mit Lightning und Multisig Feature – für Unternehmen und private Nutzer</p>
+                  <div class="button-arrow">
+                    <div>Mehr erfahren</div>
+                    <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                </div>
+                <div class="use-card_bottom"><img src="images/iphone_16_mockup-frontal-1-2.png" loading="lazy" width="255" alt="" class="use_card-image"></div>
+              </a>
+              <a href="https://opencryptopay.io/" target="_blank" class="use-card w-inline-block">
+                <div class="use-card_top">
+                  <div class="use-card_heading-wrapper">
+                    <div class="text-style-allcaps text-size-s text-color-g950">Payment</div>
+                    <h4 class="text-color-g950">OpenCrypto Pay</h4>
+                  </div>
+                  <p>Mit Kryptowährungen einfach und sicher bezahlen, ohne Zwischenhändler.</p>
+                  <div class="button-arrow">
+                    <div>Mehr erfahren</div>
+                    <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                </div>
+                <div class="use-card_bottom"><img src="images/Image.png" loading="lazy" width="384" sizes="(max-width: 479px) 100vw, 384px" alt="" srcset="images/Image-p-500.png 500w, images/Image.png 768w" class="use_card-image full-width"></div>
+              </a>
+              <a href="#" class="use-card w-inline-block">
+                <div class="use-card_top">
+                  <div class="use-card_heading-wrapper">
+                    <div class="text-style-allcaps text-size-s text-color-g950">Earn</div>
+                    <h4 class="text-color-g950">DFX Safe</h4>
+                  </div>
+                  <p>Krypto-Investments leicht gemacht – mit sicherer Verwahrung durch DFX.</p>
+                  <div class="button-arrow">
+                    <div>Coming soon</div>
+                  </div>
+                </div>
+                <div class="use-card_bottom"><img src="images/DFX-exchange_1.png" loading="lazy" width="302" sizes="(max-width: 479px) 100vw, 302px" alt="" srcset="images/DFX-exchange_1-p-500.png 500w, images/DFX-exchange_1.png 604w" class="use_card-image"></div>
+              </a>
+              <a href="https://dfx.shop/" target="_blank" class="use-card w-inline-block">
+                <div class="use-card_top">
+                  <div class="use-card_heading-wrapper">
+                    <div class="text-style-allcaps text-size-s text-color-g950">Merchandise</div>
+                    <h4 class="text-color-g950">DFX Shop</h4>
+                  </div>
+                  <p class="paragraph-3">Die Kollektion für die DFX-Community: T-Shirts, Hoodies und mehr.</p>
+                  <div class="button-arrow">
+                    <div>Mehr erfahren</div>
+                    <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                </div>
+                <div class="use-card_bottom"><img src="images/dfx_oversized_t-shirt-2.png" loading="lazy" width="384" sizes="(max-width: 479px) 100vw, 384px" alt="" srcset="images/dfx_oversized_t-shirt-2-p-500.png 500w, images/dfx_oversized_t-shirt-2.png 768w" class="use_card-image full-width"></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_home-wallets">
+        <div class="padding-global padding-section-wallets">
+          <div class="container-main">
+            <div class="max-width-46">
+              <h2 class="text-aling-center">Kaufen, Verkaufen und Tauschen mit deiner Lieblings-Wallet</h2>
+            </div>
+            <div class="spacer-l"></div>
+            <div class="wallets-layout">
+              <div class="wallets-card">
+                <div class="wallets-card_top"><img src="images/MetaMask-icon-fox-2.svg" loading="lazy" alt="" class="wallets-card_image"></div>
+                <div class="wallets-card_bottom">
+                  <h3 class="text-color-white">MetaMask</h3>
+                  <p class="text-color-g600 text-weight-light">Nutze den DFX-Service, um mit wenigen Klicks direkt in deiner MetaMask Kryptowährungen zu kaufen, zu verkaufen oder zu tauschen – schnell, einfach und dezentral.</p>
+                  <div class="wallets-card_tag-wrapper">
+                    <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Kaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Verkaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Tauschen</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="wallets-card">
+                <div class="wallets-card_top"><img src="images/Rabby-logo-white.svg" loading="lazy" alt="" class="wallets-card_image"></div>
+                <div class="wallets-card_bottom">
+                  <h3 class="text-color-white">Rabby Wallet</h3>
+                  <p class="text-color-g600 text-weight-light">Kaufe mit nur wenigen Klicks direkt in deine Rabby Wallet oder verkaufe deine Coins zurück auf dein Bankkonto – ganz ohne Umwege. Effizient. Sicher. Benutzerfreundlich.</p>
+                  <div class="wallets-card_tag-wrapper">
+                    <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Kaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Verkaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Tauschen</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="wallets-card">
+                <div class="wallets-card_top"><img src="images/WalletConnect-logo.svg" loading="lazy" alt="" class="wallets-card_image _3"></div>
+                <div class="wallets-card_bottom">
+                  <h3 class="text-color-white">WalletConnect</h3>
+                  <p class="text-color-g600 text-weight-light">Verbinde eine von über 300 Wallets direkt mit unserem FIAT On- und Offramp-Service.</p>
+                  <div class="wallets-card_tag-wrapper">
+                    <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Kaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Verkaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Tauschen</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="wallets-card">
+                <div class="wallets-card_top"><img src="images/Ledger-logo.svg" loading="lazy" alt="" class="wallets-card_image _4"></div>
+                <div class="wallets-card_bottom">
+                  <h3 class="text-color-white">LEDGER</h3>
+                  <p class="text-color-g600 text-weight-light">Kaufe, verkaufe und tausche Kryptowährungen direkt über deine Ledger-Hardware-Wallet – ohne Umwege.</p>
+                  <div class="wallets-card_tag-wrapper">
+                    <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Kaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Verkaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Tauschen</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="wallets-card">
+                <div class="wallets-card_top"><img src="images/trezor-wallet-logo.svg" loading="lazy" alt="" class="wallets-card_image _5"></div>
+                <div class="wallets-card_bottom">
+                  <h3 class="text-color-white">TREZOR</h3>
+                  <p class="text-color-g600 text-weight-light">Mit DFX handelst du direkt über deine Trezor-Wallet – kaufen, verkaufen oder tauschen, ohne zentralen Anbieter dazwischen.</p>
+                  <div class="wallets-card_tag-wrapper">
+                    <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Kaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Verkaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Tauschen</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="wallets-card">
+                <div class="wallets-card_top"><img src="images/bitbox-logo.svg" loading="lazy" alt="" class="wallets-card_image _6"></div>
+                <div class="wallets-card_bottom">
+                  <h3 class="text-color-white">BitBox</h3>
+                  <p class="text-color-g600 text-weight-light">Verbinde deine BitBox-Hardware-Wallet mit DFX, um digitale Assets direkt über deine Wallet zu handeln.</p>
+                  <div class="wallets-card_tag-wrapper">
+                    <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Kaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Verkaufen</div>
+                    </a>
+                    <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
+                      <div>Tauschen</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_home-partners">
+        <div class="padding-global padding-section-partners">
+          <div class="container-main">
+            <h3 class="text-aling-center text-color-g900">Von führenden Partnern genutzt</h3>
+            <div class="spacer-l"></div>
+            <div class="partners-wrapper">
+              <a href="https://cakewallet.com/" target="_blank" class="w-inline-block"><img src="images/cake-wallet-logo.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://opencryptopay.io/" target="_blank" class="w-inline-block"><img src="images/Open-Crypto-Pay-Logo.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://exchange.pointpay.io/" target="_blank" class="w-inline-block"><img src="images/PoinPay-Logo.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://www.spar.ch/" target="_blank" class="w-inline-block"><img src="images/Spar-Logo.svg" loading="lazy" alt="" class="partner-logo _1"></a>
+              <a href="https://zollerinvestment.ch/" target="_blank" class="w-inline-block"><img src="images/zoller-investment-logo.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://kodo.finance/" target="_blank" class="w-inline-block"><img src="images/Kodo-Logo-1.png" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://crowdtransfer.io/" target="_blank" class="w-inline-block"><img src="images/Crowdtransfer-logo.svg" loading="lazy" alt="" class="partner-logo _2"></a>
+              <a href="https://www.aktionariat.com/" target="_blank" class="w-inline-block"><img src="images/aktionariat.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://www.onchainlabs.ch/" target="_blank" class="w-inline-block"><img src="images/Onchain-labs.svg" loading="lazy" alt="" class="partner-logo _2"></a>
+              <a href="https://www.zinsli.com/" target="_blank" class="w-inline-block"><img src="images/zinsli-Logo-1.svg" loading="lazy" alt="" class="partner-logo _1"></a>
+              <a href="https://rabby.io/" target="_blank" class="w-inline-block"><img src="images/Rabby-logo.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://trezor.io/" target="_blank" class="w-inline-block"><img src="images/trezor-wallet-logo_1.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://metamask.io/" target="_blank" class="w-inline-block"><img src="images/MetaMask-logo.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://www.ledger.com/" target="_blank" class="w-inline-block"><img src="images/Ledger-logo_1.svg" loading="lazy" alt="" class="partner-logo"></a>
+              <a href="https://walletconnect.network/" target="_blank" class="w-inline-block"><img src="images/WalletConnect-logo-full.svg" loading="lazy" alt="" class="partner-logo _1"></a>
+              <a href="https://bitbox.swiss/" target="_blank" class="w-inline-block"><img src="images/bitbox-logo_1.svg" loading="lazy" alt="" class="partner-logo _1"></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_home-news">
+        <div class="padding-global padding-section-news">
+          <div class="container-main">
+            <h2 class="text-aling-center text-color-white">News, Stories &amp; Highlights</h2>
+            <div class="spacer-l"></div>
+            <div id="splide1" class="splide">
+              <div class="splide__track">
+                <div class="splide__list">
+                  <div class="splide__slide">
+                    <div class="news-card_image-wrapper"><img src="images/dfx-prints-500-qr-codes.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/dfx-prints-500-qr-codes-p-500.webp 500w, images/dfx-prints-500-qr-codes.webp 780w" alt="" class="news-card_image"></div>
+                    <div class="news-card_text-wrapper">
+                      <div class="news-card_text-dots">
+                        <p class="text-color-white newstext">DFX druckt über 500 neue QR-Codes für Kassensysteme –<br>das bedeutet: OpenCrypto Pay kommt in noch mehr SPAR-Märkte in der Region!</p>
+                      </div>
+                      <a href="https://x.com/DFX_swiss/status/1929915987362488444" target="_blank" class="button-arrow dark-mode w-inline-block">
+                        <div>Mehr erfahren</div>
+                        <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="news-card_image-wrapper"><img src="images/DFX-Sound-Money-Podcast.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/DFX-Sound-Money-Podcast-p-500.webp 500w, images/DFX-Sound-Money-Podcast.webp 780w" alt="" class="news-card_image"></div>
+                    <div class="news-card_text-wrapper">
+                      <div class="news-card_text-dots">
+                        <p class="text-color-white newstext">Im Podcast Sound Money Bitcoin erfährst du mehr über unsere Payment Lösung bei Spar.</p>
+                      </div>
+                      <a href="https://fountain.fm/episode/CZ3VCebv2133X34Za8ML" target="_blank" class="button-arrow dark-mode w-inline-block">
+                        <div>Zum Podcast</div>
+                        <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="news-card_image-wrapper"><img src="images/OpenCrypto-Pay-BinancePay-Partnership.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/OpenCrypto-Pay-BinancePay-Partnership-p-500.webp 500w, images/OpenCrypto-Pay-BinancePay-Partnership.webp 780w" alt="" class="news-card_image"></div>
+                    <div class="news-card_text-wrapper">
+                      <div class="news-card_text-dots">
+                        <p class="text-color-white newstext">Shoppe bei SPAR mit Binance Pay! Dank unserer Partnerschaft kannst du ganz einfach mit USDT mit der Binance-App bezahlen.</p>
+                      </div>
+                      <a href="https://x.com/TaprootFreak/status/1933188932633518352" target="_blank" class="button-arrow dark-mode w-inline-block">
+                        <div>Mehr erfahren</div>
+                        <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="news-card_image-wrapper"><img src="images/Spar-Kreuzlingen-Bitcoin.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/Spar-Kreuzlingen-Bitcoin-p-500.webp 500w, images/Spar-Kreuzlingen-Bitcoin.webp 780w" alt="" class="news-card_image"></div>
+                    <div class="news-card_text-wrapper">
+                      <div class="news-card_text-dots">
+                        <p class="text-color-white newstext">Jens Leinert zeigt in diesem Hands-on-Video, wie einfach man in einer der ersten SPAR-Filialen mit Bitcoin zahlen kann.</p>
+                      </div>
+                      <a href="https://x.com/leinert/status/1916492839183126549" target="_blank" class="button-arrow dark-mode w-inline-block">
+                        <div>Mehr erfahren</div>
+                        <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="news-card_image-wrapper"><img src="images/First-Bitcoin-Payment-Spar.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/First-Bitcoin-Payment-Spar-p-500.webp 500w, images/First-Bitcoin-Payment-Spar.webp 780w" alt="" class="news-card_image"></div>
+                    <div class="news-card_text-wrapper">
+                      <div class="news-card_text-dots">
+                        <p class="text-color-white newstext">Rahim Taghizadegan bezahlt den ersten Einkauf mit Bitcoin in der Schweiz – im SPAR-Supermarkt.</p>
+                      </div>
+                      <a href="https://x.com/scholarium_at/status/1912155153110647200" target="_blank" class="button-arrow dark-mode w-inline-block">
+                        <div>Mehr erfahren</div>
+                        <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="news-card_image-wrapper"><img src="images/20min.ch-Erste-SPAR-Filiale.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/20min.ch-Erste-SPAR-Filiale-p-500.webp 500w, images/20min.ch-Erste-SPAR-Filiale.webp 780w" alt="" class="news-card_image"></div>
+                    <div class="news-card_text-wrapper">
+                      <div class="news-card_text-dots">
+                        <p class="text-color-white newstext">20min.ch berichtet über die erste SPAR-Filiale in der Schweiz, die dank OpenCrypto Pay Bitcoin-Zahlungen akzeptiert.</p>
+                      </div>
+                      <a href="https://www.20min.ch/story/kryptowaehrung-der-spar-beim-bahnhof-in-zug-akzeptiert-neu-bitcoin-103327742" target="_blank" class="button-arrow dark-mode w-inline-block">
+                        <div>Mehr erfahren</div>
+                        <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="arrows-wrapper">
+                <div class="splide-arrows">
+                  <div id="prev-1" class="splide-arrow">
+                    <div class="arrow-icon w-embed"><svg width="100%" height="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.707 17.293L8.414 13H18V11H8.414L12.707 6.70697L11.293 5.29297L4.586 12L11.293 18.707L12.707 17.293Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                  <div id="next-1" class="splide-arrow">
+                    <div class="arrow-icon w-embed"><svg width="100%" height="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.293 17.293L12.707 18.707L19.414 12L12.707 5.29297L11.293 6.70697L15.586 11H6V13H15.586L11.293 17.293Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                </div>
+                <ul class="splide__pagination a-override"></ul>
+              </div>
+            </div>
+            <div class="gradient-overlay w-embed">
+              <style>
+.splide {
+	mask-image: linear-gradient(to left, transparent, black 10%);
+}
+@media (max-width: 767px) {
+  .splide {
+    mask-image: none;
+  }
+}
+</style>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_home-why">
+        <div class="padding-global padding-section-why">
+          <div class="container-main">
+            <h2 class="text-aling-center">Warum DFX nutzen?</h2>
+            <div class="spacer-l"></div>
+            <div class="why-layout">
+              <div class="benefits-caard">
+                <div class="use-card_top">
+                  <h4 class="text-color-g950">Flexibler Krypto-Zugang – ohne Börsen</h4>
+                  <p>Du hältst deine Krypto-Assets selbst in deiner Wallet – mit DFX kannst du weltweit und unabhängig von Krypto-Börsen kaufen, verkaufen und tauschen.</p>
+                </div>
+                <div class="why-card_bottom"><img src="images/image-wallet.svg" loading="lazy" alt="" class="why_card-image _1"></div>
+              </div>
+              <div class="benefits-caard">
+                <div class="use-card_top">
+                  <h4 class="text-color-g950">Unabhängig geprüft und Open Source</h4>
+                  <p>Jeder kann unseren Code einsehen und zur Sicherheit beitragen. DFX wurde zudem von Grant Thornton und Beyond Audit geprüft und verifiziert.</p>
+                </div>
+                <div class="why-card_bottom"><img src="images/audit.svg" loading="lazy" alt="" class="why_card-image _2"></div>
+              </div>
+              <div class="benefits-caard">
+                <div class="use-card_top">
+                  <h4 class="text-color-g950">Schneller und kompetenter Support</h4>
+                  <p>Schnelle Hilfe und Antworten erhalten Sie von unseren Telegram-Moderatoren oder direkt über ein Support-Ticket.</p>
+                  <a href="https://app.dfx.swiss/support" target="_blank" class="button-arrow w-inline-block">
+                    <div>DFX Support</div>
+                    <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
+                      </svg></div>
+                  </a>
+                </div>
+                <div class="why-card_bottom"><img src="images/Support-Chat.svg" loading="lazy" alt="" class="why_card-image _3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section_home-testimonials">
+        <div class="padding-global padding-section-testimonials">
+          <div class="container-main">
+            <h2>Echte Meinungen von echten Kunden</h2>
+            <div class="trustpilot-button w-embed"><!--  TrustBox widget - Review Collector  -->
+              <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="613a4b0297a3b4001dda97ed" data-style-height="52px" data-style-width="100%">
+                  <a href="https://www.trustpilot.com/review/dfx.swiss" target="_blank" rel="noopener">Trustpilot</a>
+              </div>
+              <!--  End TrustBox widget  -->
+            </div>
+            <div id="splide2" class="splide">
+              <div class="splide__track">
+                <div class="splide__list">
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">7. May 2025</div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">I had some problems at the beginning…</p>
+                        <p class="text-color-g950">I had some problems at the beginning but they helped me very much and also good im very glad they responded fast too</p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">Adrian Kilinc</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">14. Apr. 2025</div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">Toller persönlicher Support</p>
+                        <p class="text-color-g950">Bei einem kleinen, von mir selbst verursachten Problem, habe ich innerhalb von wenigen Minuten einen super guten und persönlichen Support durch Herrn Wendel bekommen und wir haben eine Lösung besprochen.</p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">horo</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">9. Jan. 2025</div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">Top Support</p>
+                        <p class="text-color-g950">Top Support - freundlich, kompetent und schnell</p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">Krebs Juergen</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star-gray.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">2. Okt. 2024</div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">its good but wish was quicker</p>
+                        <p class="text-color-g950">was unaware of the tije it take to be synchronised hence why i left a negative review before but it actually works and is genuine and i apologise... for the bad review.. obiously quicker synchronsied would be beneficial and also that they were open and and traded on wk ends ..</p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">Ben IbZa</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">28. Juni 2024</div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">Einfache Handhabung.</p>
+                        <p class="text-color-g950">Einfache Handhabung. Transparenz hinsichtlich der Gebühren. Sicherer Transfer</p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">Swen</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">16. Mai 2024</div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">Zwei mal hat alles super funktioniert</p>
+                        <p class="text-color-g950">Vertrauenswürdige Plattform.  Bei Problemen empfehle ich, den Support über die DFX Telegramm-Gruppe zu kontaktieren.  Dort wird einem sofort geholfen. Per Mail dauert es etwas länger..</p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">Lgr</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">19. Apr. 2024</div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">Perfekt (bin KryptoNewbie)</p>
+                        <p class="text-color-g950">Perfekt (bin KryptoNewbie) für mich. Sowohl On- als auch Off-Ramp. Werde DFX auch zukünftig nutzen und kann DFX nur empfehlen. </p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">Gerhard Bader</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="splide__slide">
+                    <div class="testimonials-slide_wrapper">
+                      <div class="testimonials-slide_top-wrapper">
+                        <div class="testimonials-slide_star-wrapper"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"><img src="images/trustpilot-star.svg" loading="lazy" alt="" class="trustpilot-star"></div>
+                        <div class="testimonials-slide_top-date">27. Dez. 2023<br></div>
+                      </div>
+                      <div class="testimonials-slide_text-wrapper">
+                        <p class="text-weight-bold text-color-g950">DFX, Spitzenreiter für Kauf von Kyrptos</p>
+                        <p class="text-color-g950">Also ich muss sagen,das ganze Paket drum und dran -PHÄNOMENAL - Die linkseite ist gut aufgebaut und gut erklärbar und wenn du fragen hast sind supporter fix sofort für dich da. Und die Kommunikation ist einfach herrlich. Kaufabwicklung auch sehr schnell. Besten dank nochmal</p>
+                      </div>
+                      <div class="testimonials-slide_author-wrapper"><img src="images/Group-14.svg" loading="lazy" alt="" class="testimonials-slide_author-image">
+                        <p class="text-weight-bold text-color-g950">HakunaMatata</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="arrows-wrapper">
+                <div class="splide-arrows">
+                  <div id="prev-2" class="splide-arrow _2">
+                    <div class="arrow-icon w-embed"><svg width="100%" height="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.707 17.293L8.414 13H18V11H8.414L12.707 6.70697L11.293 5.29297L4.586 12L11.293 18.707L12.707 17.293Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                  <div id="next-2" class="splide-arrow _2">
+                    <div class="arrow-icon w-embed"><svg width="100%" height="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.293 17.293L12.707 18.707L19.414 12L12.707 5.29297L11.293 6.70697L15.586 11H6V13H15.586L11.293 17.293Z" fill="currentColor"></path>
+                      </svg></div>
+                  </div>
+                </div>
+                <ul class="splide__pagination b-override"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="padding-global padding-section-footer">
+        <div class="container-main">
+          <div class="footer-layout"><img src="images/DFX-Logos.svg" loading="lazy" id="w-node-df158338-ac46-8cf6-69f6-34544e735f03-4e735eff" alt="" class="footer_logo">
+            <div class="footer_link-wrapper">
+              <div class="text-style-allcaps text-size-s">RESOURCEn</div>
+              <a href="#" class="footer_link">Brand Kit</a>
+              <a href="https://github.com/dfxswiss" target="_blank" class="footer_link">Github</a>
+              <a href="https://app.dfx.swiss/support" target="_blank" class="footer_link">Support</a>
+              <a href="http://exchange.dfx.swiss/" target="_blank" class="footer_link">DFX Metamask Exchange</a>
+              <a href="http://lightning.dfx.swiss/" target="_blank" class="footer_link">DFX Lightning Exchange</a>
+            </div>
+            <div class="footer_link-wrapper">
+              <div class="text-style-allcaps text-size-s">Unternehmen</div>
+              <a href="https://docs.dfx.swiss/de/imprint.html" target="_blank" class="footer_link">Impressum</a>
+              <a href="https://docs.dfx.swiss/de/privacy.html" target="_blank" class="footer_link">Datenschutzrichtlinien</a>
+              <a href="https://docs.dfx.swiss/de/disclaimer.html" target="_blank" class="footer_link">Haftungsausschluss</a>
+              <a href="https://docs.dfx.swiss/de/tnc.html" target="_blank" class="footer_link">Bedingungen und Konditionen</a>
+            </div>
+            <div class="footer_link-wrapper">
+              <div class="text-style-allcaps text-size-s">Über</div>
+              <p class="text-size-s text-color-white">DFX AG<br>Bahnhofstrasse 7 <br>76300 Zug Switzerland</p>
+            </div>
+            <div class="footer_link-wrapper">
+              <div class="text-style-allcaps text-size-s">FOLLOW US</div>
+              <div class="footer_social-wrapper">
+                <a href="https://x.com/DFX_Swiss" class="footer_link w-inline-block">
+                  <div class="footer_link-icon w-embed"><svg width="30" height="30" style="" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.0286 29.9824H14.9626C6.71231 29.9824 0 23.2701 0 15.0198V14.9538C0 6.70351 6.71231 -0.00878906 14.9626 -0.00878906H15.0286C23.2789 -0.00878906 29.9912 6.70351 29.9912 14.9538V15.0198C29.9912 23.2701 23.2789 29.9824 15.0286 29.9824ZM14.9626 1.00638C7.27167 1.00638 1.01517 7.26287 1.01517 14.9538V15.0198C1.01517 22.7107 7.27167 28.9672 14.9626 28.9672H15.0286C22.7195 28.9672 28.976 22.7107 28.976 15.0198V14.9538C28.976 7.26287 22.7195 1.00638 15.0286 1.00638H14.9626Z" fill="currentColor"></path>
+                      <path d="M6.3844 7.05811L13.0662 15.9916L6.34277 23.2552H7.8564L13.7434 16.8961L18.4994 23.2552H23.6494L16.5919 13.8192L22.8505 7.05811H21.3368L15.9158 12.9146L11.5354 7.05811H6.3854H6.3844ZM8.60964 8.17279H10.975L21.4221 22.1405H19.0568L8.60964 8.17279Z" fill="currentColor"></path>
+                    </svg></div>
+                </a>
+                <a href="https://t.me/DFXswiss" target="_blank" class="footer_link w-inline-block">
+                  <div class="footer_link-icon w-embed"><svg width="30" height="30" style="" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M15.0193 29.9912H14.9533C6.70302 29.9912 -0.00927734 23.2789 -0.00927734 15.0286V14.9626C-0.00927734 6.7123 6.70302 0 14.9533 0H15.0193C23.2696 0 29.9819 6.7123 29.9819 14.9626V15.0286C29.9819 23.2789 23.2696 29.9912 15.0193 29.9912ZM14.9533 1.01517C7.26238 1.01517 1.00589 7.27166 1.00589 14.9626V15.0286C1.00589 22.7195 7.26238 28.976 14.9533 28.976H15.0193C22.7102 28.976 28.9667 22.7195 28.9667 15.0286V14.9626C28.9667 7.27166 22.7102 1.01517 15.0193 1.01517H14.9533Z" fill="currentColor"></path>
+                      <path d="M5.98628 14.5005C6.02689 14.4802 6.06751 14.4609 6.1071 14.4426C6.79539 14.1239 7.49281 13.8254 8.18922 13.5269C8.22678 13.5269 8.2897 13.4833 8.32524 13.4691C8.37904 13.4457 8.43285 13.4234 8.48666 13.4001C8.5902 13.3554 8.69376 13.3117 8.79629 13.2671C9.00338 13.1787 9.20945 13.0904 9.41654 13.0021C9.82972 12.8255 10.2429 12.6488 10.6561 12.4712C11.4824 12.1179 12.3098 11.7636 13.1361 11.4103C13.9625 11.057 14.7898 10.7027 15.6162 10.3495C16.4425 9.99618 17.2699 9.64189 18.0963 9.28861C18.9226 8.93533 19.75 8.58104 20.5763 8.22776C20.7601 8.14858 20.959 8.03082 21.156 7.9963C21.3215 7.96686 21.4829 7.91002 21.6493 7.87855C21.9651 7.81865 22.3133 7.79429 22.6158 7.92524C22.7204 7.97093 22.8168 8.03487 22.897 8.11507C23.2807 8.49474 23.2269 9.11807 23.1457 9.65205C22.5803 13.3737 22.0148 17.0963 21.4483 20.8179C21.3712 21.3285 21.2656 21.8889 20.8626 22.2117C20.5215 22.4848 20.0362 22.5153 19.6149 22.3995C19.1936 22.2828 18.8221 22.0381 18.4577 21.7975C16.9461 20.7966 15.4335 19.7956 13.9219 18.7947C13.5625 18.5571 13.1625 18.2465 13.1666 17.815C13.1686 17.5551 13.3239 17.3237 13.4823 17.1176C14.7959 15.404 16.6913 14.2264 18.1013 12.592C18.3003 12.3615 18.4566 11.9453 18.1836 11.8123C18.0211 11.7332 17.8343 11.8407 17.6861 11.9433C15.8223 13.2376 13.9594 14.533 12.0956 15.8273C11.4875 16.2496 10.85 16.6841 10.117 16.7877C9.46123 16.8811 8.80137 16.6983 8.16689 16.5115C7.63494 16.3552 7.10399 16.1948 6.57508 16.0293C6.29388 15.942 6.00354 15.8476 5.78629 15.6497C5.56905 15.4517 5.4442 15.1187 5.57515 14.8548C5.65738 14.6893 5.81677 14.5848 5.98427 14.4995L5.98628 14.5005Z" fill="currentColor"></path>
+                    </svg></div>
+                </a>
+                <a href="https://ch.linkedin.com/company/dfxswiss" target="_blank" class="footer_link w-inline-block">
+                  <div class="footer_link-icon w-embed"><svg width="31" height="31" style="" viewbox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16.0109 30.9824H15.9449C7.69461 30.9824 0.9823 24.2682 0.9823 16.0154V15.9494C0.9823 7.69669 7.69461 0.982422 15.9449 0.982422H16.0109C24.2612 0.982422 30.9735 7.69669 30.9735 15.9494V16.0154C30.9735 24.2682 24.2612 30.9824 16.0109 30.9824ZM15.9449 1.99789C8.25397 1.99789 1.99747 8.25622 1.99747 15.9494V16.0154C1.99747 23.7086 8.25397 29.967 15.9449 29.967H16.0109C23.7018 29.967 29.9583 23.7086 29.9583 16.0154V15.9494C29.9583 8.25622 23.7018 1.99789 16.0109 1.99789H15.9449Z" fill="currentColor"></path>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.8523 13.5752H16.8235V15.0552C17.2515 14.204 18.3491 13.4392 19.9979 13.4392C23.1587 13.4392 23.9091 15.1336 23.9091 18.2424V24H20.7091V18.9504C20.7091 17.18 20.2811 16.1816 19.1915 16.1816C17.6803 16.1816 17.0523 17.2576 17.0523 18.9496V24H13.8523V13.5752ZM8.36506 23.864H11.5651V13.4392H8.36506V23.864ZM12.0235 10.04C12.0236 10.3082 11.9704 10.5738 11.867 10.8213C11.7636 11.0688 11.612 11.2932 11.4211 11.4816C11.2296 11.6721 11.0024 11.823 10.7526 11.9257C10.5028 12.0283 10.2352 12.0808 9.96506 12.08C9.42074 12.0788 8.89859 11.8642 8.51066 11.4824C8.3205 11.2933 8.16948 11.0686 8.06625 10.8211C7.96303 10.5736 7.90961 10.3082 7.90906 10.04C7.90906 9.4984 8.12506 8.98 8.51146 8.5976C8.89842 8.21431 9.4212 7.9995 9.96586 8C10.5115 8 11.0347 8.2152 11.4211 8.5976C11.8075 8.98 12.0235 9.4984 12.0235 10.04Z" fill="currentColor"></path>
+                    </svg></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
-  <section class="hero-subscribe-right">
-    <div class="container-5">
-      <div class="hero-wrapper-2">
-        <div class="hero-split-2">
-          <div class="text-block">Your Service from Switzerland</div>
-          <h1 class="statement white">Buy and Sell Crypto. EASY.</h1>
-          <p class="paragraph">Or integrate our <span>On- and Offramp directly into your Exchange, Website or App.</span></p>
-        </div>
-        <div class="hero-split-2"><img src="images/as-a-service.png" loading="lazy" width="804" sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, (max-width: 991px) 92vw, (max-width: 1439px) 48vw, 600px" alt="" srcset="images/as-a-service-p-500.png 500w, images/as-a-service-p-800.png 800w, images/as-a-service-p-1080.png 1080w, images/as-a-service.png 1200w"></div>
-      </div>
-    </div>
-  </section>
-  <section class="logos-quote-block">
-    <div class="container-17">
-      <div class="clients-wrapper-two">
-        <div class="clients-card">
-          <div class="clients-quote">“The easiest way to buy and sell Crypto. I don&#x27;t even have to set up a complicated account.&quot;</div>
-          <div class="clients-info">
-            <div class="text-block-10">Every DFX customer</div>
-          </div>
-        </div><img src="images/as-a-service_1.png" loading="lazy" width="627" sizes="(max-width: 479px) 47vw, (max-width: 767px) 48vw, (max-width: 991px) 46vw, (max-width: 1439px) 47vw, 470px" alt="" srcset="images/as-a-service_1-p-500.png 500w, images/as-a-service_1-p-800.png 800w, images/as-a-service_1-p-1080.png 1080w, images/as-a-service_1.png 1200w" class="image-9">
-      </div>
-    </div>
-  </section>
-  <section class="highlights-1">
-    <div class="container-3">
-      <div data-delay="4000" data-animation="slide" class="team-slider-wrapper w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="12" data-duration="500" data-infinite="true">
-        <div class="w-slider-mask">
-          <div class="team-slide-wrapper w-slide">
-            <div class="team-block"><img src="images/2.png" loading="lazy" sizes="(max-width: 479px) 94vw, (max-width: 767px) 45vw, (max-width: 991px) 43vw, (max-width: 1439px) 28vw, 360px" srcset="images/2-p-500.png 500w, images/2.png 720w" alt="">
-              <div class="team-block-info">
-                <h3 class="heading">Open Source</h3>
-                <p class="paragraph">First fully Open-Source Fiat On- and Offramp.</p>
-              </div>
-            </div>
-          </div>
-          <div class="team-slide-wrapper w-slide">
-            <div class="team-block"><img src="images/1.png" loading="lazy" sizes="(max-width: 479px) 94vw, (max-width: 767px) 45vw, (max-width: 991px) 43vw, (max-width: 1439px) 28vw, 360px" srcset="images/1-p-500.png 500w, images/1.png 720w" alt="">
-              <div class="team-block-info">
-                <h3 class="heading">Fast &amp; Easy</h3>
-                <p class="paragraph">Invest in Bitcoin and Crypto from just 1 €/CHF.</p>
-              </div>
-            </div>
-          </div>
-          <div class="team-slide-wrapper w-slide">
-            <div class="team-block"><img src="images/3.png" loading="lazy" sizes="(max-width: 479px) 94vw, (max-width: 767px) 45vw, (max-width: 991px) 43vw, (max-width: 1439px) 28vw, 360px" srcset="images/3-p-500.png 500w, images/3.png 720w" alt="">
-              <div class="team-block-info">
-                <h3 class="heading">Swiss based</h3>
-                <p class="paragraph">Swiss Company, Regulation, Legal certainty &amp; Bank Account</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="team-slider-arrow w-slider-arrow-left">
-          <div class="w-icon-slider-left"></div>
-        </div>
-        <div class="team-slider-arrow w-slider-arrow-right">
-          <div class="w-icon-slider-right"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="hero-heading-left">
-    <div class="container-3">
-      <div class="hero-wrapper">
-        <div class="hero-split">
-          <div class="text-block">Your Bitcoin Power Tool</div>
-          <h1 class="heading">Bitcoin, Lightning and Taproot Assets</h1>
-          <p class="margin-bottom-24px">Our BTC Taro App is an incredible user friendly and thus powerful self-custody Bitcoin, Lightning and Taro Protocol wallet. Easy, completely open source and with the cheapest and fastest on- and offramp available on the market.</p>
-          <a href="https://dfx.swiss/app/btc" target="_blank" class="w-inline-block"><img src="images/QR_AppStore_Badges.png" loading="lazy" alt="" height="100" class="image-qr-code"></a>
-        </div>
-        <div class="hero-split"><img src="images/Mock.png" loading="lazy" sizes="(max-width: 479px) 94vw, (max-width: 767px) 96vw, (max-width: 991px) 92vw, (max-width: 1439px) 48vw, 600px" srcset="images/Mock-p-500.png 500w, images/Mock-p-800.png 800w, images/Mock-p-1080.png 1080w, images/Mock.png 1500w" alt=""></div>
-      </div>
-    </div>
-  </section>
-  <section class="hero-heading-right">
-    <div class="container-3">
-      <div class="hero-wrapper">
-        <div class="hero-split">
-          <div class="html-embed w-embed w-iframe w-script">
-            <script defer="defer" src="https://app.dfx.swiss/widget/v1.0"></script>
-            <div style="width:100%; max-width:450px; height:700px;">
-              <dfx-services mode="IFRAME" lang="en">Loading ...</dfx-services>
-            </div>
-          </div>
-        </div>
-        <div class="hero-split">
-          <div class="text-block">DFX Multichain Toolbox</div>
-          <h1 class="heading">Directly in and from your Software &amp; Hardware Wallet</h1>
-          <p class="margin-bottom-24px">Buy and sell more than 80 coins and token directly in your Software Wallet or Hardware Wallet. Or convert Bitcoin and Crypto back to your bank account. Accessible by clicking the tiles in our DFX Toolbox.<br></p><img src="images/Short.png" loading="lazy" width="304" sizes="(max-width: 767px) 47vw, (max-width: 991px) 304px, (max-width: 1439px) 24vw, 300px" alt="" srcset="images/Short-p-500.png 500w, images/Short.png 720w" class="image-9">
-          <a href="http://app.dfx.swiss/?lang=en" target="_blank" class="button-primary w-button">DFX Services</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="highlight-2">
-    <div class="container-7">
-      <div class="features-wrapper">
-        <div class="features-block">
-          <div class="features-title">5<span class="features-title-small"></span></div>
-          <div class="paragraph">Blockchains</div>
-        </div>
-        <div class="features-block">
-          <div class="features-title">&gt; 80<span class="features-title-small"></span></div>
-          <div class="paragraph">Buy- &amp; sellable Coins &amp; Token</div>
-        </div>
-        <div class="features-block">
-          <div class="features-title">&gt; $100 Mio</div>
-          <div class="paragraph">Total Transaction Volume</div>
-        </div>
-        <div class="features-block">
-          <div class="features-title">&gt; 99<span class="features-title-small"> %</span></div>
-          <div class="paragraph">Customer Satisfaction</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="hero-heading-left">
-    <div class="container-3">
-      <div class="hero-wrapper">
-        <div class="hero-split">
-          <div class="text-block">Our Toolbox for your Website</div>
-          <h1 class="heading">Just a few lines of code</h1>
-          <p class="margin-bottom-24px">Integrate our DFX Toolbox in your website and set up your on- and off-ramp in minutes with our seemless iFrame solution, or use our APIs for a deeper integration. Don’t forget - everything we do is open-source.</p>
-          <a href="https://docs.dfx.swiss/en/faq.html#how-can-i-integrate-dfx-s-iframe-widget-into-my-own-website" target="_blank" class="button-primary w-button">DOCUMENTATION</a>
-        </div>
-        <div class="hero-split"><img src="images/Code.png" loading="lazy" width="504" sizes="(max-width: 767px) 94vw, (max-width: 991px) 504px, (max-width: 1439px) 47vw, 504px" alt="" srcset="images/Code-p-500.png 500w, images/Code.png 750w"></div>
-      </div>
-    </div>
-  </section>
-  <section class="footer-dark">
-    <div class="container-3">
-      <div class="footer-wrapper">
-        <div>
-          <a href="#" class="footer-brand w-inline-block"><img src="images/DFX-Logo-white-6.svg" loading="lazy" width="124" alt=""></a>
-          <div class="footer-social-block">
-            <a href="https://twitter.com/DFX_Swiss" target="_blank" class="link-block w-inline-block"><img src="images/icons8-twitter.svg" loading="lazy" alt=""></a>
-            <a href="https://github.com/dfxswiss" class="link-block w-inline-block"><img src="images/icons8-github.svg" loading="lazy" width="24" alt=""></a>
-          </div>
-        </div>
-        <div class="footer-content">
-          <div id="w-node-_3b722a7c-c9a5-b2c1-9d7d-2ebe959ea2cd-6b51fb63" class="footer-block">
-            <div class="title-small">Company</div>
-            <a href="https://docs.dfx.swiss/en/imprint.html" target="_blank" class="footer-link">Imprint</a>
-            <a href="https://docs.dfx.swiss/en/privacy.html" target="_blank" class="footer-link">Privacy Police</a>
-            <a href="https://docs.dfx.swiss/en/disclaimer.html" target="_blank" class="footer-link">Disclaimer</a>
-            <a href="https://docs.dfx.swiss/en/tnc.html" target="_blank" class="footer-link">Terms and conditions</a>
-          </div>
-          <div id="w-node-_3b722a7c-c9a5-b2c1-9d7d-2ebe959ea2d6-6b51fb63" class="footer-block">
-            <div class="title-small">Resources</div>
-            <a href="http://exchange.dfx.swiss" target="_blank" class="footer-link">DFX MetaMask Exchange</a>
-            <a href="http://lightning.dfx.swiss" target="_blank" class="footer-link">DFX Lightning Exchange</a>
-          </div>
-          <div id="w-node-_3b722a7c-c9a5-b2c1-9d7d-2ebe959ea2e1-6b51fb63" class="footer-block">
-            <div class="title-small">About</div>
-            <a href="#" class="footer-link adress">DFX AG <br>Bahnhofstrasse 7 <br>6300 Zug Switzerland<br>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6523f2425f797f286b51fb5a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6858f1072bf539f3881c69f8" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(MotionPathPlugin);
+    // Инициализация элементов
+    gsap.set("#btc", {opacity: 0, scale: 1.3});
+    gsap.set("#eth", {opacity: 0, scale: 1});
+    gsap.set("#fiat", {opacity: 1, scale: 1});
+    // Установка начальных позиций на пути
+    gsap.set("#btc", {
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        autoRotate: false,
+        alignOrigin: [0.5, 0.5],
+        start: 0.6,
+        end: 0.6
+      }
+    });
+    gsap.set("#eth", {
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        autoRotate: false,
+        alignOrigin: [0.5, 0.5],
+        start: 0,
+        end: 0
+      }
+    });
+    // Установка начальной видимости путей
+    gsap.set("#path-img", {opacity: 1});
+    gsap.set("#path-r-img", {opacity: 0});
+    const tl = gsap.timeline({ repeat: -1, defaults: {ease: "power2.inOut"}, repeatDelay: 0.5 });
+    // FIAT вперед (одно движение)
+    tl.to("#fiat", {
+      duration: 3,
+      ease: "power2.inOut",
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        autoRotate: false,
+        alignOrigin: [0.5, 0.5],
+        start: 1,
+        end: 0.6
+      },
+      scale: 1.3,
+      onStart: () => {
+        gsap.to("#path-img", {opacity: 1, duration: 0.3});
+        gsap.to("#path-r-img", {opacity: 0, duration: 0.3});
+      }
+    })
+    .to("#fiat", {opacity: 0, duration: 0.5}, "-=0.5")
+    .to("#btc", {opacity: 1, duration: 0.5}, "-=0.5")
+    // BTC вперед (одно движение)
+    .to("#btc", {
+      duration: 4.3,
+      ease: "power2.inOut",
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        autoRotate: false,
+        alignOrigin: [0.5, 0.5],
+        start: 0.6,
+        end: 0
+      },
+      scale: 1
+    }, "+=0.02")
+    .set("#btc", {opacity: 0, scale: 1.3})
+    // ETH появляется
+    .to("#eth", {opacity: 1, duration: 0.5})
+    // ETH назад - быстро, затем сразу замедление
+    .to("#eth", {
+      duration: 1.7,
+      ease: "power2.inOut",
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        autoRotate: false,
+        alignOrigin: [0.5, 0.5],
+        start: 0,
+        end: 0.13
+      },
+      scale: 1,
+      onStart: () => {
+        gsap.to("#path-img", {opacity: 0, duration: 0.3});
+        gsap.to("#path-r-img", {opacity: 1, duration: 0.3});
+      }
+    })
+    .to("#eth", {
+      duration: 3.3, // объединили два участка в одно
+      ease: "power2.inOut",
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        autoRotate: false,
+        alignOrigin: [0.5, 0.5],
+        start: 0.13,
+        end: 0.6
+      },
+      scale: 1.3
+    })
+    .to("#eth", {opacity: 0, duration: 0.5}, "-=0.5")
+    .to("#fiat", {opacity: 1, duration: 0.5}, "-=0.5")
+    .set("#eth", {opacity: 0, scale: 1})
+    // FIAT назад (только финальный участок)
+    .to("#fiat", {
+      duration: 3,
+      ease: "power2.inOut",
+      motionPath: {
+        path: "#path",
+        align: "#path",
+        autoRotate: false,
+        alignOrigin: [0.5, 0.5],
+        start: 0.6,
+        end: 1
+      },
+      scale: 1
+    })
+    .set("#fiat", {opacity: 0, scale: 1}, "+=0.5")
+    // Пауза между циклами
+    .to({}, {duration: 1.5})
+    .to("#fiat", {opacity: 1, duration: 0.5}, "+=0.5");
+  });
+</script>
+  <!--  TrustBox script  -->
+  <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
+  <!--  End TrustBox script  -->
+  <script src="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+"></script>
+  <link href="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
+" rel="stylesheet">
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  var splide1 = new Splide('#splide1', {
+    perPage: 4,
+    breakpoints: {
+      991: { perPage: 3, padding: { left: '0rem', right: '5rem' }, },
+      767: { perPage: 1, padding: { left: '0rem', right: '0rem' }, },
+    },
+    gap: '1.5rem',
+    padding: { left: '0rem', right: '10rem' },
+    trimSpace: true,
+    pagination: true,
+    arrows: false,
+    classes: {
+    pagination: "splide__pagination a-override",
+    page: "splide__pagination__page a-override"
+  },
+  });
+  const Next1 = document.querySelector('#next-1');
+  const Prev1 = document.querySelector('#prev-1');
+  Next1.addEventListener('click', () => {
+    splide1.go('+1');
+  });
+  Prev1.addEventListener('click', () => {
+    splide1.go('-1');
+  });
+  splide1.mount();
+   var splide2 = new Splide('#splide2', {
+    perPage: 3,
+    breakpoints: {
+      991: { perPage: 2, padding: { left: '0rem', right: '5rem' }, },
+      767: { perPage: 1, padding: { left: '0rem', right: '0rem' }, },
+    },
+    gap: '1.5rem',
+    padding: { left: '0rem', right: '10rem' },
+    trimSpace: true,
+    pagination: true,
+    arrows: false,
+    classes: {
+    pagination: "splide__pagination b-override",
+    page: "splide__pagination__page b-override"
+  },
+  });
+  const Next2 = document.querySelector('#next-2');
+  const Prev2 = document.querySelector('#prev-2');
+  Next2.addEventListener('click', () => {
+    splide2.go('+1');
+  });
+  Prev2.addEventListener('click', () => {
+    splide2.go('-1');
+  });
+  splide2.mount();
+});
+</script>
 </body>
 </html>
