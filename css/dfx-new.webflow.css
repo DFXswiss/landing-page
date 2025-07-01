@@ -1455,6 +1455,7 @@ a {
   align-items: center;
   width: 45%;
   display: flex;
+  position: relative;
 }
 
 .services-bottom-card {
@@ -2268,6 +2269,26 @@ a {
   left: 257.5px;
 }
 
+.toolbox-animation_wrapper {
+  position: absolute;
+  inset: 0%;
+}
+
+.toolbox-animation_bg {
+  border: 1px solid var(--dfx-gray-450);
+  background-color: var(--dfx-white);
+  border-radius: .75rem;
+  width: 11.875rem;
+  height: 20rem;
+  display: flex;
+}
+
+.tool-box_top-bar {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 @media screen and (min-width: 1440px) {
   .dropdown-list-3.w--open {
     opacity: 1;
@@ -3010,6 +3031,12 @@ a {
   .container-main {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .use_card-image.toolbox {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-top: 0;
   }
 
   .footer-layout {
