@@ -1,0 +1,15 @@
+<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.385254" width="40" height="40" rx="8" fill="url(#paint0_linear_4361_5100)"/>
+<g clip-path="url(#clip0_4361_5100)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M32.2992 13.9141L16.8852 29.3281L8.47119 20.9141L11.2992 18.0861L16.8852 23.6721L29.4712 11.0861L32.2992 13.9141Z" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_4361_5100" x1="20.3853" y1="0" x2="20.3853" y2="40" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5516C"/>
+<stop offset="1" stop-color="#953F5D"/>
+</linearGradient>
+<clipPath id="clip0_4361_5100">
+<rect width="24" height="24" fill="white" transform="translate(8.38525 7)"/>
+</clipPath>
+</defs>
+</svg>
