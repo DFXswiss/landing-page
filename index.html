@@ -1336,6 +1336,10 @@ document.querySelectorAll('.faq-question').forEach(question => {
     });
     // Toggle current question
     question.classList.toggle('is-open');
+    // Update URL with FAQ ID
+    if (question.id) {
+      history.replaceState(null, null, '#' + question.id);
+    }
   });
 });
 
