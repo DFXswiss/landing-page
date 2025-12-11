@@ -115,8 +115,128 @@ display: none!important;
   }
 }
 </style>
+<style>
+/* IBAN Popup Styles */
+.iban-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.iban-popup {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 550px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(245, 81, 108, 0.3);
+}
+.iban-popup-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.iban-popup-close:hover {
+  opacity: 1;
+}
+.iban-popup-title {
+  color: #F5516C;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.iban-popup-content {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.iban-popup-button {
+  display: inline-block;
+  background: #F5516C;
+  color: #fff;
+  padding: 0.875rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.iban-popup-button:hover {
+  background: #e04460;
+}
+@media (max-width: 767px) {
+  .iban-popup {
+    padding: 1.5rem;
+  }
+  .iban-popup-title {
+    font-size: 1.1rem;
+  }
+  .iban-popup-content {
+    font-size: 0.9rem;
+  }
+}
+</style>
 </head>
 <body class="body">
+  <!-- IBAN Popup -->
+  <div id="iban-popup" class="iban-popup-overlay" style="display: none;">
+    <div class="iban-popup">
+      <button class="iban-popup-close" onclick="closeIbanPopup()">&times;</button>
+      <div class="iban-popup-title">⚠️ Wichtig!</div>
+      <div id="iban-popup-text" class="iban-popup-content"></div>
+      <a href="faq.html#persoenliche-iban" class="iban-popup-button">Mehr erfahren</a>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var now = new Date();
+      var start1 = new Date('2025-12-10T00:00:00');
+      var end1 = new Date('2025-12-15T23:59:59');
+      var start2 = new Date('2025-12-16T00:00:00');
+      var end2 = new Date('2025-12-31T23:59:59');
+
+      var text1 = 'DFX unterstützt jetzt persönliche IBAN Adressen für Einzahlungen. Die generelle Sammeladresse bei Maerki Baumann wird ab 16. Dezember 2025 nicht mehr unterstützt! Generiere jetzt Deine persönliche DFX IBAN für einen schnellen und unkomplizierten Kauf bei DFX!';
+      var text2 = 'DFX unterstützt jetzt persönliche IBAN Adressen für Einzahlungen. Die generelle Sammeladresse bei Maerki Baumann wird nicht mehr unterstützt! Persönliche IBANs sind effizienter und zuverlässiger. Generiere jetzt Deine persönliche DFX IBAN für einen schnellen und unkomplizierten Kauf bei DFX!';
+
+      var popupText = null;
+      if (now >= start1 && now <= end1) {
+        popupText = text1;
+      } else if (now >= start2 && now <= end2) {
+        popupText = text2;
+      }
+
+      if (popupText && !sessionStorage.getItem('ibanPopupClosed')) {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('iban-popup-text').textContent = popupText;
+          document.getElementById('iban-popup').style.display = 'flex';
+        });
+      }
+    })();
+
+    function closeIbanPopup() {
+      document.getElementById('iban-popup').style.display = 'none';
+      sessionStorage.setItem('ibanPopupClosed', 'true');
+    }
+  </script>
   <div class="page-wrapper">
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
       <div class="padding-global padding-section-nav">
