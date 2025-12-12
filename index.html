@@ -183,6 +183,19 @@ display: none!important;
 .iban-popup-button:hover {
   background: #e04460;
 }
+.iban-popup-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.iban-popup-button-secondary {
+  background: transparent;
+  border: 1px solid #F5516C;
+  cursor: pointer;
+}
+.iban-popup-button-secondary:hover {
+  background: rgba(245, 81, 108, 0.1);
+}
 @media (max-width: 767px) {
   .iban-popup {
     padding: 1.5rem;
@@ -203,7 +216,10 @@ display: none!important;
       <button class="iban-popup-close" onclick="closeIbanPopup()">&times;</button>
       <div class="iban-popup-title">⚠️ Wichtig!</div>
       <div id="iban-popup-text" class="iban-popup-content"></div>
-      <a href="faq.html#persoenliche-iban" class="iban-popup-button">Mehr erfahren</a>
+      <div class="iban-popup-buttons">
+        <a href="faq.html#persoenliche-iban" class="iban-popup-button">Mehr erfahren</a>
+        <button class="iban-popup-button iban-popup-button-secondary" onclick="closeIbanPopup()">Verstanden</button>
+      </div>
     </div>
   </div>
   <script>
