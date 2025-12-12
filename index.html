@@ -115,8 +115,134 @@ display: none!important;
   }
 }
 </style>
+<style>
+/* IBAN Popup Styles */
+.iban-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.iban-popup {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 550px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(245, 81, 108, 0.3);
+}
+.iban-popup-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.iban-popup-close:hover {
+  opacity: 1;
+}
+.iban-popup-title {
+  color: #F5516C;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.iban-popup-content {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.iban-popup-button {
+  display: inline-block;
+  background: #F5516C;
+  color: #fff;
+  padding: 0.875rem 1.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.iban-popup-button:hover {
+  background: #e04460;
+}
+.iban-popup-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.iban-popup-button-secondary {
+  background: transparent;
+  border: 1px solid #F5516C;
+  cursor: pointer;
+}
+.iban-popup-button-secondary:hover {
+  background: rgba(245, 81, 108, 0.1);
+}
+@media (max-width: 767px) {
+  .iban-popup {
+    padding: 1.5rem;
+  }
+  .iban-popup-title {
+    font-size: 1.1rem;
+  }
+  .iban-popup-content {
+    font-size: 0.9rem;
+  }
+}
+</style>
 </head>
 <body class="body">
+  <!-- IBAN Popup -->
+  <div id="iban-popup" class="iban-popup-overlay" style="display: none;">
+    <div class="iban-popup">
+      <button class="iban-popup-close" onclick="closeIbanPopup()">&times;</button>
+      <div class="iban-popup-title">⚠️ Wichtig!</div>
+      <div id="iban-popup-text" class="iban-popup-content"></div>
+      <div class="iban-popup-buttons">
+        <a href="faq.html#persoenliche-iban" class="iban-popup-button">Mehr erfahren</a>
+        <button class="iban-popup-button iban-popup-button-secondary" onclick="closeIbanPopup()">Verstanden</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var now = new Date();
+      var start = new Date('2025-12-10T00:00:00');
+      var end = new Date('2025-12-31T23:59:59');
+
+      var popupText = 'DFX unterstützt jetzt persönliche IBAN Adressen für Einzahlungen. Die generelle Sammeladresse bei Maerki Baumann wird nicht mehr unterstützt! Persönliche IBANs sind effizienter und zuverlässiger. Generiere jetzt Deine persönliche DFX IBAN für einen schnellen und unkomplizierten Kauf bei DFX!';
+
+      if (now >= start && now <= end && !sessionStorage.getItem('ibanPopupClosed')) {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.getElementById('iban-popup-text').textContent = popupText;
+          document.getElementById('iban-popup').style.display = 'flex';
+        });
+      }
+    })();
+
+    function closeIbanPopup() {
+      document.getElementById('iban-popup').style.display = 'none';
+      sessionStorage.setItem('ibanPopupClosed', 'true');
+    }
+  </script>
   <div class="page-wrapper">
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
       <div class="padding-global padding-section-nav">
@@ -994,8 +1120,8 @@ Webflow.push(function () {
                 <div class="faq_left-buttons-wrapper">
                   <p class="faq_text">Du hast weitere Fragen?</p>
                   <div class="faq_left-buttons">
-                    <a href="https://docs.dfx.swiss/de/faq.html" target="_blank" class="button dark-full w-button">Docs FAQ</a>
-                    <a href="help.html" target="_blank" class="button dark-outline w-button">DFX Support</a>
+                    <a href="faq.html" class="button dark-full w-button">FAQ</a>
+                    <a href="https://app.dfx.swiss/support/tickets" target="_blank" class="button dark-outline w-button">DFX Support</a>
                   </div>
                 </div>
               </div>
@@ -1048,7 +1174,7 @@ Webflow.push(function () {
                       <div class="faq_answer">
                         <div class="margin-bottom margin-small">
                           <div class="max-width-large">
-                            <p class="text-color-g950 text-weight-light">DFX bietet neben der gängigen SEPA-Transaktion auch SEPA Instant an, welches jedoch nur mit abgeschlossenem KYC nutzbar ist. Im Schnitt rechnen wir nach Zahlungseingang bei unserer Bank eine Verarbeitungszeit von circa 10 Minuten. Die Dauer hängt jedoch von unterschiedlichen Faktoren ab, die nicht alle von DFX beeinflussbar sind.</p>
+                            <p class="text-color-g950 text-weight-light">Im Schnitt rechnen wir nach Zahlungseingang bei unserer Bank eine Verarbeitungszeit von circa 10 Minuten. Die Dauer hängt jedoch von unterschiedlichen Faktoren ab, die nicht alle von DFX beeinflussbar sind.</p>
                           </div>
                         </div>
                       </div>
