@@ -209,22 +209,12 @@ display: none!important;
   <script>
     (function() {
       var now = new Date();
-      var start1 = new Date('2025-12-10T00:00:00');
-      var end1 = new Date('2025-12-15T23:59:59');
-      var start2 = new Date('2025-12-16T00:00:00');
-      var end2 = new Date('2025-12-31T23:59:59');
+      var start = new Date('2025-12-10T00:00:00');
+      var end = new Date('2025-12-31T23:59:59');
 
-      var text1 = 'DFX unterstützt jetzt persönliche IBAN Adressen für Einzahlungen. Die generelle Sammeladresse bei Maerki Baumann wird ab 16. Dezember 2025 nicht mehr unterstützt! Generiere jetzt Deine persönliche DFX IBAN für einen schnellen und unkomplizierten Kauf bei DFX!';
-      var text2 = 'DFX unterstützt jetzt persönliche IBAN Adressen für Einzahlungen. Die generelle Sammeladresse bei Maerki Baumann wird nicht mehr unterstützt! Persönliche IBANs sind effizienter und zuverlässiger. Generiere jetzt Deine persönliche DFX IBAN für einen schnellen und unkomplizierten Kauf bei DFX!';
+      var popupText = 'DFX unterstützt jetzt persönliche IBAN Adressen für Einzahlungen. Die generelle Sammeladresse bei Maerki Baumann wird nicht mehr unterstützt! Persönliche IBANs sind effizienter und zuverlässiger. Generiere jetzt Deine persönliche DFX IBAN für einen schnellen und unkomplizierten Kauf bei DFX!';
 
-      var popupText = null;
-      if (now >= start1 && now <= end1) {
-        popupText = text1;
-      } else if (now >= start2 && now <= end2) {
-        popupText = text2;
-      }
-
-      if (popupText && !sessionStorage.getItem('ibanPopupClosed')) {
+      if (now >= start && now <= end && !sessionStorage.getItem('ibanPopupClosed')) {
         document.addEventListener('DOMContentLoaded', function() {
           document.getElementById('iban-popup-text').textContent = popupText;
           document.getElementById('iban-popup').style.display = 'flex';
