@@ -16,6 +16,11 @@
   localStorage.setItem('dfx-lang', lang);
   document.documentElement.lang = lang;
 
+  // Hide content until translations are applied (prevents FOUC for non-German users)
+  if (lang !== 'de') {
+    document.documentElement.style.visibility = 'hidden';
+  }
+
   // Determine base path for i18n files (works from root or subdirectory)
   var scripts = document.getElementsByTagName('script');
   var basePath = '';
@@ -42,62 +47,84 @@
     });
   }
 
+  // Update docs.dfx.swiss footer links to match current language
+  function updateDocsLinks() {
+    var links = document.querySelectorAll('a[href*="docs.dfx.swiss"]');
+    links.forEach(function(link) {
+      var href = link.getAttribute('href');
+      link.setAttribute('href', href.replace(/docs\.dfx\.swiss\/[a-z]{2}\//, 'docs.dfx.swiss/' + lang + '/'));
+    });
+  }
+
+  function applyTranslations(translations) {
+    // Replace textContent for data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (translations[key] !== undefined) {
+        el.textContent = translations[key];
+      }
+    });
+
+    // Replace innerHTML for data-i18n-html elements
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (translations[key] !== undefined) {
+        el.innerHTML = translations[key];
+      }
+    });
+
+    // Update document title
+    if (translations['meta.title']) {
+      document.title = translations['meta.title'];
+    }
+
+    // Update meta description
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && translations['meta.description']) {
+      metaDesc.setAttribute('content', translations['meta.description']);
+    }
+
+    // Update og:title
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && translations['meta.title']) {
+      ogTitle.setAttribute('content', translations['meta.title']);
+    }
+
+    // Update og:description
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && translations['meta.description']) {
+      ogDesc.setAttribute('content', translations['meta.description']);
+    }
+
+    // Update twitter:title
+    var twTitle = document.querySelector('meta[property="twitter:title"]');
+    if (twTitle && translations['meta.title']) {
+      twTitle.setAttribute('content', translations['meta.title']);
+    }
+
+    // Update twitter:description
+    var twDesc = document.querySelector('meta[property="twitter:description"]');
+    if (twDesc && translations['meta.description']) {
+      twDesc.setAttribute('content', translations['meta.description']);
+    }
+
+    // Update links
+    updateAppLinks();
+    updateDocsLinks();
+
+    // Show content after translations are applied
+    document.documentElement.style.visibility = '';
+  }
+
   fetch(basePath + 'i18n/' + lang + '.json')
-    .then(function(r) { return r.json(); })
-    .then(function(translations) {
-      // Replace textContent for data-i18n elements
-      document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n');
-        if (translations[key] !== undefined) {
-          el.textContent = translations[key];
-        }
-      });
-
-      // Replace innerHTML for data-i18n-html elements (FAQ answers with links)
-      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-html');
-        if (translations[key] !== undefined) {
-          el.innerHTML = translations[key];
-        }
-      });
-
-      // Update document title
-      if (translations['meta.title']) {
-        document.title = translations['meta.title'];
-      }
-
-      // Update meta description
-      var metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc && translations['meta.description']) {
-        metaDesc.setAttribute('content', translations['meta.description']);
-      }
-
-      // Update og:title
-      var ogTitle = document.querySelector('meta[property="og:title"]');
-      if (ogTitle && translations['meta.title']) {
-        ogTitle.setAttribute('content', translations['meta.title']);
-      }
-
-      // Update og:description
-      var ogDesc = document.querySelector('meta[property="og:description"]');
-      if (ogDesc && translations['meta.description']) {
-        ogDesc.setAttribute('content', translations['meta.description']);
-      }
-
-      // Update twitter:title
-      var twTitle = document.querySelector('meta[property="twitter:title"]');
-      if (twTitle && translations['meta.title']) {
-        twTitle.setAttribute('content', translations['meta.title']);
-      }
-
-      // Update twitter:description
-      var twDesc = document.querySelector('meta[property="twitter:description"]');
-      if (twDesc && translations['meta.description']) {
-        twDesc.setAttribute('content', translations['meta.description']);
-      }
-
-      // Update app.dfx.swiss links
-      updateAppLinks();
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(applyTranslations)
+    .catch(function() {
+      // On error, ensure content is visible (falls back to German HTML)
+      document.documentElement.style.visibility = '';
     });
 
   // Language switcher and active state

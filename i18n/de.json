@@ -8,8 +8,6 @@
   "nav.shop": "Shop",
   "nav.buy_now": "Jetzt kaufen",
   "nav.language": "Language",
-  "hero.title_line1": "Krypto kaufen und verkaufen direkt ",
-  "hero.title_line2": "mit deiner Wallet.",
   "hero.subtitle": "DFX - Deine Brücke zwischen Fiat und Krypto: Einfach. Sicher. Non-Custodial.",
   "hero.cta": "Krypto kaufen & verkaufen",
   "hero.cta_taro": "BTC Taro App",
@@ -106,5 +104,6 @@
   "footer.follow_us": "FOLLOW US",
   "popup.title": "⚠️ Wichtig!",
   "popup.learn_more": "Mehr erfahren",
-  "popup.understood": "Verstanden"
+  "popup.understood": "Verstanden",
+  "hero.title": "Krypto kaufen und verkaufen direkt <span class=\"text-span\">mit deiner Wallet.</span>"
 }

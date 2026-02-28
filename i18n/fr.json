@@ -8,8 +8,6 @@
   "nav.shop": "Shop",
   "nav.buy_now": "Acheter maintenant",
   "nav.language": "Langue",
-  "hero.title_line1": "Acheter et vendre des cryptos directement ",
-  "hero.title_line2": "avec votre wallet.",
   "hero.subtitle": "DFX – Votre passerelle entre le fiat et la crypto : Simple. Sûr. Non-Custodial.",
   "hero.cta": "Acheter & vendre des cryptos",
   "hero.cta_taro": "BTC Taro App",
@@ -106,5 +104,6 @@
   "footer.follow_us": "SUIVEZ-NOUS",
   "popup.title": "⚠️ Important !",
   "popup.learn_more": "En savoir plus",
-  "popup.understood": "Compris"
+  "popup.understood": "Compris",
+  "hero.title": "Acheter et vendre des cryptos directement <span class=\"text-span\">avec votre wallet.</span>"
 }
