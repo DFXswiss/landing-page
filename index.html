@@ -2,13 +2,13 @@
 <html data-wf-page="6858f1072bf539f3881c6a09" data-wf-site="6858f1072bf539f3881c69f8" lang="de">
 <head>
   <meta charset="utf-8">
-  <title>DFX – Buy &amp; Sell Crypto Directly From Your Bank to Wallet</title>
-  <meta content="DFX is a non-custodial crypto on/off-ramp that lets you buy, sell, and swap 80+ coins directly from your bank account to your self-custody wallet." name="description">
-  <meta content="DFX – Buy &amp; Sell Crypto Directly From Your Bank to Wallet" property="og:title">
-  <meta content="DFX is a non-custodial crypto on/off-ramp that lets you buy, sell, and swap 80+ coins directly from your bank account to your self-custody wallet." property="og:description">
+  <title>DFX – Krypto kaufen &amp; verkaufen direkt von deiner Bank in deine Wallet</title>
+  <meta content="DFX ist ein Non-Custodial Krypto On-/Off-Ramp, mit dem du über 80 Coins direkt von deinem Bankkonto in deine Self-Custody-Wallet kaufen, verkaufen und tauschen kannst." name="description">
+  <meta content="DFX – Krypto kaufen &amp; verkaufen direkt von deiner Bank in deine Wallet" property="og:title">
+  <meta content="DFX ist ein Non-Custodial Krypto On-/Off-Ramp, mit dem du über 80 Coins direkt von deinem Bankkonto in deine Self-Custody-Wallet kaufen, verkaufen und tauschen kannst." property="og:description">
   <meta content="https://cdn.prod.website-files.com/6858f1072bf539f3881c69f8/6862a341ad6da22c9499acf0_og_image.png" property="og:image">
-  <meta content="DFX – Buy &amp; Sell Crypto Directly From Your Bank to Wallet" property="twitter:title">
-  <meta content="DFX is a non-custodial crypto on/off-ramp that lets you buy, sell, and swap 80+ coins directly from your bank account to your self-custody wallet." property="twitter:description">
+  <meta content="DFX – Krypto kaufen &amp; verkaufen direkt von deiner Bank in deine Wallet" property="twitter:title">
+  <meta content="DFX ist ein Non-Custodial Krypto On-/Off-Ramp, mit dem du über 80 Coins direkt von deinem Bankkonto in deine Self-Custody-Wallet kaufen, verkaufen und tauschen kannst." property="twitter:description">
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -20,18 +20,7 @@
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <link href="https://www.dfx.swiss" rel="canonical">
-  <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
-  <script>
-    Weglot.initialize({
-        api_key: 'wg_6a1fdb9f6a9d666813d27491e2370de39'
-    });
-</script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.weglot.com/weglot.min.css?v=9">
-  <style id="weglot-custom-style" type="text/css">
-.weglot-container {
-display: none!important;
-}
-</style>
+  <script src="js/i18n.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
   <style>
@@ -214,11 +203,11 @@ display: none!important;
   <div id="iban-popup" class="iban-popup-overlay" style="display: none;">
     <div class="iban-popup">
       <button class="iban-popup-close" onclick="closeIbanPopup()">&times;</button>
-      <div class="iban-popup-title">⚠️ Wichtig!</div>
+      <div class="iban-popup-title" data-i18n="popup.title">⚠️ Wichtig!</div>
       <div id="iban-popup-text" class="iban-popup-content"></div>
       <div class="iban-popup-buttons">
-        <a href="faq.html#persoenliche-iban" class="iban-popup-button">Mehr erfahren</a>
-        <button class="iban-popup-button iban-popup-button-secondary" onclick="closeIbanPopup()">Verstanden</button>
+        <a href="faq.html#persoenliche-iban" class="iban-popup-button" data-i18n="popup.learn_more">Mehr erfahren</a>
+        <button class="iban-popup-button iban-popup-button-secondary" onclick="closeIbanPopup()" data-i18n="popup.understood">Verstanden</button>
       </div>
     </div>
   </div>
@@ -253,15 +242,15 @@ display: none!important;
             </div>
             <nav role="navigation" class="nav-menu w-nav-menu">
               <div class="nav_links-wrapper">
-                <a href="dfx-services.html" class="nav-link w-nav-link">DFX Services</a>
-                <a href="dfx-toolbox.html" class="nav-link w-nav-link">DFX Toolbox</a>
-                <a href="dfx-taro-app.html" class="nav-link w-nav-link">BTC Taro App</a>
-                <a href="help.html" class="nav-link w-nav-link">Support</a>
-                <a href="https://dfx.shop/" target="_blank" class="nav-link w-nav-link">Shop</a>
+                <a href="dfx-services.html" class="nav-link w-nav-link" data-i18n="nav.services">DFX Services</a>
+                <a href="dfx-toolbox.html" class="nav-link w-nav-link" data-i18n="nav.toolbox">DFX Toolbox</a>
+                <a href="dfx-taro-app.html" class="nav-link w-nav-link" data-i18n="nav.taro">BTC Taro App</a>
+                <a href="help.html" class="nav-link w-nav-link" data-i18n="nav.support">Support</a>
+                <a href="https://dfx.shop/" target="_blank" class="nav-link w-nav-link" data-i18n="nav.shop">Shop</a>
               </div>
               <div class="nav_button-wrapper">
-                <a data-figma-id="7571:10030" href="https://app.dfx.swiss/?lang=en" target="_blank" class="nav-button hide-desktop w-inline-block">
-                  <div>Jetzt kaufen</div>
+                <a data-figma-id="7571:10030" href="https://app.dfx.swiss/?lang=de" target="_blank" class="nav-button hide-desktop w-inline-block">
+                  <div data-i18n="nav.buy_now">Jetzt kaufen</div>
                 </a>
                 <div data-delay="0" data-hover="false" class="wg-element hide-desktop w-dropdown">
                   <div class="wg-dropdown-toggle w-dropdown-toggle">
@@ -287,7 +276,7 @@ display: none!important;
                   </div>
                   <nav class="wg-dropdown w-dropdown-list">
                     <div class="wg-wrapper">
-                      <div class="language">Language</div>
+                      <div class="language" data-i18n="nav.language">Language</div>
                       <div class="weglot-switcher-component">
                         <div class="weglot-switcher">
                           <a lang="en" href="#" class="switcher_link w-inline-block">
@@ -311,8 +300,8 @@ display: none!important;
               </div>
             </nav>
             <div class="nav-button_wrapper">
-              <a data-figma-id="7571:10030" href="https://app.dfx.swiss/?lang=en" target="_blank" class="nav-button hide-tablet w-inline-block">
-                <div>Jetzt kaufen</div>
+              <a data-figma-id="7571:10030" href="https://app.dfx.swiss/?lang=de" target="_blank" class="nav-button hide-tablet w-inline-block">
+                <div data-i18n="nav.buy_now">Jetzt kaufen</div>
               </a>
               <div class="menu-button w-nav-button">
                 <div class="icon w-icon-nav-menu"></div>
@@ -342,7 +331,7 @@ display: none!important;
               </div>
               <nav class="wg-dropdown w-dropdown-list">
                 <div class="wg-wrapper">
-                  <div class="language">Language</div>
+                  <div class="language" data-i18n="nav.language">Language</div>
                   <div class="weglot-switcher-component">
                     <div class="weglot-switcher">
                       <a lang="en" href="#" class="switcher_link w-inline-block">
@@ -391,12 +380,12 @@ Webflow.push(function () {
           <div class="container-main">
             <div class="hero-layout">
               <div class="hero_heading">
-                <h1 class="heading-style-h1">Krypto kaufen und verkaufen direkt <span class="text-span">mit deiner Wallet.</span></h1>
-                <p class="text-color-g500 text-size-2xl text-weight-light">DFX - Deine Brücke zwischen Fiat und Krypto: Einfach. Sicher. Non-Custodial.</p>
+                <h1 class="heading-style-h1" data-i18n-html="hero.title">Krypto kaufen und verkaufen direkt <span class="text-span">mit deiner Wallet.</span></h1>
+                <p class="text-color-g500 text-size-2xl text-weight-light" data-i18n="hero.subtitle">DFX - Deine Brücke zwischen Fiat und Krypto: Einfach. Sicher. Non-Custodial.</p>
                 <div class="hero_buttons-wrapper">
-                  <a href="https://app.dfx.swiss/?lang=en" target="_blank" class="button-hero w-button">Krypto kaufen &amp; verkaufen</a>
+                  <a href="https://app.dfx.swiss/?lang=de" target="_blank" class="button-hero w-button" data-i18n="hero.cta">Krypto kaufen &amp; verkaufen</a>
                   <a href="https://dfx.swiss/app/btc" target="_blank" class="button-hero-secondary w-inline-block">
-                    <div>BTC Taro App</div>
+                    <div data-i18n="hero.cta_taro">BTC Taro App</div>
                     <div class="button-hero-secondary_image w-embed"><svg width="34" height="16" style="" viewbox="0 0 34 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_6001_1522)">
                           <path d="M11.5115 7.25803C11.5186 6.70609 11.6652 6.16491 11.9377 5.68485C12.2101 5.20479 12.5996 4.80145 13.0698 4.51236C12.7711 4.08573 12.377 3.73463 11.9189 3.48694C11.4607 3.23926 10.9511 3.10182 10.4305 3.08553C9.3201 2.96897 8.24357 3.75 7.67771 3.75C7.10089 3.75 6.22966 3.0971 5.29148 3.1164C4.68464 3.13601 4.09323 3.31247 3.57487 3.6286C3.05651 3.94473 2.62887 4.38975 2.33363 4.92029C1.05472 7.13453 2.00867 10.3887 3.23377 12.1785C3.84671 13.055 4.56306 14.034 5.50039 13.9992C6.41762 13.9612 6.76019 13.4144 7.86737 13.4144C8.96427 13.4144 9.28568 13.9992 10.242 13.9772C11.2263 13.9612 11.8464 13.0968 12.4378 12.2121C12.8782 11.5876 13.2171 10.8974 13.4419 10.1671C12.8701 9.92526 12.3821 9.52044 12.0388 9.00312C11.6956 8.48581 11.5121 7.87888 11.5115 7.25803Z" fill="currentColor"></path>
@@ -421,16 +410,16 @@ Webflow.push(function () {
             <div class="spacer-huge"></div>
             <div class="hero-layout-bottom">
               <div class="bottom-card">
-                <h2 class="text-color-red text-align-center">80+ Coins</h2>
-                <p class="text-color-g400 text-size-l text-weight-light text-align-center">Unterstützung für mehr als 80 Kryptowährungen auf 9 Blockchains</p>
+                <h2 class="text-color-red text-align-center" data-i18n="stats.coins">80+ Coins</h2>
+                <p class="text-color-g400 text-size-l text-weight-light text-align-center" data-i18n="stats.coins_desc">Unterstützung für mehr als 80 Kryptowährungen auf 9 Blockchains</p>
               </div>
               <div class="bottom-card">
-                <h2 class="text-color-red text-align-center">$200M+</h2>
-                <p class="text-color-g400 text-size-l text-weight-light text-align-center">Über 200 Mio. Transaktionsvolumen und über 30.000 aktive Kunden</p>
+                <h2 class="text-color-red text-align-center" data-i18n="stats.volume">$200M+</h2>
+                <p class="text-color-g400 text-size-l text-weight-light text-align-center" data-i18n="stats.volume_desc">Über 200 Mio. Transaktionsvolumen und über 30.000 aktive Kunden</p>
               </div>
               <div class="bottom-card">
-                <h2 class="text-color-red text-align-center">B2C &amp; B2B</h2>
-                <p class="text-color-g400 text-size-l text-weight-light text-align-center">On-/Off-Ramp- und mehr Services für private Kunden und Unternehmen</p>
+                <h2 class="text-color-red text-align-center" data-i18n="stats.b2b">B2C &amp; B2B</h2>
+                <p class="text-color-g400 text-size-l text-weight-light text-align-center" data-i18n="stats.b2b_desc">On-/Off-Ramp- und mehr Services für private Kunden und Unternehmen</p>
               </div>
             </div>
           </div>
@@ -441,10 +430,10 @@ Webflow.push(function () {
           <div class="container-main">
             <div class="apps-layout" style="justify-content: center; gap: 3rem;">
               <div class="apps-card"><img src="images/swiss-flag.svg" loading="lazy" alt="schweizer regulierung" class="apps-card_image">
-                <p class="text-size-s hide-tablet">Schweizer Regulierung</p>
+                <p class="text-size-s hide-tablet" data-i18n="features.swiss_regulation">Schweizer Regulierung</p>
               </div>
               <div class="apps-card"><img src="images/Sepa.svg" loading="lazy" alt="sepa" class="apps-card_image">
-                <p class="text-size-s hide-tablet">Banküberweisung</p>
+                <p class="text-size-s hide-tablet" data-i18n="features.bank_transfer">Banküberweisung</p>
               </div>
             </div>
           </div>
@@ -453,18 +442,18 @@ Webflow.push(function () {
       <section class="section_home-use">
         <div class="padding-global padding-section-use">
           <div class="container-main">
-            <h2 class="text-aling-center">Mit DFX einfach Krypto nutzen</h2>
+            <h2 class="text-aling-center" data-i18n="use.heading">Mit DFX einfach Krypto nutzen</h2>
             <div class="spacer-l"></div>
             <div class="use-layout">
               <a href="dfx-services.html" class="use-card w-inline-block">
                 <div class="use-card_top">
                   <div class="use-card_heading-wrapper">
-                    <div class="text-style-allcaps text-size-s text-color-g950">On- / Off Ramp</div>
+                    <div class="text-style-allcaps text-size-s text-color-g950" data-i18n="use.services_category">On- / Off Ramp</div>
                     <h4 class="text-color-g950">DFX Services</h4>
                   </div>
-                  <p class="paragraph-3">Kaufe, Tausche oder Verkaufe direkt in Web3- und Hardware-Wallets</p>
+                  <p class="paragraph-3" data-i18n="use.services_desc">Kaufe, Tausche oder Verkaufe direkt in Web3- und Hardware-Wallets</p>
                   <div class="button-arrow">
-                    <div class="text-block">Mehr erfahren</div>
+                    <div class="text-block" data-i18n="use.services_cta">Mehr erfahren</div>
                     <div class="button-arrow-icon w-embed"><svg width="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 5.5V7.5H15.09L5.5 17.09L6.91 18.5L16.5 8.91V17.5H18.5V5.5H6.5Z" fill="currentColor"></path>
                       </svg></div>
@@ -475,12 +464,12 @@ Webflow.push(function () {
               <a href="dfx-toolbox.html" class="use-card w-inline-block">
                 <div class="use-card_top">
                   <div class="use-card_heading-wrapper">
-                    <div class="text-style-allcaps text-size-s text-color-g950">On- / Off Ramp</div>
+                    <div class="text-style-allcaps text-size-s text-color-g950" data-i18n="use.toolbox_category">On- / Off Ramp</div>
                     <h4 class="text-color-g950">DFX Toolbox</h4>
                   </div>
-                  <p class="paragraph-3">Die Integrationslösung für Ihre Wallet- und Webseitenbetreiber – in wenigen Minuten startklar</p>
+                  <p class="paragraph-3" data-i18n="use.toolbox_desc">Die Integrationslösung für Ihre Wallet- und Webseitenbetreiber – in wenigen Minuten startklar</p>
                   <div class="button-arrow">
-                    <div class="text-block-2">Mehr erfahren</div>
+                    <div class="text-block-2" data-i18n="use.toolbox_cta">Mehr erfahren</div>
                     <div class="button-arrow-icon w-embed"><svg width="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 5.5V7.5H15.09L5.5 17.09L6.91 18.5L16.5 8.91V17.5H18.5V5.5H6.5Z" fill="currentColor"></path>
                       </svg></div>
@@ -491,12 +480,12 @@ Webflow.push(function () {
               <a href="dfx-taro-app.html" class="use-card w-inline-block">
                 <div class="use-card_top">
                   <div class="use-card_heading-wrapper">
-                    <div class="text-style-allcaps text-size-s text-color-g950">BItcoin wallet</div>
+                    <div class="text-style-allcaps text-size-s text-color-g950" data-i18n="use.taro_category">Bitcoin Wallet</div>
                     <h4 class="text-color-g950">BTC Taro App</h4>
                   </div>
-                  <p class="paragraph-3">Eine self-custody Bitcoin-Wallet mit Lightning und Multisig Feature – für Unternehmen und private Nutzer</p>
+                  <p class="paragraph-3" data-i18n="use.taro_desc">Eine self-custody Bitcoin-Wallet mit Lightning und Multisig Feature – für Unternehmen und private Nutzer</p>
                   <div class="button-arrow">
-                    <div class="text-block-3">Mehr erfahren</div>
+                    <div class="text-block-3" data-i18n="use.taro_cta">Mehr erfahren</div>
                     <div class="button-arrow-icon w-embed"><svg width="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 5.5V7.5H15.09L5.5 17.09L6.91 18.5L16.5 8.91V17.5H18.5V5.5H6.5Z" fill="currentColor"></path>
                       </svg></div>
@@ -507,12 +496,12 @@ Webflow.push(function () {
               <a href="https://opencryptopay.io/" target="_blank" class="use-card w-inline-block">
                 <div class="use-card_top">
                   <div class="use-card_heading-wrapper">
-                    <div class="text-style-allcaps text-size-s text-color-g950">Payment</div>
+                    <div class="text-style-allcaps text-size-s text-color-g950" data-i18n="use.payment_category">Payment</div>
                     <h4 class="text-color-g950">Open CryptoPay</h4>
                   </div>
-                  <p>Mit Kryptowährungen einfach und sicher bezahlen, ohne Zwischenhändler.</p>
+                  <p data-i18n="use.payment_desc">Mit Kryptowährungen einfach und sicher bezahlen, ohne Zwischenhändler.</p>
                   <div class="button-arrow">
-                    <div class="text-block-4">Mehr erfahren</div>
+                    <div class="text-block-4" data-i18n="use.payment_cta">Mehr erfahren</div>
                     <div class="button-arrow-icon w-embed"><svg width="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 5.5V7.5H15.09L5.5 17.09L6.91 18.5L16.5 8.91V17.5H18.5V5.5H6.5Z" fill="currentColor"></path>
                       </svg></div>
@@ -523,12 +512,12 @@ Webflow.push(function () {
               <a href="#" class="use-card w-inline-block">
                 <div class="use-card_top">
                   <div class="use-card_heading-wrapper">
-                    <div class="text-style-allcaps text-size-s text-color-g950">Earn</div>
+                    <div class="text-style-allcaps text-size-s text-color-g950" data-i18n="use.earn_category">Earn</div>
                     <h4 class="text-color-g950">DFX Safe</h4>
                   </div>
-                  <p>Krypto-Investments leicht gemacht – mit sicherer Verwahrung durch DFX.</p>
+                  <p data-i18n="use.earn_desc">Krypto-Investments leicht gemacht – mit sicherer Verwahrung durch DFX.</p>
                   <div class="button-arrow">
-                    <div class="text-block-5">Coming soon</div>
+                    <div class="text-block-5" data-i18n="use.earn_cta">Coming soon</div>
                   </div>
                 </div>
                 <div class="use-card_bottom"><img src="images/DFX-exchange_1.png" loading="lazy" width="302" sizes="(max-width: 479px) 100vw, 302px" alt="" srcset="images/DFX-exchange_1-p-500.png 500w, images/DFX-exchange_1.png 604w" class="use_card-image"></div>
@@ -536,12 +525,12 @@ Webflow.push(function () {
               <a href="https://dfx.shop/" target="_blank" class="use-card w-inline-block">
                 <div class="use-card_top">
                   <div class="use-card_heading-wrapper">
-                    <div class="text-style-allcaps text-size-s text-color-g950">Merchandise</div>
+                    <div class="text-style-allcaps text-size-s text-color-g950" data-i18n="use.merch_category">Merchandise</div>
                     <h4 class="text-color-g950">DFX Shop</h4>
                   </div>
-                  <p class="paragraph-3">Die Kollektion für die DFX-Community: T-Shirts, Hoodies und mehr.</p>
+                  <p class="paragraph-3" data-i18n="use.merch_desc">Die Kollektion für die DFX-Community: T-Shirts, Hoodies und mehr.</p>
                   <div class="button-arrow">
-                    <div class="text-block-6">Mehr erfahren</div>
+                    <div class="text-block-6" data-i18n="use.merch_cta">Mehr erfahren</div>
                     <div class="button-arrow-icon w-embed"><svg width="100%" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.5 5.5V7.5H15.09L5.5 17.09L6.91 18.5L16.5 8.91V17.5H18.5V5.5H6.5Z" fill="currentColor"></path>
                       </svg></div>
@@ -557,7 +546,7 @@ Webflow.push(function () {
         <div class="padding-global padding-section-wallets">
           <div class="container-main">
             <div class="max-width-46">
-              <h2 class="text-aling-center">Kaufen, Verkaufen und Tauschen mit deiner Lieblings-Wallet</h2>
+              <h2 class="text-aling-center" data-i18n="wallets.heading">Kaufen, Verkaufen und Tauschen mit deiner Lieblings-Wallet</h2>
             </div>
             <div class="spacer-l"></div>
             <div class="wallets-layout">
@@ -565,16 +554,16 @@ Webflow.push(function () {
                 <div class="wallets-card_top"><img src="images/MetaMask-icon-fox-2.svg" loading="lazy" alt="" class="wallets-card_image"></div>
                 <div class="wallets-card_bottom">
                   <h3 class="text-color-white">MetaMask</h3>
-                  <p class="text-color-g600 text-weight-light">Nutze den DFX-Service, um mit wenigen Klicks direkt in deiner MetaMask Kryptowährungen zu kaufen, zu verkaufen oder zu tauschen – schnell, einfach und dezentral.</p>
+                  <p class="text-color-g600 text-weight-light" data-i18n="wallets.metamask_desc">Nutze den DFX-Service, um mit wenigen Klicks direkt in deiner MetaMask Kryptowährungen zu kaufen, zu verkaufen oder zu tauschen – schnell, einfach und dezentral.</p>
                   <div class="wallets-card_tag-wrapper">
                     <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Kaufen</div>
+                      <div data-i18n="wallets.buy">Kaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Verkaufen</div>
+                      <div data-i18n="wallets.sell">Verkaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Tauschen</div>
+                      <div data-i18n="wallets.swap">Tauschen</div>
                     </a>
                   </div>
                 </div>
@@ -583,16 +572,16 @@ Webflow.push(function () {
                 <div class="wallets-card_top"><img src="images/Rabby-logo-white.svg" loading="lazy" alt="" class="wallets-card_image"></div>
                 <div class="wallets-card_bottom">
                   <h3 class="text-color-white">Rabby Wallet</h3>
-                  <p class="text-color-g600 text-weight-light">Kaufe mit nur wenigen Klicks direkt in deine Rabby Wallet oder verkaufe deine Coins zurück auf dein Bankkonto – ganz ohne Umwege. Effizient. Sicher. Benutzerfreundlich.</p>
+                  <p class="text-color-g600 text-weight-light" data-i18n="wallets.rabby_desc">Kaufe mit nur wenigen Klicks direkt in deine Rabby Wallet oder verkaufe deine Coins zurück auf dein Bankkonto – ganz ohne Umwege. Effizient. Sicher. Benutzerfreundlich.</p>
                   <div class="wallets-card_tag-wrapper">
                     <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Kaufen</div>
+                      <div data-i18n="wallets.buy">Kaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Verkaufen</div>
+                      <div data-i18n="wallets.sell">Verkaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Tauschen</div>
+                      <div data-i18n="wallets.swap">Tauschen</div>
                     </a>
                   </div>
                 </div>
@@ -601,16 +590,16 @@ Webflow.push(function () {
                 <div class="wallets-card_top"><img src="images/WalletConnect-logo.svg" loading="lazy" alt="" class="wallets-card_image _3"></div>
                 <div class="wallets-card_bottom">
                   <h3 class="text-color-white">WalletConnect</h3>
-                  <p class="text-color-g600 text-weight-light">Verbinde eine von über 300 Wallets direkt mit unserem FIAT On- und Offramp-Service.</p>
+                  <p class="text-color-g600 text-weight-light" data-i18n="wallets.walletconnect_desc">Verbinde eine von über 300 Wallets direkt mit unserem FIAT On- und Offramp-Service.</p>
                   <div class="wallets-card_tag-wrapper">
                     <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Kaufen</div>
+                      <div data-i18n="wallets.buy">Kaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Verkaufen</div>
+                      <div data-i18n="wallets.sell">Verkaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Tauschen</div>
+                      <div data-i18n="wallets.swap">Tauschen</div>
                     </a>
                   </div>
                 </div>
@@ -619,16 +608,16 @@ Webflow.push(function () {
                 <div class="wallets-card_top"><img src="images/Ledger-logo.svg" loading="lazy" alt="" class="wallets-card_image _4"></div>
                 <div class="wallets-card_bottom">
                   <h3 class="text-color-white">LEDGER</h3>
-                  <p class="text-color-g600 text-weight-light">Kaufe, verkaufe und tausche Kryptowährungen direkt über deine Ledger-Hardware-Wallet – ohne Umwege.</p>
+                  <p class="text-color-g600 text-weight-light" data-i18n="wallets.ledger_desc">Kaufe, verkaufe und tausche Kryptowährungen direkt über deine Ledger-Hardware-Wallet – ohne Umwege.</p>
                   <div class="wallets-card_tag-wrapper">
                     <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Kaufen</div>
+                      <div data-i18n="wallets.buy">Kaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Verkaufen</div>
+                      <div data-i18n="wallets.sell">Verkaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Tauschen</div>
+                      <div data-i18n="wallets.swap">Tauschen</div>
                     </a>
                   </div>
                 </div>
@@ -637,16 +626,16 @@ Webflow.push(function () {
                 <div class="wallets-card_top"><img src="images/trezor-wallet-logo.svg" loading="lazy" alt="" class="wallets-card_image _5"></div>
                 <div class="wallets-card_bottom">
                   <h3 class="text-color-white">TREZOR</h3>
-                  <p class="text-color-g600 text-weight-light">Mit DFX handelst du direkt über deine Trezor-Wallet – kaufen, verkaufen oder tauschen, ohne zentralen Anbieter dazwischen.</p>
+                  <p class="text-color-g600 text-weight-light" data-i18n="wallets.trezor_desc">Mit DFX handelst du direkt über deine Trezor-Wallet – kaufen, verkaufen oder tauschen, ohne zentralen Anbieter dazwischen.</p>
                   <div class="wallets-card_tag-wrapper">
                     <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Kaufen</div>
+                      <div data-i18n="wallets.buy">Kaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Verkaufen</div>
+                      <div data-i18n="wallets.sell">Verkaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Tauschen</div>
+                      <div data-i18n="wallets.swap">Tauschen</div>
                     </a>
                   </div>
                 </div>
@@ -655,16 +644,16 @@ Webflow.push(function () {
                 <div class="wallets-card_top"><img src="images/bitbox-logo.svg" loading="lazy" alt="" class="wallets-card_image _6"></div>
                 <div class="wallets-card_bottom">
                   <h3 class="text-color-white">BitBox</h3>
-                  <p class="text-color-g600 text-weight-light">Verbinde deine BitBox-Hardware-Wallet mit DFX, um digitale Assets direkt über deine Wallet zu handeln.</p>
+                  <p class="text-color-g600 text-weight-light" data-i18n="wallets.bitbox_desc">Verbinde deine BitBox-Hardware-Wallet mit DFX, um digitale Assets direkt über deine Wallet zu handeln.</p>
                   <div class="wallets-card_tag-wrapper">
                     <a href="https://app.dfx.swiss/buy" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Kaufen</div>
+                      <div data-i18n="wallets.buy">Kaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/sell" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Verkaufen</div>
+                      <div data-i18n="wallets.sell">Verkaufen</div>
                     </a>
                     <a href="https://app.dfx.swiss/swap" target="_blank" class="wallet-card_tag w-inline-block">
-                      <div>Tauschen</div>
+                      <div data-i18n="wallets.swap">Tauschen</div>
                     </a>
                   </div>
                 </div>
@@ -676,7 +665,7 @@ Webflow.push(function () {
       <section class="section_home-partners">
         <div class="padding-global padding-section-partners">
           <div class="container-main">
-            <h3 class="text-aling-center text-color-g900">Von führenden Partnern genutzt</h3>
+            <h3 class="text-aling-center text-color-g900" data-i18n="partners.heading">Von führenden Partnern genutzt</h3>
             <div class="spacer-l"></div>
             <div class="partners-wrapper">
               <a href="https://merchant.binance.com/en/channel-partners" target="_blank" class="w-inline-block"><img src="images/Binance_logo.svg" loading="lazy" alt="" class="partner-logo"></a>
@@ -706,7 +695,7 @@ Webflow.push(function () {
       <section class="section_home-news">
         <div class="padding-global padding-section-news">
           <div class="container-main">
-            <h2 class="text-aling-center text-color-white">News, Stories &amp; Highlights</h2>
+            <h2 class="text-aling-center text-color-white" data-i18n="news.heading">News, Stories &amp; Highlights</h2>
             <div class="spacer-l"></div>
             <div id="splide1" class="splide">
               <div class="splide__track">
@@ -715,10 +704,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/Binance-Pay-Spar-DFX.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/Binance-Pay-Spar-DFX-p-500.webp 500w, images/Binance-Pay-Spar-DFX.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Binance Pay, SPAR &amp; DFX.swiss Partner ermöglichen Krypto-Zahlungen in über 100 Schweizer Filialen</p>
+                        <p class="text-color-white newstext" data-i18n="news.card1">Binance Pay, SPAR &amp; DFX.swiss Partner ermöglichen Krypto-Zahlungen in über 100 Schweizer Filialen</p>
                       </div>
                       <a href="https://www.binance.com/en/blog/payments/8435723515272008849" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -729,10 +718,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/Seenachtsfest-Bitcoin.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/Seenachtsfest-Bitcoin-p-500.webp 500w, images/Seenachtsfest-Bitcoin.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Als einer der Hauptsponsoren war DFX beim Kreuzlinger Fantastical vertreten und ermöglichte den Besuchern erstmals auch Zahlungen mit Bitcoin.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card2">Als einer der Hauptsponsoren war DFX beim Kreuzlinger Fantastical vertreten und ermöglichte den Besuchern erstmals auch Zahlungen mit Bitcoin.</p>
                       </div>
                       <a href="https://www.tagblatt.ch/ostschweiz/weinfelden-kreuzlingen/bilanz-papayasalat-mit-bitcoin-bezahlt-das-kreuzlinger-fantastical-wird-zum-experimentierfeld-ld.2803981" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -743,10 +732,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/marc-steiner-thumbnail.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/38f2a916cfd9ef65b2a20483f6132352_marc-steiner-thumbnail-p-500.webp 500w, images/marc-steiner-thumbnail.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Cyrill Thommen im Gespräch mit Marc Steiner über Open CryptoPay bei SPAR, den dEURO, den Markt der Euro-Stablecoins und die Dominanz von USDT.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card3">Cyrill Thommen im Gespräch mit Marc Steiner über Open CryptoPay bei SPAR, den dEURO, den Markt der Euro-Stablecoins und die Dominanz von USDT.</p>
                       </div>
                       <a href="https://www.youtube.com/watch?v=sWE3ykJiam8" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -757,10 +746,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/Samuel-Kullmann-Spar.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/8f722b6cdff2fb6a2d42c879e171b60f_Samuel-Kullmann-Spar-p-500.webp 500w, images/Samuel-Kullmann-Spar.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Der Schweizer Politiker Samuel Kullmann hat soeben im SPAR Thun mit Bitcoin eingekauft – die allererste Bitcoin-Zahlung in diesem Geschäft.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card4">Der Schweizer Politiker Samuel Kullmann hat soeben im SPAR Thun mit Bitcoin eingekauft – die allererste Bitcoin-Zahlung in diesem Geschäft.</p>
                       </div>
                       <a href="https://x.com/samuelkullmann/status/1947287315363111289" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -771,10 +760,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/dfx-prints-500-qr-codes.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/dfx-prints-500-qr-codes-p-500.webp 500w, images/dfx-prints-500-qr-codes.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">DFX druckt über 500 neue QR-Codes für Kassensysteme –<br>das bedeutet: Open CryptoPay kommt in noch mehr SPAR-Märkte in der Region!</p>
+                        <p class="text-color-white newstext" data-i18n-html="news.card5">DFX druckt über 500 neue QR-Codes für Kassensysteme –<br>das bedeutet: Open CryptoPay kommt in noch mehr SPAR-Märkte in der Region!</p>
                       </div>
                       <a href="https://x.com/DFX_swiss/status/1929915987362488444" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -785,10 +774,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/DFX-Sound-Money-Podcast.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/DFX-Sound-Money-Podcast-p-500.webp 500w, images/DFX-Sound-Money-Podcast.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Im Podcast Sound Money Bitcoin erfährst du mehr über unsere Payment Lösung bei Spar.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card6">Im Podcast Sound Money Bitcoin erfährst du mehr über unsere Payment Lösung bei Spar.</p>
                       </div>
                       <a href="https://fountain.fm/episode/CZ3VCebv2133X34Za8ML" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Zum Podcast</div>
+                        <div data-i18n="news.to_podcast">Zum Podcast</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -799,10 +788,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/OpenCrypto-Pay-BinancePay-Partnership.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/OpenCrypto-Pay-BinancePay-Partnership-p-500.webp 500w, images/OpenCrypto-Pay-BinancePay-Partnership.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Shoppe bei SPAR mit Binance Pay! Dank unserer Partnerschaft kannst du ganz einfach mit USDT mit der Binance-App bezahlen.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card7">Shoppe bei SPAR mit Binance Pay! Dank unserer Partnerschaft kannst du ganz einfach mit USDT mit der Binance-App bezahlen.</p>
                       </div>
                       <a href="https://x.com/TaprootFreak/status/1933188932633518352" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -813,10 +802,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/Spar-Kreuzlingen-Bitcoin.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/Spar-Kreuzlingen-Bitcoin-p-500.webp 500w, images/Spar-Kreuzlingen-Bitcoin.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Jens Leinert zeigt in diesem Hands-on-Video, wie einfach man in einer der ersten SPAR-Filialen mit Bitcoin zahlen kann.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card8">Jens Leinert zeigt in diesem Hands-on-Video, wie einfach man in einer der ersten SPAR-Filialen mit Bitcoin zahlen kann.</p>
                       </div>
                       <a href="https://x.com/leinert/status/1916492839183126549" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -827,10 +816,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/First-Bitcoin-Payment-Spar.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/First-Bitcoin-Payment-Spar-p-500.webp 500w, images/First-Bitcoin-Payment-Spar.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">Rahim Taghizadegan bezahlt den ersten Einkauf mit Bitcoin in der Schweiz – im SPAR-Supermarkt.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card9">Rahim Taghizadegan bezahlt den ersten Einkauf mit Bitcoin in der Schweiz – im SPAR-Supermarkt.</p>
                       </div>
                       <a href="https://x.com/scholarium_at/status/1912155153110647200" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -841,10 +830,10 @@ Webflow.push(function () {
                     <div class="news-card_image-wrapper"><img src="images/20min.ch-Erste-SPAR-Filiale.webp" loading="lazy" sizes="(max-width: 780px) 100vw, 780px" srcset="images/20min.ch-Erste-SPAR-Filiale-p-500.webp 500w, images/20min.ch-Erste-SPAR-Filiale.webp 780w" alt="" class="news-card_image"></div>
                     <div class="news-card_text-wrapper">
                       <div class="news-card_text-dots">
-                        <p class="text-color-white newstext">20min.ch berichtet über die erste SPAR-Filiale in der Schweiz, die dank Open CryptoPay Bitcoin-Zahlungen akzeptiert.</p>
+                        <p class="text-color-white newstext" data-i18n="news.card10">20min.ch berichtet über die erste SPAR-Filiale in der Schweiz, die dank Open CryptoPay Bitcoin-Zahlungen akzeptiert.</p>
                       </div>
                       <a href="https://www.20min.ch/story/kryptowaehrung-der-spar-beim-bahnhof-in-zug-akzeptiert-neu-bitcoin-103327742" target="_blank" class="button-arrow dark-mode w-inline-block">
-                        <div>Mehr erfahren</div>
+                        <div data-i18n="news.learn_more">Mehr erfahren</div>
                         <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                           </svg></div>
@@ -888,20 +877,20 @@ Webflow.push(function () {
         <div class="padding-global padding-section-map">
           <div class="container-main">
             <div class="home-map_header-wrapper">
-              <h2 class="heading">Einfach mit Krypto zahlen – in immer mehr SPAR-Filialen.</h2>
-              <p>Entdecke, wo du schon heute mit Bitcoin und anderen Kryptowährungen bezahlen kannst – und welche weiteren Locations bereits in der Warteschlange stehen.</p>
+              <h2 class="heading" data-i18n="map.heading">Einfach mit Krypto zahlen – in immer mehr SPAR-Filialen.</h2>
+              <p data-i18n="map.description">Entdecke, wo du schon heute mit Bitcoin und anderen Kryptowährungen bezahlen kannst – und welche weiteren Locations bereits in der Warteschlange stehen.</p>
               <div class="home-map_legend">
                 <div class="home-map_legend-line">
                   <div class="home-map_legend-point is-red"></div>
-                  <p>Bereits verfügbar</p>
+                  <p data-i18n="map.available">Bereits verfügbar</p>
                 </div>
                 <div class="home-map_legend-line">
                   <div class="home-map_legend-point is-yellow"></div>
-                  <p>In Vorbereitung</p>
+                  <p data-i18n="map.preparation">In Vorbereitung</p>
                 </div>
                 <div class="home-map_legend-line">
                   <div class="home-map_legend-point is-gray"></div>
-                  <p>Geplant / in Prüfung</p>
+                  <p data-i18n="map.planned">Geplant / in Prüfung</p>
                 </div>
               </div>
             </div>
@@ -914,29 +903,29 @@ Webflow.push(function () {
       <section class="section_home-why">
         <div class="padding-global padding-section-why">
           <div class="container-main">
-            <h2 class="text-aling-center">Warum DFX nutzen?</h2>
+            <h2 class="text-aling-center" data-i18n="why.heading">Warum DFX nutzen?</h2>
             <div class="spacer-l"></div>
             <div class="why-layout">
               <div class="benefits-caard">
                 <div class="use-card_top">
-                  <h4 class="text-color-g950">Flexibler Krypto-Zugang – ohne Börsen</h4>
-                  <p>Du hältst deine Krypto-Assets selbst in deiner Wallet – mit DFX kannst du weltweit und unabhängig von Krypto-Börsen kaufen, verkaufen und tauschen.</p>
+                  <h4 class="text-color-g950" data-i18n="why.card1_title">Flexibler Krypto-Zugang – ohne Börsen</h4>
+                  <p data-i18n="why.card1_desc">Du hältst deine Krypto-Assets selbst in deiner Wallet – mit DFX kannst du weltweit und unabhängig von Krypto-Börsen kaufen, verkaufen und tauschen.</p>
                 </div>
                 <div class="why-card_bottom"><img src="images/image-wallet.svg" loading="lazy" alt="" class="why_card-image _1"></div>
               </div>
               <div class="benefits-caard">
                 <div class="use-card_top">
-                  <h4 class="text-color-g950">Unabhängig geprüft und Open Source</h4>
-                  <p>Jeder kann unseren Code einsehen und zur Sicherheit beitragen. DFX wurde zudem von Grant Thornton und Beyond Audit geprüft und verifiziert.</p>
+                  <h4 class="text-color-g950" data-i18n="why.card2_title">Unabhängig geprüft und Open Source</h4>
+                  <p data-i18n="why.card2_desc">Jeder kann unseren Code einsehen und zur Sicherheit beitragen. DFX wurde zudem von Grant Thornton und Beyond Audit geprüft und verifiziert.</p>
                 </div>
                 <div class="why-card_bottom"><img src="images/audit.svg" loading="lazy" alt="" class="why_card-image _2"></div>
               </div>
               <div class="benefits-caard">
                 <div class="use-card_top">
-                  <h4 class="text-color-g950">Schneller und kompetenter Support</h4>
-                  <p>Schnelle Hilfe und Antworten erhalten Sie von unseren Telegram-Moderatoren oder direkt über ein Support-Ticket.</p>
+                  <h4 class="text-color-g950" data-i18n="why.card3_title">Schneller und kompetenter Support</h4>
+                  <p data-i18n="why.card3_desc">Schnelle Hilfe und Antworten erhalten Sie von unseren Telegram-Moderatoren oder direkt über ein Support-Ticket.</p>
                   <a href="https://app.dfx.swiss/support" target="_blank" class="button-arrow w-inline-block">
-                    <div>DFX Support</div>
+                    <div data-i18n="why.card3_cta">DFX Support</div>
                     <div class="code-embed-3 w-embed"><svg width="22" height="22" style="" viewbox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.7747 11.9166H15.0139L10.5405 16.39C10.183 16.7475 10.183 17.3341 10.5405 17.6916C10.898 18.0491 11.4755 18.0491 11.833 17.6916L17.8739 11.6508C18.2314 11.2933 18.2314 10.7158 17.8739 10.3583L11.8422 4.30829C11.4847 3.95079 10.9072 3.95079 10.5497 4.30829C10.1922 4.66579 10.1922 5.24329 10.5497 5.60079L15.0139 10.0833H4.7747C4.27053 10.0833 3.85803 10.4958 3.85803 11C3.85803 11.5041 4.27053 11.9166 4.7747 11.9166Z" fill="currentColor"></path>
                       </svg></div>
@@ -951,7 +940,7 @@ Webflow.push(function () {
       <section class="section_home-testimonials">
         <div class="padding-global padding-section-testimonials">
           <div class="container-main">
-            <h2 class="heading-2">Echte Meinungen von echten Kunden</h2>
+            <h2 class="heading-2" data-i18n="reviews.heading">Echte Meinungen von echten Kunden</h2>
             <div class="trustpilot-button w-embed"><!--  TrustBox widget - Review Collector  -->
               <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="613a4b0297a3b4001dda97ed" data-style-height="52px" data-style-width="100%">
                   <a href="https://www.trustpilot.com/review/dfx.swiss" target="_blank" rel="noopener">Trustpilot</a>
@@ -1107,9 +1096,9 @@ Webflow.push(function () {
           <div class="container-main">
             <div class="faq-wrapper">
               <div class="faq_left-side">
-                <h3 class="text-color-g950 faq-hl">Fragen, die uns oft erreichen</h3>
+                <h3 class="text-color-g950 faq-hl" data-i18n="faq.heading">Fragen, die uns oft erreichen</h3>
                 <div class="faq_left-buttons-wrapper">
-                  <p class="faq_text">Du hast weitere Fragen?</p>
+                  <p class="faq_text" data-i18n="faq.more_questions">Du hast weitere Fragen?</p>
                   <div class="faq_left-buttons">
                     <a href="faq.html" class="button dark-full w-button">FAQ</a>
                     <a href="https://app.dfx.swiss/support/tickets" target="_blank" class="button dark-outline w-button">DFX Support</a>
@@ -1121,7 +1110,7 @@ Webflow.push(function () {
                   <div class="w-layout-grid faq_list-grid">
                     <div class="faq_accordion">
                       <div data-w-id="3c88293b-1fea-9225-26cd-6111f45926b2" class="faq_question">
-                        <div class="faq_text">Was genau beinhaltet der Service von DFX?</div>
+                        <div class="faq_text" data-i18n="faq.q1">Was genau beinhaltet der Service von DFX?</div>
                         <div class="faq_icon-wrapper">
                           <div class="icon-embed-small w-embed"><svg width="24" height="24" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29279 7.29308C3.48031 7.10561 3.73462 7.00029 3.99979 7.00029C4.26495 7.00029 4.51926 7.10561 4.70679 7.29308L11.9998 14.5861L19.2928 7.29308C19.385 7.19757 19.4954 7.12139 19.6174 7.06898C19.7394 7.01657 19.8706 6.98898 20.0034 6.98783C20.1362 6.98668 20.2678 7.01198 20.3907 7.06226C20.5136 7.11254 20.6253 7.18679 20.7192 7.28069C20.8131 7.37458 20.8873 7.48623 20.9376 7.60913C20.9879 7.73202 21.0132 7.8637 21.012 7.99648C21.0109 8.12926 20.9833 8.26048 20.9309 8.38249C20.8785 8.50449 20.8023 8.61483 20.7068 8.70708L12.7068 16.7071C12.5193 16.8946 12.265 16.9999 11.9998 16.9999C11.7346 16.9999 11.4803 16.8946 11.2928 16.7071L3.29279 8.70708C3.10532 8.51955 3 8.26525 3 8.00008C3 7.73492 3.10532 7.48061 3.29279 7.29308Z" fill="currentColor"></path>
@@ -1131,14 +1120,14 @@ Webflow.push(function () {
                       <div class="faq_answer">
                         <div class="margin-bottom margin-small">
                           <div class="max-width-large">
-                            <p class="text-color-g950 text-weight-light">DFX ist die Brücke zwischen der Bank und dem Krypto-Space und ermöglicht somit Privat- &amp; Firmenkunden Kryptowährungen zu kaufen und zu verkaufen. Wir arbeiten daran, unser Angebot auf möglichst viele Blockchains auszuweiten. </p>
+                            <p class="text-color-g950 text-weight-light" data-i18n="faq.a1">DFX ist die Brücke zwischen der Bank und dem Krypto-Space und ermöglicht somit Privat- &amp; Firmenkunden Kryptowährungen zu kaufen und zu verkaufen. Wir arbeiten daran, unser Angebot auf möglichst viele Blockchains auszuweiten. </p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="faq_accordion">
                       <div data-w-id="3c88293b-1fea-9225-26cd-6111f45926bf" class="faq_question">
-                        <div class="faq_text">Kaufprozess: Fiat -&gt; Krypto</div>
+                        <div class="faq_text" data-i18n="faq.q2">Kaufprozess: Fiat -&gt; Krypto</div>
                         <div class="faq_icon-wrapper">
                           <div class="icon-embed-small w-embed"><svg width="24" height="24" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29279 7.29308C3.48031 7.10561 3.73462 7.00029 3.99979 7.00029C4.26495 7.00029 4.51926 7.10561 4.70679 7.29308L11.9998 14.5861L19.2928 7.29308C19.385 7.19757 19.4954 7.12139 19.6174 7.06898C19.7394 7.01657 19.8706 6.98898 20.0034 6.98783C20.1362 6.98668 20.2678 7.01198 20.3907 7.06226C20.5136 7.11254 20.6253 7.18679 20.7192 7.28069C20.8131 7.37458 20.8873 7.48623 20.9376 7.60913C20.9879 7.73202 21.0132 7.8637 21.012 7.99648C21.0109 8.12926 20.9833 8.26048 20.9309 8.38249C20.8785 8.50449 20.8023 8.61483 20.7068 8.70708L12.7068 16.7071C12.5193 16.8946 12.265 16.9999 11.9998 16.9999C11.7346 16.9999 11.4803 16.8946 11.2928 16.7071L3.29279 8.70708C3.10532 8.51955 3 8.26525 3 8.00008C3 7.73492 3.10532 7.48061 3.29279 7.29308Z" fill="currentColor"></path>
@@ -1148,14 +1137,14 @@ Webflow.push(function () {
                       <div class="faq_answer">
                         <div class="margin-bottom margin-small">
                           <div class="max-width-large">
-                            <p class="text-color-g950 text-weight-light">DFX verarbeitet Transaktionen ab bestimmten Mindestbeträgen, die je nach Blockchain variieren. Zusätzlich zu den DFX-Gebühren kann es eine Blockchain-Gebühr geben. Diese Gebühr fällt an, um die Blockchain Transaktion bezahlen zu können. Die Gebühr ändert sich laufend und wird dem Nutzer auf der grafischen Oberfläche bei Kaufabschluss angezeigt. Wir empfehlen unseren Kunden zuerst eine Testtransaktion durchzuführen, um den Service und die Funktionsweise kennenzulernen.</p>
+                            <p class="text-color-g950 text-weight-light" data-i18n="faq.a2">DFX verarbeitet Transaktionen ab bestimmten Mindestbeträgen, die je nach Blockchain variieren. Zusätzlich zu den DFX-Gebühren kann es eine Blockchain-Gebühr geben. Diese Gebühr fällt an, um die Blockchain Transaktion bezahlen zu können. Die Gebühr ändert sich laufend und wird dem Nutzer auf der grafischen Oberfläche bei Kaufabschluss angezeigt. Wir empfehlen unseren Kunden zuerst eine Testtransaktion durchzuführen, um den Service und die Funktionsweise kennenzulernen.</p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="faq_accordion">
                       <div data-w-id="3c88293b-1fea-9225-26cd-6111f45926ca" class="faq_question">
-                        <div class="faq_text">Wie schnell wird meine Transaktion abgearbeitet?</div>
+                        <div class="faq_text" data-i18n="faq.q3">Wie schnell wird meine Transaktion abgearbeitet?</div>
                         <div class="faq_icon-wrapper">
                           <div class="icon-embed-small w-embed"><svg width="24" height="24" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29279 7.29308C3.48031 7.10561 3.73462 7.00029 3.99979 7.00029C4.26495 7.00029 4.51926 7.10561 4.70679 7.29308L11.9998 14.5861L19.2928 7.29308C19.385 7.19757 19.4954 7.12139 19.6174 7.06898C19.7394 7.01657 19.8706 6.98898 20.0034 6.98783C20.1362 6.98668 20.2678 7.01198 20.3907 7.06226C20.5136 7.11254 20.6253 7.18679 20.7192 7.28069C20.8131 7.37458 20.8873 7.48623 20.9376 7.60913C20.9879 7.73202 21.0132 7.8637 21.012 7.99648C21.0109 8.12926 20.9833 8.26048 20.9309 8.38249C20.8785 8.50449 20.8023 8.61483 20.7068 8.70708L12.7068 16.7071C12.5193 16.8946 12.265 16.9999 11.9998 16.9999C11.7346 16.9999 11.4803 16.8946 11.2928 16.7071L3.29279 8.70708C3.10532 8.51955 3 8.26525 3 8.00008C3 7.73492 3.10532 7.48061 3.29279 7.29308Z" fill="currentColor"></path>
@@ -1165,14 +1154,14 @@ Webflow.push(function () {
                       <div class="faq_answer">
                         <div class="margin-bottom margin-small">
                           <div class="max-width-large">
-                            <p class="text-color-g950 text-weight-light">Im Schnitt rechnen wir nach Zahlungseingang bei unserer Bank eine Verarbeitungszeit von circa 10 Minuten. Die Dauer hängt jedoch von unterschiedlichen Faktoren ab, die nicht alle von DFX beeinflussbar sind.</p>
+                            <p class="text-color-g950 text-weight-light" data-i18n="faq.a3">Im Schnitt rechnen wir nach Zahlungseingang bei unserer Bank eine Verarbeitungszeit von circa 10 Minuten. Die Dauer hängt jedoch von unterschiedlichen Faktoren ab, die nicht alle von DFX beeinflussbar sind.</p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="faq_accordion">
                       <div data-w-id="3c88293b-1fea-9225-26cd-6111f45926d5" class="faq_question">
-                        <div class="faq_text">Welche Zahlungswege akzeptiert DFX?</div>
+                        <div class="faq_text" data-i18n="faq.q4">Welche Zahlungswege akzeptiert DFX?</div>
                         <div class="faq_icon-wrapper">
                           <div class="icon-embed-small w-embed"><svg width="24" height="24" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29279 7.29308C3.48031 7.10561 3.73462 7.00029 3.99979 7.00029C4.26495 7.00029 4.51926 7.10561 4.70679 7.29308L11.9998 14.5861L19.2928 7.29308C19.385 7.19757 19.4954 7.12139 19.6174 7.06898C19.7394 7.01657 19.8706 6.98898 20.0034 6.98783C20.1362 6.98668 20.2678 7.01198 20.3907 7.06226C20.5136 7.11254 20.6253 7.18679 20.7192 7.28069C20.8131 7.37458 20.8873 7.48623 20.9376 7.60913C20.9879 7.73202 21.0132 7.8637 21.012 7.99648C21.0109 8.12926 20.9833 8.26048 20.9309 8.38249C20.8785 8.50449 20.8023 8.61483 20.7068 8.70708L12.7068 16.7071C12.5193 16.8946 12.265 16.9999 11.9998 16.9999C11.7346 16.9999 11.4803 16.8946 11.2928 16.7071L3.29279 8.70708C3.10532 8.51955 3 8.26525 3 8.00008C3 7.73492 3.10532 7.48061 3.29279 7.29308Z" fill="currentColor"></path>
@@ -1182,14 +1171,14 @@ Webflow.push(function () {
                       <div class="faq_answer">
                         <div class="margin-bottom margin-small">
                           <div class="max-width-large">
-                            <p class="text-color-g950 text-weight-light">DFX akzeptiert SEPA- und SEPA-Instant-Überweisungen. Ob eine Überweisung möglich ist, hängt davon ab, ob die Bank des Kunden am SEPA-Zahlungsraum teilnimmt.<br><br>Als VQF-Mitglied ist DFX den Sorgfaltspflichten des Schweizer Geldwäschereigesetzes (GwG) unterstellt. Geschäftsbeziehungen mit Personen in Jurisdiktionen, die von der FATF als Hochrisiko-Jurisdiktionen geführt werden, können nicht eingegangen werden. Die jeweils aktuelle Einstufung ist unter <a href="https://www.fatf-gafi.org/en/countries/black-and-grey-lists.html" target="_blank" rel="noopener noreferrer">https://www.fatf-gafi.org/en/countries/black-and-grey-lists.html</a> einsehbar.</p>
+                            <p class="text-color-g950 text-weight-light" data-i18n-html="faq.a4">DFX akzeptiert SEPA- und SEPA-Instant-Überweisungen. Ob eine Überweisung möglich ist, hängt davon ab, ob die Bank des Kunden am SEPA-Zahlungsraum teilnimmt.<br><br>Als VQF-Mitglied ist DFX den Sorgfaltspflichten des Schweizer Geldwäschereigesetzes (GwG) unterstellt. Geschäftsbeziehungen mit Personen in Jurisdiktionen, die von der FATF als Hochrisiko-Jurisdiktionen geführt werden, können nicht eingegangen werden. Die jeweils aktuelle Einstufung ist unter <a href="https://www.fatf-gafi.org/en/countries/black-and-grey-lists.html" target="_blank" rel="noopener noreferrer">https://www.fatf-gafi.org/en/countries/black-and-grey-lists.html</a> einsehbar.</p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="faq_accordion">
                       <div data-w-id="3c88293b-1fea-9225-26cd-6111f45926ea" class="faq_question">
-                        <div class="faq_text">Welche Währungen werden von unserem Service unterstützt?</div>
+                        <div class="faq_text" data-i18n="faq.q5">Welche Währungen werden von unserem Service unterstützt?</div>
                         <div class="faq_icon-wrapper">
                           <div class="icon-embed-small w-embed"><svg width="24" height="24" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29279 7.29308C3.48031 7.10561 3.73462 7.00029 3.99979 7.00029C4.26495 7.00029 4.51926 7.10561 4.70679 7.29308L11.9998 14.5861L19.2928 7.29308C19.385 7.19757 19.4954 7.12139 19.6174 7.06898C19.7394 7.01657 19.8706 6.98898 20.0034 6.98783C20.1362 6.98668 20.2678 7.01198 20.3907 7.06226C20.5136 7.11254 20.6253 7.18679 20.7192 7.28069C20.8131 7.37458 20.8873 7.48623 20.9376 7.60913C20.9879 7.73202 21.0132 7.8637 21.012 7.99648C21.0109 8.12926 20.9833 8.26048 20.9309 8.38249C20.8785 8.50449 20.8023 8.61483 20.7068 8.70708L12.7068 16.7071C12.5193 16.8946 12.265 16.9999 11.9998 16.9999C11.7346 16.9999 11.4803 16.8946 11.2928 16.7071L3.29279 8.70708C3.10532 8.51955 3 8.26525 3 8.00008C3 7.73492 3.10532 7.48061 3.29279 7.29308Z" fill="currentColor"></path>
@@ -1199,7 +1188,7 @@ Webflow.push(function () {
                       <div class="faq_answer">
                         <div class="margin-bottom margin-small">
                           <div class="max-width-large">
-                            <p class="text-color-g950 text-weight-light">Wir akzeptieren CHF und EUR. Bei Transaktionen, die 50&#x27;000,- CHF überschreiten, werden nach Absprache auch alternative Währungen akzeptiert. Melde dich in diesem Fall einfach bei unseren <a href="https://app.dfx.swiss/support" target="_blank" class="faq_link">Support.</a>
+                            <p class="text-color-g950 text-weight-light" data-i18n-html="faq.a5">Wir akzeptieren CHF und EUR. Bei Transaktionen, die 50&#x27;000,- CHF überschreiten, werden nach Absprache auch alternative Währungen akzeptiert. Melde dich in diesem Fall einfach bei unseren <a href="https://app.dfx.swiss/support" target="_blank" class="faq_link">Support.</a>
                             </p>
                           </div>
                         </div>
@@ -1207,7 +1196,7 @@ Webflow.push(function () {
                     </div>
                     <div class="faq_accordion">
                       <div data-w-id="3c88293b-1fea-9225-26cd-6111f45926f5" class="faq_question">
-                        <div class="faq_text">Welche KYC-, SoF- und AML-Nachweise werden benötigt und wann?</div>
+                        <div class="faq_text" data-i18n="faq.q6">Welche KYC-, SoF- und AML-Nachweise werden benötigt und wann?</div>
                         <div class="faq_icon-wrapper">
                           <div class="icon-embed-small w-embed"><svg width="24" height="24" style="" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M3.29279 7.29308C3.48031 7.10561 3.73462 7.00029 3.99979 7.00029C4.26495 7.00029 4.51926 7.10561 4.70679 7.29308L11.9998 14.5861L19.2928 7.29308C19.385 7.19757 19.4954 7.12139 19.6174 7.06898C19.7394 7.01657 19.8706 6.98898 20.0034 6.98783C20.1362 6.98668 20.2678 7.01198 20.3907 7.06226C20.5136 7.11254 20.6253 7.18679 20.7192 7.28069C20.8131 7.37458 20.8873 7.48623 20.9376 7.60913C20.9879 7.73202 21.0132 7.8637 21.012 7.99648C21.0109 8.12926 20.9833 8.26048 20.9309 8.38249C20.8785 8.50449 20.8023 8.61483 20.7068 8.70708L12.7068 16.7071C12.5193 16.8946 12.265 16.9999 11.9998 16.9999C11.7346 16.9999 11.4803 16.8946 11.2928 16.7071L3.29279 8.70708C3.10532 8.51955 3 8.26525 3 8.00008C3 7.73492 3.10532 7.48061 3.29279 7.29308Z" fill="currentColor"></path>
@@ -1217,7 +1206,7 @@ Webflow.push(function () {
                       <div class="faq_answer">
                         <div class="margin-bottom margin-small">
                           <div class="max-width-large">
-                            <p class="text-color-g950 text-weight-light">Für alle Transaktionen ab CHF 1&#x27;000 ist eine KYC-Verifizierung zwingend erforderlich. Die Anforderungen im Bereich Geldwäschereiprävention (AML) sowie zum Herkunftsnachweis der Mittel (SoF) sind dynamisch und richten sich nach Faktoren wie Kundentyp, Region und Zahlungsart.</p>
+                            <p class="text-color-g950 text-weight-light" data-i18n="faq.a6">Für alle Transaktionen ab CHF 1&#x27;000 ist eine KYC-Verifizierung zwingend erforderlich. Die Anforderungen im Bereich Geldwäschereiprävention (AML) sowie zum Herkunftsnachweis der Mittel (SoF) sind dynamisch und richten sich nach Faktoren wie Kundentyp, Region und Zahlungsart.</p>
                           </div>
                         </div>
                       </div>
@@ -1235,24 +1224,24 @@ Webflow.push(function () {
         <div class="container-main">
           <div class="footer-layout"><img src="images/DFX-Logos.svg" loading="lazy" id="w-node-df158338-ac46-8cf6-69f6-34544e735f03-4e735eff" alt="" class="footer_logo">
             <div class="footer_link-wrapper">
-              <div class="text-style-allcaps text-size-s">RESOURCEn</div>
-              <a href="https://github.com/DFXswiss/landing-page/tree/develop/DFX_Brand_Kit" target="_blank" class="footer_link">Brand Kit</a>
-              <a href="https://github.com/dfxswiss" target="_blank" class="footer_link">Github</a>
-              <a href="https://app.dfx.swiss/support" target="_blank" class="footer_link">Support</a>
+              <div class="text-style-allcaps text-size-s" data-i18n="footer.resources">RESOURCEn</div>
+              <a href="https://github.com/DFXswiss/landing-page/tree/develop/DFX_Brand_Kit" target="_blank" class="footer_link" data-i18n="footer.brand_kit">Brand Kit</a>
+              <a href="https://github.com/dfxswiss" target="_blank" class="footer_link" data-i18n="footer.github">Github</a>
+              <a href="https://app.dfx.swiss/support" target="_blank" class="footer_link" data-i18n="footer.support">Support</a>
             </div>
             <div class="footer_link-wrapper">
-              <div class="text-style-allcaps text-size-s">Unternehmen</div>
-              <a href="https://docs.dfx.swiss/de/imprint.html" target="_blank" class="footer_link">Impressum</a>
-              <a href="https://docs.dfx.swiss/de/privacy.html" target="_blank" class="footer_link">Datenschutzrichtlinien</a>
-              <a href="https://docs.dfx.swiss/de/disclaimer.html" target="_blank" class="footer_link">Haftungsausschluss</a>
-              <a href="https://docs.dfx.swiss/de/tnc.html" target="_blank" class="footer_link">Bedingungen und Konditionen</a>
+              <div class="text-style-allcaps text-size-s" data-i18n="footer.company">Unternehmen</div>
+              <a href="https://docs.dfx.swiss/de/imprint.html" target="_blank" class="footer_link" data-i18n="footer.imprint">Impressum</a>
+              <a href="https://docs.dfx.swiss/de/privacy.html" target="_blank" class="footer_link" data-i18n="footer.privacy">Datenschutzrichtlinien</a>
+              <a href="https://docs.dfx.swiss/de/disclaimer.html" target="_blank" class="footer_link" data-i18n="footer.disclaimer">Haftungsausschluss</a>
+              <a href="https://docs.dfx.swiss/de/tnc.html" target="_blank" class="footer_link" data-i18n="footer.terms">Bedingungen und Konditionen</a>
             </div>
             <div class="footer_link-wrapper">
-              <div class="text-style-allcaps text-size-s">Über</div>
-              <p class="text-size-s text-color-white">DFX AG<br>Bahnhofstrasse 7 <br>6300 Zug Switzerland</p>
+              <div class="text-style-allcaps text-size-s" data-i18n="footer.about">Über</div>
+              <p class="text-size-s text-color-white" data-i18n-html="footer.address">DFX AG<br>Bahnhofstrasse 7 <br>6300 Zug Switzerland</p>
             </div>
             <div class="footer_link-wrapper">
-              <div class="text-style-allcaps text-size-s">FOLLOW US</div>
+              <div class="text-style-allcaps text-size-s" data-i18n="footer.follow_us">FOLLOW US</div>
               <div class="footer_social-wrapper">
                 <a href="https://x.com/DFX_Swiss" target="_blank" class="footer_link w-inline-block">
                   <div class="footer_link-icon w-embed"><svg width="30" height="30" style="" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
