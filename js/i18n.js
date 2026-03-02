@@ -5,7 +5,7 @@
     var params = new URLSearchParams(window.location.search);
     var urlLang = params.get('lang');
     if (urlLang && SUPPORTED.indexOf(urlLang) !== -1) return urlLang;
-    var stored = localStorage.getItem('dfx-lang');
+    try { var stored = localStorage.getItem('dfx-lang'); } catch(e) { var stored = null; }
     if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
     var browserLang = navigator.language.slice(0,2);
     if (SUPPORTED.indexOf(browserLang) !== -1) return browserLang;
@@ -13,7 +13,7 @@
   }
 
   var lang = getLang();
-  localStorage.setItem('dfx-lang', lang);
+  try { localStorage.setItem('dfx-lang', lang); } catch(e) {}
   document.documentElement.lang = lang;
 
   // Hide content until translations are applied (prevents FOUC for non-German users)
@@ -116,15 +116,28 @@
     document.documentElement.style.visibility = '';
   }
 
-  fetch(basePath + 'i18n/' + lang + '.json')
+  // Start fetch early, but apply only after DOM is ready
+  var translationPromise = fetch(basePath + 'i18n/' + lang + '.json')
     .then(function(r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
+    });
+
+  function onReady(fn) {
+    if (document.readyState !== 'loading') {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+
+  translationPromise
+    .then(function(translations) {
+      onReady(function() { applyTranslations(translations); });
     })
-    .then(applyTranslations)
-    .catch(function() {
-      // On error, ensure content is visible (falls back to German HTML)
-      document.documentElement.style.visibility = '';
+    .catch(function(err) {
+      console.warn('i18n: failed to load translations, falling back to German.', err);
+      onReady(function() { document.documentElement.style.visibility = ''; });
     });
 
   // Language switcher and active state
@@ -134,7 +147,7 @@
         e.preventDefault();
         var newLang = this.getAttribute('lang');
         if (SUPPORTED.indexOf(newLang) === -1) return;
-        localStorage.setItem('dfx-lang', newLang);
+        try { localStorage.setItem('dfx-lang', newLang); } catch(e) {}
         var url = new URL(window.location);
         url.searchParams.set('lang', newLang);
         window.location.href = url.toString();

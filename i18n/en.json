@@ -9,6 +9,7 @@
   "nav.buy_now": "Buy now",
   "nav.language": "Language",
   "hero.subtitle": "DFX – Your bridge between fiat and crypto: Simple. Secure. Non-Custodial.",
+  "hero.title": "Buy and sell crypto directly <span class=\"text-span\">with your wallet.</span>",
   "hero.cta": "Buy & sell crypto",
   "hero.cta_taro": "BTC Taro App",
   "stats.coins": "80+ Coins",
@@ -104,6 +105,5 @@
   "footer.follow_us": "FOLLOW US",
   "popup.title": "⚠️ Important!",
   "popup.learn_more": "Learn more",
-  "popup.understood": "Understood",
-  "hero.title": "Buy and sell crypto directly <span class=\"text-span\">with your wallet.</span>"
+  "popup.understood": "Understood"
 }
