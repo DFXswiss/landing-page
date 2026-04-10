@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html data-wf-site="6858f1072bf539f3881c69f8" lang="de">
 <head>
   <meta charset="utf-8">
   <title>DFX Services AG – Operative Infrastruktur, Software & Shared Services aus der Schweiz</title>
@@ -85,12 +85,6 @@
   }
   </script>
   <style>
-    /* ===== NAV FIX ===== */
-    .nav-button + .wg-element,
-    .wg-element + .nav-button {
-      margin-left: 0.75rem;
-    }
-
     /* ===== BASE ===== */
     :root {
       --sa-base: #072440;
@@ -110,9 +104,17 @@
 
     .sa-page {
       background: var(--sa-base);
+      overflow-x: hidden;
+    }
+
+    .sa-page .sa-hero,
+    .sa-page .sa-section,
+    .sa-page .sa-partners,
+    .sa-page .sa-swiss,
+    .sa-page .sa-cta,
+    .sa-page .sa-scrollline {
       color: var(--sa-text);
       font-family: Inter, Arial, sans-serif;
-      overflow-x: hidden;
     }
 
     .sa-container {
@@ -922,73 +924,132 @@
   </style>
 </head>
 <body class="body sa-page">
-  <!-- SCROLL LINE -->
-  <div class="sa-scrollline" aria-hidden="true">
-    <div class="sa-scrollline__track"></div>
-    <div class="sa-scrollline__progress"></div>
-  </div>
-
   <div class="page-wrapper">
+    <!-- SCROLL LINE -->
+    <div class="sa-scrollline" aria-hidden="true">
+      <div class="sa-scrollline__track"></div>
+      <div class="sa-scrollline__progress"></div>
+    </div>
     <!-- NAV (matches site) -->
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
       <div class="padding-global padding-section-nav">
         <div class="container-large">
           <div class="nav-wrapper">
             <div class="nav-logo_wrapper">
-              <a href="index.html" class="nav-logo_link w-nav-brand"><img width="124" height="Auto" alt="DFX Logo – Zur Startseite" src="images/DFX-Logos.svg" loading="lazy" class="nav-logo"></a>
+              <a href="index.html" class="nav-logo_link w-nav-brand"><img width="124" height="Auto" alt="" src="images/DFX-Logos.svg" loading="lazy" class="nav-logo"></a>
             </div>
             <nav role="navigation" class="nav-menu w-nav-menu">
               <div class="nav_links-wrapper">
-                <a href="dfx-services.html" class="nav-link w-nav-link" data-i18n="nav.services">DFX Services</a>
-                <a href="dfx-toolbox.html" class="nav-link w-nav-link" data-i18n="nav.toolbox">DFX Toolbox</a>
-                <a href="dfx-taro-app.html" class="nav-link w-nav-link" data-i18n="nav.taro">BTC Taro App</a>
-                <a href="dfx-services-ag.html" aria-current="page" class="nav-link w-nav-link w--current" data-i18n="nav.services_ag">DFX Services AG</a>
-                <a href="help.html" class="nav-link w-nav-link" data-i18n="nav.support">Support</a>
-                <a href="https://dfx.shop/" target="_blank" rel="noopener noreferrer" class="nav-link w-nav-link" data-i18n="nav.shop">Shop</a>
+                <a href="dfx-services.html" class="nav-link w-nav-link">DFX Services</a>
+                <a href="dfx-toolbox.html" class="nav-link w-nav-link">DFX Toolbox</a>
+                <a href="dfx-taro-app.html" class="nav-link w-nav-link">BTC Taro App</a>
+                <a href="dfx-services-ag.html" aria-current="page" class="nav-link w-nav-link w--current">DFX Services AG</a>
+                <a href="help.html" class="nav-link w-nav-link">Support</a>
+                <a href="https://dfx.shop/" target="_blank" class="nav-link w-nav-link">Shop</a>
               </div>
               <div class="nav_button-wrapper">
-                <a href="https://app.dfx.swiss/?lang=de" target="_blank" rel="noopener noreferrer" class="nav-button hide-desktop w-inline-block">
-                  <div data-i18n="nav.buy_now">Jetzt kaufen</div>
+                <a data-figma-id="7571:10030" href="https://app.dfx.swiss/?lang=en" target="_blank" class="nav-button hide-desktop w-inline-block">
+                  <div>Jetzt kaufen</div>
                 </a>
                 <div data-delay="0" data-hover="false" class="wg-element hide-desktop w-dropdown">
                   <div class="wg-dropdown-toggle w-dropdown-toggle">
-                    <div class="wg-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 25 25"><style>.st0-globe{stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}</style><g style="clip-path:url(#c1)"><path d="M2.836 12.035c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10" class="st0-globe"/><path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"/></g><defs><clipPath id="c1"><path fill="#000" d="M.836.035h26v26h-26z"/></clipPath></defs></svg></div>
+                    <div class="wg-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewbox="0 0 25 25">
+                        <style>
+    .st0-globe {
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+                        <g style="clip-path:url(#clip0_2920_18870)">
+                          <path d="M2.836 12.035c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10" class="st0-globe"></path>
+                          <path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"></path>
+                        </g>
+                        <defs>
+                          <clippath id="clip0_2920_18870">
+                            <path fill="#000000" d="M.836.035h26v26h-26z"></path>
+                          </clippath>
+                        </defs>
+                      </svg></div>
                   </div>
                   <nav class="wg-dropdown w-dropdown-list">
                     <div class="wg-wrapper">
-                      <div class="language" data-i18n="nav.language">Language</div>
-                      <div class="weglot-switcher-component"><div class="weglot-switcher">
-                        <a lang="en" href="#" class="switcher_link w-inline-block"><div class="switcher_text">en</div></a>
-                        <a lang="de" href="#" class="switcher_link w-inline-block"><div class="switcher_text">de</div></a>
-                        <a lang="it" href="#" class="switcher_link w-inline-block"><div class="switcher_text">it</div></a>
-                        <a lang="fr" href="#" class="switcher_link w-inline-block"><div class="switcher_text">fr</div></a>
-                      </div></div>
+                      <div class="language">Language</div>
+                      <div class="weglot-switcher-component">
+                        <div class="weglot-switcher">
+                          <a lang="en" href="#" class="switcher_link w-inline-block">
+                            <div class="switcher_text">en</div>
+                          </a>
+                          <a lang="de" href="#" class="switcher_link w-inline-block">
+                            <div class="switcher_text">de</div>
+                          </a>
+                          <a lang="it" href="#" class="switcher_link w-inline-block">
+                            <div class="switcher_text">it</div>
+                          </a>
+                          <a lang="fr" href="#" class="switcher_link w-inline-block">
+                            <div class="switcher_text">fr</div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="wg-dropdown_arrow"></div>
                     </div>
                   </nav>
                 </div>
               </div>
             </nav>
             <div class="nav-button_wrapper">
-              <a href="https://app.dfx.swiss/?lang=de" target="_blank" rel="noopener noreferrer" class="nav-button hide-tablet w-inline-block">
-                <div data-i18n="nav.buy_now">Jetzt kaufen</div>
+              <a data-figma-id="7571:10030" href="https://app.dfx.swiss/?lang=en" target="_blank" class="nav-button hide-tablet w-inline-block">
+                <div>Jetzt kaufen</div>
               </a>
-              <div class="menu-button w-nav-button"><div class="icon w-icon-nav-menu"></div></div>
-              <div data-delay="0" data-hover="false" class="wg-element hide-tablet w-dropdown">
-                <div class="wg-dropdown-toggle w-dropdown-toggle">
-                  <div class="wg-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 25 25"><style>.st0-globe{stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}</style><g style="clip-path:url(#c2)"><path d="M2.836 12.035c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10" class="st0-globe"/><path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"/></g><defs><clipPath id="c2"><path fill="#000" d="M.836.035h26v26h-26z"/></clipPath></defs></svg></div>
-                </div>
-                <nav class="wg-dropdown w-dropdown-list">
-                  <div class="wg-wrapper">
-                    <div class="language">Language</div>
-                    <div class="weglot-switcher-component"><div class="weglot-switcher">
-                      <a lang="en" href="#" class="switcher_link w-inline-block"><div class="switcher_text">en</div></a>
-                      <a lang="de" href="#" class="switcher_link w-inline-block"><div class="switcher_text">de</div></a>
-                      <a lang="it" href="#" class="switcher_link w-inline-block"><div class="switcher_text">it</div></a>
-                      <a lang="fr" href="#" class="switcher_link w-inline-block"><div class="switcher_text">fr</div></a>
-                    </div></div>
-                  </div>
-                </nav>
+              <div class="menu-button w-nav-button">
+                <div class="icon w-icon-nav-menu"></div>
               </div>
+            </div>
+            <div data-delay="0" data-hover="false" class="wg-element hide-tablet w-dropdown">
+              <div class="wg-dropdown-toggle w-dropdown-toggle">
+                <div class="wg-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewbox="0 0 25 25">
+                    <style>
+    .st0-globe {
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+                    <g style="clip-path:url(#clip0_2920_18870)">
+                      <path d="M2.836 12.035c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10" class="st0-globe"></path>
+                      <path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"></path>
+                    </g>
+                    <defs>
+                      <clippath id="clip0_2920_18870">
+                        <path fill="#000000" d="M.836.035h26v26h-26z"></path>
+                      </clippath>
+                    </defs>
+                  </svg></div>
+              </div>
+              <nav class="wg-dropdown w-dropdown-list">
+                <div class="wg-wrapper">
+                  <div class="language">Language</div>
+                  <div class="weglot-switcher-component">
+                    <div class="weglot-switcher">
+                      <a lang="en" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">en</div>
+                      </a>
+                      <a lang="de" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">de</div>
+                      </a>
+                      <a lang="it" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">it</div>
+                      </a>
+                      <a lang="fr" href="#" class="switcher_link w-inline-block">
+                        <div class="switcher_text">fr</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="wg-dropdown_arrow"></div>
+                </div>
+              </nav>
             </div>
           </div>
         </div>
