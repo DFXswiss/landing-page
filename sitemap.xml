@@ -2,49 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://www.dfx.swiss/</loc>
+    <loc>https://dfx.swiss/</loc>
     <lastmod>2025-06-27</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.dfx.swiss/dfx-services.html</loc>
+    <loc>https://dfx.swiss/dfx-services.html</loc>
     <lastmod>2025-06-27</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.dfx.swiss/dfx-toolbox.html</loc>
+    <loc>https://dfx.swiss/dfx-toolbox.html</loc>
     <lastmod>2025-06-27</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.dfx.swiss/dfx-taro-app.html</loc>
+    <loc>https://dfx.swiss/dfx-taro-app.html</loc>
     <lastmod>2025-06-27</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.dfx.swiss/dfx-services-ag.html</loc>
+    <loc>https://dfx.swiss/dfx-services-ag.html</loc>
     <lastmod>2026-04-14</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.dfx.swiss/faq.html</loc>
+    <loc>https://dfx.swiss/faq.html</loc>
     <lastmod>2025-06-27</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.dfx.swiss/help.html</loc>
+    <loc>https://dfx.swiss/help.html</loc>
     <lastmod>2025-06-27</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://www.dfx.swiss/llms.txt</loc>
+    <loc>https://dfx.swiss/llms.txt</loc>
     <lastmod>2026-04-14</lastmod>
     <priority>0.5</priority>
   </url>
