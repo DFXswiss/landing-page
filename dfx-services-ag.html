@@ -2,10 +2,10 @@
 <html data-wf-site="6858f1072bf539f3881c69f8" lang="de">
 <head>
   <meta charset="utf-8">
-  <title>DFX Services AG – Operative Infrastruktur, Software & Shared Services aus der Schweiz</title>
-  <meta content="DFX Services AG: Schweizer Unternehmen für Software-Entwicklung, Finance, Strategy und Shared Services – reguliert und mit Sitz in Zug." name="description">
-  <meta content="DFX Services AG" property="og:title">
-  <meta content="Die operative Infrastruktur hinter DFX. Management, Software und Shared Services aus der Schweiz." property="og:description">
+  <title>DFX Services AG – Software-Infrastruktur für Fintech & Digital Assets</title>
+  <meta content="DFX Services AG: Eigenständiges Schweizer Software-Unternehmen aus Zug — skalierbare Systeme für Fintech und Digital Assets." name="description">
+  <meta content="DFX Services AG – Software für Fintech & Digital Assets" property="og:title">
+  <meta content="Eigenständiges Schweizer Software-Unternehmen aus Zug — skalierbare Systeme für Fintech und Digital Assets." property="og:description">
   <meta content="https://cdn.prod.website-files.com/6858f1072bf539f3881c69f8/6862a341ad6da22c9499acf0_og_image.png" property="og:image">
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
@@ -17,6 +17,8 @@
   <link rel="alternate" hreflang="it" href="https://www.dfx.swiss/it/dfx-services-ag.html">
   <link rel="alternate" hreflang="x-default" href="https://www.dfx.swiss/dfx-services-ag.html">
   <meta name="theme-color" content="#072440">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="alternate" type="text/plain" href="https://www.dfx.swiss/llms.txt" title="LLM-readable company profile">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/dfx-new.webflow.css" rel="stylesheet" type="text/css">
@@ -29,9 +31,12 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "DFX Services AG",
+    "legalName": "DFX Services AG",
     "url": "https://www.dfx.swiss/dfx-services-ag.html",
     "logo": "https://www.dfx.swiss/images/DFX-Logos.svg",
-    "description": "Schweizer Unternehmen für Software-Entwicklung, Finance, Strategy und Shared Services.",
+    "description": "Eigenständiges Schweizer Software-Unternehmen aus Zug — skalierbare Infrastruktur für Fintech und Digital Assets.",
+    "foundingDate": "2025-11",
+    "iso6523Code": "CHE-292.477.925",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Bahnhofstrasse 7",
@@ -41,7 +46,42 @@
     },
     "email": "services@dfx.swiss",
     "areaServed": "CH",
-    "knowsLanguage": ["de", "en", "fr", "it"]
+    "knowsLanguage": ["de", "en", "fr", "it"],
+    "sameAs": [
+      "https://www.linkedin.com/company/dfxswiss",
+      "https://github.com/DFXswiss",
+      "https://x.com/DFaborat"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Leistungen",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Software & Infrastructure",
+            "description": "Backend-Systeme, APIs und Cloud-Plattformen — konzipiert für hohe Verfügbarkeit, gebaut für regulierte Umgebungen."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Management & Strategy",
+            "description": "Strategische Steuerung, Roadmap-Planung und bereichsübergreifende Koordination."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Operations & Processes",
+            "description": "Deployment, Monitoring und kontinuierliche Optimierung produktiver Systeme."
+          }
+        }
+      ]
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -54,7 +94,7 @@
         "name": "Was macht die DFX Services AG?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Die DFX Services AG ist ein Schweizer Unternehmen mit Sitz in Zug. Wir beraten, entwickeln und betreiben Software, Finanzsysteme und operative Prozesse im Fintech- und Krypto-Umfeld."
+          "text": "Die DFX Services AG ist ein eigenständiges Schweizer Software-Unternehmen mit Sitz in Zug. Unser Team baut skalierbare Systeme für das Finanz- und Krypto-Umfeld — reguliert und aus der Schweiz."
         }
       },
       {
@@ -70,7 +110,7 @@
         "name": "Welche Leistungen bietet die DFX Services AG an?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Unsere sechs Leistungsbereiche umfassen: Management & Strategy, Finance & Controlling, Software & Infrastructure, Operations & Processes, Marketing & Kommunikation sowie People & Organization."
+          "text": "Unsere drei Leistungsbereiche: Software & Infrastructure, Management & Strategy sowie Operations & Processes — spezialisiert auf Fintech und Digital Assets."
         }
       },
       {
@@ -424,7 +464,13 @@
     /* ===== SERVICE CARDS ===== */
     .sa-cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .sa-cards__row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
 
@@ -433,7 +479,7 @@
       backdrop-filter: blur(10px);
       border: 1px solid var(--sa-border);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 2.5rem;
       position: relative;
       overflow: hidden;
       transition: all 0.4s ease;
@@ -460,6 +506,39 @@
 
     .sa-card:hover::before {
       opacity: 1;
+    }
+
+    /* Featured card (Software & Infrastructure) */
+    .sa-card--featured {
+      border-color: rgba(245, 81, 108, 0.15);
+      background: linear-gradient(145deg, rgba(29, 41, 67, 0.95), rgba(10, 45, 79, 0.8));
+      padding: 3rem;
+    }
+
+    .sa-card--featured::before {
+      opacity: 1;
+    }
+
+    .sa-card--featured .sa-card__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: var(--sa-red-glow);
+      box-shadow: 0 0 30px rgba(245, 81, 108, 0.1);
+    }
+
+    .sa-card--featured .sa-card__icon svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .sa-card--featured .sa-card__title {
+      font-size: 1.4rem;
+    }
+
+    .sa-card--featured .sa-card__text {
+      font-size: 1rem;
+      max-width: 640px;
     }
 
     .sa-card__icon {
@@ -825,7 +904,7 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .sa-cards {
+      .sa-cards__row {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -864,10 +943,12 @@
       }
 
       /* Service cards */
-      .sa-cards {
+      .sa-cards__row {
         grid-template-columns: 1fr;
       }
       .sa-card { padding: 1.5rem; }
+      .sa-card--featured { padding: 2rem; }
+      .sa-card--featured .sa-card__title { font-size: 1.2rem; }
       .sa-card__text { font-size: 0.95rem; }
 
       /* Section titles / descriptions */
@@ -924,7 +1005,7 @@
   </style>
 </head>
 <body class="body sa-page">
-  <div class="page-wrapper">
+  <div class="page-wrapper" role="document">
     <!-- SCROLL LINE -->
     <div class="sa-scrollline" aria-hidden="true">
       <div class="sa-scrollline__track"></div>
@@ -936,7 +1017,7 @@
         <div class="container-large">
           <div class="nav-wrapper">
             <div class="nav-logo_wrapper">
-              <a href="index.html" class="nav-logo_link w-nav-brand"><img width="124" height="Auto" alt="" src="images/DFX-Logos.svg" loading="lazy" class="nav-logo"></a>
+              <a href="index.html" class="nav-logo_link w-nav-brand"><img width="124" alt="DFX Logo" src="images/DFX-Logos.svg" loading="lazy" class="nav-logo"></a>
             </div>
             <nav role="navigation" class="nav-menu w-nav-menu">
               <div class="nav_links-wrapper">
@@ -967,9 +1048,9 @@
                           <path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"></path>
                         </g>
                         <defs>
-                          <clippath id="clip0_2920_18870">
+                          <clipPath id="clip0_2920_18870">
                             <path fill="#000000" d="M.836.035h26v26h-26z"></path>
-                          </clippath>
+                          </clipPath>
                         </defs>
                       </svg></div>
                   </div>
@@ -1022,9 +1103,9 @@
                       <path d="M13.835 2.086s3 3.95 3 9.95-3 9.95-3 9.95m-2 0s-3-3.95-3-9.95 3-9.95 3-9.95m-8.37 13.45h18.74m-18.74-7h18.74" class="st0-globe"></path>
                     </g>
                     <defs>
-                      <clippath id="clip0_2920_18870">
+                      <clipPath id="clip0_2920_18870">
                         <path fill="#000000" d="M.836.035h26v26h-26z"></path>
-                      </clippath>
+                      </clipPath>
                     </defs>
                   </svg></div>
               </div>
@@ -1056,6 +1137,7 @@
       </div>
     </div>
 
+    <main>
     <!-- SECTION 1: HERO -->
     <section class="sa-hero">
       <div class="sa-hero__video" aria-hidden="true">
@@ -1069,7 +1151,7 @@
       <div class="sa-container">
         <div class="sa-hero__content">
           <h1 class="sa-hero__title" data-i18n="sa.hero_title">DFX Services AG</h1>
-          <p class="sa-hero__sub" data-i18n="sa.hero_sub">Software, Strategie, Finanzen und Betrieb — alles aus einer Hand, aus der Schweiz. Wir beraten, entwickeln und betreiben digitale Infrastruktur für Unternehmen im Fintech- und Krypto-Umfeld.</p>
+          <p class="sa-hero__sub" data-i18n="sa.hero_sub">Software-Infrastruktur für Fintech & Digital Assets. Wir sind ein eigenständiges Schweizer Software-Unternehmen und bauen skalierbare Systeme für das Finanz- und Krypto-Umfeld — reguliert, aus Zug.</p>
           <div class="sa-hero__ctas">
             <a href="mailto:services@dfx.swiss" class="sa-btn sa-btn--primary" data-i18n="sa.hero_cta_contact">Kontakt aufnehmen</a>
             <a href="#services" class="sa-btn sa-btn--ghost" data-i18n="sa.hero_cta_services">Unsere Services</a>
@@ -1098,12 +1180,12 @@
           <div class="sa-position__top">
             <div>
               <h2 class="sa-section__title" data-i18n="sa.pos_title">Software, Strategie und Operations aus der Schweiz</h2>
-              <p class="sa-section__desc" data-i18n="sa.pos_desc1">Die DFX Services AG verantwortet Softwareentwicklung, Finanzen, Strategie und operative Prozesse — strukturiert, effizient und skalierbar.</p>
-              <p class="sa-section__desc" style="margin-top: 2rem;" data-i18n="sa.pos_desc2">Von der Beratung über die Umsetzung bis zum laufenden Betrieb — wir begleiten jedes Projekt end-to-end.</p>
+              <p class="sa-section__desc" data-i18n="sa.pos_desc1">Wir sind ein Team aus Entwicklern, Strategen und Operations-Spezialisten — mit klarem Fokus auf Plattform-Architektur, API-Design und produktiven Betrieb.</p>
+              <p class="sa-section__desc" style="margin-top: 2rem;" data-i18n="sa.pos_desc2">Unser Antrieb: Fintech-Produkte, die im regulierten Umfeld funktionieren — technisch sauber, skalierbar und bereit für den Markt.</p>
             </div>
             <div class="sa-position__visual-wrap">
               <div class="sa-position__visual">
-                <canvas id="sa-hub-canvas" class="sa-position__canvas" role="img" aria-label="Animiertes Diagramm: DFX Services AG als zentraler Hub mit Verbindungen zu Strategy, Software, Finance, Operations, Support und Internal Tooling"></canvas>
+                <canvas id="sa-hub-canvas" class="sa-position__canvas" role="img" aria-label="Animiertes Diagramm: DFX Services AG als zentraler Hub mit Verbindungen zu Software, Strategy, Operations, APIs und Monitoring"></canvas>
               </div>
             </div>
           </div>
@@ -1115,50 +1197,31 @@
     <section class="sa-section sa-section--dark sa-glow" id="services">
       <div class="sa-container">
         <div class="sa-reveal" style="text-align: center; margin-bottom: 3.5rem;">
-          <h2 class="sa-section__title" style="margin: 0 auto;" data-i18n="sa.services_title">Unsere Leistungen — von Software bis Compliance</h2>
+          <h2 class="sa-section__title" style="margin: 0 auto;" data-i18n="sa.services_title">Unsere Leistungen</h2>
         </div>
         <div class="sa-cards">
-          <div class="sa-card sa-reveal">
-            <div class="sa-card__icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="sa-card__title" data-i18n="sa.card1_title">Management &amp; Strategy</div>
-            <p class="sa-card__text" data-i18n="sa.card1_text">Wir steuern die strategische Ausrichtung und koordinieren alle Geschäftsbereiche.</p>
-          </div>
-          <div class="sa-card sa-reveal">
-            <div class="sa-card__icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20M6 16h4"/></svg>
-            </div>
-            <div class="sa-card__title" data-i18n="sa.card2_title">Finance &amp; Controlling</div>
-            <p class="sa-card__text" data-i18n="sa.card2_text">Buchhaltung, Budgetierung und Finanzreporting — wir sorgen für volle Transparenz über alle Zahlen.</p>
-          </div>
-          <div class="sa-card sa-reveal">
+          <div class="sa-card sa-card--featured sa-reveal">
             <div class="sa-card__icon">
               <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
-            <div class="sa-card__title" data-i18n="sa.card3_title">Software &amp; Infrastructure</div>
-            <p class="sa-card__text" data-i18n="sa.card3_text">Wir entwickeln und betreiben die gesamte Technologie hinter DFX: APIs, Plattform, Security und Monitoring.</p>
+            <div class="sa-card__title" data-i18n="sa.card1_title">Software &amp; Infrastructure</div>
+            <p class="sa-card__text" data-i18n="sa.card1_text">Backend-Systeme, APIs und Cloud-Plattformen — konzipiert für hohe Verfügbarkeit, gebaut für regulierte Umgebungen.</p>
           </div>
-          <div class="sa-card sa-reveal">
-            <div class="sa-card__icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          <div class="sa-cards__row">
+            <div class="sa-card sa-reveal">
+              <div class="sa-card__icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="sa-card__title" data-i18n="sa.card2_title">Management &amp; Strategy</div>
+              <p class="sa-card__text" data-i18n="sa.card2_text">Strategische Steuerung, Roadmap-Planung und bereichsübergreifende Koordination der gesamten Gruppe.</p>
             </div>
-            <div class="sa-card__title" data-i18n="sa.card4_title">Operations &amp; Processes</div>
-            <p class="sa-card__text" data-i18n="sa.card4_text">Interne Abläufe, Lieferantenmanagement und Compliance — wir halten den Betrieb am Laufen.</p>
-          </div>
-          <div class="sa-card sa-reveal">
-            <div class="sa-card__icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <div class="sa-card sa-reveal">
+              <div class="sa-card__icon">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+              </div>
+              <div class="sa-card__title" data-i18n="sa.card3_title">Operations &amp; Processes</div>
+              <p class="sa-card__text" data-i18n="sa.card3_text">Deployment, Monitoring und kontinuierliche Optimierung — damit produktive Systeme stabil und performant bleiben.</p>
             </div>
-            <div class="sa-card__title" data-i18n="sa.card5_title">Marketing &amp; Kommunikation</div>
-            <p class="sa-card__text" data-i18n="sa.card5_text">Markenauftritt, Kampagnen und einheitliche Kommunikation über alle Kanäle.</p>
-          </div>
-          <div class="sa-card sa-reveal">
-            <div class="sa-card__icon">
-              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-            </div>
-            <div class="sa-card__title" data-i18n="sa.card6_title">People &amp; Organization</div>
-            <p class="sa-card__text" data-i18n="sa.card6_text">Recruiting, Teamaufbau und Personalentwicklung — wir bringen die richtigen Leute zusammen.</p>
           </div>
         </div>
       </div>
@@ -1250,6 +1313,8 @@
       </div>
     </section>
 
+    </main>
+
     <!-- FOOTER (matches site) -->
     <footer class="footer">
       <div class="padding-global padding-section-footer">
@@ -1317,19 +1382,19 @@
     }
 
     const hubNodes = [
-      { label: 'Strategy', icon: '◇' },
       { label: 'Software', icon: '⟨/⟩' },
-      { label: 'Finance', icon: '◈' },
+      { label: 'APIs', icon: '◈' },
+      { label: 'Strategy', icon: '◇' },
       { label: 'Operations', icon: '⚙' },
-      { label: 'Support', icon: '◉' },
-      { label: 'Internal Tooling', icon: '⬡' },
+      { label: 'Monitoring', icon: '◉' },
     ];
 
-    // data pulses traveling along connections
+    const N = hubNodes.length;
     let pulses = [];
+    let particles = [];
 
     function spawnPulse(fromIdx, time) {
-      pulses.push({ from: fromIdx, progress: 0, speed: 0.006 + Math.random() * 0.004, born: time });
+      pulses.push({ from: fromIdx, progress: 0, speed: 0.004 + Math.random() * 0.003, born: time });
     }
 
     function drawHub(time) {
@@ -1338,195 +1403,246 @@
       const cx = hw / 2;
       const cy = hh / 2;
       const s = Math.min(hw, hh);
-      const centerR = s * 0.1;
-      const nodeW = 150;
-      const nodeH = 44;
-      const pad = 20;
+      const centerR = s * 0.11;
+      const orbitR = s * 0.34;
+      const nodeW = Math.min(140, hw * 0.22);
+      const nodeH = 42;
 
-      // place 6 nodes: 3 left, 3 right — evenly spaced vertically
-      const colX_L = pad + nodeW / 2;
-      const colX_R = hw - pad - nodeW / 2;
-      const spacing = (hh - pad * 2 - nodeH * 3) / 2;
-      const startY = pad + nodeH / 2;
+      // offset so top node is at 12 o'clock (-PI/2)
+      const angleOffset = -Math.PI / 2;
 
-      const nodePositions = [
-        { x: colX_L, y: startY, label: hubNodes[0] },
-        { x: colX_L, y: startY + nodeH + spacing, label: hubNodes[1] },
-        { x: colX_L, y: startY + (nodeH + spacing) * 2, label: hubNodes[2] },
-        { x: colX_R, y: startY, label: hubNodes[3] },
-        { x: colX_R, y: startY + nodeH + spacing, label: hubNodes[4] },
-        { x: colX_R, y: startY + (nodeH + spacing) * 2, label: hubNodes[5] },
-      ];
+      // compute node positions in a circle
+      const nodePositions = hubNodes.map((node, i) => {
+        const angle = angleOffset + (Math.PI * 2 / N) * i;
+        return {
+          x: cx + Math.cos(angle) * orbitR,
+          y: cy + Math.sin(angle) * orbitR,
+          angle: angle,
+          label: node
+        };
+      });
 
-      // subtle background grid
-      hc.strokeStyle = 'rgba(255, 255, 255, 0.015)';
-      hc.lineWidth = 0.5;
-      for (let gx = 0; gx < hw; gx += 40) {
-        hc.beginPath(); hc.moveTo(gx, 0); hc.lineTo(gx, hh); hc.stroke();
+      // === background dot grid ===
+      hc.fillStyle = 'rgba(255, 255, 255, 0.018)';
+      for (let gx = 20; gx < hw; gx += 32) {
+        for (let gy = 20; gy < hh; gy += 32) {
+          const dist = Math.hypot(gx - cx, gy - cy);
+          if (dist > orbitR * 1.4) continue;
+          hc.beginPath();
+          hc.arc(gx, gy, 0.6, 0, Math.PI * 2);
+          hc.fill();
+        }
       }
-      for (let gy = 0; gy < hh; gy += 40) {
-        hc.beginPath(); hc.moveTo(0, gy); hc.lineTo(hw, gy); hc.stroke();
-      }
 
-      // orbit ellipse behind center
+      // === orbit ring ===
       hc.beginPath();
-      hc.ellipse(cx, cy, s * 0.28, s * 0.22, 0, 0, Math.PI * 2);
-      hc.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      hc.arc(cx, cy, orbitR, 0, Math.PI * 2);
+      hc.strokeStyle = 'rgba(245, 81, 108, 0.06)';
       hc.lineWidth = 1;
-      hc.setLineDash([3, 8]);
+      hc.setLineDash([2, 6]);
       hc.stroke();
       hc.setLineDash([]);
 
-      // draw connection curves from each node to center
+      // === inner orbit ring ===
+      hc.beginPath();
+      hc.arc(cx, cy, orbitR * 0.6, 0, Math.PI * 2);
+      hc.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+      hc.lineWidth = 0.5;
+      hc.stroke();
+
+      // === connection lines (node → center) ===
       nodePositions.forEach((pos, i) => {
-        const hover = Math.sin(time * 0.002 + i * 1.3) * 3;
-        const ny = pos.y + hover;
+        const hover = Math.sin(time * 0.0015 + i * 1.3) * 2;
+        const nx = pos.x + Math.cos(pos.angle) * hover;
+        const ny = pos.y + Math.sin(pos.angle) * hover;
 
-        // bezier curve from card edge to center
-        const isLeft = pos.x < cx;
-        const startX = isLeft ? pos.x + nodeW / 2 + 2 : pos.x - nodeW / 2 - 2;
-        const cp1x = isLeft ? startX + (cx - startX) * 0.5 : startX - (startX - cx) * 0.5;
+        const pulse = Math.sin(time * 0.002 + i * 1.2) * 0.5 + 0.5;
+        const grad = hc.createLinearGradient(nx, ny, cx, cy);
+        grad.addColorStop(0, `rgba(245, 81, 108, ${0.06 + pulse * 0.06})`);
+        grad.addColorStop(0.5, `rgba(245, 81, 108, ${0.15 + pulse * 0.1})`);
+        grad.addColorStop(1, `rgba(245, 81, 108, ${0.25 + pulse * 0.1})`);
 
-        const pulse = Math.sin(time * 0.002 + i * 1.0) * 0.5 + 0.5;
-        const grad = hc.createLinearGradient(startX, ny, cx, cy);
-        grad.addColorStop(0, `rgba(245, 81, 108, ${0.08 + pulse * 0.06})`);
-        grad.addColorStop(1, `rgba(245, 81, 108, ${0.2 + pulse * 0.1})`);
-
+        // main line
         hc.beginPath();
-        hc.moveTo(startX, ny);
-        hc.bezierCurveTo(cp1x, ny, cx, cy + (ny - cy) * 0.3, cx, cy);
+        hc.moveTo(nx, ny);
+        hc.lineTo(cx, cy);
         hc.strokeStyle = grad;
         hc.lineWidth = 1.5;
         hc.stroke();
 
-        // thin parallel for depth
+        // glow line
         hc.beginPath();
-        hc.moveTo(startX, ny + 3);
-        hc.bezierCurveTo(cp1x, ny + 3, cx, cy + (ny - cy) * 0.3 + 3, cx, cy);
-        hc.strokeStyle = 'rgba(245, 81, 108, 0.025)';
-        hc.lineWidth = 0.5;
+        hc.moveTo(nx, ny);
+        hc.lineTo(cx, cy);
+        hc.strokeStyle = `rgba(245, 81, 108, ${0.015 + pulse * 0.01})`;
+        hc.lineWidth = 6;
         hc.stroke();
       });
 
-      // spawn random pulses
-      if (Math.random() < 0.018) {
-        spawnPulse(Math.floor(Math.random() * hubNodes.length), time);
+      // === inter-node arcs (connecting neighbors) ===
+      nodePositions.forEach((pos, i) => {
+        const next = nodePositions[(i + 1) % N];
+        const midX = (pos.x + next.x) / 2;
+        const midY = (pos.y + next.y) / 2;
+        const cpX = midX + (cx - midX) * 0.3;
+        const cpY = midY + (cy - midY) * 0.3;
+
+        hc.beginPath();
+        hc.moveTo(pos.x, pos.y);
+        hc.quadraticCurveTo(cpX, cpY, next.x, next.y);
+        hc.strokeStyle = 'rgba(245, 81, 108, 0.035)';
+        hc.lineWidth = 0.8;
+        hc.stroke();
+      });
+
+      // === spawn pulses ===
+      if (Math.random() < 0.02) {
+        spawnPulse(Math.floor(Math.random() * N), time);
       }
 
-      // draw traveling pulses along bezier
+      // === draw traveling pulses ===
       pulses = pulses.filter(p => p.progress <= 1);
       pulses.forEach(p => {
         p.progress += p.speed;
         const pos = nodePositions[p.from];
-        const hover = Math.sin(time * 0.002 + p.from * 1.3) * 3;
-        const ny = pos.y + hover;
-        const isLeft = pos.x < cx;
-        const startX = isLeft ? pos.x + nodeW / 2 + 2 : pos.x - nodeW / 2 - 2;
-        const cp1x = isLeft ? startX + (cx - startX) * 0.5 : startX - (startX - cx) * 0.5;
+        const hover = Math.sin(time * 0.0015 + p.from * 1.3) * 2;
+        const sx = pos.x + Math.cos(pos.angle) * hover;
+        const sy = pos.y + Math.sin(pos.angle) * hover;
 
         const t = p.progress;
-        const t2 = 1 - t;
-        // cubic bezier: start, cp1, cp2, end
-        const cp2x = cx, cp2y = cy + (ny - cy) * 0.3;
-        const px = t2*t2*t2*startX + 3*t2*t2*t*cp1x + 3*t2*t*t*cp2x + t*t*t*cx;
-        const py = t2*t2*t2*ny + 3*t2*t2*t*ny + 3*t2*t*t*cp2y + t*t*t*cy;
-        const alpha = t < 0.5 ? t * 2 : (1 - t) * 2;
+        const px = sx + (cx - sx) * t;
+        const py = sy + (cy - sy) * t;
+        const alpha = t < 0.3 ? t / 0.3 : t > 0.7 ? (1 - t) / 0.3 : 1;
 
+        // glow
+        hc.beginPath();
+        hc.arc(px, py, 10, 0, Math.PI * 2);
+        hc.fillStyle = `rgba(245, 81, 108, ${alpha * 0.08})`;
+        hc.fill();
+
+        // core
         hc.beginPath();
         hc.arc(px, py, 3, 0, Math.PI * 2);
         hc.fillStyle = `rgba(245, 81, 108, ${alpha * 0.9})`;
         hc.fill();
-        hc.beginPath();
-        hc.arc(px, py, 8, 0, Math.PI * 2);
-        hc.fillStyle = `rgba(245, 81, 108, ${alpha * 0.12})`;
-        hc.fill();
 
-        for (let j = 1; j <= 4; j++) {
-          const tt = Math.max(0, t - j * 0.018);
-          const tt2 = 1 - tt;
-          const tx = tt2*tt2*tt2*startX + 3*tt2*tt2*tt*cp1x + 3*tt2*tt*tt*cp2x + tt*tt*tt*cx;
-          const ty = tt2*tt2*tt2*ny + 3*tt2*tt2*tt*ny + 3*tt2*tt*tt*cp2y + tt*tt*tt*cy;
+        // trail
+        for (let j = 1; j <= 5; j++) {
+          const tt = Math.max(0, t - j * 0.015);
+          const tx = sx + (cx - sx) * tt;
+          const ty = sy + (cy - sy) * tt;
           hc.beginPath();
-          hc.arc(tx, ty, 2 - j * 0.4, 0, Math.PI * 2);
-          hc.fillStyle = `rgba(245, 81, 108, ${alpha * 0.25 * (1 - j / 4)})`;
+          hc.arc(tx, ty, 2 - j * 0.3, 0, Math.PI * 2);
+          hc.fillStyle = `rgba(245, 81, 108, ${alpha * 0.3 * (1 - j / 5)})`;
           hc.fill();
         }
       });
 
-      // draw node cards
+      // === ambient floating particles ===
+      if (Math.random() < 0.08) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = orbitR * (0.3 + Math.random() * 0.8);
+        particles.push({
+          x: cx + Math.cos(angle) * dist,
+          y: cy + Math.sin(angle) * dist,
+          vx: (Math.random() - 0.5) * 0.15,
+          vy: (Math.random() - 0.5) * 0.15,
+          life: 1,
+          decay: 0.003 + Math.random() * 0.004
+        });
+      }
+      particles = particles.filter(p => p.life > 0);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= p.decay;
+        hc.beginPath();
+        hc.arc(p.x, p.y, 1, 0, Math.PI * 2);
+        hc.fillStyle = `rgba(245, 81, 108, ${p.life * 0.15})`;
+        hc.fill();
+      });
+
+      // === node cards ===
       nodePositions.forEach((pos, i) => {
-        const hover = Math.sin(time * 0.002 + i * 1.3) * 3;
-        const ny = pos.y + hover;
-        const cardX = pos.x - nodeW / 2;
+        const hover = Math.sin(time * 0.0015 + i * 1.3) * 2;
+        const nx = pos.x + Math.cos(pos.angle) * hover;
+        const ny = pos.y + Math.sin(pos.angle) * hover;
+        const cardX = nx - nodeW / 2;
         const cardY = ny - nodeH / 2;
 
-        // glow
-        const glow = hc.createRadialGradient(pos.x, ny, 0, pos.x, ny, nodeW * 0.5);
+        // outer glow
+        const glow = hc.createRadialGradient(nx, ny, 0, nx, ny, nodeW * 0.6);
         glow.addColorStop(0, 'rgba(245, 81, 108, 0.04)');
         glow.addColorStop(1, 'rgba(245, 81, 108, 0)');
         hc.beginPath();
-        hc.arc(pos.x, ny, nodeW * 0.5, 0, Math.PI * 2);
+        hc.arc(nx, ny, nodeW * 0.6, 0, Math.PI * 2);
         hc.fillStyle = glow;
         hc.fill();
 
-        // card bg
+        // card background
         hc.beginPath();
         hc.roundRect(cardX, cardY, nodeW, nodeH, 10);
-        hc.fillStyle = 'rgba(29, 41, 67, 0.92)';
+        hc.fillStyle = 'rgba(29, 41, 67, 0.94)';
         hc.fill();
-        hc.strokeStyle = 'rgba(255, 255, 255, 0.07)';
+        hc.strokeStyle = `rgba(245, 81, 108, ${0.08 + Math.sin(time * 0.003 + i) * 0.04})`;
         hc.lineWidth = 1;
         hc.stroke();
 
-        // left accent bar
+        // top accent line
         hc.beginPath();
-        hc.roundRect(cardX, cardY, 3, nodeH, [10, 0, 0, 10]);
-        hc.fillStyle = `rgba(245, 81, 108, ${0.4 + Math.sin(time * 0.003 + i) * 0.15})`;
+        hc.roundRect(cardX + 8, cardY, nodeW - 16, 2, 1);
+        hc.fillStyle = `rgba(245, 81, 108, ${0.35 + Math.sin(time * 0.003 + i) * 0.15})`;
         hc.fill();
 
-        // icon
-        const iconX = cardX + 20;
-        hc.font = '13px Inter, Arial, sans-serif';
-        hc.fillStyle = 'rgba(245, 81, 108, 0.7)';
-        hc.textAlign = 'center';
-        hc.textBaseline = 'middle';
-        hc.fillText(pos.label.icon, iconX, ny);
-
-        // label
-        hc.font = '600 12.5px Inter, Arial, sans-serif';
-        hc.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        // icon + label centered
+        hc.font = '600 12px Inter, Arial, sans-serif';
         hc.textAlign = 'left';
         hc.textBaseline = 'middle';
-        hc.fillText(pos.label.label, iconX + 16, ny);
+        const labelW = hc.measureText(pos.label.label).width;
+        const iconGap = 8;
+        hc.font = '13px Inter, Arial, sans-serif';
+        const iconW = hc.measureText(pos.label.icon).width;
+        const totalW = iconW + iconGap + labelW;
+        const startX = nx - totalW / 2;
 
-        // connection dot at card edge toward center
-        const isLeft = pos.x < cx;
-        const dotX = isLeft ? cardX + nodeW + 5 : cardX - 5;
+        hc.fillStyle = 'rgba(245, 81, 108, 0.75)';
+        hc.textAlign = 'left';
+        hc.textBaseline = 'middle';
+        hc.fillText(pos.label.icon, startX, ny);
+
+        hc.font = '600 12px Inter, Arial, sans-serif';
+        hc.fillStyle = 'rgba(255, 255, 255, 0.92)';
+        hc.fillText(pos.label.label, startX + iconW + iconGap, ny);
+
+        // connection dot toward center
+        const dotAngle = Math.atan2(cy - ny, cx - nx);
+        const dotX = nx + Math.cos(dotAngle) * (nodeW / 2 + 6);
+        const dotY = ny + Math.sin(dotAngle) * (nodeH / 2 + 6);
         const dotPulse = 0.4 + Math.sin(time * 0.004 + i * 1.1) * 0.3;
         hc.beginPath();
-        hc.arc(dotX, ny, 2.5, 0, Math.PI * 2);
+        hc.arc(dotX, dotY, 2.5, 0, Math.PI * 2);
         hc.fillStyle = `rgba(245, 81, 108, ${dotPulse})`;
         hc.fill();
       });
 
-      // ---- CENTER HUB ----
+      // === CENTER HUB ===
       // glow rings
-      for (let r = 3; r >= 1; r--) {
+      for (let r = 4; r >= 1; r--) {
         hc.beginPath();
-        hc.arc(cx, cy, centerR + r * 14, 0, Math.PI * 2);
-        hc.strokeStyle = `rgba(245, 81, 108, ${0.012 * (4 - r)})`;
-        hc.lineWidth = 1;
+        hc.arc(cx, cy, centerR + r * 12, 0, Math.PI * 2);
+        hc.strokeStyle = `rgba(245, 81, 108, ${0.015 * (5 - r)})`;
+        hc.lineWidth = 0.8;
         hc.stroke();
       }
 
       // pulsing glow
       const glowPulse = 0.8 + Math.sin(time * 0.002) * 0.2;
-      const cGlow = hc.createRadialGradient(cx, cy, centerR * 0.3, cx, cy, centerR * 2.8);
-      cGlow.addColorStop(0, `rgba(245, 81, 108, ${0.14 * glowPulse})`);
-      cGlow.addColorStop(0.5, `rgba(245, 81, 108, ${0.04 * glowPulse})`);
+      const cGlow = hc.createRadialGradient(cx, cy, centerR * 0.2, cx, cy, centerR * 3);
+      cGlow.addColorStop(0, `rgba(245, 81, 108, ${0.16 * glowPulse})`);
+      cGlow.addColorStop(0.4, `rgba(245, 81, 108, ${0.05 * glowPulse})`);
       cGlow.addColorStop(1, 'rgba(245, 81, 108, 0)');
       hc.beginPath();
-      hc.arc(cx, cy, centerR * 2.8, 0, Math.PI * 2);
+      hc.arc(cx, cy, centerR * 3, 0, Math.PI * 2);
       hc.fillStyle = cGlow;
       hc.fill();
 
@@ -1543,34 +1659,44 @@
       hc.save();
       hc.beginPath();
       hc.arc(cx, cy, centerR, 0, Math.PI * 2);
-      hc.shadowColor = 'rgba(245, 81, 108, 0.35)';
-      hc.shadowBlur = 50;
+      hc.shadowColor = 'rgba(245, 81, 108, 0.4)';
+      hc.shadowBlur = 60;
       hc.fillStyle = 'rgba(245, 81, 108, 0.01)';
       hc.fill();
       hc.restore();
 
       // rotating arcs
-      const arc = time * 0.0008;
+      const arc = time * 0.0006;
       hc.beginPath();
-      hc.arc(cx, cy, centerR + 5, arc, arc + Math.PI * 0.35);
-      hc.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      hc.arc(cx, cy, centerR + 5, arc, arc + Math.PI * 0.4);
+      hc.strokeStyle = 'rgba(255, 255, 255, 0.18)';
       hc.lineWidth = 2;
+      hc.lineCap = 'round';
       hc.stroke();
       hc.beginPath();
-      hc.arc(cx, cy, centerR + 5, arc + Math.PI, arc + Math.PI * 1.35);
+      hc.arc(cx, cy, centerR + 5, arc + Math.PI, arc + Math.PI * 1.4);
       hc.strokeStyle = 'rgba(255, 255, 255, 0.1)';
       hc.lineWidth = 2;
       hc.stroke();
+      hc.lineCap = 'butt';
+
+      // inner rotating arc
+      hc.beginPath();
+      hc.arc(cx, cy, centerR - 3, -arc * 1.5, -arc * 1.5 + Math.PI * 0.3);
+      hc.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      hc.lineWidth = 1;
+      hc.stroke();
 
       // text
-      hc.font = '800 14px Inter, Arial, sans-serif';
-      hc.fillStyle = 'rgba(255, 255, 255, 0.95)';
+      hc.font = '800 15px Inter, Arial, sans-serif';
+      hc.fillStyle = 'rgba(255, 255, 255, 0.97)';
       hc.textAlign = 'center';
       hc.textBaseline = 'middle';
       hc.fillText('DFX', cx, cy - 9);
-      hc.font = '600 10px Inter, Arial, sans-serif';
-      hc.fillStyle = 'rgba(255, 255, 255, 0.75)';
-      hc.fillText('SERVICES AG', cx, cy + 8);
+      hc.font = '600 9px Inter, Arial, sans-serif';
+      hc.fillStyle = 'rgba(255, 255, 255, 0.7)';
+      hc.letterSpacing = '1px';
+      hc.fillText('SERVICES AG', cx, cy + 9);
     }
 
     // observe hub visibility

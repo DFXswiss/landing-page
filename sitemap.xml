@@ -27,8 +27,26 @@
 
   <url>
     <loc>https://www.dfx.swiss/dfx-services-ag.html</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.dfx.swiss/faq.html</loc>
+    <lastmod>2025-06-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.dfx.swiss/help.html</loc>
+    <lastmod>2025-06-27</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.dfx.swiss/llms.txt</loc>
+    <lastmod>2026-04-14</lastmod>
+    <priority>0.5</priority>
   </url>
 
 </urlset>
