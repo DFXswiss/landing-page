@@ -1,0 +1,52 @@
+# DFX Services AG
+
+> Eigenständiges Schweizer Software-Unternehmen mit Sitz in Zug. Wir bauen und betreiben skalierbare Software-Infrastruktur für Fintech und Digital Assets.
+
+## Unternehmen
+
+- Name: DFX Services AG
+- Typ: Aktiengesellschaft (AG)
+- Sitz: Bahnhofstrasse 7, 6300 Zug, Schweiz
+- Gegründet: November 2025
+- Kontakt: services@dfx.swiss
+- Website: https://dfx.swiss/dfx-services-ag.html
+- Regulierung: Schweizer Recht
+- Sprachen: Deutsch, Englisch, Französisch, Italienisch
+
+## Leistungen
+
+### Software & Infrastructure
+Backend-Systeme, APIs und Cloud-Plattformen — konzipiert für hohe Verfügbarkeit, gebaut für regulierte Umgebungen.
+
+### Management & Strategy
+Strategische Steuerung, Roadmap-Planung und bereichsübergreifende Koordination.
+
+### Operations & Processes
+Deployment, Monitoring und kontinuierliche Optimierung produktiver Systeme.
+
+## Produkte im DFX-Ökosystem
+
+- DFX On/Off-Ramp: Krypto kaufen und verkaufen (80+ Kryptowährungen, $200M+ Volumen, 30'000+ Kunden)
+- DFX Toolbox: Integrationslösung für Wallet-Betreiber
+- BTC Taro App: Self-Custody Bitcoin Wallet mit Lightning und Multisig
+- Open CryptoPay: Krypto-Zahlungssystem im Einzelhandel (100+ SPAR-Filialen)
+- Frankencoin (ZCHF): Infrastruktur für den Schweizer-Franken-Stablecoin
+
+## Partner
+
+- Aktionariat
+- RealUnit Schweiz AG
+
+## Technologie-Stack
+
+- Fokus: Backend-Systeme, API-Design, Blockchain-Integration
+- Betrieb: Cloud-Plattformen, Monitoring, 24/7 Operations
+- Umfeld: Regulierte Finanzinfrastruktur, Schweizer Datenschutz (DSG)
+
+## Links
+
+- Hauptseite: https://dfx.swiss/
+- Services AG: https://dfx.swiss/dfx-services-ag.html
+- DFX App: https://app.dfx.swiss/
+- Support: https://services.dfx.swiss/support
+- Dokumentation: https://docs.dfx.swiss/
