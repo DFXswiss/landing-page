@@ -17,4 +17,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://www.dfx.swiss/sitemap.xml
+Sitemap: https://dfx.swiss/sitemap.xml
