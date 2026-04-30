@@ -1,6 +1,6 @@
 {
   "hero.fee": "Bitcoin kaufen ab unter 1% Gebühr",
-  "hero.hint": "Erster Kauf in unter 5 Minuten — einfach oben klicken und loslegen",
+  "hero.hint": "Erster Kauf in unter 5 Minuten – einfach klicken und loslegen",
   "howto.heading": "So funktioniert DFX",
   "howto.sub": "In drei Schritten von der Bank in deine Wallet — ohne Börse, ohne Risiko",
   "howto.step1_title": "Wallet verbinden",
@@ -21,7 +21,7 @@
   "nav.buy_now": "Jetzt kaufen",
   "nav.language": "Language",
   "hero.subtitle": "Kaufe und verkaufe Kryptowährungen ohne Umwege. Direkt in jede Soft- oder Hardware-Wallet. <strong style=\"color:#fff\">Ab unter 1% Gebühr.</strong> 100% Self-Custody. Sicher und reguliert in der Schweiz.",
-  "hero.title": "Krypto kaufen — <span style=\"color:#f5516c\">sicher</span>, direkt in deine Wallet",
+  "hero.title": "Kryptos kaufen –<br><span class=\"dk-hero__safe\">sicher</span>, direkt in deine Wallet",
   "hero.cta": "Krypto kaufen & verkaufen",
   "hero.cta_taro": "BTC Taro App",
   "stats.coins": "80+",

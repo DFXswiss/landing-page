@@ -1,6 +1,6 @@
 {
   "hero.fee": "Buy Bitcoin from under 1% fee",
-  "hero.hint": "First purchase in under 5 minutes — just click and go",
+  "hero.hint": "First purchase in under 5 minutes – just click and go",
   "howto.heading": "How DFX works",
   "howto.sub": "Three steps from your bank to your wallet — no exchange, no risk",
   "howto.step1_title": "Connect your wallet",
@@ -21,7 +21,7 @@
   "nav.buy_now": "Buy now",
   "nav.language": "Language",
   "hero.subtitle": "Buy and sell cryptocurrency with no middleman. Straight to any soft- or hardware wallet. <strong style=\"color:#fff\">From under 1% fee.</strong> 100% self-custody. Safe and regulated in Switzerland.",
-  "hero.title": "Buy crypto — <span style=\"color:#f5516c\">secure</span>, straight to your wallet",
+  "hero.title": "Buy crypto –<br><span class=\"dk-hero__safe\">secure</span>, straight to your wallet",
   "hero.cta": "Buy & sell crypto",
   "hero.cta_taro": "BTC Taro App",
   "stats.coins": "80+",

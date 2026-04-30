@@ -1,6 +1,6 @@
 {
   "hero.fee": "Achetez du Bitcoin à partir de moins de 1% de frais",
-  "hero.hint": "Premier achat en moins de 5 minutes — cliquez et c'est parti",
+  "hero.hint": "Premier achat en moins de 5 minutes – cliquez et c'est parti",
   "howto.heading": "Comment fonctionne DFX",
   "howto.sub": "En trois étapes de votre banque à votre wallet — sans exchange, sans risque",
   "howto.step1_title": "Connecter votre wallet",
@@ -21,7 +21,7 @@
   "nav.buy_now": "Acheter maintenant",
   "nav.language": "Langue",
   "hero.subtitle": "Achetez et vendez des cryptomonnaies sans interm\u00e9diaire. Directement dans n'importe quel wallet. <strong style=\"color:#fff\">\u00c0 partir de moins de 1% de frais.</strong> 100% self-custody. S\u00e9curis\u00e9 et r\u00e9glement\u00e9 en Suisse.",
-  "hero.title": "Acheter des cryptos — en toute <span style=\"color:#f5516c\">s\u00e9curit\u00e9</span>, directement dans votre wallet",
+  "hero.title": "Acheter des cryptos –<br>en toute <span class=\"dk-hero__safe\">s\u00e9curit\u00e9</span>, directement dans votre wallet",
   "hero.cta": "Acheter & vendre des cryptos",
   "hero.cta_taro": "BTC Taro App",
   "stats.coins": "80+",
