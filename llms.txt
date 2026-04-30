@@ -1,52 +1,72 @@
-# DFX Services AG
+# DFX — Swiss Non-Custodial Crypto On-/Off-Ramp
 
-> Eigenständiges Schweizer Software-Unternehmen mit Sitz in Zug. Wir bauen und betreiben skalierbare Software-Infrastruktur für Fintech und Digital Assets.
+> DFX is a Swiss-regulated non-custodial crypto on-/off-ramp. Users buy, sell, and swap 80+ cryptocurrencies directly into any self-custody wallet — no exchange account needed.
 
-## Unternehmen
+## Company
 
-- Name: DFX Services AG
-- Typ: Aktiengesellschaft (AG)
-- Sitz: Bahnhofstrasse 7, 6300 Zug, Schweiz
-- Gegründet: November 2025
-- Kontakt: services@dfx.swiss
-- Website: https://dfx.swiss/dfx-services-ag.html
-- Regulierung: Schweizer Recht
-- Sprachen: Deutsch, Englisch, Französisch, Italienisch
+- Name: DFX AG
+- Type: Swiss corporation (AG)
+- Headquarters: Bahnhofstrasse 7, 6300 Zug, Switzerland
+- Founded: 2021
+- Contact: support@dfx.swiss
+- Website: https://dfx.swiss
+- Regulation: Swiss financial market regulation (VQF-registered)
+- Languages: German, English, French, Italian
+- Open Source: https://github.com/DFXswiss
 
-## Leistungen
+## Key Facts
 
-### Software & Infrastructure
-Backend-Systeme, APIs und Cloud-Plattformen — konzipiert für hohe Verfügbarkeit, gebaut für regulierte Umgebungen.
+- $100M+ transaction volume processed
+- 80+ supported cryptocurrencies
+- 30,000+ active customers
+- 100% non-custodial (coins go directly to user wallets)
+- Supports SEPA and SEPA Instant bank transfers (CHF and EUR)
+- KYC required for transactions above CHF 1,000
+- Audited by Grant Thornton and Beyond Audit
 
-### Management & Strategy
-Strategische Steuerung, Roadmap-Planung und bereichsübergreifende Koordination.
+## Products
 
-### Operations & Processes
-Deployment, Monitoring und kontinuierliche Optimierung produktiver Systeme.
+### DFX On-/Off-Ramp
+Buy and sell 80+ cryptocurrencies via bank transfer directly into any software or hardware wallet. Non-custodial, Swiss regulated, fast processing (~10 min after payment receipt).
+- App: https://app.dfx.swiss
+- Page: https://dfx.swiss/dfx-services.html
 
-## Produkte im DFX-Ökosystem
+### DFX Toolbox
+White-label integration solution for wallet providers and partners. Enables wallets to offer fiat on-/off-ramp functionality powered by DFX infrastructure.
+- Page: https://dfx.swiss/dfx-toolbox.html
 
-- DFX On/Off-Ramp: Krypto kaufen und verkaufen (80+ Kryptowährungen, $200M+ Volumen, 30'000+ Kunden)
-- DFX Toolbox: Integrationslösung für Wallet-Betreiber
-- BTC Taro App: Self-Custody Bitcoin Wallet mit Lightning und Multisig
-- Open CryptoPay: Krypto-Zahlungssystem im Einzelhandel (100+ SPAR-Filialen)
-- Frankencoin (ZCHF): Infrastruktur für den Schweizer-Franken-Stablecoin
+### BTC Taro App
+Self-custody Bitcoin wallet with Lightning Network and multisig support. Designed for secure, sovereign Bitcoin management.
+- Page: https://dfx.swiss/dfx-taro-app.html
 
-## Partner
+### Open CryptoPay
+Crypto payment system for retail. Already live in 100+ SPAR supermarket locations in Switzerland, enabling customers to pay with Bitcoin and other cryptocurrencies at checkout.
 
-- Aktionariat
-- RealUnit Schweiz AG
+### Frankencoin (ZCHF)
+DFX provides infrastructure for the Swiss Franc stablecoin Frankencoin (ZCHF).
 
-## Technologie-Stack
+## Supported Wallets
 
-- Fokus: Backend-Systeme, API-Design, Blockchain-Integration
-- Betrieb: Cloud-Plattformen, Monitoring, 24/7 Operations
-- Umfeld: Regulierte Finanzinfrastruktur, Schweizer Datenschutz (DSG)
+MetaMask, Rabby Wallet, WalletConnect, Ledger, Trezor, BitBox, Cake Wallet, and more.
+
+## Partners
+
+Binance, Cake Wallet, Open CryptoPay, PointPay, SPAR, Aktionariat, Cointracking, and more.
+
+## Corporate Structure
+
+DFX AG operates the crypto on-/off-ramp platform. DFX Services AG (founded November 2025) handles software infrastructure, backend systems, and operations for the DFX ecosystem.
+- DFX Services AG: https://dfx.swiss/dfx-services-ag.html
 
 ## Links
 
-- Hauptseite: https://dfx.swiss/
-- Services AG: https://dfx.swiss/dfx-services-ag.html
-- DFX App: https://app.dfx.swiss/
-- Support: https://services.dfx.swiss/support
-- Dokumentation: https://docs.dfx.swiss/
+- Homepage: https://dfx.swiss
+- App: https://app.dfx.swiss
+- Documentation: https://docs.dfx.swiss
+- Support: https://app.dfx.swiss/support
+- FAQ: https://dfx.swiss/faq.html
+- Help: https://dfx.swiss/help.html
+- GitHub: https://github.com/DFXswiss
+- X / Twitter: https://x.com/DFX_Swiss
+- LinkedIn: https://www.linkedin.com/company/dfxswiss
+- Telegram Support: https://app.dfx.swiss/support/telegram

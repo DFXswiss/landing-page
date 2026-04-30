@@ -26,6 +26,8 @@
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script src="js/i18n.js"></script>
+  <link href="css/dfx-dark-theme.css" rel="stylesheet" type="text/css">
+  <script src="js/cookie-banner.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -146,6 +148,12 @@
       overflow-x: hidden;
     }
 
+    .sa-page .navbar {
+      background-color: rgba(120, 140, 165, 0.45) !important;
+      backdrop-filter: blur(50px);
+    }
+
+
     .sa-page .sa-hero,
     .sa-page .sa-section,
     .sa-page .sa-partners,
@@ -189,7 +197,7 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: rgba(7, 36, 64, 0.55);
+      background: rgba(10, 48, 85, 0.40);
     }
 
     .sa-hero__gradient {
@@ -277,14 +285,15 @@
     }
 
     .sa-btn--ghost {
-      background: transparent;
-      color: var(--sa-text);
-      border: 1px solid var(--sa-border-light);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--sa-white);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
     }
 
     .sa-btn--ghost:hover {
-      border-color: rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.03);
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.14);
       transform: translateY(-2px);
     }
 
