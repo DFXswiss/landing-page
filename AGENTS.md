@@ -9,6 +9,18 @@ Statische HTML-Site (kein Build-Step), ursprünglich Webflow-Export. Wird
 gepflegt von Joshua als Editor/Designer. Branch `joshua` ist Joshuas
 persönlicher Workspace.
 
+## Lokales Setup
+
+Remote `origin` muss auf `DFXswiss/landing-page` zeigen, nicht auf einen
+persönlichen Fork. Pushen direkt nach upstream — keine Fork-Workflows.
+
+```bash
+git remote -v   # erwartet: origin git@github.com:DFXswiss/landing-page.git
+```
+
+Falls origin auf einen Fork zeigt:
+`git remote set-url origin git@github.com:DFXswiss/landing-page.git`
+
 ## Branch-Regeln (kritisch)
 
 - **Ausschließlich nach `joshua` pushen.** Niemals direkt nach `develop` oder
