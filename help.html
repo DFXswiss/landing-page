@@ -42,7 +42,7 @@ display: none!important;
 }
 </style>
 </head>
-<body class="body">
+<body class="body dfx-dark-page">
   <div class="page-wrapper">
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
       <div class="padding-global padding-section-nav">
@@ -187,10 +187,25 @@ Webflow.push(function () {
       </div>
     </div>
     <main class="main-wrapper">
+      <section class="dk-hero" style="min-height: 50vh;">
+        <div class="dk-hero__video" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="metadata" poster="media/matterhorn-poster.jpg">
+            <source src="media/matterhorn-web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="dk-hero__overlay"></div>
+        <div class="dk-hero__gradient"></div>
+        <div class="dk-hero__gradient-top"></div>
+        <div class="dk-container">
+          <div class="dk-hero__content" style="text-align: center; max-width: 100%;">
+            <h1 class="dk-hero__title" style="text-align: center;">Wir helfen dir weiter</h1>
+          </div>
+        </div>
+      </section>
       <section class="section_support-hero">
         <div class="padding-global padding-section-hero support">
           <div class="container-main">
-            <h2 class="text-color-g400 text-aling-center">Wir lassen Sie nicht im Stich.</h2>
+            <div style="display:none;">old heading</div>
             <div class="spacer-l"></div>
             <div class="support-hero-layout-bottom">
               <div class="benefits-card">

@@ -71,7 +71,7 @@ display: none!important;
 }
 </style>
 </head>
-<body class="body">
+<body class="body dfx-dark-page">
   <div class="page-wrapper">
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
       <div class="padding-global padding-section-nav">
@@ -216,12 +216,33 @@ Webflow.push(function () {
       </div>
     </div>
     <main class="main-wrapper">
-      <section class="section_taro-hero">
+      <section class="dk-hero" style="min-height: 70vh;">
+        <div class="dk-hero__video" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="metadata" poster="media/matterhorn-poster.jpg">
+            <source src="media/matterhorn-web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="dk-hero__overlay"></div>
+        <div class="dk-hero__gradient"></div>
+        <div class="dk-hero__gradient-top"></div>
+        <div class="dk-container">
+          <div class="dk-hero__content">
+            <h1 class="dk-hero__title">BTC Taro App – Bitcoin sicher kaufen und halten</h1>
+            <p class="dk-hero__sub">Self-Custody Bitcoin Wallet mit Lightning, MultiSig und On-Chain. Kaufen direkt in der App, bezahlen bei SPAR.</p>
+            <div class="dk-hero__ctas">
+              <a href="https://dfx.swiss/app/btc" target="_blank" class="dk-btn dk-btn--primary">Download BTC Taro App</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- old hero content kept as features below -->
+      <section class="section_taro-hero" style="display:none;">
         <div class="padding-global padding-section-hero">
           <div class="container-main">
             <div class="hero-layout">
               <div class="services-hero_heading">
-                <h1 class="heading-style-h1">Der einfachste Weg, Bitcoin in der eigenen Wallet zu kaufen und sicher zu halten.</h1>
+                <h1 class="heading-style-h1">hidden</h1>
                 <div class="hero_buttons-wrapper">
                   <a href="https://dfx.swiss/app/btc" target="_blank" class="button-hero-secondary is-taro w-inline-block">
                     <div>Download BTC Taro App</div>

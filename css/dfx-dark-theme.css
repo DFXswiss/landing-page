@@ -116,6 +116,71 @@
   }
 }
 
+/* ===== SUBPAGE OVERRIDES ===== */
+.dfx-dark-page .section_services-hero,
+.dfx-dark-page .section_services-wallets,
+.dfx-dark-page .section_services-benefits,
+.dfx-dark-page .section_toolbox-hero,
+.dfx-dark-page .section_toolbox-code,
+.dfx-dark-page .section_taro-hero,
+.dfx-dark-page .section_taro-benefits,
+.dfx-dark-page .section_support-hero {
+  background: transparent !important;
+}
+
+.dfx-dark-page .section_services-wallets,
+.dfx-dark-page .section_toolbox-code {
+  background: linear-gradient(180deg, #0b3560, #0a3055) !important;
+  border-top: 1px solid var(--dk-border) !important;
+}
+
+.dfx-dark-page .section_services-benefits,
+.dfx-dark-page .section_taro-benefits {
+  background: #081e3a !important;
+  border-top: 1px solid var(--dk-border) !important;
+}
+
+.dfx-dark-page .section_support-hero {
+  background: var(--dk-base) !important;
+}
+
+.dfx-dark-page .benefits-card {
+  background: var(--dk-card-bg) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--dk-border) !important;
+  border-radius: 16px !important;
+  transition: all 0.4s ease;
+}
+
+.dfx-dark-page .benefits-card:hover {
+  border-color: rgba(245, 81, 108, 0.2) !important;
+  transform: translateY(-4px);
+}
+
+.dfx-dark-page .benefits-card p {
+  color: var(--dk-text-muted) !important;
+}
+
+.dfx-dark-page .benefits-card_poin-icon {
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+}
+
+.dfx-dark-page .button.w-button {
+  background: var(--dk-red) !important;
+  color: var(--dk-white) !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+.dfx-dark-page .button.w-button:hover {
+  background: var(--dk-red-hover) !important;
+}
+
+.dfx-dark-page .hero-link {
+  color: var(--dk-red) !important;
+}
+
 /* ===== PAGE BASE ===== */
 .dfx-dark-page {
   background: var(--dk-base) !important;

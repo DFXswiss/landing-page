@@ -76,7 +76,7 @@ display: none!important;
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
  -->
 </head>
-<body class="body">
+<body class="body dfx-dark-page">
   <div class="page-wrapper">
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
       <div class="padding-global padding-section-nav">
@@ -221,28 +221,22 @@ Webflow.push(function () {
       </div>
     </div>
     <main class="main-wrapper">
-      <section class="section_toolbox-hero">
-        <div class="padding-global padding-section-hero">
-          <div class="container-main">
-            <div class="hero-layout">
-              <div class="services-hero_heading">
-                <h1 class="heading-style-h1">DFX Toolbox: Die Lösung für nahtlose Fiat-Krypto-Integration in Ihre Platform.</h1>
-                <div class="hero_buttons-wrapper">
-                  <a href="mailto:business@dfx.swiss?subject=Inquiry" class="button-hero w-button">Kontakt aufnehmen</a>
-                </div>
-              </div>
-              <div class="services-hero_image-wrapper"><img src="images/DFX-Toolbox-visual.png" loading="lazy" sizes="(max-width: 1000px) 100vw, 1000px" srcset="images/DFX-Toolbox-visual-p-500.png 500w, images/DFX-Toolbox-visual.png 1000w" alt="" class="toolbox-hero_image"></div>
-            </div>
-            <div class="spacer-huge"></div>
-            <div class="toolbox-hero-layout-bottom">
-              <div class="services-bottom-card"><img src="images/feature-icon-3.svg" loading="lazy" alt="" class="services-bottom-card_image">
-                <h3 class="text-color-white">Nahtlose Integration</h3>
-                <p class="text-color-g400 text-size-l text-weight-light">Erweitern Sie Ihr Produkt um Fiat-zu-Krypto-Transaktionen – mit unserer anpassbaren API- und iFrame-Lösung.</p>
-              </div>
-              <div class="services-bottom-card"><img src="images/feature-multichain.svg" loading="lazy" alt="" class="services-bottom-card_image">
-                <h3 class="text-color-white">Multi-Chain</h3>
-                <p class="text-color-g400 text-size-l text-weight-light">Das DFX Widget unterstützt über 80 Kryptowährungen auf 9 verschiedenen Blockchains.</p>
-              </div>
+      <section class="dk-hero" style="min-height: 70vh;">
+        <div class="dk-hero__video" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="metadata" poster="media/matterhorn-poster.jpg">
+            <source src="media/matterhorn-web.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="dk-hero__overlay"></div>
+        <div class="dk-hero__gradient"></div>
+        <div class="dk-hero__gradient-top"></div>
+        <div class="dk-container">
+          <div class="dk-hero__content">
+            <h1 class="dk-hero__title">DFX Toolbox – Fiat-Krypto-Integration für Ihre Plattform</h1>
+            <p class="dk-hero__sub">Erweitern Sie Ihr Produkt um einen Fiat On-/Off-Ramp. API- und iFrame-Lösung, 80+ Coins, 9 Blockchains. In Minuten integriert.</p>
+            <div class="dk-hero__ctas">
+              <a href="mailto:business@dfx.swiss?subject=Inquiry" class="dk-btn dk-btn--primary">Kontakt aufnehmen</a>
+              <a href="https://github.com/DFXswiss" target="_blank" class="dk-btn dk-btn--ghost">GitHub</a>
             </div>
           </div>
         </div>
