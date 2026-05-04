@@ -26,6 +26,8 @@
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script src="js/i18n.js"></script>
+  <link href="css/dfx-dark-theme.css" rel="stylesheet" type="text/css">
+  <script src="js/cookie-banner.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -93,7 +95,7 @@
         "name": "Was macht die DFX Services AG?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Die DFX Services AG ist ein eigenständiges Schweizer Software-Unternehmen mit Sitz in Zug. Unser Team baut skalierbare Systeme für das Finanz- und Krypto-Umfeld — reguliert und aus der Schweiz."
+          "text": "Die DFX Services AG ist ein eigenständiges Schweizer Software-Unternehmen mit Sitz in Zug. Unser Team baut skalierbare Systeme für das Finanz- und Krypto-Umfeld."
         }
       },
       {
@@ -146,6 +148,12 @@
       overflow-x: hidden;
     }
 
+    .sa-page .navbar {
+      background-color: rgba(120, 140, 165, 0.45) !important;
+      backdrop-filter: blur(50px);
+    }
+
+
     .sa-page .sa-hero,
     .sa-page .sa-section,
     .sa-page .sa-partners,
@@ -189,7 +197,7 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: rgba(7, 36, 64, 0.55);
+      background: rgba(10, 48, 85, 0.40);
     }
 
     .sa-hero__gradient {
@@ -277,14 +285,15 @@
     }
 
     .sa-btn--ghost {
-      background: transparent;
-      color: var(--sa-text);
-      border: 1px solid var(--sa-border-light);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--sa-white);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
     }
 
     .sa-btn--ghost:hover {
-      border-color: rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.03);
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.14);
       transform: translateY(-2px);
     }
 
@@ -1150,7 +1159,7 @@
       <div class="sa-container">
         <div class="sa-hero__content">
           <h1 class="sa-hero__title" data-i18n="sa.hero_title">DFX Services AG</h1>
-          <p class="sa-hero__sub" data-i18n="sa.hero_sub">Software-Infrastruktur für Fintech & Digital Assets. Wir sind ein eigenständiges Schweizer Software-Unternehmen und bauen skalierbare Systeme für das Finanz- und Krypto-Umfeld — reguliert, aus Zug.</p>
+          <p class="sa-hero__sub" data-i18n="sa.hero_sub">Software-Infrastruktur für Fintech & Digital Assets. Wir sind ein eigenständiges Schweizer Software-Unternehmen und bauen skalierbare Systeme für das Finanz- und Krypto-Umfeld — aus Zug.</p>
           <div class="sa-hero__ctas">
             <a href="mailto:services@dfx.swiss" class="sa-btn sa-btn--primary" data-i18n="sa.hero_cta_contact">Kontakt aufnehmen</a>
             <a href="#services" class="sa-btn sa-btn--ghost" data-i18n="sa.hero_cta_services">Unsere Services</a>
@@ -1273,15 +1282,15 @@
       <div class="sa-container">
         <div class="sa-swiss__content sa-reveal">
           <h2 class="sa-swiss__title" data-i18n-html="sa.swiss_title">Gebaut auf <span>Schweizer Verlässlichkeit</span></h2>
-          <p class="sa-swiss__text" data-i18n="sa.swiss_sub">DFX Services AG hat ihren Sitz in Zug — reguliert nach Schweizer Recht, operierend nach höchsten Standards. Transparenz, Struktur und Datenschutz sind keine Versprechen, sondern unsere Grundlage.</p>
+          <p class="sa-swiss__text" data-i18n="sa.swiss_sub">DFX Services AG hat ihren Sitz in Zug und operiert nach höchsten Standards. Transparenz, Struktur und Datenschutz sind keine Versprechen, sondern unsere Grundlage.</p>
           <div class="sa-swiss__grid">
             <div class="sa-swiss__item sa-reveal">
               <div class="sa-swiss__item-title" data-i18n="sa.swiss1_title">Regulierter Standort Zug</div>
-              <div class="sa-swiss__item-text" data-i18n="sa.swiss1_text">Eingetragen und reguliert im Kanton Zug — einem der weltweit führenden Standorte für Fintech und Blockchain.</div>
+              <div class="sa-swiss__item-text" data-i18n="sa.swiss1_text">Eingetragen im Kanton Zug — einem der weltweit führenden Standorte für Fintech und Blockchain.</div>
             </div>
             <div class="sa-swiss__item sa-reveal">
               <div class="sa-swiss__item-title" data-i18n="sa.swiss2_title">Geprüfte Compliance</div>
-              <div class="sa-swiss__item-text" data-i18n="sa.swiss2_text">Alle Prozesse entsprechen den Schweizer Regulierungsanforderungen — lückenlos dokumentiert und extern prüfbar.</div>
+              <div class="sa-swiss__item-text" data-i18n="sa.swiss2_text">Alle Prozesse sind lückenlos dokumentiert und extern prüfbar — nach Schweizer Standards.</div>
             </div>
             <div class="sa-swiss__item sa-reveal">
               <div class="sa-swiss__item-title" data-i18n="sa.swiss3_title">Datenschutz nach Schweizer Recht</div>
