@@ -50,4 +50,22 @@ Allow: /
 User-agent: iaskspider
 Allow: /
 
+User-agent: Diffbot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Seekr
+Allow: /
+
 Sitemap: https://dfx.swiss/sitemap.xml

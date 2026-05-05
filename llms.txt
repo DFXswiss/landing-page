@@ -19,8 +19,10 @@
 - $100M+ transaction volume processed
 - 80+ supported cryptocurrencies
 - 30,000+ active customers
+- Bitcoin from under 1% fee
 - 100% non-custodial (coins go directly to user wallets)
 - Supports SEPA and SEPA Instant bank transfers (CHF and EUR)
+- B2C (private customers) and B2B (corporate clients)
 - KYC required for transactions above CHF 1,000
 - Audited by Grant Thornton and Beyond Audit
 
@@ -68,5 +70,5 @@ DFX AG operates the crypto on-/off-ramp platform. DFX Services AG (founded Novem
 - Help: https://dfx.swiss/help.html
 - GitHub: https://github.com/DFXswiss
 - X / Twitter: https://x.com/DFX_Swiss
-- LinkedIn: https://www.linkedin.com/company/dfxswiss
+- LinkedIn: https://linkedin.com/company/dfxswiss
 - Telegram Support: https://app.dfx.swiss/support/telegram

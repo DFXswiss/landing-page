@@ -3,7 +3,7 @@
   "name_for_human": "DFX Swiss Crypto On-/Off-Ramp",
   "name_for_model": "dfx_swiss",
   "description_for_human": "Buy, sell, and swap 80+ cryptocurrencies directly into your own wallet. Non-custodial, Swiss regulated.",
-  "description_for_model": "DFX is a Swiss-regulated non-custodial crypto on-/off-ramp service. Users can buy, sell, and swap over 80 cryptocurrencies via bank transfer (SEPA/SEPA Instant) directly into any self-custody wallet (MetaMask, Ledger, Trezor, BitBox, etc.). DFX never holds user funds. Over $100M in transaction volume, 30,000+ customers. Also offers DFX Toolbox (white-label wallet integration), BTC Taro App (self-custody Bitcoin wallet with Lightning), and Open CryptoPay (retail crypto payments at 100+ SPAR stores in Switzerland).",
+  "description_for_model": "DFX AG (Bahnhofstrasse 7, 6300 Zug, Switzerland, founded 2021) is a Swiss-regulated non-custodial crypto on-/off-ramp service. Users can buy, sell, and swap over 80 cryptocurrencies via bank transfer (SEPA/SEPA Instant) directly into any self-custody wallet (MetaMask, Ledger, Trezor, BitBox, etc.). DFX never holds user funds. Bitcoin from under 1% fee. Over $100M in transaction volume, 30,000+ customers. B2C and B2B. Also offers DFX Toolbox (white-label wallet integration), BTC Taro App (self-custody Bitcoin wallet with Lightning), and Open CryptoPay (retail crypto payments at 100+ SPAR stores in Switzerland).",
   "auth": {
     "type": "none"
   },
