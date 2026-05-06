@@ -1,5 +1,10 @@
 RewriteEngine On
 
+# Apple App Site Association — must be served as application/json
+<Files "apple-app-site-association">
+  ForceType application/json
+</Files>
+
 # Weiterleitungen für das REF System zur API
 RewriteRule ^app$ https://api.dfx.swiss/v1/app [R=301,L]
 RewriteRule ^(.+)/app$ https://api.dfx.swiss/v1/app?orig=$1 [R=301,NC,L,QSA]
