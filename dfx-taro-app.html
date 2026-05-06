@@ -595,6 +595,43 @@ Webflow.push(function () {
       }
     });
   });
+
+  // Auto-play steps 1→2→3→4 then loop
+  $(function() {
+    var steps = $(".dev-tabs_list-btn");
+    var current = 0;
+    var autoTimer;
+
+    function activateStep(i) {
+      var btn = steps.eq(i);
+      var list = btn.closest(".dev-tabs_list");
+      list.find(".dev-tabs_list-btn").removeClass("cc-active");
+      list.find(".dev-tabs_list-content").removeClass("cc-active");
+      list.find(".number-wrapper").removeClass("number-active");
+      btn.addClass("cc-active");
+      btn.find(".number-wrapper").addClass("number-active");
+      btn.siblings(".dev-tabs_list-content").addClass("cc-active");
+    }
+
+    function nextStep() {
+      current = (current + 1) % steps.length;
+      activateStep(current);
+    }
+
+    function startAuto() {
+      autoTimer = setInterval(nextStep, 3000);
+    }
+
+    // Stop auto-play on manual click, restart after 8s
+    steps.on("click", function() {
+      clearInterval(autoTimer);
+      current = steps.index(this);
+      setTimeout(startAuto, 8000);
+    });
+
+    // Start auto-play after 2s
+    setTimeout(startAuto, 2000);
+  });
 </script>
 </body>
 </html>
