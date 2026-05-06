@@ -67,15 +67,18 @@
       howtoObserver.observe(howtoSection);
     }
 
-    // FAQ accordion toggle
-    document.querySelectorAll('.dk-faq-section .faq_question').forEach(function(q) {
+    // FAQ accordion toggle — works on all FAQ sections
+    document.querySelectorAll('.dfx-dark-page .faq_question').forEach(function(q) {
       q.addEventListener('click', function() {
         var accordion = q.closest('.faq_accordion');
         var wasOpen = accordion.classList.contains('is-open');
-        // close all
-        document.querySelectorAll('.dk-faq-section .faq_accordion').forEach(function(a) {
-          a.classList.remove('is-open');
-        });
+        // close all in same section
+        var section = q.closest('section');
+        if (section) {
+          section.querySelectorAll('.faq_accordion').forEach(function(a) {
+            a.classList.remove('is-open');
+          });
+        }
         // toggle clicked
         if (!wasOpen) {
           accordion.classList.add('is-open');

@@ -329,12 +329,24 @@
 }
 
 .dfx-dark-page .section_taro-btc .number-wrapper {
-  border-color: rgba(245, 81, 108, 0.25) !important;
-  color: var(--dk-red) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  background: transparent !important;
+  color: var(--dk-white) !important;
 }
 
 .dfx-dark-page .section_taro-btc .number-wrapper div {
-  color: var(--dk-red) !important;
+  color: var(--dk-white) !important;
+}
+
+.dfx-dark-page .section_taro-btc .number-wrapper.number-active,
+.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
+  border-color: var(--dk-red) !important;
+  color: var(--dk-white) !important;
+  background: var(--dk-red) !important;
+}
+
+.dfx-dark-page .section_taro-btc .cc-active .number-wrapper div {
+  color: var(--dk-white) !important;
 }
 
 .dfx-dark-page .section_taro-btc .dev-tabs_list-btn.cc-active div:not(.number-wrapper div) {
@@ -1271,9 +1283,19 @@
   color: var(--dk-white) !important;
 }
 
-/* Footer text colors */
-.dfx-dark-page .footer_link {
+/* Footer */
+.dfx-dark-page .footer .text-style-allcaps {
   color: var(--dk-text-muted) !important;
+  font-size: 0.8rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.15em !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dfx-dark-page .footer_link {
+  color: var(--dk-white) !important;
 }
 
 .dfx-dark-page .footer_link:hover {
@@ -1282,13 +1304,44 @@
 
 /* ===== HIDDEN SECTIONS ===== */
 .dfx-dark-page .section_home-news,
-.dfx-dark-page .section_home-map,
 .dfx-dark-page .section_home-why,
 .dfx-dark-page .section_home-use,
 .dfx-dark-page .section_home-wallets {
   display: none !important;
 }
 
+.dfx-dark-page .section_home-map {
+  background: #081e3a !important;
+  border-top: 1px solid var(--dk-border) !important;
+}
+
+
+/* ===== FAQ — GLOBAL: answers hidden by default ===== */
+.dfx-dark-page .faq_answer {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.dfx-dark-page .faq_accordion.is-open .faq_answer {
+  max-height: 500px !important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.dfx-dark-page .faq_question {
+  cursor: pointer;
+}
+
+.dfx-dark-page .faq_icon-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.dfx-dark-page .faq_accordion.is-open .faq_icon-wrapper {
+  transform: rotate(180deg);
+}
 
 /* ===== FAQ SECTION REDESIGN ===== */
 .dk-faq-section .dk-faq-list {
@@ -1467,9 +1520,23 @@
   color: var(--dk-text-muted) !important;
 }
 
-/* TrustPilot widget spacing */
+/* TrustPilot widget */
 .dfx-dark-page .trustpilot-button {
   margin-bottom: 2rem;
+}
+
+.dfx-dark-page .trustpilot-widget iframe {
+  filter: brightness(1.1) saturate(0.8);
+}
+
+.dfx-dark-page .trustpilot-button,
+.dfx-dark-page .trustpilot-widget {
+  background: transparent !important;
+  color: var(--dk-text-muted) !important;
+}
+
+.dfx-dark-page .trustpilot-widget a {
+  color: var(--dk-text-muted) !important;
 }
 
 /* Why-section card bottom images — better visibility */
