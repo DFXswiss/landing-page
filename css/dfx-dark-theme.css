@@ -328,24 +328,36 @@
   color: #4a5d75 !important;
 }
 
-.dfx-dark-page .section_taro-btc .number-wrapper {
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  background: transparent !important;
-  color: var(--dk-white) !important;
+.dfx-dark-page .section_taro-btc .number-wrapper,
+body.dfx-dark-page .section_taro-btc .number-wrapper {
+  background-color: #0a3055 !important;
+  color: #fff !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-.dfx-dark-page .section_taro-btc .number-wrapper div {
-  color: var(--dk-white) !important;
+.dfx-dark-page .section_taro-btc .number-wrapper div,
+body.dfx-dark-page .section_taro-btc .number-wrapper div {
+  color: #fff !important;
 }
 
 .dfx-dark-page .section_taro-btc .number-wrapper.number-active,
-.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
-  border-color: var(--dk-red) !important;
-  color: var(--dk-white) !important;
-  background: var(--dk-red) !important;
+body.dfx-dark-page .section_taro-btc .number-wrapper.number-active,
+.dfx-dark-page .section_taro-btc .cc-active .number-wrapper,
+body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
+  background-color: #f5516c !important;
+  color: #fff !important;
+  border-color: #f5516c !important;
 }
 
 .dfx-dark-page .section_taro-btc .cc-active .number-wrapper div {
+  color: #fff !important;
+}
+
+.dfx-dark-page .section_taro-btc .dev-tabs_list-btn {
+  color: var(--dk-text-dim) !important;
+}
+
+.dfx-dark-page .section_taro-btc .dev-tabs_list-btn.cc-active {
   color: var(--dk-white) !important;
 }
 
@@ -1311,10 +1323,45 @@
 }
 
 .dfx-dark-page .section_home-map {
-  background: #081e3a !important;
+  background: linear-gradient(180deg, #0c3258, #0a2d4f) !important;
   border-top: 1px solid var(--dk-border) !important;
 }
 
+.dfx-dark-page .section_home-map .padding-global.padding-section-map {
+  padding-bottom: 5rem !important;
+}
+
+.dfx-dark-page .section_home-map .heading {
+  color: var(--dk-white) !important;
+}
+
+.dfx-dark-page .section_home-map p {
+  color: var(--dk-text-muted) !important;
+}
+
+.dfx-dark-page .section_home-map .map-wrapper {
+  border-color: var(--dk-border) !important;
+  border-radius: 16px;
+}
+
+.dfx-dark-page .section_home-map .home-map_legend-point.is-red {
+  background: var(--dk-red) !important;
+}
+
+.dfx-dark-page .section_home-map .home-map_legend-point.is-yellow {
+  background: #f0b429 !important;
+}
+
+.dfx-dark-page .section_home-map .home-map_legend-point.is-gray {
+  background: var(--dk-text-dim) !important;
+}
+
+
+/* FAQ after map — reduce top padding */
+.dfx-dark-page .section_home-map + .section_home-why + .dk-faq-section,
+.dfx-dark-page .section_home-map ~ .dk-faq-section {
+  padding-top: 3rem !important;
+}
 
 /* ===== FAQ — GLOBAL: answers hidden by default ===== */
 .dfx-dark-page .faq_answer {
