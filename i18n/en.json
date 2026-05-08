@@ -20,7 +20,7 @@
   "nav.shop": "Shop",
   "nav.buy_now": "Buy now",
   "nav.language": "Language",
-  "hero.subtitle": "Buy and sell cryptocurrency with no middleman. Straight to any soft- or hardware wallet. <strong style=\"color: var(--dk-white)\">From under 1% fee.</strong> 100% self-custody. Safe and regulated in Switzerland.",
+  "hero.subtitle": "Buy and sell cryptocurrency with no middleman. Straight to any soft- or hardware wallet. <strong style=\"color: var(--dk-white)\">From under 1% fee.</strong><br>100% self-custody. Safe and regulated in Switzerland.",
   "hero.title": "Buy crypto –<br><span class=\"dk-hero__safe\">secure</span>, straight to your wallet",
   "hero.cta": "Buy & sell crypto",
   "hero.cta_taro": "BTC Taro App",

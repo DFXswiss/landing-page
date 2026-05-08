@@ -20,7 +20,7 @@
   "nav.shop": "Shop",
   "nav.buy_now": "Jetzt kaufen",
   "nav.language": "Language",
-  "hero.subtitle": "Kaufe und verkaufe Kryptowährungen ohne Umwege. Direkt in jede Soft- oder Hardware-Wallet. <strong style=\"color: var(--dk-white)\">Ab unter 1% Gebühr.</strong> 100% Self-Custody. Sicher und reguliert in der Schweiz.",
+  "hero.subtitle": "Kaufe und verkaufe Kryptowährungen ohne Umwege. Direkt in jede Soft- oder Hardware-Wallet. <strong style=\"color: var(--dk-white)\">Ab unter 1% Gebühr.</strong><br>100% Self-Custody. Sicher und reguliert in der Schweiz.",
   "hero.title": "Kryptos kaufen –<br><span class=\"dk-hero__safe\">sicher</span>, direkt in deine Wallet",
   "hero.cta": "Krypto kaufen & verkaufen",
   "hero.cta_taro": "BTC Taro App",
