@@ -192,6 +192,7 @@
   "toolbox.biz_item2": "Servizi OTC",
   "toolbox.biz_item3": "Processo KYC completo (verifica del cliente)",
   "toolbox.integrations_heading": "DFX Toolbox: integrata con successo",
+  "toolbox.faq_a5": "Accettiamo CHF ed EUR. Per transazioni superiori a 50.000 CHF, vengono accettate anche valute alternative previo accordo. In questo caso, contatti semplicemente il nostro <a href=\"https://app.dfx.swiss/support\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"faq_link\">Support.</a>",
 
   "taro.hero_title": "BTC Taro App –<br>Comprare e conservare Bitcoin in <span style=\"color: var(--dk-red)\">sicurezza</span>",
   "taro.hero_sub": "Wallet Bitcoin in self-custody con Lightning, MultiSig e on-chain. Acquista direttamente nell'app, paga da SPAR.",
