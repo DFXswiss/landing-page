@@ -32,6 +32,7 @@
   z-index: 9999;
   padding: 1.25rem 2rem;
   background: rgba(10, 48, 85, 0.92);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   transform: translateY(100%);
@@ -147,6 +148,7 @@
 
 .dfx-dark-page .benefits-card {
   background: var(--dk-card-bg) !important;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid var(--dk-border) !important;
   border-radius: 16px !important;
@@ -620,6 +622,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   background: rgba(255, 255, 255, 0.08);
   color: var(--dk-white);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -637,6 +640,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 /* ===== CARDS ===== */
 .dk-card {
   background: var(--dk-card-bg);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid var(--dk-border);
   border-radius: 16px;
@@ -965,6 +969,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 .dfx-dark-page .benefits-caard,
 .dfx-dark-page .apps-card {
   background: var(--dk-card-bg) !important;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid var(--dk-border) !important;
   border-radius: 16px !important;
@@ -1398,6 +1403,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 
 .dk-faq-section .faq_accordion {
   background: linear-gradient(145deg, rgba(29, 53, 85, 0.6), rgba(13, 64, 112, 0.35)) !important;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 16px !important;
@@ -1501,6 +1507,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   background: linear-gradient(145deg, rgba(29, 53, 85, 0.7), rgba(13, 64, 112, 0.4)) !important;
   border: 1px solid var(--dk-border) !important;
   border-radius: 16px !important;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
