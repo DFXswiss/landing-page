@@ -68,4 +68,8 @@ Allow: /
 User-agent: Seekr
 Allow: /
 
+# LLM-readable profiles
+# https://dfx.swiss/llms.txt        — short company profile
+# https://dfx.swiss/llms-full.txt   — long-form profile with workflows, fees, FAQ
+
 Sitemap: https://dfx.swiss/sitemap.xml
