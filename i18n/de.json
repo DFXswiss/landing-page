@@ -20,7 +20,7 @@
   "nav.shop": "Shop",
   "nav.buy_now": "Jetzt kaufen",
   "nav.language": "Language",
-  "hero.subtitle": "Bitcoin und Krypto, die wirklich dir gehören — kein Konto bei einer Börse, niemand verwahrt deine Coins für dich. <strong style=\"color: var(--dk-white)\">Ab unter 1% Gebühr.</strong><br>Reguliert in der Schweiz.",
+  "hero.subtitle": "Bitcoin und Krypto, die wirklich dir gehören — kein Konto bei einer Börse, niemand verwahrt deine Coins für dich.<br><strong style=\"color: var(--dk-white)\">Ab unter 1% Gebühr.</strong><br>Reguliert in der Schweiz.",
   "hero.title": "Kryptos kaufen –<br><span class=\"dk-hero__safe\">sicher</span>, direkt in deine Wallet",
   "hero.cta": "Krypto kaufen & verkaufen",
   "hero.cta_taro": "BTC Taro App",
