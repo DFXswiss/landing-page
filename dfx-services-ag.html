@@ -827,44 +827,41 @@
     .sa-swiss__quality-card {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      min-height: 58px;
-      padding: 0.9rem 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      justify-content: center;
+      min-height: 88px;
+      padding: 0.8rem 1.15rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      background: rgba(255, 255, 255, 0.96);
       color: var(--sa-white);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
     }
 
-    .sa-swiss__quality-icon {
-      width: 34px;
-      flex: 0 0 auto;
-      color: var(--sa-red);
+    .sa-swiss__quality-card:hover {
+      border-color: rgba(245, 81, 108, 0.22);
+      background: #ffffff;
+      transform: translateY(-1px);
     }
 
-    .sa-swiss__quality-icon svg {
+    .sa-swiss__quality-card:focus-visible {
+      outline: 2px solid rgba(245, 81, 108, 0.8);
+      outline-offset: 4px;
+    }
+
+    .sa-swiss__quality-logo {
       display: block;
-      width: 100%;
       height: auto;
+      object-fit: contain;
     }
 
-    .sa-swiss__quality-text {
-      min-width: 0;
-      color: rgba(255, 255, 255, 0.82);
-      font-family: Inter, Arial, sans-serif;
-      font-size: 0.92rem;
-      font-weight: 650;
-      line-height: 1;
-      letter-spacing: 0.08em;
-      text-align: left;
-      text-transform: uppercase;
-      white-space: nowrap;
+    .sa-swiss__quality-logo--software {
+      width: 136px;
     }
 
-    .sa-swiss__quality-card--wide .sa-swiss__quality-text {
-      font-size: 0.92rem;
-      letter-spacing: 0.08em;
+    .sa-swiss__quality-logo--digital {
+      width: 250px;
     }
 
     /* ===== CTA ===== */
@@ -1075,18 +1072,14 @@
         margin-top: 1.5rem;
       }
       .sa-swiss__quality-card {
-        min-height: 52px;
-        padding: 0.75rem 1rem;
-        gap: 0.65rem;
+        min-height: 78px;
+        padding: 0.7rem 0.95rem;
       }
-      .sa-swiss__quality-icon {
-        width: 28px;
+      .sa-swiss__quality-logo--software {
+        width: 118px;
       }
-      .sa-swiss__quality-text {
-        font-size: 0.78rem;
-      }
-      .sa-swiss__quality-card--wide .sa-swiss__quality-text {
-        font-size: 0.78rem;
+      .sa-swiss__quality-logo--digital {
+        width: 220px;
       }
 
       /* CTA */
@@ -1108,15 +1101,11 @@
       .sa-scrollline { display: none; }
       .sa-partners__static { gap: 1.5rem; flex-direction: column; align-items: center; }
       .sa-position__visual { min-height: 260px; min-width: 480px; }
-      .sa-swiss__quality-icon {
-        width: 24px;
+      .sa-swiss__quality-logo--software {
+        width: 106px;
       }
-      .sa-swiss__quality-text {
-        font-size: 0.7rem;
-        letter-spacing: 0.06em;
-      }
-      .sa-swiss__quality-card--wide .sa-swiss__quality-text {
-        font-size: 0.7rem;
+      .sa-swiss__quality-logo--digital {
+        width: min(210px, 58vw);
       }
     }
   </style>
@@ -1431,34 +1420,12 @@
             </div>
           </div>
           <div class="sa-swiss__quality sa-reveal" id="swiss-quality-labels" aria-label="Swiss quality labels">
-            <div class="sa-swiss__quality-card" aria-label="Swiss made software">
-              <span class="sa-swiss__quality-icon" aria-hidden="true">
-                <svg viewBox="0 0 180 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill="currentColor" d="M10 35C14 15 24 5 48 5h34c15 0 24 4 34 13h32c27 0 39 12 39 39v51c0 27-12 39-39 39H49c-29 0-39-10-39-39V55c0-8 0-15 0-20Z"/>
-                  <rect x="82" y="43" width="11" height="54" rx="5.5" fill="#fff"/>
-                  <rect x="61" y="64" width="54" height="11" rx="5.5" fill="#fff"/>
-                </svg>
-              </span>
-              <span class="sa-swiss__quality-text" aria-hidden="true">
-                <span>swiss made software</span>
-              </span>
-            </div>
-            <div class="sa-swiss__quality-card sa-swiss__quality-card--wide" aria-label="Swiss digital services">
-              <span class="sa-swiss__quality-icon" aria-hidden="true">
-                <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill="currentColor" d="M10 35C14 15 24 5 48 5h34c15 0 24 4 34 13h32c27 0 39 12 39 39v51c0 27-12 39-39 39H49c-29 0-39-10-39-39V55c0-8 0-15 0-20Z"/>
-                  <rect x="63" y="42" width="11" height="52" rx="5.5" fill="#fff"/>
-                  <rect x="43" y="62" width="52" height="11" rx="5.5" fill="#fff"/>
-                  <path fill="#fff" d="m144 49 6 12 14-2 8 14-10 10v8l10 10-8 14-14-2-6 12h-16l-6-12-14 2-8-14 10-10v-8l-10-10 8-14 14 2 6-12h16Z"/>
-                  <circle cx="136" cy="87" r="23" fill="#fff"/>
-                  <circle cx="136" cy="87" r="14" fill="currentColor"/>
-                  <circle cx="136" cy="87" r="7" fill="#fff"/>
-                </svg>
-              </span>
-              <span class="sa-swiss__quality-text" aria-hidden="true">
-                <span>swiss digital services</span>
-              </span>
-            </div>
+            <a class="sa-swiss__quality-card" href="https://www.swissmadesoftware.org/" target="_blank" rel="noopener noreferrer" aria-label="swiss made software label information">
+              <img src="images/swiss-made-software-official-left.png" loading="lazy" alt="swiss made software" class="sa-swiss__quality-logo sa-swiss__quality-logo--software">
+            </a>
+            <a class="sa-swiss__quality-card sa-swiss__quality-card--wide" href="https://www.swissmadesoftware.org/" target="_blank" rel="noopener noreferrer" aria-label="swiss digital services label information">
+              <img src="images/swiss-digital-services-official.png" loading="lazy" alt="swiss digital services" class="sa-swiss__quality-logo sa-swiss__quality-logo--digital">
+            </a>
           </div>
         </div>
       </div>
