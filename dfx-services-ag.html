@@ -814,13 +814,16 @@
     .sa-swiss__quality {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.25rem;
       align-items: center;
       justify-content: center;
-      max-width: 920px;
+      max-width: 880px;
       margin: 2.25rem auto 0;
-      padding-top: 1.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
       position: relative;
     }
 
@@ -828,13 +831,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 88px;
-      padding: 0.8rem 1.15rem;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 999px;
+      min-height: 118px;
+      padding: 1rem 1.35rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.96);
       color: var(--sa-white);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.9);
       text-decoration: none;
       transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
     }
@@ -857,11 +860,11 @@
     }
 
     .sa-swiss__quality-logo--software {
-      width: 136px;
+      width: 150px;
     }
 
     .sa-swiss__quality-logo--digital {
-      width: 250px;
+      width: 278px;
     }
 
     /* ===== CTA ===== */
@@ -1068,18 +1071,19 @@
       .sa-swiss__item { padding: 1.5rem; }
       .sa-swiss__item-text { font-size: 0.95rem; }
       .sa-swiss__quality {
-        gap: 0.8rem;
+        gap: 0.9rem;
         margin-top: 1.5rem;
+        padding: 1rem;
       }
       .sa-swiss__quality-card {
-        min-height: 78px;
-        padding: 0.7rem 0.95rem;
+        min-height: 96px;
+        padding: 0.85rem 1rem;
       }
       .sa-swiss__quality-logo--software {
-        width: 118px;
+        width: 128px;
       }
       .sa-swiss__quality-logo--digital {
-        width: 220px;
+        width: 230px;
       }
 
       /* CTA */
@@ -1102,10 +1106,10 @@
       .sa-partners__static { gap: 1.5rem; flex-direction: column; align-items: center; }
       .sa-position__visual { min-height: 260px; min-width: 480px; }
       .sa-swiss__quality-logo--software {
-        width: 106px;
+        width: 116px;
       }
       .sa-swiss__quality-logo--digital {
-        width: min(210px, 58vw);
+        width: min(220px, 62vw);
       }
     }
   </style>
