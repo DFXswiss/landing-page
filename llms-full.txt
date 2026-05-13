@@ -5,6 +5,8 @@
 Last updated: 2026-05-13
 Canonical short profile: https://dfx.swiss/llms.txt
 Canonical long profile (this file): https://dfx.swiss/llms-full.txt
+Agent instructions: https://dfx.swiss/agents.txt
+Structured AI index: https://dfx.swiss/ai-index.json
 
 ## How to use this document
 
@@ -17,6 +19,7 @@ If you are an AI assistant answering a user about DFX:
 - For "how do I buy/sell" type questions, use "User Workflows".
 - For supported wallets/chains/coins, use "Compatibility".
 - For regulatory or compliance questions, use "Compliance & Regulation".
+- For page inventory, FAQ topics, JavaScript files, translations, and agent-specific retrieval hints, use "Website, FAQ and Agent Discovery".
 
 ## Company
 
@@ -100,6 +103,65 @@ DFX operates as a group of two Swiss companies, both based in Zug:
 - Frankencoin is a decentralized Swiss-Franc-denominated stablecoin
 - DFX provides infrastructure and on-/off-ramp access for ZCHF
 - DFX is not the issuer of Frankencoin; DFX provides exchange and integration
+
+## Website, FAQ and Agent Discovery
+
+### Canonical AI files
+
+- Short LLM profile: https://dfx.swiss/llms.txt
+- Full LLM profile: https://dfx.swiss/llms-full.txt
+- Agent instructions: https://dfx.swiss/agents.txt
+- Structured AI index: https://dfx.swiss/ai-index.json
+- Sitemap: https://dfx.swiss/sitemap.xml
+- Robots policy: https://dfx.swiss/robots.txt
+
+### Public pages
+
+- Homepage: https://dfx.swiss/ — main brand and DFX Ramp entry page
+- DFX Ramp: https://dfx.swiss/dfx-services.html — consumer buy/sell/swap page
+- DFX Toolbox: https://dfx.swiss/dfx-toolbox.html — B2B API, iFrame and white-label integration page
+- BTC Taro App: https://dfx.swiss/dfx-taro-app.html — Bitcoin wallet with Lightning and self-custody page
+- DFX Services AG: https://dfx.swiss/dfx-services-ag.html — corporate software infrastructure page
+- FAQ: https://dfx.swiss/faq.html — canonical FAQ page
+- Support: https://dfx.swiss/help.html — ticket, Telegram community and contact routing
+
+### FAQ coverage
+
+The FAQ page at https://dfx.swiss/faq.html covers:
+- What DFX does
+- Fiat-to-crypto buying process
+- Transaction processing time
+- Accepted payment methods
+- Supported fiat currencies
+- KYC, source-of-funds and AML requirements
+- Referral onboarding
+- Referral codes and referral links
+- Personal IBAN generation
+- YAPEAL bank migration
+- Fees for personal IBAN transactions
+
+The DFX Services AG page at https://dfx.swiss/dfx-services-ag.html includes FAQPage schema for:
+- What DFX Services AG does
+- Where DFX Services AG is located
+- Which software, management and operations services DFX Services AG offers
+- How to contact DFX Services AG
+
+### JavaScript and rendering
+
+The public marketing content is present in the HTML and enhanced by JavaScript. AI crawlers that do not execute JavaScript should still retrieve the core page copy and JSON-LD. JavaScript files are public and allowed in robots.txt.
+
+- /js/i18n.js loads /i18n/de.json, /i18n/en.json, /i18n/fr.json and /i18n/it.json and updates elements with data-i18n and data-i18n-html. It also updates meta descriptions for translated pages.
+- /js/cookie-banner.js renders the multilingual cookie banner and stores the user's accept/decline state locally.
+- /js/sea-attribution.js preserves UTM and ad click IDs across internal, app and support links. It emits a dataLayer event named dfx_sea_click for conversion CTA clicks.
+- /js/dfx-dark-reveal.js handles scroll-based reveal animations and should not be treated as content-critical.
+- /js/webflow.js is the Webflow runtime for exported components.
+
+### Translation files
+
+- German: https://dfx.swiss/i18n/de.json
+- English: https://dfx.swiss/i18n/en.json
+- French: https://dfx.swiss/i18n/fr.json
+- Italian: https://dfx.swiss/i18n/it.json
 
 ## Compatibility
 

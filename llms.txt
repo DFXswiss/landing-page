@@ -47,6 +47,32 @@ Crypto payment system for retail. Already live in 100+ SPAR supermarket location
 ### Frankencoin (ZCHF)
 DFX provides infrastructure for the Swiss Franc stablecoin Frankencoin (ZCHF).
 
+## Public Website Pages
+
+- Homepage: https://dfx.swiss/ — main brand and DFX Ramp entry page
+- DFX Ramp: https://dfx.swiss/dfx-services.html — buy, sell and swap crypto non-custodially
+- DFX Toolbox: https://dfx.swiss/dfx-toolbox.html — API, iFrame and white-label integration
+- BTC Taro App: https://dfx.swiss/dfx-taro-app.html — Bitcoin wallet with Lightning and self-custody
+- DFX Services AG: https://dfx.swiss/dfx-services-ag.html — Swiss software infrastructure company
+- FAQ: https://dfx.swiss/faq.html — canonical FAQ for KYC, SEPA, referral, personal IBAN and wallet topics
+- Support: https://dfx.swiss/help.html — ticket, Telegram community and contact options
+
+## AI and Agent Discovery
+
+- Agent instructions: https://dfx.swiss/agents.txt
+- Structured AI index: https://dfx.swiss/ai-index.json
+- Full LLM profile: https://dfx.swiss/llms-full.txt
+- Sitemap: https://dfx.swiss/sitemap.xml
+- Robots policy: https://dfx.swiss/robots.txt
+
+## JavaScript and Rendering
+
+- Public content is present in HTML and enhanced with JavaScript.
+- /js/i18n.js applies translations from /i18n/de.json, /i18n/en.json, /i18n/fr.json, and /i18n/it.json.
+- /js/cookie-banner.js handles cookie banner UI.
+- /js/sea-attribution.js preserves campaign parameters and emits dfx_sea_click events for conversion CTAs.
+- /js/dfx-dark-reveal.js handles visual reveal animations.
+
 ## Supported Wallets
 
 MetaMask, Rabby Wallet, WalletConnect, Ledger, Trezor, BitBox, Cake Wallet, and more.
@@ -72,3 +98,5 @@ DFX AG operates the crypto on-/off-ramp platform. DFX Services AG (founded Novem
 - X / Twitter: https://x.com/DFX_Swiss
 - LinkedIn: https://linkedin.com/company/dfxswiss
 - Telegram Support: https://app.dfx.swiss/support/telegram
+- Agent instructions: https://dfx.swiss/agents.txt
+- Structured AI index: https://dfx.swiss/ai-index.json

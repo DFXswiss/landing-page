@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /js/
+Allow: /css/
+Allow: /i18n/
+Allow: /images/
 
 # AI & LLM crawlers
 User-agent: GPTBot
@@ -8,10 +12,16 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: ChatGPT-User
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: Applebot-Extended
@@ -71,5 +81,7 @@ Allow: /
 # LLM-readable profiles
 # https://dfx.swiss/llms.txt        — short company profile
 # https://dfx.swiss/llms-full.txt   — long-form profile with workflows, fees, FAQ
+# https://dfx.swiss/agents.txt      — instructions for AI agents and answer engines
+# https://dfx.swiss/ai-index.json   — structured inventory of pages, FAQs, JS and assets
 
 Sitemap: https://dfx.swiss/sitemap.xml
