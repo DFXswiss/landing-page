@@ -28,7 +28,7 @@
 
 ## Products
 
-### DFX On-/Off-Ramp
+### DFX Ramp
 Buy and sell 80+ cryptocurrencies via bank transfer directly into any software or hardware wallet. Non-custodial, Swiss regulated, fast processing (~10 min after payment receipt).
 - App: https://app.dfx.swiss
 - Page: https://dfx.swiss/dfx-services.html
