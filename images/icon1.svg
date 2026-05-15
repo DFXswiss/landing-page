@@ -1,10 +1,19 @@
 <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M75 12L10 47.5V57H140V47.5L75 12ZM18 64V120H32V64H18ZM44 64V120H58V64H44ZM68 64V120H82V64H68ZM92 64V120H106V64H92ZM118 64V120H132V64H118ZM8 125V138H142V125H8Z" fill="url(#paint0_linear_bank_4385)"/>
 <defs>
-<linearGradient id="paint0_linear_bank_4385" x1="75" y1="12" x2="75" y2="138" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear_bank" x1="75" y1="10" x2="75" y2="140" gradientUnits="userSpaceOnUse">
 <stop offset="0.0791422" stop-color="#F5516C"/>
 <stop offset="0.640778" stop-color="#9B405E"/>
 <stop offset="1" stop-color="#443051"/>
 </linearGradient>
 </defs>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M62 12C32.7269 12 9 35.7269 9 65C9 94.2731 32.7269 118 62 118C91.2731 118 115 94.2731 115 65C115 35.7269 91.2731 12 62 12ZM62 24C39.3563 24 21 42.3563 21 65C21 87.6437 39.3563 106 62 106C84.6437 106 103 87.6437 103 65C103 42.3563 84.6437 24 62 24Z" fill="url(#paint0_linear_bank)"/>
+<path d="M62 36L42 50H82L62 36Z" fill="white"/>
+<rect x="43" y="51.5" width="38" height="3.5" fill="white"/>
+<rect x="46" y="57" width="6" height="28" fill="white"/>
+<rect x="59" y="57" width="6" height="28" fill="white"/>
+<rect x="72" y="57" width="6" height="28" fill="white"/>
+<rect x="41" y="86" width="42" height="3.5" fill="white"/>
+<rect x="38" y="92" width="48" height="3" fill="white"/>
+<path d="M88 47L122 47L122 38L142 58L122 78L122 69L88 69L88 47Z" fill="url(#paint0_linear_bank)"/>
+<path d="M142 86L108 86L108 77L88 97L108 117L108 108L142 108L142 86Z" fill="url(#paint0_linear_bank)"/>
 </svg>
