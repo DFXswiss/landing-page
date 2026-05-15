@@ -538,6 +538,184 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== AI ASSISTANT POPUP — first-visit toast ===== */
+.dk-ai-popup {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9998;
+  width: 390px;
+  max-width: calc(100vw - 3rem);
+  padding: 1.5rem 1.5rem 1.35rem;
+  background: linear-gradient(145deg, rgba(13, 64, 112, 0.92), rgba(10, 48, 85, 0.95));
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  font-family: Inter, Arial, sans-serif;
+  transform: translateY(20px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, bottom 0.4s ease;
+  pointer-events: none;
+}
+
+/* Lift popup above visible cookie banner so they don't overlap */
+.dk-cookie.is-visible ~ .dk-ai-popup {
+  bottom: 8.5rem;
+}
+@media (max-width: 768px) {
+  .dk-cookie.is-visible ~ .dk-ai-popup {
+    bottom: 13rem;
+  }
+}
+
+.dk-ai-popup.is-visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dk-ai-popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 81, 108, 0.45), transparent);
+}
+
+.dk-ai-popup__close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dk-ai-popup__close:hover,
+.dk-ai-popup__close:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--dk-white);
+  outline: none;
+}
+
+.dk-ai-popup__title {
+  margin: 0 0 0.35rem;
+  color: var(--dk-white);
+  font-size: 1rem;
+  font-weight: 700;
+  padding-right: 1.5rem;
+}
+
+.dk-ai-popup__sub {
+  margin: 0 0 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.dk-ai-popup__pills {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.dk-ai-popup .dk-ai-pill {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  gap: 0.4rem;
+}
+
+.dk-ai-popup .dk-ai-pill__icon {
+  width: 15px;
+  height: 15px;
+}
+
+.dk-ai-popup .dk-ai-pill__arrow {
+  width: 10px;
+  height: 10px;
+}
+
+@media (max-width: 480px) {
+  .dk-ai-popup {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    max-width: none;
+    padding: 1.25rem;
+  }
+  .dk-ai-popup__pills { justify-content: center; }
+}
+
+.dk-ai-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.05rem;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.14);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dk-ai-pill:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(245, 81, 108, 0.45);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px var(--dk-red-glow);
+}
+
+.dk-ai-pill:focus-visible {
+  outline: 2px solid var(--dk-red);
+  outline-offset: 3px;
+}
+
+.dk-ai-pill__icon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.dk-ai-pill__arrow {
+  width: 11px;
+  height: 11px;
+  opacity: 0.4;
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.dk-ai-pill:hover .dk-ai-pill__arrow {
+  opacity: 1;
+  color: var(--dk-red);
+  transform: translate(1px, -1px);
+}
+
+@media (max-width: 640px) {
+  .dk-ai-pill { font-size: 0.84rem; padding: 0.5rem 0.95rem; }
+}
+
 /* ===== CONTAINER ===== */
 .dk-container {
   max-width: 1200px;
