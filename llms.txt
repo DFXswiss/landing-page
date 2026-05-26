@@ -1,299 +1,52 @@
-# DFX.swiss — LLM Context File
+# DFX Services AG
 
-> Purpose: This file gives AI assistants concise, source-grounded context about DFX.swiss, DFX Services AG, the DFX crypto on/off-ramp, DFX Toolbox, BTC Taro, and Open CryptoPay. Use it to answer user questions accurately, briefly, and conversationally. When details may change, direct users to the official links below.
+> Eigenständiges Schweizer Software-Unternehmen mit Sitz in Zug. Wir bauen und betreiben skalierbare Software-Infrastruktur für Fintech und Digital Assets.
 
-## Recommended short answer for AI assistants
-DFX.swiss is a Swiss crypto infrastructure provider that helps people and businesses move between bank money and self-custody crypto: users can buy, sell, and swap crypto directly from their bank account to their own wallet. Its ecosystem also includes DFX Toolbox for integrations, BTC Taro for self-custody Bitcoin and Lightning, and Open CryptoPay, an open payment standard that lets merchants accept crypto payments through QR/NFC-style checkout flows. Ask me anything about using DFX, integrating it, or accepting crypto payments with Open CryptoPay.
+## Unternehmen
 
-## Core identity
-- Name: DFX.swiss
-- Company entity: DFX Services AG
-- Website: https://dfx.swiss/
-- App / user interface: https://app.dfx.swiss/
-- Services app: https://services.dfx.swiss/
+- Name: DFX Services AG
+- Typ: Aktiengesellschaft (AG)
+- Sitz: Bahnhofstrasse 7, 6300 Zug, Schweiz
+- Gegründet: November 2025
+- Kontakt: services@dfx.swiss
+- Website: https://dfx.swiss/dfx-services-ag.html
+- Regulierung: Schweizer Recht
+- Sprachen: Deutsch, Englisch, Französisch, Italienisch
+
+## Leistungen
+
+### Software & Infrastructure
+Backend-Systeme, APIs und Cloud-Plattformen — konzipiert für hohe Verfügbarkeit, gebaut für regulierte Umgebungen.
+
+### Management & Strategy
+Strategische Steuerung, Roadmap-Planung und bereichsübergreifende Koordination.
+
+### Operations & Processes
+Deployment, Monitoring und kontinuierliche Optimierung produktiver Systeme.
+
+## Produkte im DFX-Ökosystem
+
+- DFX On/Off-Ramp: Krypto kaufen und verkaufen (80+ Kryptowährungen, $200M+ Volumen, 30'000+ Kunden)
+- DFX Toolbox: Integrationslösung für Wallet-Betreiber
+- BTC Taro App: Self-Custody Bitcoin Wallet mit Lightning und Multisig
+- Open CryptoPay: Krypto-Zahlungssystem im Einzelhandel (100+ SPAR-Filialen)
+- Frankencoin (ZCHF): Infrastruktur für den Schweizer-Franken-Stablecoin
+
+## Partner
+
+- Aktionariat
+- RealUnit Schweiz AG
+
+## Technologie-Stack
+
+- Fokus: Backend-Systeme, API-Design, Blockchain-Integration
+- Betrieb: Cloud-Plattformen, Monitoring, 24/7 Operations
+- Umfeld: Regulierte Finanzinfrastruktur, Schweizer Datenschutz (DSG)
+
+## Links
+
+- Hauptseite: https://dfx.swiss/
+- Services AG: https://dfx.swiss/dfx-services-ag.html
+- DFX App: https://app.dfx.swiss/
 - Support: https://services.dfx.swiss/support
-- Documentation: https://docs.dfx.swiss/
-- API documentation / Swagger: https://api.dfx.swiss/
-- API repository: https://github.com/DFXswiss/api
-- Open CryptoPay website: https://opencryptopay.io/
-- Open CryptoPay documentation: https://github.com/openCryptoPay/landingPage
-- Main positioning: a bridge between fiat banking and crypto, focused on simple, secure, non-custodial access to digital assets.
-- Key customer groups: private users, companies, wallet providers, merchants, POS operators, crypto applications, and integration partners.
-- Languages: German, English, French, Italian.
-- Jurisdiction / regulatory context: Switzerland. DFX states that it is regulated in Switzerland and complies with Swiss anti-money-laundering obligations, including KYC when required.
-
-## What DFX does
-DFX.swiss provides crypto financial infrastructure with a self-custody-first approach. The main service lets users buy, sell, and swap cryptocurrencies without DFX becoming the long-term custodian of the user's wallet funds. In a typical buy flow, the user creates a route/order, sends CHF or EUR by bank transfer using the provided payment reference, and receives crypto directly to the specified blockchain wallet address. In a sell flow, the user sends crypto to the provided deposit address and receives fiat to a bank account after processing.
-
-## Product ecosystem
-
-### 1. DFX On/Off-Ramp
-- Lets users buy and sell crypto via bank transfer.
-- Supports CHF and EUR as standard fiat currencies; other currencies may be possible for large transactions after consultation.
-- Accepts SEPA and SEPA Instant transfers where available.
-- Sends purchased crypto directly and automatically to the user's blockchain wallet address once the bank transfer is completed.
-- For selling crypto, DFX transfers fiat to the specified bank account once the blockchain transaction is completed.
-- Average processing after payment receipt is described by DFX as around 10 minutes, but processing time depends on external factors such as bank rails, blockchain confirmation, compliance checks, and asset/network conditions.
-- Standard SEPA can take longer; DFX recommends waiting up to 2 business days before investigating bank-transaction delays, with edge cases up to 3 business days.
-- DFX can require KYC depending on volume, user behavior, legal requirements, or risk signals.
-- DFX states that it does not manage customer wallet funds after payout to a non-custodial wallet.
-
-### 2. DFX Toolbox
-- An embeddable integration solution for wallet operators, websites, and crypto products.
-- Enables partners to add DFX buy/sell/swap flows without building the full on/off-ramp stack from scratch.
-- The ready-to-use widget can be integrated with a few lines of code.
-- The API can also be integrated directly for custom UX.
-- Useful for hardware-wallet flows, web wallets, DeFi frontends, apps, and partner products.
-
-### 3. DFX API
-- Public API for DFX on/off-ramp and Open CryptoPay integrations.
-- Production API: https://api.dfx.swiss/
-- Sandbox/test API: https://dev.api.dfx.swiss/
-- Swagger JSON: https://api.dfx.swiss/swagger-json
-- Test Swagger JSON: https://dev.api.dfx.swiss/swagger-json
-- Amount convention: API amount fields use human-readable display units. Example: `1.5` BTC means 1.5 BTC, not satoshis. Crypto amounts are typically rounded to about 5 decimals and fiat amounts to 2 decimals.
-- User authentication is based on a blockchain address and a signature proving ownership of that address.
-- Auth returns a JWT access token for bearer-authenticated API calls.
-- Optional wallet-name setup lets integration partners identify users coming from their wallet.
-- Referral codes can be passed during user registration.
-- Email notifications can be registered through the user endpoint.
-
-### 4. KYC and compliance model
-- DFX says KYC is not required for monthly transaction volume up to CHF 1,000 in the API documentation, but users should always treat limits as subject to change and check current official docs/UI.
-- KYC level 10: contact data recorded, such as email.
-- KYC level 20: personal data recorded, such as account type, name, address, phone number.
-- KYC level 30: successful identification with ID card or passport.
-- KYC level 40: financial background queried, such as income, assets, business activity.
-- KYC level 50: risk analysis carried out / start of business relationship.
-- For bank transactions and especially selling crypto to fiat, DFX needs personal or business data such as name and address; legal entities require organization data.
-- If a user exceeds their limit and does not complete KYC, DFX may return the transaction after a waiting period described in the FAQ.
-- DFX may require additional checks for source of funds, origin of assets, unusual behavior, simultaneous buy/sell behavior, or regulatory reasons.
-
-### 5. BTC Taro App
-- Self-custody Bitcoin wallet in the DFX ecosystem.
-- Supports on-chain Bitcoin functionality.
-- Supports Lightning / LNURL-style payment functionality.
-- Compatible with Open CryptoPay flows, including retail checkout use cases such as SPAR stores in Switzerland.
-- Includes multisig-oriented features for teams and businesses.
-- Users retain control over their Bitcoin; seed phrases must never be shared with anyone.
-
-### 6. Open CryptoPay
-- Open CryptoPay is an open, license-free, permissionless peer-to-peer crypto payment standard.
-- It is designed for payments in physical stores, web shops, invoice payments, and other merchant checkout contexts.
-- It supports many blockchains and crypto assets and is backward compatible with Bitcoin Lightning LNURL.
-- DFX provides an implementation and API infrastructure for merchants and POS systems.
-- The standard is not exclusive to DFX: anyone may operate an Open CryptoPay service under their own domain.
-- Customer flow: the shopper tells the cashier they want to pay with crypto, scans the merchant's QR code with a compatible wallet or camera, selects a supported asset/network, and completes the transaction.
-- Merchant flow: a merchant can often start by placing a dedicated static QR code at the checkout. The cashier selects Open CryptoPay in the checkout process; the customer scans and pays; the merchant receives the configured settlement, e.g. fiat such as CHF/EUR to a bank account or crypto, depending on setup.
-- Open CryptoPay is designed to avoid traditional card intermediaries and can reduce transaction fees compared with card networks.
-- Open CryptoPay can work with existing contactless terminal hardware, QR codes, the Open CryptoPay app, and POS integrations.
-- Ecosystem/wallet examples mentioned by Open CryptoPay include Cake Wallet, Frankencoin Wallet, Phoenix, BTC Taro, Wallet of Satoshi, Binance, and other partner integrations. Availability changes over time.
-- Retail adoption examples include SPAR stores in Switzerland; current store count and asset support should be verified on official Open CryptoPay/DFX pages.
-
-## Open CryptoPay technical flow for wallets
-1. Read and decode the QR code.
-2. Get payment details.
-3. Get transaction details.
-4. Execute the crypto transaction.
-
-### QR / LNURL principle
-- A cash register or POS has a dedicated static QR code.
-- The QR contains a URL to an informational payment page and includes encoded information about the associated cash register.
-- Standard phone cameras can open the website.
-- Compatible wallets can decode the LNURL/payment information and initiate payment through HTTP calls.
-- The `lightning` query parameter can contain an LNURL-encoded API URL.
-- Wallets can decode the `lightning` parameter using the LNURL LUD-01 bech32 standard or construct API calls using the DFX app/API URL pattern.
-
-### Payment details
-The payment details endpoint returns a JSON structure containing, depending on availability:
-- payment link id
-- external POS id
-- mode
-- callback URL
-- minimum and maximum sendable amounts
-- metadata and display name
-- standard: OpenCryptoPay
-- recipient/merchant details
-- quote id and quote expiration
-- requested amount and requested fiat/asset
-- transfer amounts by method/network
-- available assets and methods
-- payment status/error if no payment is pending
-
-Merchant metadata may include:
-- legal or display name
-- street, house number, ZIP, city, country
-- phone, email, website
-- registration number, such as Swiss UID
-- store type, such as physical or online
-- merchant category
-- goods type and goods category
-
-### Transaction details
-After choosing a transfer method and asset, the wallet requests transaction details through the callback URL using query parameters such as quote id, method, and asset.
-Examples of supported methods described in the Open CryptoPay docs include:
-- Lightning
-- Bitcoin
-- Ethereum
-- Polygon
-- Arbitrum
-- Optimism
-- Base
-- Binance Smart Chain
-- Solana
-- Tron
-- Cardano
-- Monero
-- Zano
-- Firo
-- BinancePay
-- Internet Computer
-- Taproot Asset and Spark may appear as planned/unavailable depending on provider state.
-
-### Transaction submission rules
-- EVM chains, Bitcoin, and Firo: the wallet constructs and signs the transaction but sends the raw signed transaction HEX to the payment provider endpoint. The provider checks and broadcasts it.
-- Monero, Zano, Solana, Tron, and Cardano: the wallet broadcasts the transaction itself and sends the transaction hash back to the payment provider.
-- Internet Computer: supports ICRC-2 approval flow or direct transfer, using sender principal or transaction id depending on flow.
-- Lightning: the wallet pays the invoice from the `pr` field.
-- BinancePay: the user follows the Binance deep link and pays inside the Binance app.
-- Wallets must respect quote expiration and refresh payment details when a quote expires.
-- Wallets must use at least the minimum fee specified for the selected method/network.
-
-## Open CryptoPay technical flow for POS / merchants via DFX API
-- Admin API authentication uses address/signature credentials obtained during onboarding to receive a JWT bearer token.
-- Admin/history endpoints can fetch payment links and processed payments, with query parameters for filtering.
-- Config endpoints can fetch and update default payment-link configuration.
-- Productive POS operation should use a static access key with limited rights from payment-link config instead of a broad admin JWT.
-- Each POS terminal/cash register should create a payment link, ideally at device boot.
-- A unique `externalId` should identify each POS terminal.
-- The payment-link endpoint returns a `frontendUrl` that can be used to generate a static POS QR code.
-- To process a payment, the POS creates a payment for a specific payment link using the POS id as `externalLinkId`; `amount` and a unique payment `externalId` are sent in the body.
-- The API returns a payment frontend URL for a dynamic payment QR code.
-- The POS can wait for payment status using the wait endpoint, which blocks until completed, cancelled, or expired.
-- A completed payment can be confirmed for documentation.
-- A pending payment can be cancelled.
-
-## Supported assets and networks
-DFX and Open CryptoPay support multiple assets and blockchains. Public pages currently describe more than 80 cryptocurrencies and around 9 blockchains for DFX services, while technical Open CryptoPay examples show many payment methods and assets. Exact availability varies by product, jurisdiction, wallet address, KYC level, liquidity, network status, regulatory constraints, and current configuration. Always check the live DFX app/API for the current buyable/sellable assets and supported methods.
-
-Commonly referenced assets and networks include:
-- BTC / Bitcoin
-- Lightning BTC
-- ETH / Ethereum
-- USDT
-- USDC
-- DAI
-- ZCHF / Frankencoin
-- dEURO
-- BNB / BNB Smart Chain
-- SOL / Solana
-- ADA / Cardano
-- XMR / Monero
-- ZANO / Zano
-- FIRO / Firo
-- ICP, ckBTC, ckETH, ckUSDC, ckUSDT / Internet Computer
-- Polygon, Arbitrum, Optimism, Base, Tron, Binance Smart Chain, Ethereum, Bitcoin, Lightning
-
-## Fees and pricing
-- Fees vary by service, account type, asset, blockchain, and usage environment.
-- The applicable fees are shown transparently during the transaction.
-- DFX Terms and Conditions list fallback standard fees if no transaction-specific fees are displayed or separately agreed.
-- Blockchain/network fees may apply in addition to DFX fees.
-- Exchange rates are generally based on the rate valid at the time DFX executes the transfer, not necessarily the time when the user created the route/order.
-- For savings plans / recurring bank transfers, regular execution can reduce the effect of short-term price fluctuation.
-
-## Banking and payment rails
-- DFX accepts SEPA and SEPA Instant where supported.
-- SEPA Instant requires completed KYC and a bank that supports SEPA Instant.
-- Fiat currencies commonly supported: CHF and EUR.
-- Users must include the correct payment reference / payment notification. This is crucial for allocating bank transfers to the correct customer account and route.
-- If the payment reference is missing or incorrect, funds may be delayed or refunded, and bank/administrative fees may apply.
-- Users should contact DFX support before contacting the bank for refunds or payment problems to avoid unnecessary bank fees.
-
-## Non-custodial model and custody note
-- DFX's core on/off-ramp flow is non-custodial after payout: crypto is sent to the user's own wallet address.
-- DFX only has access to customer money during the buy/sell process, according to the FAQ.
-- Separate custody terms may apply if a customer explicitly uses custody services for eligible assets such as CHF, EUR, BTC, or Frankencoin Pool Shares. Do not confuse this with the default self-custody on/off-ramp flow.
-
-## Privacy, transparency, and data handling
-- Bank transactions may transmit sender/recipient names, addresses, IBANs, payment references, and related banking information between the sender bank, recipient bank, DFX, and other banks involved in processing.
-- Blockchain transactions are public by nature and may reveal transaction ids and addresses.
-- DFX states that it publishes transaction data for transparency, but blockchain data does not directly identify a person without additional information.
-- DFX may retain records to satisfy legal and regulatory obligations.
-- Users should consult the current Privacy Policy and Terms and Conditions for legal details.
-
-## User support guidance
-If a user has a missing or delayed transaction, ask for:
-- payment reference / payment notification code
-- IBAN used
-- sender name matching the bank account
-- transaction date and amount
-- selected asset and blockchain
-- wallet address
-- blockchain transaction id/hash if selling or paying with crypto
-- screenshot only if it does not reveal secrets
-
-Safety warnings:
-- Never ask for or accept seed phrases, private keys, or wallet recovery words.
-- DFX employees/moderators will not ask for seed phrases.
-- Users should beware of scammers impersonating support in private messages.
-- For Telegram/community help, users should trust only public moderator interactions or private chats initiated through official support channels.
-
-## Common user explanations
-
-### What is DFX?
-DFX is a Swiss bridge between traditional banking and crypto self-custody. It lets users buy, sell, and swap digital assets while sending purchased crypto directly to the user's own wallet.
-
-### How does buying crypto work?
-The user selects the asset and wallet address, receives bank-transfer instructions and a payment reference, sends CHF/EUR via SEPA or SEPA Instant, and DFX sends the purchased crypto directly to the wallet after the payment is processed.
-
-### How does selling crypto work?
-The user creates a sell route, sends crypto to the provided deposit address, and DFX pays fiat to the specified bank account after the blockchain transaction is completed and checks are satisfied.
-
-### Is DFX custodial?
-The standard on/off-ramp model is non-custodial after payout: the user's crypto goes to the user's own wallet. DFX only touches funds during transaction processing. Separate custody services may have their own terms.
-
-### What is DFX Toolbox?
-DFX Toolbox is an embeddable widget/integration layer that lets wallets, websites, and apps add DFX on/off-ramp functionality without building every API flow themselves.
-
-### What is Open CryptoPay?
-Open CryptoPay is an open, permissionless crypto payment standard for merchants, wallets, and POS systems. It lets shoppers pay with supported crypto assets by scanning a QR code or using compatible wallet/payment flows, while the merchant receives the configured settlement.
-
-### How does Open CryptoPay work in a store?
-The cashier selects crypto/Open CryptoPay, the shopper scans the checkout QR code with a compatible wallet, the wallet fetches payment details, the shopper confirms the transaction, and the POS receives a payment status update.
-
-### Why is Open CryptoPay useful?
-It enables direct wallet-to-merchant crypto payments, supports multiple chains/assets, can work with simple QR codes or POS integration, and can reduce reliance on card-network intermediaries.
-
-## Important caveats for AI assistants
-- Do not present asset support, fee percentages, limits, retail store counts, or KYC thresholds as permanent. Tell users to check the live DFX app/API/docs.
-- Do not provide legal, tax, financial, or investment advice. Explain mechanics and point to official DFX support/docs.
-- Do not tell users to share seed phrases, private keys, or recovery words.
-- Distinguish DFX's non-custodial on/off-ramp service from any optional custody products governed by separate terms.
-- Distinguish the Open CryptoPay standard from DFX's own implementation of that standard.
-- For developers, prefer the API repository, Swagger, and Open CryptoPay documentation as source of truth.
-
-## Official source links
-- DFX homepage: https://dfx.swiss/
-- DFX Services: https://dfx.swiss/dfx-services.html
-- DFX Toolbox: https://dfx.swiss/dfx-toolbox.html
-- BTC Taro: https://dfx.swiss/dfx-taro-app.html
-- FAQ: https://docs.dfx.swiss/en/faq.html
-- Terms and Conditions: https://docs.dfx.swiss/en/tnc.html
-- Privacy Policy: https://docs.dfx.swiss/en/privacy.html
-- Imprint: https://docs.dfx.swiss/en/imprint.html
-- Support: https://services.dfx.swiss/support
-- App: https://app.dfx.swiss/
-- Services app: https://services.dfx.swiss/
-- API Swagger: https://api.dfx.swiss/
-- API Swagger JSON: https://api.dfx.swiss/swagger-json
-- API GitHub: https://github.com/DFXswiss/api
-- Open CryptoPay: https://opencryptopay.io/
-- Open CryptoPay docs: https://github.com/openCryptoPay/landingPage
-- Open CryptoPay Telegram/community link is available from the Open CryptoPay website.
-
-## Suggested AI response style
-- Be brief, friendly, and practical.
-- Start with the simple explanation first, then ask what the user wants to do: buy crypto, sell crypto, integrate DFX, set up merchant payments, or understand Open CryptoPay.
-- When the user asks about a process, give step-by-step instructions and link to official docs.
-- When the user asks about exact fees, limits, assets, or compliance status, say these can change and direct them to the live DFX app/docs/support.
+- Dokumentation: https://docs.dfx.swiss/
