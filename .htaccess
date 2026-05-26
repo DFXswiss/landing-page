@@ -1,0 +1,41 @@
+RewriteEngine On
+
+# Apple App Site Association — must be served as application/json
+<Files "apple-app-site-association">
+  ForceType application/json
+</Files>
+
+# Weiterleitungen für das REF System zur API
+RewriteRule ^app$ https://api.dfx.swiss/v1/app [R=301,L]
+RewriteRule ^(.+)/app$ https://api.dfx.swiss/v1/app?orig=$1 [R=301,NC,L,QSA]
+RewriteRule ^app/(.+)/(.+)$ https://api.dfx.swiss/v1/app/$1?code=$2 [R=301,NC,L,QSA]
+RewriteRule ^app/(.+)$ https://api.dfx.swiss/v1/app/$1 [R=301,NC,L,QSA]
+
+# Weiterleitung für alte Websiten
+RewriteRule ^terms-and-conditions https://docs.dfx.swiss/en/tnc.html [R=301,L]
+RewriteRule ^privacy-policy https://docs.dfx.swiss/en/privacy.html [R=301,L]
+RewriteRule ^imprint https://docs.dfx.swiss/en/imprint.html [R=301,L]
+RewriteRule ^de/ https://dfx.swiss/ [R=301,L]
+RewriteRule ^en/ https://dfx.swiss/ [R=301,L]
+RewriteRule ^fr/ https://dfx.swiss/ [R=301,L]
+RewriteRule ^it/ https://dfx.swiss/ [R=301,L]
+RewriteRule ^de$ https://dfx.swiss/ [R=301,L]
+RewriteRule ^en$ https://dfx.swiss/ [R=301,L]
+RewriteRule ^fr$ https://dfx.swiss/ [R=301,L]
+RewriteRule ^it$ https://dfx.swiss/ [R=301,L]
+
+# Weiterleitung für App Direkt Links
+RewriteRule ^buy-lightning$ https://app.dfx.swiss/?mode=lightning-wallets [R=301,L]
+RewriteRule ^metamask$ https://app.dfx.swiss/?mode=only-metamask-wallet [R=301,L]
+RewriteRule ^walletConnect$ https://app.dfx.swiss/?mode=only-walletconnect-wallet [R=301,L]
+RewriteRule ^frankencoin$ https://app.dfx.swiss/?mode=frankencoin [R=301,L]
+RewriteRule ^deuro$ https://app.dfx.swiss/?mode=deuro [R=301,L]
+
+RewriteRule ^hardwareWallets$ https://app.dfx.swiss/?mode=hw-wallets [R=301,L]
+RewriteRule ^ledger$ https://app.dfx.swiss/?mode=only-ledger [R=301,L]
+RewriteRule ^bitbox$ https://app.dfx.swiss/?mode=only-bitbox [R=301,L]
+RewriteRule ^trezor$ https://app.dfx.swiss/?mode=only-trezor [R=301,L]
+
+RewriteRule ^cakeWallet$ https://app.dfx.swiss/?mode=only-cake-wallet [R=301,L]
+RewriteRule ^moneroWallet$ https://app.dfx.swiss/?mode=only-monero-wallet [R=301,L]
+RewriteRule ^commandLine$ https://app.dfx.swiss/?mode=only-cli-wallet [R=301,L]
