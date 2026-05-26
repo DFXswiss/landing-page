@@ -1,0 +1,34 @@
+# App entry points (API ref-system)
+/app                      https://api.dfx.swiss/v1/app                          301
+/app/:seg1/:seg2          https://api.dfx.swiss/v1/app/:seg1?code=:seg2         301
+/app/:rest                https://api.dfx.swiss/v1/app/:rest                    301
+/:path/app                https://api.dfx.swiss/v1/app?orig=:path               301
+
+# Legacy doc pages
+/terms-and-conditions     https://docs.dfx.swiss/en/tnc.html                    301
+/privacy-policy           https://docs.dfx.swiss/en/privacy.html                301
+/imprint                  https://docs.dfx.swiss/en/imprint.html                301
+
+# Legacy language-prefixed URLs
+/de                       /                                                     301
+/en                       /                                                     301
+/fr                       /                                                     301
+/it                       /                                                     301
+/de/*                     /                                                     301
+/en/*                     /                                                     301
+/fr/*                     /                                                     301
+/it/*                     /                                                     301
+
+# App direct links (wallet modes)
+/buy-lightning            https://app.dfx.swiss/?mode=lightning-wallets         301
+/metamask                 https://app.dfx.swiss/?mode=only-metamask-wallet      301
+/walletConnect            https://app.dfx.swiss/?mode=only-walletconnect-wallet 301
+/frankencoin              https://app.dfx.swiss/?mode=frankencoin               301
+/deuro                    https://app.dfx.swiss/?mode=deuro                     301
+/hardwareWallets          https://app.dfx.swiss/?mode=hw-wallets                301
+/ledger                   https://app.dfx.swiss/?mode=only-ledger               301
+/bitbox                   https://app.dfx.swiss/?mode=only-bitbox               301
+/trezor                   https://app.dfx.swiss/?mode=only-trezor               301
+/cakeWallet               https://app.dfx.swiss/?mode=only-cake-wallet          301
+/moneroWallet             https://app.dfx.swiss/?mode=only-monero-wallet        301
+/commandLine              https://app.dfx.swiss/?mode=only-cli-wallet           301
