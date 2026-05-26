@@ -36,7 +36,8 @@ Falls origin auf einen Fork zeigt:
 2. `joshua-auto-pr.yaml` legt/aktualisiert PR `joshua -> develop`
 
 `develop` -> dev.dfx.swiss und `main` -> dfx.swiss laufen über separate
-FTP-Workflows (`dev.yaml`, `prd.yaml`). Nicht anfassen.
+wrangler-Workflows (`dev.yaml`, `prd.yaml`) — analog `joshua-deploy.yaml`,
+nur mit anderem Pages-Project (`dfx-landing-page-dev` bzw. `-prd`). Nicht anfassen.
 
 ## Was du NICHT antasten darfst
 
