@@ -237,7 +237,6 @@ Safety warnings:
 - Never ask for or accept seed phrases, private keys, or wallet recovery words.
 - DFX employees/moderators will not ask for seed phrases.
 - Users should beware of scammers impersonating support in private messages.
-- For Telegram/community help, users should trust only public moderator interactions or private chats initiated through official support channels.
 
 ## Common user explanations
 
@@ -290,7 +289,6 @@ It enables direct wallet-to-merchant crypto payments, supports multiple chains/a
 - API GitHub: https://github.com/DFXswiss/api
 - Open CryptoPay: https://opencryptopay.io/
 - Open CryptoPay docs: https://github.com/openCryptoPay/landingPage
-- Open CryptoPay Telegram/community link is available from the Open CryptoPay website.
 
 ## Suggested AI response style
 - Be brief, friendly, and practical.
