@@ -86,6 +86,8 @@
   "news.to_podcast": "To the podcast",
   "map.heading": "Pay easily with crypto – already in 137 SPAR stores",
   "map.description": "Discover where you can already pay with Bitcoin and other cryptocurrencies today – and which additional locations are already in the pipeline.",
+  "map.opencrypto_label": "Payments powered by Open CryptoPay",
+  "map.opencrypto_cta": "Learn more about Open CryptoPay",
   "map.available": "Already available",
   "map.preparation": "In preparation",
   "map.planned": "Planned / under review",
