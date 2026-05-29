@@ -94,19 +94,16 @@
   }
 
   function readConsent() {
-    var stored = safeGet(localStorage, 'dfx-cookies-accepted');
-    if (stored === 'true') return 'accepted';
-    if (stored === 'declined') return 'declined';
-    return 'unknown';
+    return 'not_requested';
   }
 
   function storageAllowed() {
-    return readConsent() !== 'declined';
+    return true;
   }
 
   function remoteAllowed() {
     var deadUntil = Number(safeGet(localStorage, DEAD_UNTIL_KEY) || 0);
-    return readConsent() !== 'declined' && Date.now() > deadUntil;
+    return Date.now() > deadUntil;
   }
 
   function getVisitorId() {

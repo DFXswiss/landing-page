@@ -23,101 +23,6 @@
   --dk-card-bg-hover: linear-gradient(145deg, rgba(29, 53, 85, 0.95), rgba(13, 64, 112, 0.7));
 }
 
-/* ===== COOKIE BANNER ===== */
-.dk-cookie {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  padding: 1.25rem 2rem;
-  background: rgba(10, 48, 85, 0.92);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.dk-cookie.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.dk-cookie__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.dk-cookie__text {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-family: Inter, Arial, sans-serif;
-  font-weight: 300;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.dk-cookie__link {
-  color: #f5516c;
-  text-decoration: underline;
-}
-
-.dk-cookie__buttons {
-  display: flex;
-  gap: 0.75rem;
-  flex-shrink: 0;
-  align-self: center;
-}
-
-.dk-cookie__btn {
-  padding: 0.6rem 1.25rem;
-  border-radius: 8px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  font-family: Inter, Arial, sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-}
-
-.dk-cookie__btn--accept {
-  background: #f5516c;
-  color: #fff;
-}
-
-.dk-cookie__btn--accept:hover {
-  background: #e73955;
-}
-
-.dk-cookie__btn--decline {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.dk-cookie__btn--decline:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  .dk-cookie__inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  .dk-cookie__buttons {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
 /* ===== SUBPAGE OVERRIDES ===== */
 .dfx-dark-page .section_services-hero,
 .dfx-dark-page .section_services-wallets,
@@ -495,23 +400,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   animation: dk-fadeUp 0.8s 0.5s forwards;
 }
 
-.dk-hero__fee-note {
-  font-size: 0.72rem;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.44);
-  max-width: 500px;
-  margin: -0.15rem 0 2.1rem;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: dk-fadeUp 0.8s 0.6s forwards;
-}
-
-.dk-hero__fee-note a {
-  color: rgba(255, 255, 255, 0.66);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
-}
-
 .dk-hero__ctas {
   display: flex;
   gap: 1rem;
@@ -579,16 +467,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   opacity: 0;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, bottom 0.4s ease;
   pointer-events: none;
-}
-
-/* Lift popup above visible cookie banner so they don't overlap */
-.dk-cookie.is-visible ~ .dk-ai-popup {
-  bottom: 8.5rem;
-}
-@media (max-width: 768px) {
-  .dk-cookie.is-visible ~ .dk-ai-popup {
-    bottom: 13rem;
-  }
 }
 
 .dk-ai-popup.is-visible {
@@ -1901,10 +1779,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   .dk-faq-section .faq_question { padding: 1.25rem 1.25rem !important; }
   .dk-faq-section .faq_answer { padding: 0 1.25rem 1.25rem !important; }
 
-  /* Cookie banner */
-  .dk-cookie__inner { flex-direction: column; text-align: center; gap: 1rem; }
-  .dk-cookie__buttons { width: 100%; justify-content: center; }
-
   /* Toolbox features grid → stack */
   .dfx-dark-page [style*="grid-template-columns: repeat(3"] {
     grid-template-columns: 1fr !important;
@@ -2000,9 +1874,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   .dk-container {
     padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(1rem, env(safe-area-inset-right));
-  }
-  .dk-cookie {
-    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
   }
 }
 
