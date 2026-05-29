@@ -21,7 +21,7 @@
   "nav.buy_now": "Buy now",
   "nav.language": "Language",
   "hero.subtitle": "Bitcoin and crypto that actually belong to you — no exchange account, no custodian holding your coins.<br><strong style=\"color: var(--dk-white)\">From 1% fee.*</strong><br>Regulated in Switzerland.",
-  "hero.fee_note": "* The effective fee is shown transparently before confirmation. Details are available in the <a href=\"https://docs.dfx.swiss/en/tnc.html#fees\" target=\"_blank\" rel=\"noopener noreferrer\">fee model</a>. Network and bank fees may also apply.",
+  "hero.fee_note": "* Effective fee shown before confirmation. See the <a href=\"https://docs.dfx.swiss/en/tnc.html#fees\" target=\"_blank\" rel=\"noopener noreferrer\">fee model</a>; network and bank fees may apply.",
   "hero.title": "Buy crypto –<br><span class=\"dk-hero__safe\">secure</span> and straight to your wallet",
   "hero.cta": "Buy & sell crypto",
   "hero.cta_taro": "BTC Taro App",

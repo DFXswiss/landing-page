@@ -21,7 +21,7 @@
   "nav.buy_now": "Acquista ora",
   "nav.language": "Lingua",
   "hero.subtitle": "Bitcoin e cripto che sono davvero tuoi — nessun account su un exchange, nessuno custodisce le tue cripto al posto tuo.<br><strong style=\"color: var(--dk-white)\">A partire dall'1% di commissione.*</strong><br>Regolamentato in Svizzera.",
-  "hero.fee_note": "* La commissione effettiva viene mostrata in modo trasparente prima della conferma. I dettagli sono disponibili nel <a href=\"https://docs.dfx.swiss/it/tnc.html#commissioni\" target=\"_blank\" rel=\"noopener noreferrer\">modello commissionale</a>. Possono applicarsi anche commissioni di rete e bancarie.",
+  "hero.fee_note": "* Commissione effettiva visibile prima della conferma. Vedi il <a href=\"https://docs.dfx.swiss/it/tnc.html#commissioni\" target=\"_blank\" rel=\"noopener noreferrer\">modello commissionale</a>; possono applicarsi commissioni di rete e bancarie.",
   "hero.title": "Compra crypto –<br>in <span class=\"dk-hero__safe\">sicurezza</span> e direttamente nel tuo wallet",
   "hero.cta": "Compra & vendi crypto",
   "hero.cta_taro": "BTC Taro App",

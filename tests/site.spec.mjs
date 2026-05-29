@@ -13,6 +13,13 @@ const pages = [
 test.describe('static site smoke checks', () => {
   for (const path of pages) {
     test(`${path} loads without obvious layout overflow`, async ({ page }) => {
+      const consoleErrors = [];
+      page.on('console', (message) => {
+        if (message.type() === 'error') {
+          consoleErrors.push(message.text());
+        }
+      });
+
       const response = await page.goto(path);
       expect(response?.ok()).toBeTruthy();
 
@@ -28,6 +35,7 @@ test.describe('static site smoke checks', () => {
       });
 
       expect(overflow).toBeLessThanOrEqual(2);
+      expect(consoleErrors).toEqual([]);
     });
   }
 });
