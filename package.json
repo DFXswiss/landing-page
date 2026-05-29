@@ -1,0 +1,17 @@
+{
+  "name": "dfx-landing-page",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node scripts/dev-server.mjs",
+    "test": "npm run check:static && npm run test:browser",
+    "test:browser": "playwright test",
+    "check:static": "node scripts/check-static.mjs",
+    "css:minify": "lightningcss --minify css/dfx-dark-theme.css -o css/dfx-dark-theme.min.css"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "lightningcss-cli": "^1.32.0"
+  }
+}
