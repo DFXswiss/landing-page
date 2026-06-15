@@ -588,8 +588,8 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 1.05rem;
-  background: rgba(255,255,255,0.05);
-  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.94);
   text-decoration: none;
   border-radius: 999px;
   font-size: 0.88rem;
@@ -827,6 +827,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   font-family: Inter, Arial, sans-serif;
   letter-spacing: -0.02em;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .dk-stat__label {
@@ -844,6 +845,28 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+}
+
+/* Two-card variant: center the pair as a group instead of leaving an empty 3rd column */
+.dk-pillars--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card action row — replaces ad-hoc inline margins/gaps, keeps the 8px rhythm */
+.dk-card__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* Compact button size token */
+.dk-btn--sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.82rem;
 }
 
 /* ===== HOW IT WORKS — CLEAN MINIMAL ===== */
@@ -1396,6 +1419,17 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   border: 1px solid var(--dk-border);
 }
 
+/* Tighten map height so the legend/CTA above it aren't pushed far off the fold */
+.dfx-dark-page .map {
+  height: 36rem;
+}
+
+@media (max-width: 768px) {
+  .dfx-dark-page .map {
+    height: 30rem;
+  }
+}
+
 /* Text color for map heading */
 .dfx-dark-page .section_home-map .heading {
   color: var(--dk-white) !important;
@@ -1471,6 +1505,18 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.045);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dfx-dark-page .home-map_opencrypto:hover,
+.dfx-dark-page .home-map_opencrypto:focus-visible {
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 6px 18px rgba(0, 0, 0, 0.25);
+  outline: none;
 }
 
 .dfx-dark-page .home-map_opencrypto-brand {
@@ -1527,11 +1573,9 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   margin-left: 0.35rem;
 }
 
-.dfx-dark-page .home-map_cta:hover,
-.dfx-dark-page .home-map_cta:focus-visible {
-  background: rgba(255, 255, 255, 0.06);
-  transform: translateY(-1px);
-  outline: none;
+.dfx-dark-page .home-map_opencrypto:hover .home-map_cta,
+.dfx-dark-page .home-map_opencrypto:focus-visible .home-map_cta {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .dfx-dark-page .section_home-map .map-wrapper {
@@ -1895,6 +1939,13 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   }
   .dk-card, .dk-btn {
     transition: none;
+  }
+  .dk-ai-popup {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+  .dk-ai-popup.is-visible {
+    transform: none;
   }
 }
 
