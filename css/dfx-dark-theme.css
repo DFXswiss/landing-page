@@ -2319,6 +2319,42 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   }
 }
 
+/* ===== FOOTER QUALITY BADGE (swiss made software) ===== */
+.dk-footer-badges {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--dk-border);
+}
+
+.dk-footer-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dk-footer-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.dk-footer-badge img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .dk-footer-badges { justify-content: center; }
+  .dk-footer-badge img { height: 38px; }
+}
+
 /* ===== TOUCH DEVICES ===== */
 @media (hover: none) {
   .dk-card:hover,
