@@ -2319,11 +2319,11 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   }
 }
 
-/* ===== HERO QUALITY BADGE (swiss made software) — white monochrome on hero ===== */
+/* ===== HERO QUALITY BADGE (swiss made software) — next to CTAs, white monochrome ===== */
 .dk-hero__badge {
   display: inline-flex;
   align-items: center;
-  margin-top: 1.6rem;
+  align-self: center;
   opacity: 0.85;
   transition: opacity 0.2s ease;
 }
@@ -2333,15 +2333,15 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .dk-hero__badge img {
-  height: 42px;
+  height: 48px;
   width: auto;
   display: block;
   filter: brightness(0) invert(1);
 }
 
 @media (max-width: 768px) {
-  .dk-hero__badge { margin-top: 1.25rem; }
-  .dk-hero__badge img { height: 38px; }
+  .dk-hero__badge { align-self: flex-start; margin-top: 0.25rem; }
+  .dk-hero__badge img { height: 44px; }
 }
 
 /* ===== TOUCH DEVICES ===== */
