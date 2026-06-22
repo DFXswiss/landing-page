@@ -2329,3 +2329,84 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
     box-shadow: none;
   }
 }
+
+/* ===== MOBILE NAV — on-brand burger + working dropdown (≤991px, Webflow collapse) =====
+   Webflow's default burger is a light-grey box and its nav toggle isn't wired on
+   the dark theme, so the menu never opened. This styles the button on-brand and the
+   panel; js/dfx-dark-reveal.js toggles `.dk-open`. */
+@media (max-width: 991px) {
+  .dfx-dark-page .menu-button {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #fff !important;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .dfx-dark-page .menu-button .w-icon-nav-menu {
+    color: #fff !important;
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+  .dfx-dark-page .menu-button.dk-open {
+    background: rgba(245, 81, 108, 0.16) !important;
+    border-color: rgba(245, 81, 108, 0.5) !important;
+  }
+
+  /* Dropdown panel — fixed below a sticky navbar (robust across browsers) */
+  .dfx-dark-page .navbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1100 !important;
+  }
+  .dfx-dark-page .nav-menu {
+    position: fixed !important;
+    top: 72px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    max-height: calc(100vh - 72px) !important;
+    overflow-y: auto !important;
+    display: none !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 0.25rem !important;
+    background: #08203c !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 0.5rem 1.25rem 1.25rem !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
+  }
+  .dfx-dark-page .nav-menu.dk-open {
+    display: flex !important;
+  }
+  .dfx-dark-page .nav_links-wrapper {
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100%;
+  }
+  .dfx-dark-page .nav-link {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.95rem 0.25rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    color: #fff !important;
+    font-size: 1.02rem !important;
+  }
+  .dfx-dark-page .nav_button-wrapper {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}

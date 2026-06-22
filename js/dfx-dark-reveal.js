@@ -116,5 +116,50 @@
         });
       }, 150);
     });
+
+    // Mobile nav: custom burger toggle (Webflow's collapse menu isn't wired on
+    // the dark theme, so the button did nothing). Toggles `.dk-open`.
+    var navBtn = document.querySelector('.dfx-dark-page .menu-button');
+    var navMenu = document.querySelector('.dfx-dark-page .navbar .nav-menu');
+    if (navBtn && navMenu) {
+      navBtn.setAttribute('role', 'button');
+      navBtn.setAttribute('tabindex', '0');
+      navBtn.setAttribute('aria-label', 'Menu');
+      navBtn.setAttribute('aria-expanded', 'false');
+      var closeNav = function() {
+        navMenu.classList.remove('dk-open');
+        navBtn.classList.remove('dk-open');
+        navBtn.setAttribute('aria-expanded', 'false');
+      };
+      var navbar = navBtn.closest('.navbar');
+      var toggleNav = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = !navMenu.classList.contains('dk-open');
+        if (open && navbar) {
+          // anchor the fixed panel exactly to the navbar's bottom edge
+          navMenu.style.top = Math.round(navbar.getBoundingClientRect().bottom) + 'px';
+        }
+        navMenu.classList.toggle('dk-open', open);
+        navBtn.classList.toggle('dk-open', open);
+        navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+      navBtn.addEventListener('click', toggleNav);
+      navBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') toggleNav(e);
+      });
+      navMenu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', closeNav);
+      });
+      document.addEventListener('click', function(e) {
+        if (navMenu.classList.contains('dk-open') && !navMenu.contains(e.target) && !navBtn.contains(e.target)) closeNav();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeNav();
+      });
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 991) closeNav();
+      });
+    }
   });
 })();
