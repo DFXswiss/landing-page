@@ -416,11 +416,74 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   color: rgba(249, 250, 251, 0.84);
   font-weight: 300;
   max-width: 580px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
   opacity: 1;
   transform: none;
   animation: none;
   text-shadow: 0 1px 16px rgba(0, 0, 0, 0.24);
+}
+
+/* Hero trust strip — key facts as an editorial credibility line */
+.dk-hero__trust {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--dk-red);
+  margin-bottom: 2rem;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.dk-hero__trust-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.98rem;
+  color: rgba(249, 250, 251, 0.84);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.24);
+}
+
+.dk-hero__trust-item + .dk-hero__trust-item::before {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 1.15em;
+  background: var(--dk-border-light);
+}
+
+.dk-hero__trust-item--lead {
+  color: var(--dk-white);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.dk-hero__trust-item--lead strong {
+  color: var(--dk-red);
+  font-weight: 700;
+}
+
+.dk-hero__trust-icon {
+  flex-shrink: 0;
+  color: var(--dk-red);
+}
+
+@media (max-width: 600px) {
+  .dk-hero__trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+  .dk-hero__trust-item + .dk-hero__trust-item::before {
+    display: none;
+  }
 }
 
 .dk-hero__ctas {
@@ -1894,7 +1957,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 
 /* TrustPilot widget */
 .dfx-dark-page .trustpilot-button {
-  margin: 0 auto 1.5rem;
+  margin: 1.5rem auto 2rem;
   max-width: 220px;
 }
 
