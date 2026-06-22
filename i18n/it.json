@@ -199,7 +199,7 @@
   "toolbox.faq_a5": "Accettiamo CHF ed EUR. Per transazioni superiori a 50.000 CHF, vengono accettate anche valute alternative previo accordo. In questo caso, contatti semplicemente il nostro <a href=\"https://app.dfx.swiss/support\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"faq_link\">Support.</a>",
 
   "taro.hero_title": "BTC Taro App –<br>Comprare e conservare Bitcoin in <span style=\"color: var(--dk-red)\">sicurezza</span>",
-  "taro.hero_sub": "Wallet Bitcoin in self-custody con Lightning, MultiSig e <span class=\"text-nowrap\">on-chain</span>. Acquista direttamente nell'app, paga da SPAR.",
+  "taro.hero_sub": "Wallet Bitcoin in self-custody con Lightning, MultiSig e <span class=\"text-nowrap\">on-chain</span>",
   "taro.cta_appstore": "App Store",
   "taro.cta_google": "Google Play",
   "taro.feat1_title": "Lightning",
