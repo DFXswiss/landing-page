@@ -1665,17 +1665,23 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   padding-top: 3rem !important;
 }
 
-/* ===== FAQ — GLOBAL: answers hidden by default ===== */
+/* ===== FAQ — GLOBAL: answers collapsed by default =====
+   `height: auto !important` neutralizes the Webflow IX2 inline `height:0`
+   that previously kept answers stuck closed; max-height drives the collapse
+   with a cap generous enough that no answer is ever truncated. */
 .dfx-dark-page .faq_answer {
-  max-height: 0 !important;
+  max-height: 0;
+  height: auto !important;
   overflow: hidden !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: max-height 0.4s ease;
 }
 
+/* Open: padding applied instantly via class; the exact open height is set
+   inline by js/dfx-dark-reveal.js (ans.style.maxHeight = scrollHeight) so it
+   auto-fits any answer length with no truncation and a clean cascade. */
 .dfx-dark-page .faq_accordion.is-open .faq_answer {
-  max-height: 500px !important;
   padding-top: 0.25rem !important;
   padding-bottom: 1.5rem !important;
 }
@@ -1808,16 +1814,9 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .dk-faq-section .faq_answer {
-  padding: 0 2rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
   margin: 0 !important;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.dk-faq-section .faq_accordion.is-open .faq_answer {
-  max-height: 500px;
-  padding: 0.25rem 2rem 1.5rem 2rem !important;
 }
 
 .dk-faq-section .faq_answer .margin-bottom {
@@ -2015,7 +2014,10 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 /* ===== RESPONSIVE — TABLET ===== */
 @media (max-width: 1024px) {
   .dk-pillars {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Toolbox features grid */
@@ -2037,7 +2039,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 
   /* Hero */
   .dk-hero { min-height: 76vh; align-items: flex-end; }
-  .dk-hero__content { padding: 5.5rem 0 2.5rem; }
+  .dk-hero__content { padding: 5.5rem 0 3.25rem; }
   .dk-hero__title { font-size: clamp(1.9rem, 8vw, 2.35rem); line-height: 1.08; margin-bottom: 0.85rem; }
   .dk-hero__sub { font-size: 0.94rem; line-height: 1.55; margin-bottom: 1.25rem; }
   .dk-hero__ctas { flex-direction: column; gap: 0.75rem; }
@@ -2051,7 +2053,10 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   /* Stats */
   .dk-stats { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1rem; }
   .dk-stat { border-right: none; border-bottom: 1px solid var(--dk-border); padding: 1rem 0; }
-  .dk-stat:last-child { border-bottom: none; }
+  /* Mobile stat order: customers (30k) -> volume ($100M) -> currencies (80+) */
+  .dk-stat:nth-child(1) { order: 3; border-bottom: none; }   /* currencies = visually last */
+  .dk-stat:nth-child(2) { order: 2; }                        /* volume = middle */
+  .dk-stat:nth-child(3) { order: 1; border-bottom: 1px solid var(--dk-border); } /* customers = first */
 
   /* Section titles */
   .dk-section__title { font-size: clamp(1.4rem, 6vw, 1.8rem); }
@@ -2087,7 +2092,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   /* FAQ */
   .dk-faq-section .dk-faq-list { max-width: 100%; }
   .dk-faq-section .faq_question { padding: 1rem 1rem !important; }
-  .dk-faq-section .faq_answer { padding: 0 1rem 1rem !important; }
+  .dk-faq-section .faq_answer { padding-left: 1rem !important; padding-right: 1rem !important; }
   .dk-faq-section .faq_question .faq_text { font-size: 0.94rem; line-height: 1.4; }
 
   /* Toolbox features grid → stack */
@@ -2291,7 +2296,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 
   /* FAQ tighter */
   .dk-faq-section .faq_question { padding: 0.9rem !important; }
-  .dk-faq-section .faq_answer { padding: 0 0.9rem 0.9rem !important; }
+  .dk-faq-section .faq_answer { padding-left: 1rem !important; padding-right: 1rem !important; }
   .dk-faq-section .faq_question .faq_text { font-size: 0.88rem; }
 
   /* Stats */

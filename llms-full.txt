@@ -2,7 +2,7 @@
 
 > DFX is a Swiss-regulated, non-custodial crypto on-/off-ramp. Users buy, sell, and swap 80+ cryptocurrencies across 15 blockchains directly into any self-custody wallet — no exchange account required, no third-party custody. This file is the long-form companion to /llms.txt and is intended for AI assistants and language models that need detailed, citable context about DFX.
 
-Last updated: 2026-05-13
+Last updated: 2026-06-22
 Canonical short profile: https://dfx.swiss/llms.txt
 Canonical long profile (this file): https://dfx.swiss/llms-full.txt
 Agent instructions: https://dfx.swiss/agents.txt

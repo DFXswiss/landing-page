@@ -68,6 +68,26 @@
     }
 
     // FAQ accordion toggle — works on all FAQ sections
+    // Inline `!important` so the toggle always wins over any stylesheet rule
+    // (incl. the collapsed `max-height:0`), regardless of cascade/specificity.
+    function closeAccordion(acc) {
+      acc.classList.remove('is-open');
+      var ans = acc.querySelector('.faq_answer');
+      if (ans) ans.style.setProperty('max-height', '0px', 'important');
+    }
+    function openAccordion(acc) {
+      acc.classList.add('is-open');
+      var ans = acc.querySelector('.faq_answer');
+      if (!ans) return;
+      // Measure true content height unclipped, then animate 0 -> exact height
+      // (no magic cap, no truncation, adapts to any answer length / language).
+      ans.style.setProperty('max-height', 'none', 'important');
+      var target = ans.scrollHeight;
+      ans.style.setProperty('max-height', '0px', 'important');
+      ans.getBoundingClientRect(); // force reflow so the transition runs
+      ans.style.setProperty('max-height', target + 'px', 'important');
+    }
+
     document.querySelectorAll('.dfx-dark-page .faq_question').forEach(function(q) {
       q.addEventListener('click', function() {
         var accordion = q.closest('.faq_accordion');
@@ -75,15 +95,26 @@
         // close all in same section
         var section = q.closest('section');
         if (section) {
-          section.querySelectorAll('.faq_accordion').forEach(function(a) {
-            a.classList.remove('is-open');
-          });
+          section.querySelectorAll('.faq_accordion').forEach(closeAccordion);
         }
         // toggle clicked
         if (!wasOpen) {
-          accordion.classList.add('is-open');
+          openAccordion(accordion);
         }
       });
+    });
+
+    // Keep any open answer correctly sized on viewport resize / reflow.
+    var faqResizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(faqResizeTimer);
+      faqResizeTimer = setTimeout(function() {
+        document.querySelectorAll('.dfx-dark-page .faq_accordion.is-open .faq_answer').forEach(function(ans) {
+          ans.style.setProperty('max-height', 'none', 'important');
+          var h = ans.scrollHeight;
+          ans.style.setProperty('max-height', h + 'px', 'important');
+        });
+      }, 150);
     });
   });
 })();
