@@ -2319,33 +2319,29 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   }
 }
 
-/* ===== HERO QUALITY BADGE (swiss made software) — visible at top ===== */
+/* ===== HERO QUALITY BADGE (swiss made software) — white monochrome on hero ===== */
 .dk-hero__badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   margin-top: 1.6rem;
-  padding: 0.55rem 0.9rem;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
 }
 
 .dk-hero__badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+  opacity: 1;
 }
 
 .dk-hero__badge img {
-  height: 40px;
+  height: 42px;
   width: auto;
   display: block;
+  filter: brightness(0) invert(1);
 }
 
 @media (max-width: 768px) {
   .dk-hero__badge { margin-top: 1.25rem; }
-  .dk-hero__badge img { height: 36px; }
+  .dk-hero__badge img { height: 38px; }
 }
 
 /* ===== TOUCH DEVICES ===== */
