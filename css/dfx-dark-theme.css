@@ -483,23 +483,44 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   height: 18px;
 }
 
-/* swiss made software badge — pushed to the right, fills the empty space */
+/* swiss made software badge — desktop: in the CTA row next to BTC Taro App;
+   mobile/tablet (≤768): in the trust strip filling the empty space. */
+.dk-hero__badge,
 .dk-hero__trust-badge {
-  display: inline-flex;
   align-items: center;
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
+.dk-hero__badge:hover,
 .dk-hero__trust-badge:hover {
   transform: scale(1.04);
 }
 
+.dk-hero__badge img,
 .dk-hero__trust-badge img {
-  height: 64px;
   width: auto;
   display: block;
   filter: brightness(0) invert(1);
+}
+
+/* Desktop default: next to the BTC Taro App button */
+.dk-hero__badge {
+  display: inline-flex;
+  align-self: center;
+  margin-left: 0.5rem;
+}
+.dk-hero__badge img { height: 60px; }
+
+/* Trust-strip badge hidden on desktop, shown on mobile/tablet */
+.dk-hero__trust-badge {
+  display: none;
+}
+.dk-hero__trust-badge img { height: 64px; }
+
+@media (max-width: 768px) {
+  .dk-hero__badge { display: none; }
+  .dk-hero__trust-badge { display: inline-flex; }
 }
 
 @media (max-width: 600px) {
