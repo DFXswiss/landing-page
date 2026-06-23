@@ -50,7 +50,7 @@
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script src="js/i18n.js"></script>
-  <link href="css/dfx-dark-theme.css?v=20260623h" rel="stylesheet" type="text/css">
+  <link href="css/dfx-dark-theme.css?v=20260623i" rel="stylesheet" type="text/css">
   <script src="js/sea-attribution.js" defer></script>
   <script src="js/clicktrack.js?v=2.1" defer></script>
   <script src="js/dfx-dark-reveal.js?v=20260623e" defer></script>
@@ -1564,10 +1564,14 @@
       const cx = hw / 2;
       const cy = hh / 2;
       const s = Math.min(hw, hh);
-      const centerR = s * 0.11;
-      const orbitR = s * 0.34;
-      const nodeW = Math.min(140, hw * 0.22);
-      const nodeH = 42;
+      const isMobile = hw < 560;
+      const centerR = s * (isMobile ? 0.135 : 0.11);
+      const orbitR = s * (isMobile ? 0.30 : 0.34);
+      const labelSize = isMobile ? 11 : 12;
+      const iconSize = isMobile ? 12 : 13;
+      const padX = isMobile ? 11 : 16;
+      const minNodeW = isMobile ? 0 : 120;
+      const nodeH = isMobile ? 34 : 42;
 
       // offset so top node is at 12 o'clock (-PI/2)
       const angleOffset = -Math.PI / 2;
@@ -1728,6 +1732,17 @@
         const hover = Math.sin(time * 0.0015 + i * 1.3) * 2;
         const nx = pos.x + Math.cos(pos.angle) * hover;
         const ny = pos.y + Math.sin(pos.angle) * hover;
+
+        // measure content first so each pill fits its label (no text overflow)
+        const iconGap = 7;
+        hc.textAlign = 'left';
+        hc.textBaseline = 'middle';
+        hc.font = iconSize + 'px Inter, Arial, sans-serif';
+        const iconW = hc.measureText(pos.label.icon).width;
+        hc.font = '600 ' + labelSize + 'px Inter, Arial, sans-serif';
+        const labelW = hc.measureText(pos.label.label).width;
+        const contentW = iconW + iconGap + labelW;
+        const nodeW = Math.max(contentW + padX * 2, minNodeW);
         const cardX = nx - nodeW / 2;
         const cardY = ny - nodeH / 2;
 
@@ -1755,23 +1770,13 @@
         hc.fillStyle = `rgba(245, 81, 108, ${0.35 + Math.sin(time * 0.003 + i) * 0.15})`;
         hc.fill();
 
-        // icon + label centered
-        hc.font = '600 12px Inter, Arial, sans-serif';
-        hc.textAlign = 'left';
-        hc.textBaseline = 'middle';
-        const labelW = hc.measureText(pos.label.label).width;
-        const iconGap = 8;
-        hc.font = '13px Inter, Arial, sans-serif';
-        const iconW = hc.measureText(pos.label.icon).width;
-        const totalW = iconW + iconGap + labelW;
-        const startX = nx - totalW / 2;
-
+        // icon + label centered within the pill
+        const startX = nx - contentW / 2;
+        hc.font = iconSize + 'px Inter, Arial, sans-serif';
         hc.fillStyle = 'rgba(245, 81, 108, 0.75)';
-        hc.textAlign = 'left';
-        hc.textBaseline = 'middle';
         hc.fillText(pos.label.icon, startX, ny);
 
-        hc.font = '600 12px Inter, Arial, sans-serif';
+        hc.font = '600 ' + labelSize + 'px Inter, Arial, sans-serif';
         hc.fillStyle = 'rgba(255, 255, 255, 0.92)';
         hc.fillText(pos.label.label, startX + iconW + iconGap, ny);
 

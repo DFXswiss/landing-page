@@ -144,6 +144,26 @@
   opacity: 1 !important;
 }
 
+/* Keep long labels (e.g. "Kompletter KYC-Prozess (Kundenverifizierung)") inside the card */
+.dfx-dark-page .section_toolbox-services .services_right-side {
+  max-width: 100%;
+}
+
+.dfx-dark-page .section_toolbox-services .services_right-side_line {
+  min-width: 0;
+}
+
+.dfx-dark-page .section_toolbox-services .services_right-side_icon {
+  flex: 0 0 auto;
+}
+
+.dfx-dark-page .section_toolbox-services .services_right-side_line p {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
 .dfx-dark-page .section_toolbox-services .button.dark-outline {
   background: transparent !important;
   color: #0a3055 !important;
