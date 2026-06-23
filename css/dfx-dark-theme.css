@@ -423,25 +423,31 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   text-shadow: 0 1px 16px rgba(0, 0, 0, 0.24);
 }
 
-/* Hero trust strip — key facts as an editorial credibility line */
+/* Hero trust strip — key facts + swiss made software badge (fills the line) */
 .dk-hero__trust {
   display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: 1.75rem;
   padding-left: 1rem;
   border-left: 2px solid var(--dk-red);
   margin-bottom: 2rem;
   font-family: Inter, Arial, sans-serif;
 }
 
+.dk-hero__trust-facts {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
 .dk-hero__trust-item {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.98rem;
-  color: rgba(249, 250, 251, 0.84);
+  gap: 0.5rem;
+  font-size: 1.16rem;
+  color: rgba(249, 250, 251, 0.86);
   font-weight: 400;
   letter-spacing: 0.01em;
   white-space: nowrap;
@@ -455,14 +461,14 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
-  height: 1.15em;
+  height: 1.2em;
   background: var(--dk-border-light);
 }
 
 .dk-hero__trust-item--lead {
   color: var(--dk-white);
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.3rem;
 }
 
 .dk-hero__trust-item--lead strong {
@@ -473,17 +479,45 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 .dk-hero__trust-icon {
   flex-shrink: 0;
   color: var(--dk-red);
+  width: 18px;
+  height: 18px;
+}
+
+/* swiss made software badge — pushed to the right, fills the empty space */
+.dk-hero__trust-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dk-hero__trust-badge:hover {
+  transform: scale(1.04);
+}
+
+.dk-hero__trust-badge img {
+  height: 64px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
 }
 
 @media (max-width: 600px) {
   .dk-hero__trust {
+    gap: 1rem;
+    max-width: 100%;
+  }
+  .dk-hero__trust-facts {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.65rem;
+    gap: 0.6rem;
   }
   .dk-hero__trust-item + .dk-hero__trust-item::before {
     display: none;
   }
+  .dk-hero__trust-item { font-size: 1.05rem; }
+  .dk-hero__trust-item--lead { font-size: 1.14rem; }
+  .dk-hero__trust-badge img { height: 56px; }
 }
 
 .dk-hero__ctas {
@@ -2317,31 +2351,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
     padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(1rem, env(safe-area-inset-right));
   }
-}
-
-/* ===== HERO QUALITY BADGE (swiss made software) — next to CTAs, white monochrome ===== */
-.dk-hero__badge {
-  display: inline-flex;
-  align-items: center;
-  align-self: center;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-}
-
-.dk-hero__badge:hover {
-  opacity: 1;
-}
-
-.dk-hero__badge img {
-  height: 48px;
-  width: auto;
-  display: block;
-  filter: brightness(0) invert(1);
-}
-
-@media (max-width: 768px) {
-  .dk-hero__badge { align-self: flex-start; margin-top: 0.25rem; }
-  .dk-hero__badge img { height: 44px; }
 }
 
 /* ===== TOUCH DEVICES ===== */
