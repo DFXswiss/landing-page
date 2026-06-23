@@ -352,7 +352,7 @@ Webflow.push(function () {
                         <div data-i18n="taro.step1">Nach der Einrichtung der App wähle zwischen On-Chain- und Lightning-Wallet.</div>
                       </a>
                       <div class="dev-tabs_list-content cc-active">
-                        <div class="dev-tabs_img-aspect"><img sizes="(max-width: 701px) 100vw, 701px" srcset="images/image_btc_01-p-500.png 500w, images/image_btc_01.png 701w" src="images/image_btc_01.png" loading="lazy" class="u-img-cover" alt="BTC Taro App Screenshot Bitcoin kaufen"></div>
+                        <div class="dev-tabs_img-aspect"><img sizes="(max-width: 701px) 100vw, 701px" srcset="images/image_btc_01-p-500.png?v=2 500w, images/image_btc_01.png?v=2 701w" src="images/image_btc_01.png?v=2" loading="lazy" class="u-img-cover" alt="BTC Taro App Screenshot Bitcoin kaufen"></div>
                       </div>
                     </li>
                     <li class="dev-tabs_list-item">
@@ -385,7 +385,7 @@ Webflow.push(function () {
                         <div data-i18n="taro.step4">Nach erfolgreicher Einzahlung erhältst du deine BTC in deiner Wallet. Die Transaktionsdauer kann je nach Zahlungsmethode variieren.</div>
                       </a>
                       <div class="dev-tabs_list-content">
-                        <div class="dev-tabs_img-aspect"><img sizes="100vw" srcset="images/image_btc_04-p-500.png 500w, images/image_btc_04.png 701w" src="images/image_btc_04.png" loading="lazy" class="u-img-cover" alt="BTC Taro App Screenshot SPAR Zahlung"></div>
+                        <div class="dev-tabs_img-aspect"><img sizes="100vw" srcset="images/image_btc_04-p-500.png?v=2 500w, images/image_btc_04.png?v=2 701w" src="images/image_btc_04.png?v=2" loading="lazy" class="u-img-cover" alt="BTC Taro App Screenshot SPAR Zahlung"></div>
                       </div>
                     </li>
                   </ul>
@@ -618,11 +618,14 @@ Webflow.push(function () {
     });
   });
 
-  // Auto-play steps 1→2→3→4 then loop
+  // Auto-play steps 1→2→3→4 then loop — fixed speed, click-safe (no timer stacking)
   $(function() {
     var steps = $(".dev-tabs_list-btn");
+    if (!steps.length) return;
     var current = 0;
-    var autoTimer;
+    var autoTimer = null;
+    var restartTimer = null;
+    var SPEED = 3000;
 
     function activateStep(i) {
       var btn = steps.eq(i);
@@ -641,18 +644,25 @@ Webflow.push(function () {
     }
 
     function startAuto() {
-      autoTimer = setInterval(nextStep, 3000);
+      clearInterval(autoTimer);              // guarantee a single interval at the fixed speed
+      autoTimer = setInterval(nextStep, SPEED);
     }
 
-    // Stop auto-play on manual click, restart after 8s
-    steps.on("click", function() {
+    function stopAuto() {
       clearInterval(autoTimer);
+      autoTimer = null;
+    }
+
+    // Manual click: pause, jump to the clicked step, resume after 8s — never stack timers
+    steps.on("click", function() {
+      stopAuto();
+      clearTimeout(restartTimer);
       current = steps.index(this);
-      setTimeout(startAuto, 8000);
+      restartTimer = setTimeout(startAuto, 8000);
     });
 
     // Start auto-play after 2s
-    setTimeout(startAuto, 2000);
+    restartTimer = setTimeout(startAuto, 2000);
   });
 </script>
 </body>
