@@ -2072,7 +2072,8 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   .dk-section { padding: 3rem 0; }
 
   /* Hero */
-  .dk-hero { min-height: 76vh; align-items: flex-end; }
+  /* First screen ends at the 30'000+ stat; the rest follows on scroll */
+  .dk-hero { min-height: calc(100vh - 200px); min-height: calc(100svh - 200px); align-items: flex-end; }
   .dk-hero__content { padding: 5.5rem 0 3.25rem; }
   .dk-hero__title { font-size: clamp(1.9rem, 8vw, 2.35rem); line-height: 1.08; margin-bottom: 0.85rem; }
   .dk-hero__sub { font-size: 0.94rem; line-height: 1.55; margin-bottom: 1.25rem; }
@@ -2298,7 +2299,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 /* ===== RESPONSIVE — SMALL PHONES ===== */
 @media (max-width: 480px) {
   .dk-container { padding: 0 0.875rem; }
-  .dk-hero { min-height: 72vh; }
+  .dk-hero { min-height: calc(100vh - 200px); min-height: calc(100svh - 200px); }
   .dk-hero__content { padding: 5rem 0 2rem; }
   .dk-hero__title { font-size: 1.75rem; }
   .dk-hero__sub { font-size: 0.88rem; }
