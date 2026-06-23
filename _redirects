@@ -19,6 +19,10 @@
 /fr/*                     /                                                     301
 /it/*                     /                                                     301
 
+# DFX Ramp page -> homepage
+/dfx-services             /                                                     301
+/dfx-services.html        /                                                     301
+
 # App direct links (wallet modes)
 /buy-lightning            https://app.dfx.swiss/?mode=lightning-wallets         301
 /metamask                 https://app.dfx.swiss/?mode=only-metamask-wallet      301

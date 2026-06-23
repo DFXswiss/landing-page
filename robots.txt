@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /js/
+Allow: /css/
+Allow: /i18n/
+Allow: /images/
 
 # AI & LLM crawlers
 User-agent: GPTBot
@@ -8,13 +12,76 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: ChatGPT-User
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
 User-agent: Applebot-Extended
 Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: iaskspider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Seekr
+Allow: /
+
+# LLM-readable profiles
+# https://dfx.swiss/llms.txt        — short company profile
+# https://dfx.swiss/llms-full.txt   — long-form profile with workflows, fees, FAQ
+# https://dfx.swiss/agents.txt      — instructions for AI agents and answer engines
+# https://dfx.swiss/ai-index.json   — structured inventory of pages, FAQs, JS and assets
 
 Sitemap: https://dfx.swiss/sitemap.xml
