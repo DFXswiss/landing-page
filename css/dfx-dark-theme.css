@@ -2375,6 +2375,154 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   }
 }
 
+/* ===== HOW IT WORKS — split layout with DFX flow animation ===== */
+.dk-howto__split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.dk-howto__col { min-width: 0; }
+
+.dk-howto__kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dk-red);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(245, 81, 108, 0.3);
+  border-radius: 100px;
+  background: rgba(245, 81, 108, 0.08);
+  margin-bottom: 1.1rem;
+}
+
+.dk-howto__title {
+  font-size: clamp(1.85rem, 2.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.12;
+  color: var(--dk-white);
+  margin: 0;
+}
+
+.dk-howto__sub {
+  color: var(--dk-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0.9rem 0 0;
+  max-width: 440px;
+}
+
+/* Vertical stepper */
+.dk-howto__steps {
+  list-style: none;
+  margin: 2.5rem 0 2.75rem;
+  padding: 0;
+}
+
+.dk-howto__step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1.15rem;
+  padding-bottom: 1.9rem;
+}
+
+.dk-howto__step:last-child { padding-bottom: 0; }
+
+.dk-howto__marker {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: var(--dk-red);
+  background: linear-gradient(150deg, rgba(245, 81, 108, 0.16), rgba(245, 81, 108, 0.04));
+  border: 1px solid rgba(245, 81, 108, 0.28);
+}
+
+.dk-howto__step:not(:last-child) .dk-howto__marker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 4px);
+  height: calc(1.9rem - 8px);
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(245, 81, 108, 0.55), rgba(255, 255, 255, 0.07));
+}
+
+.dk-howto__body { padding-top: 0.1rem; min-width: 0; }
+
+.dk-howto__step-num {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dk-text-dim);
+  margin-bottom: 0.2rem;
+}
+
+.dk-howto__step-title {
+  color: var(--dk-white);
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+
+.dk-howto__step-desc {
+  color: var(--dk-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.62;
+  margin: 0;
+  max-width: 420px;
+}
+
+.dk-howto__cta { display: inline-flex; }
+
+/* Animation column */
+.dk-howto__anim {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.dk-howto__anim::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 78%;
+  height: 78%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(245, 81, 108, 0.14), rgba(13, 64, 112, 0.05) 55%, transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dk-howto__anim #composition.hero_image-wrapper {
+  width: 100%;
+  max-width: 540px;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .dk-howto__split { grid-template-columns: 1fr; gap: 2.75rem; }
+  .dk-howto__anim { order: -1; }
+  .dk-howto__sub { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .dk-howto__step-desc { max-width: 100%; }
+  .dk-howto__cta { width: 100%; justify-content: center; }
+}
+
 /* ===== TOUCH DEVICES ===== */
 @media (hover: none) {
   .dk-card:hover,
