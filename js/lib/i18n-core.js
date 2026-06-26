@@ -12,9 +12,11 @@
   // Resolve the active language from the candidates the page can offer, in
   // priority order: explicit ?lang= → stored choice → browser language → the
   // explicit default. A candidate only wins if it is in `supported`.
+  // `navigatorLang` is the raw navigator.language string (always present in a
+  // browser); an empty string simply means "no preference" and falls through.
   function resolveLang(options) {
     var supported = options.supported;
-    var browserLang = (options.navigatorLang || '').slice(0, 2);
+    var browserLang = options.navigatorLang.slice(0, 2);
 
     if (options.urlLang && supported.indexOf(options.urlLang) !== -1) {
       return options.urlLang;
