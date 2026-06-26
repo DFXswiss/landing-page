@@ -26,5 +26,6 @@ replay_pid*
 .claude/settings.local.json
 data/analytics-events.ndjson
 node_modules/
+coverage/
 playwright-report/
 test-results/

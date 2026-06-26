@@ -1,31 +1,51 @@
 import { defineConfig, devices } from '@playwright/test';
+import { PORT, PROJECTS } from './tests/pages.mjs';
+
+const BASE_URL = `http://127.0.0.1:${PORT}`;
+
+const DEVICE_FOR = {
+  'desktop-chromium': devices['Desktop Chrome'],
+  'mobile-safari': devices['iPhone 15'],
+};
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 30_000,
+  forbidOnly: !!process.env.CI,
+  // Screenshots must be byte-for-byte reproducible against the committed
+  // baselines, which are generated in the pinned Playwright container.
+  snapshotPathTemplate: 'tests/__screenshots__/{projectName}/{arg}{ext}',
+  timeout: 60_000,
   expect: {
-    timeout: 5_000
+    timeout: 10_000,
+    toHaveScreenshot: {
+      animations: 'disabled',
+      caret: 'hide',
+      maxDiffPixelRatio: 0,
+    },
   },
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: BASE_URL,
     trace: 'retain-on-failure',
-    screenshot: 'only-on-failure'
+    screenshot: 'only-on-failure',
   },
+  reporter: [
+    ['list'],
+    ['html', { open: 'never', outputFolder: 'playwright-report/html' }],
+    ['json', { outputFile: 'playwright-report/results.json' }],
+  ],
+  projects: PROJECTS.map((name) => {
+    const device = DEVICE_FOR[name];
+    if (!device) {
+      throw new Error(`playwright.config: no device mapping for project "${name}"`);
+    }
+    return { name, use: { ...device } };
+  }),
   webServer: {
     command: 'node scripts/dev-server.mjs',
-    url: 'http://127.0.0.1:4173',
-    reuseExistingServer: true,
+    url: BASE_URL,
+    reuseExistingServer: !process.env.CI,
+    env: { PORT: String(PORT) },
     stdout: 'pipe',
-    stderr: 'pipe'
+    stderr: 'pipe',
   },
-  projects: [
-    {
-      name: 'desktop-chromium',
-      use: { ...devices['Desktop Chrome'] }
-    },
-    {
-      name: 'mobile-safari',
-      use: { ...devices['iPhone 15'] }
-    }
-  ]
 });

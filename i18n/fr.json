@@ -218,6 +218,7 @@
   "taro.steps_label": "BTC Taro app",
   "taro.steps_title": "Du BTC dans ton wallet en quelques étapes",
   "taro.step1": "Après la configuration de l'app, choisis entre un wallet on-chain et un wallet Lightning.",
+  "taro.step2": "Sélectionne « BUY » pour acheter du Bitcoin.",
   "taro.step3": "Saisis le montant d'achat en EUR ou CHF et sélectionne le virement bancaire comme méthode de paiement. Une vérification KYC unique peut être nécessaire.",
   "taro.step4": "Après un dépôt réussi, tu reçois tes BTC dans ton wallet. La durée de la transaction peut varier selon la méthode de paiement.",
   "taro.benefits_heading": "D'autres avantages pour toi",

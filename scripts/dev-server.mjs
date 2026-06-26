@@ -2,9 +2,10 @@ import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { PORT } from '../tests/pages.mjs';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
-const port = Number(process.env.PORT || 4173);
+const port = process.env.PORT ? Number(process.env.PORT) : PORT;
 
 const mimeTypes = new Map([
   ['.css', 'text/css; charset=utf-8'],
@@ -21,7 +22,7 @@ const mimeTypes = new Map([
   ['.woff', 'font/woff'],
   ['.woff2', 'font/woff2'],
   ['.xml', 'application/xml; charset=utf-8'],
-  ['.txt', 'text/plain; charset=utf-8']
+  ['.txt', 'text/plain; charset=utf-8'],
 ]);
 
 function send(response, status, body = '') {
@@ -67,7 +68,7 @@ createServer((request, response) => {
   }
 
   response.writeHead(200, {
-    'content-type': mimeTypes.get(extname(filePath)) || 'application/octet-stream'
+    'content-type': mimeTypes.get(extname(filePath)) || 'application/octet-stream',
   });
 
   if (request.method === 'HEAD') {

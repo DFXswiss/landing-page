@@ -59,14 +59,26 @@ FTP-Workflows (`dev.yaml`, `prd.yaml`). Nicht anfassen.
 
 ## Vor jedem Push
 
-- Lokal die Seite öffnen (`python3 -m http.server 8000`) und prüfen:
+- **`npm run check`** laufen lassen (Prettier, HTML-Validität, Vollständigkeit,
+  Unit-Coverage). Muss grün sein — das sind Required-Checks in der CI.
+- Lokal die Seite öffnen (`npm run serve`, http://127.0.0.1:4173) und prüfen:
   - Hauptseite + alle Subpages laden
   - Sprachwechsel DE/EN/FR/IT funktioniert
   - Mobile-Ansicht (Browser-DevTools)
   - JS-Konsole frei von Errors
 - Bei Änderungen über mehrere Pages: konsistent durchgezogen? (z.B. neue
   Nav-Items, geänderte Footer-Texte auf allen 6 HTML-Files)
-- Bei i18n-Änderungen: alle vier Sprachen gepflegt — kein Mischmasch
+- Bei i18n-Änderungen: alle vier Sprachen gepflegt — kein Mischmasch.
+  `npm run check:site` fängt fehlende Übersetzungen und Sprach-Drift ab.
+- Bei gewollten Layout-/Design-Änderungen: Visual-Baselines im Container neu
+  erzeugen — `npm run e2e:docker:update` — und die aktualisierten PNGs unter
+  `tests/__screenshots__/` mitcommitten. NIE auf macOS/Windows erzeugen.
+
+## Qualitäts-Gates (Pflicht in der CI)
+
+Zwei Required-Checks blocken jeden PR, der sie nicht erfüllt: **Quality**
+(`quality.yml`) und **Screenshots** (`visual.yml`). Details, Baseline-Workflow
+und die Playwright-Pin-Regel stehen in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Nach jedem Push
 
@@ -117,10 +129,10 @@ git push origin joshua
 
 ## Owner-Trennung
 
-| Thema | Owner |
-|---|---|
-| Inhalt der Landing-Pages | Joshua |
-| `.github/workflows/*` | Maintainer |
-| DNS, Cloudflare-Setup, joshua.dfx.swiss-Plumbing | Maintainer |
-| dev.dfx.swiss / dfx.swiss (FTP, All-Inkl) | Maintainer |
-| Webflow-Cleanup (Issue #108) | Joshua, in eigenem Push, separat |
+| Thema                                            | Owner                            |
+| ------------------------------------------------ | -------------------------------- |
+| Inhalt der Landing-Pages                         | Joshua                           |
+| `.github/workflows/*`                            | Maintainer                       |
+| DNS, Cloudflare-Setup, joshua.dfx.swiss-Plumbing | Maintainer                       |
+| dev.dfx.swiss / dfx.swiss (FTP, All-Inkl)        | Maintainer                       |
+| Webflow-Cleanup (Issue #108)                     | Joshua, in eigenem Push, separat |
