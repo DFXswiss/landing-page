@@ -44,8 +44,8 @@ describe('resolveLang', () => {
     expect(resolve({ navigatorLang: 'pt-BR' })).toBe('de');
   });
 
-  test('returns the explicit default when no language is available at all', () => {
-    expect(resolve({ navigatorLang: undefined })).toBe('de');
+  test('falls back to the explicit default when the browser language is empty', () => {
+    expect(resolve({ navigatorLang: '' })).toBe('de');
   });
 });
 
