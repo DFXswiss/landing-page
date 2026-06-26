@@ -23,9 +23,8 @@ npm run check   # formatting + HTML validity + site completeness + unit coverage
 npm run e2e:docker   # visual regression (pinned container)
 ```
 
-See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full gate reference and how to
-regenerate visual baselines, and **[AGENTS.md](AGENTS.md)** for day-to-day
-content-editing guidance.
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the editing workflow, the full gate
+reference, and how to regenerate visual baselines.
 
 ## Deployment
 

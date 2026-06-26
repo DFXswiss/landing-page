@@ -4,9 +4,6 @@ The DFX landing page is a static HTML site (a Webflow export plus hand-written
 CSS/JS). There is **no build step** for the site itself — the dev dependencies
 exist only for formatting and the quality gates below.
 
-Day-to-day editing guidance for content/AI agents lives in
-[AGENTS.md](AGENTS.md). This file documents the test and CI gates.
-
 ## Setup
 
 - **Node 22** (`engines.node >= 22`)
@@ -16,6 +13,33 @@ Day-to-day editing guidance for content/AI agents lives in
 npm install
 npm run serve   # preview at http://127.0.0.1:4173 (Cloudflare-Pages-like routing)
 ```
+
+The `origin` remote must point at `DFXswiss/landing-page`, not a personal fork —
+pushes go straight to upstream, there is no fork workflow.
+
+## What you may edit
+
+- HTML content (copy, sections, structure) in `*.html`
+- Your own CSS in `css/dfx-dark-theme.css` or new stylesheets
+- Your own JS in `js/` (the pure, reusable logic belongs in `js/lib/`)
+- i18n in `i18n/{de,en,fr,it}.json` — **keep all four languages in sync**, never
+  just one (`npm run check:site` fails on missing translations or key drift)
+- SEO/meta tags, schema/JSON-LD, `robots.txt`, `sitemap.xml`, `llms.txt`
+- Store images under `images/` locally; do not hot-link external CDN URLs
+
+## What not to touch
+
+- The Webflow runtime: existing `data-wf-*` attributes, `css/webflow.css`,
+  `js/webflow.js` (cleanup is tracked separately as issue #108 — only there)
+- `.github/workflows/*`, DNS, Cloudflare, server config, tokens, GitHub secrets
+
+## Code style
+
+- **No silent fallbacks**: no `?? default`, no `|| default`, no empty `catch`,
+  no default parameters that paper over a missing value — fail loudly or ask.
+- **Comments only for non-obvious constraints/workarounds**; prefer
+  self-explanatory code.
+- **One task per change** — no speculative features or drive-by refactors.
 
 ## Quality gates
 
@@ -83,10 +107,23 @@ Bump the `@playwright/test` pin in `package.json` **and** the `image:` tag in
 `.github/workflows/visual.yml` together (same version), then regenerate the
 baselines in the container. The guard step enforces that they stay in lockstep.
 
-## Branch flow
+## Before every push
 
-- Content edits flow through the `joshua` branch, which auto-opens a PR to
-  `develop` (see [AGENTS.md](AGENTS.md)).
-- `develop` deploys to `dev.dfx.swiss` and auto-opens a release PR to `main`.
-- `main` deploys to `dfx.swiss`.
-- Open PRs as drafts; the maintainer reviews and merges.
+- Run **`npm run check`** — it must be green (these are required CI checks).
+- For intentional layout/design changes, regenerate the baselines in the
+  container (`npm run e2e:docker:update`) and commit the updated PNGs.
+- Sanity-check the page locally (`npm run serve`): main + sub-pages load,
+  DE/EN/FR/IT switching works, mobile view, no console errors.
+
+## Branch & deploy flow
+
+Content edits flow through the `joshua` branch (an editor workspace):
+
+- Push to `joshua` → preview deploy to `joshua.dfx.swiss`, and an auto PR
+  `joshua → develop` is opened/updated. **Never push directly to `develop` or
+  `main`.**
+- `develop` → `dev.dfx.swiss`, and an auto release PR `develop → main` is opened.
+- `main` → production (`dfx.swiss`).
+
+Open PRs as **drafts**; the maintainer reviews and merges. Keep `joshua` in sync
+with `develop` (`git merge origin/develop`) before larger changes.
