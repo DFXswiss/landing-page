@@ -50,8 +50,12 @@ DFX operates as a group of two Swiss companies, both based in Zug:
 
 ## Key Facts (current)
 
-- $100M+ cumulative transaction volume processed
-- 30,000+ active customers
+Note: the figures below are indicative orders of magnitude, not real-time
+metrics; do not cite them as exact or current numbers. For live data refer to
+the DFX app and official channels.
+
+- Hundreds of millions in cumulative transaction volume processed
+- Tens of thousands of active customers
 - 80+ supported cryptocurrencies
 - 15 supported blockchains
 - Bitcoin from under 1% fee (lowest tier)
@@ -65,7 +69,7 @@ DFX operates as a group of two Swiss companies, both based in Zug:
 
 ### 1. DFX Ramp (consumer on-/off-ramp product)
 
-- Page: https://dfx.swiss/dfx-services.html
+- Page: https://dfx.swiss/ (the homepage is the DFX Ramp landing; the legacy /dfx-services.html redirects here)
 - App: https://app.dfx.swiss
 - Buy crypto via SEPA / SEPA Instant bank transfer (CHF, EUR), receive directly to your self-custody wallet
 - Sell crypto from your wallet, receive fiat to your bank account
@@ -117,8 +121,7 @@ DFX operates as a group of two Swiss companies, both based in Zug:
 
 ### Public pages
 
-- Homepage: https://dfx.swiss/ — main brand and DFX Ramp entry page
-- DFX Ramp: https://dfx.swiss/dfx-services.html — consumer buy/sell/swap page
+- Homepage / DFX Ramp: https://dfx.swiss/ — main brand and consumer buy/sell/swap entry page
 - DFX Toolbox: https://dfx.swiss/dfx-toolbox.html — B2B API, iFrame and white-label integration page
 - BTC Taro App: https://dfx.swiss/dfx-taro-app.html — Bitcoin wallet with Lightning and self-custody page
 - DFX Services AG: https://dfx.swiss/dfx-services-ag.html — corporate software infrastructure page

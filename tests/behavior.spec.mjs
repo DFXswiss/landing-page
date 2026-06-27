@@ -40,26 +40,21 @@ test.describe('client behavior', () => {
     expect(new URL(page.url()).searchParams.get('lang')).toBe('en');
   });
 
-  test('scroll-reveal marks elements visible once they enter the viewport', async ({ page }) => {
+  test('no analytics/attribution storage is written without a consent layer', async ({ page }) => {
+    // The client tracking stack (clicktrack.js / sea-attribution.js) is intentionally
+    // not shipped to production until a real consent layer + collector endpoint exist.
+    // Guard that no persistent identifier or event log lands in storage on a plain visit.
     await page.goto('/');
     await page.waitForFunction(visibilityRestored);
-    const reveal = page.locator('.dk-reveal').first();
-    await reveal.scrollIntoViewIfNeeded();
-    await expect(reveal).toHaveClass(/is-visible/);
-  });
-
-  test('clicktrack records analytics events in localStorage', async ({ page }) => {
-    await page.goto('/');
-    await expect
-      .poll(() =>
-        page.evaluate(() => {
-          try {
-            return JSON.parse(localStorage.getItem('dfx_ct_events_v1') || '[]').length;
-          } catch {
-            return 0;
-          }
-        }),
-      )
-      .toBeGreaterThan(0);
+    const keys = await page.evaluate(() => ({
+      events: localStorage.getItem('dfx_ct_events_v1'),
+      visitor: localStorage.getItem('dfx_ct_visitor_v1'),
+      attribution:
+        localStorage.getItem('dfx-sea-attribution') ||
+        sessionStorage.getItem('dfx-sea-attribution'),
+    }));
+    expect(keys.events).toBeNull();
+    expect(keys.visitor).toBeNull();
+    expect(keys.attribution).toBeNull();
   });
 });

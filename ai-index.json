@@ -38,7 +38,7 @@
     {
       "name": "DFX Ramp",
       "category": "Consumer crypto on-/off-ramp",
-      "page": "https://dfx.swiss/dfx-services.html",
+      "page": "https://dfx.swiss/",
       "app": "https://app.dfx.swiss",
       "summary": "Buy, sell and swap 80+ cryptocurrencies directly into self-custody wallets via SEPA, SEPA Instant, CHF and EUR."
     },
@@ -69,14 +69,6 @@
       "file": "index.html",
       "title": "Bitcoin & Krypto kaufen in der Schweiz | DFX Ramp",
       "intent": "Brand and main landing page for private and business users",
-      "primary_cta": "https://app.dfx.swiss/?lang=de",
-      "structured_data": ["Organization", "WebApplication", "FAQPage", "BreadcrumbList"]
-    },
-    {
-      "url": "https://dfx.swiss/dfx-services.html",
-      "file": "dfx-services.html",
-      "title": "DFX Ramp | Krypto kaufen & verkaufen Non-Custodial",
-      "intent": "Consumer on-/off-ramp landing page for buy, sell and swap searches",
       "primary_cta": "https://app.dfx.swiss/?lang=de",
       "structured_data": ["Organization", "WebApplication", "FAQPage", "BreadcrumbList"]
     },

@@ -193,11 +193,11 @@
 
 .dfx-dark-page .section_toolbox-code h3,
 .dfx-dark-page .section_toolbox-code h4 {
-  color: #5a6d85 !important;
+  color: var(--dk-text-dim) !important; /* AA contrast on dark navy gradient (~4.5:1) */
 }
 
 .dfx-dark-page .section_toolbox-code p {
-  color: #4a5d75 !important;
+  color: var(--dk-text-muted) !important; /* AA contrast on dark navy gradient (~6:1) */
   font-size: 1rem !important;
   line-height: 1.7 !important;
 }
@@ -251,7 +251,7 @@
 
 .dfx-dark-page .section_taro-btc h4,
 .dfx-dark-page .section_taro-btc .text-color-g950 {
-  color: #5a6d85 !important;
+  color: var(--dk-text-dim) !important; /* AA contrast on dark navy gradient (~4.5:1) */
 }
 
 .dfx-dark-page .section_taro-btc .text-color-r150 {
@@ -261,7 +261,7 @@
 .dfx-dark-page .section_taro-btc p,
 .dfx-dark-page .section_taro-btc div,
 .dfx-dark-page .section_taro-btc .dev-tabs_list-btn div {
-  color: #4a5d75 !important;
+  color: var(--dk-text-muted) !important; /* AA contrast on dark navy gradient (~6:1) */
 }
 
 .dfx-dark-page .section_taro-btc .number-wrapper,
@@ -1160,16 +1160,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 /* ===== REVEAL ANIMATION ===== */
-.dk-reveal {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.dk-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* ===== PARTNERS BAR ===== */
 .dk-partners {
@@ -2064,15 +2054,12 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 @media (prefers-reduced-motion: reduce) {
   .dk-hero__title,
   .dk-hero__sub,
-  .dk-hero__ctas {
-    animation: none;
+  .dk-hero__ctas,
+  .dk-hero__hint-icon,
+  .dk-hero__ctas .dk-btn--primary {
+    animation: none !important;
     opacity: 1;
     transform: none;
-  }
-  .dk-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
   .dk-card, .dk-btn {
     transition: none;
