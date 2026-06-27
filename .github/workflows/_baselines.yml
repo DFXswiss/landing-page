@@ -4,7 +4,8 @@ name: _baselines (temp)
 # linux/amd64 runner + pinned container the visual gate compares against, and
 # uploads them as an artifact. Removed again once the baselines are committed.
 on:
-  workflow_dispatch:
+  push:
+    branches: [fix/pr128-review-remediation]
 
 jobs:
   gen:
