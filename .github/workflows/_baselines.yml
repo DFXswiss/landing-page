@@ -1,0 +1,30 @@
+name: _baselines (temp)
+
+# Temporary helper: regenerates the Playwright visual baselines on the exact
+# linux/amd64 runner + pinned container the visual gate compares against, and
+# uploads them as an artifact. Removed again once the baselines are committed.
+on:
+  push:
+    branches: [fix/pr128-review-remediation]
+
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund || npm ci --no-audit --no-fund
+
+      - name: Regenerate baselines
+        run: npx playwright test --update-snapshots
+
+      - name: Upload baselines
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: baselines
+          path: tests/__screenshots__/
+          retention-days: 1

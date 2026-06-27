@@ -643,6 +643,9 @@ Webflow.push(function () {
     }
 
     function startAuto() {
+      // Respect reduced motion: never auto-advance the steps (also keeps the
+      // visual-regression screenshot deterministic on the first step).
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       clearInterval(autoTimer);              // guarantee a single interval at the fixed speed
       autoTimer = setInterval(nextStep, SPEED);
     }

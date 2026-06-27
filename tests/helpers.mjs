@@ -39,6 +39,11 @@ export async function blockExternalNoise(page) {
 // once, immediately, for every element so the scroll-reveal and how-it-works
 // sequence reach a single stable end state instead of depending on scroll.
 export async function installVisualDeterminism(page) {
+  // Pin reduced-motion so CSS/JS animations (hero pulses, the BTC Taro
+  // auto-play carousel, the how-it-works sequence) settle to a single stable
+  // end state instead of being captured mid-frame.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+
   await page.route('**/*', (route) => {
     let host = '';
     let pathname = '';
