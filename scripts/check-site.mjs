@@ -25,9 +25,12 @@ const warn = (msg) => warnings.push(msg);
 const read = (file) => readFileSync(join(root, file), 'utf8');
 
 const LANGS = ['de', 'en', 'fr', 'it'];
-// analytics.html is an internal, non-indexed dashboard: excluded from the
-// public-page invariants (sitemap, canonical) but still JSON-LD/link checked.
-const INTERNAL_PAGES = new Set(['analytics.html']);
+// Pages excluded from the public-page invariants (sitemap, canonical) but still
+// JSON-LD/link checked:
+//   - analytics.html: internal, non-indexed dashboard
+//   - dfx-services.html: deprecated legacy ramp page, 301-redirected to / (the
+//     homepage is now the "DFX Ramp" landing); kept for history, not indexed.
+const INTERNAL_PAGES = new Set(['analytics.html', 'dfx-services.html']);
 
 const htmlFiles = readdirSync(root)
   .filter((file) => extname(file) === '.html')

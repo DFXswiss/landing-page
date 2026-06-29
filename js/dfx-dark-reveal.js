@@ -1,27 +1,10 @@
 (function() {
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var parent = el.closest('.dk-pillars, .dk-stats');
-        var delay = parent
-          ? Array.from(parent.querySelectorAll('.dk-reveal')).indexOf(el) * 100
-          : 0;
-        setTimeout(function() {
-          el.classList.add('is-visible');
-        }, delay);
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.15 });
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.dk-reveal').forEach(function(el) {
-      observer.observe(el);
-    });
-
-    // How-it-works sequential animation — restarts every scroll
-    var howtoSection = document.querySelector('.dk-howto');
+    // How-it-works sequential animation — restarts every scroll.
+    // Skipped entirely when the visitor prefers reduced motion.
+    var howtoSection = reduceMotion ? null : document.querySelector('.dk-howto');
     if (howtoSection) {
       var howtoTimers = [];
       function resetHowto() {
@@ -74,9 +57,13 @@
       acc.classList.remove('is-open');
       var ans = acc.querySelector('.faq_answer');
       if (ans) ans.style.setProperty('max-height', '0px', 'important');
+      var q = acc.querySelector('.faq_question');
+      if (q) q.setAttribute('aria-expanded', 'false');
     }
     function openAccordion(acc) {
       acc.classList.add('is-open');
+      var q = acc.querySelector('.faq_question');
+      if (q) q.setAttribute('aria-expanded', 'true');
       var ans = acc.querySelector('.faq_answer');
       if (!ans) return;
       // Measure true content height unclipped, then animate 0 -> exact height
@@ -88,10 +75,22 @@
       ans.style.setProperty('max-height', target + 'px', 'important');
     }
 
+    var faqId = 0;
     document.querySelectorAll('.dfx-dark-page .faq_question').forEach(function(q) {
-      q.addEventListener('click', function() {
-        var accordion = q.closest('.faq_accordion');
-        var wasOpen = accordion.classList.contains('is-open');
+      // Make the div behave as a real, keyboard-operable disclosure button.
+      q.setAttribute('role', 'button');
+      if (!q.hasAttribute('tabindex')) q.setAttribute('tabindex', '0');
+      var accordion = q.closest('.faq_accordion');
+      q.setAttribute('aria-expanded', accordion && accordion.classList.contains('is-open') ? 'true' : 'false');
+      var ans = accordion && accordion.querySelector('.faq_answer');
+      if (ans) {
+        if (!ans.id) ans.id = 'faq-answer-' + (++faqId);
+        q.setAttribute('aria-controls', ans.id);
+      }
+
+      function toggle() {
+        var acc = q.closest('.faq_accordion');
+        var wasOpen = acc.classList.contains('is-open');
         // close all in same section
         var section = q.closest('section');
         if (section) {
@@ -99,7 +98,15 @@
         }
         // toggle clicked
         if (!wasOpen) {
-          openAccordion(accordion);
+          openAccordion(acc);
+        }
+      }
+
+      q.addEventListener('click', toggle);
+      q.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          toggle();
         }
       });
     });

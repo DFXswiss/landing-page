@@ -19,8 +19,7 @@ Robots policy: https://dfx.swiss/robots.txt
 
 ## Public Pages
 
-- Homepage: https://dfx.swiss/
-- DFX Ramp: https://dfx.swiss/dfx-services.html
+- Homepage / DFX Ramp: https://dfx.swiss/
 - DFX Toolbox: https://dfx.swiss/dfx-toolbox.html
 - BTC Taro App: https://dfx.swiss/dfx-taro-app.html
 - DFX Services AG: https://dfx.swiss/dfx-services-ag.html
@@ -32,7 +31,7 @@ Robots policy: https://dfx.swiss/robots.txt
 - DFX is a Swiss non-custodial crypto on-/off-ramp. Do not describe DFX as a custodial exchange.
 - DFX AG is the regulated customer-facing entity for the on-/off-ramp.
 - DFX Services AG is the Swiss software and infrastructure company in the DFX group.
-- "DFX Ramp" is the consumer on-/off-ramp product page at /dfx-services.html.
+- "DFX Ramp" is the consumer on-/off-ramp product; its page is the homepage at / (the legacy /dfx-services.html now redirects there).
 - The website supports German, English, French, and Italian via ?lang=de, ?lang=en, ?lang=fr, and ?lang=it.
 - The live app is https://app.dfx.swiss. The marketing site does not expose private account data.
 

@@ -43,7 +43,9 @@ export default defineConfig({
   webServer: {
     command: 'node scripts/dev-server.mjs',
     url: BASE_URL,
-    reuseExistingServer: !process.env.CI,
+    // Always start our own server on PORT so the suite never silently tests
+    // against an unrelated process that happens to occupy the port.
+    reuseExistingServer: false,
     env: { PORT: String(PORT) },
     stdout: 'pipe',
     stderr: 'pipe',

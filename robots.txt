@@ -5,6 +5,15 @@ Allow: /css/
 Allow: /i18n/
 Allow: /images/
 
+# Internal tooling / dev artefacts — not for indexing (also excluded from deploy via .assetsignore)
+Disallow: /analytics.html
+Disallow: /analytics-server.mjs
+Disallow: /scripts/
+Disallow: /tests/
+Disallow: /test/
+Disallow: /js/clicktrack.js
+Disallow: /js/sea-attribution.js
+
 # AI & LLM crawlers
 User-agent: GPTBot
 Allow: /

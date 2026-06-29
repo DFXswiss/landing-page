@@ -48,13 +48,6 @@ function resolveRequestPath(url) {
 }
 
 createServer((request, response) => {
-  if (request.method === 'POST' && request.url?.startsWith('/api/track')) {
-    request.resume();
-    response.writeHead(204);
-    response.end();
-    return;
-  }
-
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     send(response, 405, 'Method Not Allowed');
     return;

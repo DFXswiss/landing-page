@@ -18,15 +18,13 @@
     "check:visual": "node scripts/check-visual.mjs",
     "e2e:docker": "bash scripts/e2e-docker.sh",
     "e2e:docker:update": "bash scripts/e2e-docker.sh --update-snapshots",
-    "check": "npm run format:check && npm run validate:html && npm run check:site && npm run test:coverage",
-    "css:minify": "lightningcss --minify css/dfx-dark-theme.css -o css/dfx-dark-theme.min.css"
+    "check": "npm run format:check && npm run validate:html && npm run check:site && npm run test:coverage"
   },
   "devDependencies": {
     "@playwright/test": "1.61.1",
     "@vitest/coverage-v8": "^3.2.4",
     "html-validate": "^9.5.3",
     "jsdom": "^25.0.1",
-    "lightningcss-cli": "^1.32.0",
     "prettier": "^3.4.2",
     "vitest": "^3.2.4"
   }
