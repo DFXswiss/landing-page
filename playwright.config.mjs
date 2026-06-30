@@ -5,6 +5,9 @@ const BASE_URL = `http://127.0.0.1:${PORT}`;
 
 const DEVICE_FOR = {
   'desktop-chromium': devices['Desktop Chrome'],
+  // Real tablet width: 834px sits inside the `@media (max-width: 1024px)` layer
+  // and below the 991px nav breakpoint, so it also exercises the burger nav.
+  'tablet-chromium': { ...devices['Desktop Chrome'], viewport: { width: 834, height: 1112 } },
   'mobile-safari': devices['iPhone 15'],
 };
 
