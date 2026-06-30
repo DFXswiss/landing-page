@@ -47,7 +47,6 @@ Robots policy: https://dfx.swiss/robots.txt
 
 - Customer support: https://dfx.swiss/help.html and https://app.dfx.swiss/support
 - FAQ: https://dfx.swiss/faq.html
-- Telegram support: https://app.dfx.swiss/support/telegram
 - Business / Toolbox inquiries: business@dfx.swiss
 - DFX Services AG inquiries: services@dfx.swiss
 
