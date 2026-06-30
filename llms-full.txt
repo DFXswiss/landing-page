@@ -126,7 +126,7 @@ the DFX app and official channels.
 - BTC Taro App: https://dfx.swiss/dfx-taro-app.html — Bitcoin wallet with Lightning and self-custody page
 - DFX Services AG: https://dfx.swiss/dfx-services-ag.html — corporate software infrastructure page
 - FAQ: https://dfx.swiss/faq.html — canonical FAQ page
-- Support: https://dfx.swiss/help.html — ticket, Telegram community and contact routing
+- Support: https://dfx.swiss/help.html — ticket and contact routing
 
 ### FAQ coverage
 
@@ -276,7 +276,7 @@ Q: How fast are transactions?
 A: Typically ~10 minutes after payment receipt at DFX's bank. SEPA Instant payments arrive in seconds; standard SEPA can take a business day depending on the sending bank.
 
 Q: What if something goes wrong?
-A: Support is available at https://app.dfx.swiss/support — ticket, FAQ, and Telegram community. Average response time is usually within a few hours during business days.
+A: Support is available at https://app.dfx.swiss/support — ticket and FAQ. Average response time is usually within a few hours during business days.
 
 ## Authoritative Links
 
@@ -291,7 +291,6 @@ A: Support is available at https://app.dfx.swiss/support — ticket, FAQ, and Te
 - GitHub: https://github.com/DFXswiss
 - X / Twitter: https://x.com/DFX_Swiss
 - LinkedIn: https://linkedin.com/company/dfxswiss
-- Telegram support: https://app.dfx.swiss/support/telegram
 - Short LLM profile: https://dfx.swiss/llms.txt
 - Long LLM profile (this file): https://dfx.swiss/llms-full.txt
 - Sitemap: https://dfx.swiss/sitemap.xml

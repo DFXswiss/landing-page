@@ -108,7 +108,7 @@
       "url": "https://dfx.swiss/help.html",
       "file": "help.html",
       "title": "DFX Support | Hilfe zu Krypto, KYC & Transaktionen",
-      "intent": "Support landing page with ticket, Telegram community and FAQ routing",
+      "intent": "Support landing page with ticket and FAQ routing",
       "primary_cta": "https://app.dfx.swiss/support/tickets",
       "structured_data": ["ContactPage", "BreadcrumbList"]
     }
