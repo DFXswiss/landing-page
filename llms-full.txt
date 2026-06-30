@@ -151,12 +151,12 @@ The DFX Services AG page at https://dfx.swiss/dfx-services-ag.html includes FAQP
 
 ### JavaScript and rendering
 
-The public marketing content is present in the HTML and enhanced by JavaScript. AI crawlers that do not execute JavaScript should still retrieve the core page copy and JSON-LD. JavaScript files are public and allowed in robots.txt.
+The public marketing content is present in the HTML and enhanced by JavaScript. AI crawlers that do not execute JavaScript should still retrieve the core page copy and JSON-LD. The site's JavaScript is public and crawlable.
 
-- /js/i18n.js loads /i18n/de.json, /i18n/en.json, /i18n/fr.json and /i18n/it.json and updates elements with data-i18n and data-i18n-html. It also updates meta descriptions for translated pages.
-- /js/cookie-banner.js renders the multilingual cookie banner and stores the user's accept/decline state locally.
-- /js/sea-attribution.js preserves UTM and ad click IDs across internal, app and support links. It emits a dataLayer event named dfx_sea_click for conversion CTA clicks.
-- /js/dfx-dark-reveal.js handles scroll-based reveal animations and should not be treated as content-critical.
+- /js/lib/i18n-core.js provides shared i18n helpers (language resolution and link rewriting) used by /js/i18n.js.
+- /js/i18n.js loads /i18n/de.json, /i18n/en.json, /i18n/fr.json and /i18n/it.json and updates elements with data-i18n and data-i18n-html. It also updates the homepage meta tags by language.
+- /js/dfx-dark-reveal.js drives the how-it-works reveal animation, the keyboard-accessible FAQ accordion and the mobile navigation toggle; it is not content-critical.
+- /js/ai-popup.js renders the on-page AI assistant popup.
 - /js/webflow.js is the Webflow runtime for exported components.
 
 ### Translation files

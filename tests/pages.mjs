@@ -4,11 +4,11 @@
 
 export const PORT = 4173;
 
-// Public, indexed pages. analytics.html is an internal dashboard and is left out
-// of the smoke/visual matrix on purpose.
+// Public, indexed pages. Left out on purpose: analytics.html (internal dashboard)
+// and dfx-services.html (excluded from the deploy and 301-redirected to /), since
+// neither is served in production.
 export const PAGES = [
   '/',
-  '/dfx-services.html',
   '/dfx-toolbox.html',
   '/dfx-taro-app.html',
   '/dfx-services-ag.html',

@@ -45,8 +45,13 @@
     }
   }
 
+  function consentGranted() {
+    try { return localStorage.getItem('dfx_consent_v1') === 'granted'; } catch (e) { return false; }
+  }
+
   function storeAttribution(attribution) {
-    if (!attribution) return;
+    // Privacy default-deny: never persist ad click identifiers without consent.
+    if (!attribution || !consentGranted()) return;
     var raw = JSON.stringify(attribution);
     try { sessionStorage.setItem(ATTR_KEY, raw); } catch (e) {}
     try { localStorage.setItem(ATTR_KEY, raw); } catch (e) {}
@@ -141,6 +146,12 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    // Inert without consent: no storage, no link decoration and no cross-link
+    // forwarding of click identifiers until a consent layer grants it.
+    if (!consentGranted()) {
+      window.dfxSeaAttribution = null;
+      return;
+    }
     var attribution = getAttribution();
     window.dfxSeaAttribution = attribution || null;
     updateLinks(attribution);

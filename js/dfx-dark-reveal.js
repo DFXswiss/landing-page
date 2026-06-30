@@ -56,7 +56,14 @@
     function closeAccordion(acc) {
       acc.classList.remove('is-open');
       var ans = acc.querySelector('.faq_answer');
-      if (ans) ans.style.setProperty('max-height', '0px', 'important');
+      if (ans) {
+        ans.style.setProperty('max-height', '0px', 'important');
+        // Take the collapsed answer out of the focus order and accessibility tree
+        // so its links can't be tabbed to or announced while hidden (max-height:0
+        // alone does not do this). `inert` leaves the CSS height transition intact.
+        ans.setAttribute('inert', '');
+        ans.setAttribute('aria-hidden', 'true');
+      }
       var q = acc.querySelector('.faq_question');
       if (q) q.setAttribute('aria-expanded', 'false');
     }
@@ -66,6 +73,8 @@
       if (q) q.setAttribute('aria-expanded', 'true');
       var ans = acc.querySelector('.faq_answer');
       if (!ans) return;
+      ans.removeAttribute('inert');
+      ans.removeAttribute('aria-hidden');
       // Measure true content height unclipped, then animate 0 -> exact height
       // (no magic cap, no truncation, adapts to any answer length / language).
       ans.style.setProperty('max-height', 'none', 'important');
@@ -86,6 +95,14 @@
       if (ans) {
         if (!ans.id) ans.id = 'faq-answer-' + (++faqId);
         q.setAttribute('aria-controls', ans.id);
+        // Reflect the initial collapsed/expanded state in the a11y tree.
+        if (accordion && accordion.classList.contains('is-open')) {
+          ans.removeAttribute('inert');
+          ans.removeAttribute('aria-hidden');
+        } else {
+          ans.setAttribute('inert', '');
+          ans.setAttribute('aria-hidden', 'true');
+        }
       }
 
       function toggle() {
