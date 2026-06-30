@@ -35,15 +35,25 @@ test.describe('visual regression', () => {
         await STATE_SETUP[view.state](page);
       }
 
-      // <canvas> (the animated hub diagram) and <video> render non-deterministic
-      // pixels; mask them so the rest of the page is still byte-compared. Overlay
-      // states (the fixed AI popup, the burger nav panel) are captured at viewport
-      // size — a full-page stitch would duplicate/misplace fixed elements.
-      const isOverlay = view.state === 'navOpen' || view.state === 'aiPopup';
-      await expect(page).toHaveScreenshot(`${view.slug}.png`, {
-        fullPage: !isOverlay,
-        mask: [page.locator('canvas'), page.locator('video')],
-      });
+      // Overlay states (AI popup, open burger nav) only exist on the home page,
+      // whose viewport IS the autoplaying hero <video>. A page/viewport shot would
+      // be dominated by the masked video and assert nothing about the overlay. So
+      // screenshot the overlay ELEMENT itself — deterministic component content,
+      // no video, no mask needed. All other views shoot the full page and mask the
+      // non-deterministic <canvas>/<video>.
+      const OVERLAY_SELECTOR = {
+        navOpen: '.dfx-dark-page .navbar .nav-menu',
+        aiPopup: '.dk-ai-popup',
+      };
+      const overlaySelector = OVERLAY_SELECTOR[view.state];
+      if (overlaySelector) {
+        await expect(page.locator(overlaySelector)).toHaveScreenshot(`${view.slug}.png`);
+      } else {
+        await expect(page).toHaveScreenshot(`${view.slug}.png`, {
+          fullPage: true,
+          mask: [page.locator('canvas'), page.locator('video')],
+        });
+      }
     });
   }
 });

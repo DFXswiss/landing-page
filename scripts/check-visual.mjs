@@ -12,7 +12,7 @@
  */
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { visualMatrix } from '../tests/pages.mjs';
+import { VIEWS, visualMatrix } from '../tests/pages.mjs';
 
 const root = process.cwd();
 const errors = [];
@@ -20,6 +20,17 @@ const fail = (msg) => errors.push(msg);
 
 const SHOTS_DIR = join(root, 'tests', '__screenshots__');
 const matrix = visualMatrix();
+
+// --- 0. view slugs must be unique --------------------------------------------
+// Slugs are both the baseline filename and the Playwright test title. A duplicate
+// would make the two halves below disagree (matrix.length double-counts the pair
+// while the `expected` Set collapses the shared path), and two same-titled tests
+// would overwrite one baseline — so enforce uniqueness instead of trusting it.
+const seenSlugs = new Set();
+for (const view of VIEWS) {
+  if (seenSlugs.has(view.slug)) fail(`duplicate view slug: "${view.slug}"`);
+  seenSlugs.add(view.slug);
+}
 
 // --- 1. every expected baseline exists, and nothing else is committed --------
 const expected = new Set();
