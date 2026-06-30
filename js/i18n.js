@@ -3,13 +3,15 @@
 
   function getLang() {
     var params = new URLSearchParams(window.location.search);
-    var urlLang = params.get('lang');
-    if (urlLang && SUPPORTED.indexOf(urlLang) !== -1) return urlLang;
-    try { var stored = localStorage.getItem('dfx-lang'); } catch(e) { var stored = null; }
-    if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    var browserLang = navigator.language.slice(0,2);
-    if (SUPPORTED.indexOf(browserLang) !== -1) return browserLang;
-    return 'de';
+    var storedLang = null;
+    try { storedLang = localStorage.getItem('dfx-lang'); } catch(e) { storedLang = null; }
+    return window.DfxI18nCore.resolveLang({
+      urlLang: params.get('lang'),
+      storedLang: storedLang,
+      navigatorLang: navigator.language,
+      supported: SUPPORTED,
+      defaultLang: 'de'
+    });
   }
 
   var lang = getLang();
@@ -36,13 +38,9 @@
   function updateAppLinks() {
     var links = document.querySelectorAll('a[href*="app.dfx.swiss"]');
     links.forEach(function(link) {
-      var href = link.getAttribute('href');
-      try {
-        var url = new URL(href);
-        url.searchParams.set('lang', lang);
-        link.setAttribute('href', url.toString());
-      } catch(e) {
-        // ignore malformed URLs
+      var next = window.DfxI18nCore.rewriteAppLink(link.getAttribute('href'), lang);
+      if (next !== null) {
+        link.setAttribute('href', next);
       }
     });
   }
@@ -51,8 +49,7 @@
   function updateDocsLinks() {
     var links = document.querySelectorAll('a[href*="docs.dfx.swiss"]');
     links.forEach(function(link) {
-      var href = link.getAttribute('href');
-      link.setAttribute('href', href.replace(/docs\.dfx\.swiss\/[a-z]{2}\//, 'docs.dfx.swiss/' + lang + '/'));
+      link.setAttribute('href', window.DfxI18nCore.rewriteDocsLink(link.getAttribute('href'), lang));
     });
   }
 
@@ -73,39 +70,49 @@
       }
     });
 
-    // Update document title
-    if (translations['meta.title']) {
-      document.title = translations['meta.title'];
-    }
+    // Meta tags: the i18n dictionaries carry a single global meta.title /
+    // meta.description that describes the HOMEPAGE only. Applying it on a subpage
+    // would clobber that page's own unique <title>/description/OG/Twitter tags
+    // (giving every subpage the homepage's metadata for non-German visitors), so
+    // the meta translation is scoped to the homepage. Subpages keep their authored
+    // meta as-is.
+    var metaPath = window.location.pathname.replace(/\/index\.html$/, '/');
+    var isHomePage = metaPath === '/' || metaPath === '';
+    if (isHomePage) {
+      // Update document title
+      if (translations['meta.title']) {
+        document.title = translations['meta.title'];
+      }
 
-    // Update meta description
-    var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && translations['meta.description']) {
-      metaDesc.setAttribute('content', translations['meta.description']);
-    }
+      // Update meta description
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && translations['meta.description']) {
+        metaDesc.setAttribute('content', translations['meta.description']);
+      }
 
-    // Update og:title
-    var ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle && translations['meta.title']) {
-      ogTitle.setAttribute('content', translations['meta.title']);
-    }
+      // Update og:title
+      var ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle && translations['meta.title']) {
+        ogTitle.setAttribute('content', translations['meta.title']);
+      }
 
-    // Update og:description
-    var ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc && translations['meta.description']) {
-      ogDesc.setAttribute('content', translations['meta.description']);
-    }
+      // Update og:description
+      var ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc && translations['meta.description']) {
+        ogDesc.setAttribute('content', translations['meta.description']);
+      }
 
-    // Update twitter:title
-    var twTitle = document.querySelector('meta[property="twitter:title"]');
-    if (twTitle && translations['meta.title']) {
-      twTitle.setAttribute('content', translations['meta.title']);
-    }
+      // Update twitter:title
+      var twTitle = document.querySelector('meta[property="twitter:title"]');
+      if (twTitle && translations['meta.title']) {
+        twTitle.setAttribute('content', translations['meta.title']);
+      }
 
-    // Update twitter:description
-    var twDesc = document.querySelector('meta[property="twitter:description"]');
-    if (twDesc && translations['meta.description']) {
-      twDesc.setAttribute('content', translations['meta.description']);
+      // Update twitter:description
+      var twDesc = document.querySelector('meta[property="twitter:description"]');
+      if (twDesc && translations['meta.description']) {
+        twDesc.setAttribute('content', translations['meta.description']);
+      }
     }
 
     // Update links

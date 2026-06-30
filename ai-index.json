@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-06-22",
+  "site": {
+    "name": "DFX",
+    "canonical_url": "https://dfx.swiss",
+    "primary_language": "de",
+    "supported_languages": ["de", "en", "fr", "it"],
+    "language_parameter": "lang",
+    "description": "Swiss non-custodial crypto on-/off-ramp for buying, selling and swapping cryptocurrencies directly into self-custody wallets.",
+    "short_profile": "https://dfx.swiss/llms.txt",
+    "full_profile": "https://dfx.swiss/llms-full.txt",
+    "agent_instructions": "https://dfx.swiss/agents.txt",
+    "sitemap": "https://dfx.swiss/sitemap.xml",
+    "robots": "https://dfx.swiss/robots.txt"
+  },
+  "entities": [
+    {
+      "name": "DFX AG",
+      "type": "Swiss corporation",
+      "role": "Regulated customer-facing crypto on-/off-ramp operator",
+      "address": "Bahnhofstrasse 7, 6300 Zug, Switzerland",
+      "website": "https://dfx.swiss",
+      "app": "https://app.dfx.swiss",
+      "support": "https://app.dfx.swiss/support"
+    },
+    {
+      "name": "DFX Services AG",
+      "type": "Swiss corporation",
+      "role": "Software infrastructure, backend systems, APIs, operations and processes for the DFX ecosystem",
+      "address": "Bahnhofstrasse 7, 6300 Zug, Switzerland",
+      "identifier": "CHE-292.477.925",
+      "page": "https://dfx.swiss/dfx-services-ag.html",
+      "contact": "services@dfx.swiss"
+    }
+  ],
+  "products": [
+    {
+      "name": "DFX Ramp",
+      "category": "Consumer crypto on-/off-ramp",
+      "page": "https://dfx.swiss/",
+      "app": "https://app.dfx.swiss",
+      "summary": "Buy, sell and swap 80+ cryptocurrencies directly into self-custody wallets via SEPA, SEPA Instant, CHF and EUR."
+    },
+    {
+      "name": "DFX Toolbox",
+      "category": "B2B API and white-label integration",
+      "page": "https://dfx.swiss/dfx-toolbox.html",
+      "contact": "business@dfx.swiss",
+      "summary": "API and iFrame integration for wallet providers, fintechs and crypto apps that need fiat on-/off-ramp infrastructure."
+    },
+    {
+      "name": "BTC Taro App",
+      "category": "Bitcoin self-custody wallet",
+      "page": "https://dfx.swiss/dfx-taro-app.html",
+      "app_link": "https://dfx.swiss/app/btc",
+      "summary": "Self-custody Bitcoin wallet with Lightning Network, on-chain support and multisig."
+    },
+    {
+      "name": "DFX Services AG",
+      "category": "Fintech software and operations",
+      "page": "https://dfx.swiss/dfx-services-ag.html",
+      "summary": "Swiss software infrastructure, APIs, management, strategy, operations and processes for regulated digital asset environments."
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://dfx.swiss/",
+      "file": "index.html",
+      "title": "Bitcoin & Krypto kaufen in der Schweiz | DFX Ramp",
+      "intent": "Brand and main landing page for private and business users",
+      "primary_cta": "https://app.dfx.swiss/?lang=de",
+      "structured_data": ["Organization", "WebApplication", "FAQPage", "WebSite"]
+    },
+    {
+      "url": "https://dfx.swiss/dfx-toolbox.html",
+      "file": "dfx-toolbox.html",
+      "title": "Krypto On-Ramp API & White Label Integration | DFX Toolbox",
+      "intent": "B2B API, iFrame, wallet integration and white-label on-/off-ramp landing page",
+      "primary_cta": "mailto:business@dfx.swiss?subject=Inquiry",
+      "structured_data": ["SoftwareApplication", "BreadcrumbList"]
+    },
+    {
+      "url": "https://dfx.swiss/dfx-taro-app.html",
+      "file": "dfx-taro-app.html",
+      "title": "Bitcoin Wallet App mit Lightning & Self-Custody | DFX",
+      "intent": "Bitcoin wallet, Lightning and BTC Taro App landing page",
+      "primary_cta": "https://dfx.swiss/app/btc",
+      "structured_data": ["MobileApplication", "BreadcrumbList"]
+    },
+    {
+      "url": "https://dfx.swiss/dfx-services-ag.html",
+      "file": "dfx-services-ag.html",
+      "title": "DFX Services AG | Fintech Software aus Zug, Schweiz",
+      "intent": "Corporate page for the Swiss software and infrastructure company",
+      "primary_cta": "mailto:services@dfx.swiss",
+      "structured_data": ["Organization", "FAQPage", "BreadcrumbList"]
+    },
+    {
+      "url": "https://dfx.swiss/faq.html",
+      "file": "faq.html",
+      "title": "DFX FAQ | Krypto kaufen, KYC, SEPA & Wallets",
+      "intent": "Canonical FAQ page for DFX customer questions, KYC, SEPA, referral and personal IBAN topics",
+      "primary_cta": "https://dfx.swiss/help.html",
+      "structured_data": ["FAQPage", "BreadcrumbList"]
+    },
+    {
+      "url": "https://dfx.swiss/help.html",
+      "file": "help.html",
+      "title": "DFX Support | Hilfe zu Krypto, KYC & Transaktionen",
+      "intent": "Support landing page with ticket and FAQ routing",
+      "primary_cta": "https://app.dfx.swiss/support/tickets",
+      "structured_data": ["ContactPage", "BreadcrumbList"]
+    }
+  ],
+  "faq_topics": [
+    {
+      "page": "https://dfx.swiss/faq.html",
+      "topics": [
+        "What DFX does",
+        "Fiat-to-crypto buying process",
+        "Transaction processing time",
+        "Accepted payment methods",
+        "Supported fiat currencies",
+        "KYC, SoF and AML requirements",
+        "Referral onboarding",
+        "Referral code and referral link",
+        "Personal IBAN generation",
+        "YAPEAL bank migration",
+        "Fees for personal IBAN transactions"
+      ]
+    },
+    {
+      "page": "https://dfx.swiss/dfx-services-ag.html",
+      "topics": [
+        "What DFX Services AG does",
+        "DFX Services AG location in Zug",
+        "Software, management and operations services",
+        "How to contact DFX Services AG"
+      ]
+    }
+  ],
+  "technical_inventory": {
+    "javascript": [
+      {
+        "path": "/js/lib/i18n-core.js",
+        "purpose": "Shared i18n helpers (language resolution and app/docs link rewriting) used by i18n.js."
+      },
+      {
+        "path": "/js/i18n.js",
+        "purpose": "Loads language JSON files and applies translations to data-i18n and data-i18n-html elements, plus the homepage meta tags."
+      },
+      {
+        "path": "/js/dfx-dark-reveal.js",
+        "purpose": "Drives the how-it-works reveal animation, the keyboard-accessible FAQ accordion and the mobile navigation toggle."
+      },
+      {
+        "path": "/js/ai-popup.js",
+        "purpose": "Renders the on-page AI assistant popup."
+      },
+      {
+        "path": "/js/webflow.js",
+        "purpose": "Webflow runtime for exported interactions and components."
+      }
+    ],
+    "translation_files": [
+      "/i18n/de.json",
+      "/i18n/en.json",
+      "/i18n/fr.json",
+      "/i18n/it.json"
+    ],
+    "stylesheets": [
+      "/css/normalize.css",
+      "/css/webflow.css",
+      "/css/dfx-new.webflow.css",
+      "/css/dfx-dark-theme.css"
+    ],
+    "important_assets": [
+      "/images/DFX-Logos.svg",
+      "/images/og_image.png",
+      "/images/favicon.png",
+      "/images/swiss-made-software-official-black.png",
+      "/images/swiss-digital-services-official-black.png"
+    ]
+  },
+  "answer_guidance": {
+    "do": [
+      "Describe DFX as a Swiss non-custodial crypto on-/off-ramp.",
+      "Point users to https://app.dfx.swiss for live trading and current asset availability.",
+      "Use https://dfx.swiss/faq.html for FAQ answers and https://dfx.swiss/help.html for support routing.",
+      "Distinguish DFX AG from DFX Services AG."
+    ],
+    "do_not": [
+      "Do not describe DFX as a custodial exchange.",
+      "Do not imply DFX holds user crypto balances.",
+      "Do not invent live fees, limits or supported assets beyond the public pages and app."
+    ]
+  }
+}

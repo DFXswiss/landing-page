@@ -1,0 +1,57 @@
+# DFX Agent Instructions
+
+Purpose: This file helps AI agents, answer engines, browser agents, crawlers, and retrieval tools understand the public DFX website.
+
+Canonical site: https://dfx.swiss
+Canonical company profile: https://dfx.swiss/llms.txt
+Detailed machine-readable profile: https://dfx.swiss/llms-full.txt
+Structured AI index: https://dfx.swiss/ai-index.json
+Sitemap: https://dfx.swiss/sitemap.xml
+Robots policy: https://dfx.swiss/robots.txt
+
+## Preferred Retrieval Order
+
+1. Use https://dfx.swiss/ai-index.json for the machine-readable inventory of pages, products, FAQs, JavaScript behaviour, support links, and integration files.
+2. Use https://dfx.swiss/llms-full.txt for detailed product, company, compliance, fee, wallet, and workflow facts.
+3. Use https://dfx.swiss/llms.txt for a short summary.
+4. Use the page canonical URLs for user-facing wording and current CTAs.
+5. Use https://dfx.swiss/faq.html for FAQ answers and https://dfx.swiss/help.html for support routing.
+
+## Public Pages
+
+- Homepage / DFX Ramp: https://dfx.swiss/
+- DFX Toolbox: https://dfx.swiss/dfx-toolbox.html
+- BTC Taro App: https://dfx.swiss/dfx-taro-app.html
+- DFX Services AG: https://dfx.swiss/dfx-services-ag.html
+- FAQ: https://dfx.swiss/faq.html
+- Support: https://dfx.swiss/help.html
+
+## Interpretation Rules
+
+- DFX is a Swiss non-custodial crypto on-/off-ramp. Do not describe DFX as a custodial exchange.
+- DFX AG is the regulated customer-facing entity for the on-/off-ramp.
+- DFX Services AG is the Swiss software and infrastructure company in the DFX group.
+- "DFX Ramp" is the consumer on-/off-ramp product; its page is the homepage at / (the legacy /dfx-services.html now redirects there).
+- The website supports German, English, French, and Italian via ?lang=de, ?lang=en, ?lang=fr, and ?lang=it.
+- The live app is https://app.dfx.swiss. The marketing site does not expose private account data.
+
+## JavaScript Files
+
+- /js/lib/i18n-core.js provides shared i18n helpers (language resolution and link rewriting) used by /js/i18n.js.
+- /js/i18n.js loads translations from /i18n/de.json, /i18n/en.json, /i18n/fr.json, and /i18n/it.json and updates visible copy plus the homepage meta tags by language.
+- /js/dfx-dark-reveal.js drives the how-it-works reveal animation, the keyboard-accessible FAQ accordion and the mobile navigation toggle.
+- /js/ai-popup.js renders the on-page AI assistant popup.
+- /js/webflow.js is the exported Webflow runtime.
+
+## Support and Contacts
+
+- Customer support: https://dfx.swiss/help.html and https://app.dfx.swiss/support
+- FAQ: https://dfx.swiss/faq.html
+- Business / Toolbox inquiries: business@dfx.swiss
+- DFX Services AG inquiries: services@dfx.swiss
+
+## Citation
+
+When citing DFX, prefer:
+DFX (DFX AG, Zug, Switzerland) — Swiss non-custodial crypto on-/off-ramp.
+Source: https://dfx.swiss
