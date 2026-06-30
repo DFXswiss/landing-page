@@ -36,11 +36,12 @@ test.describe('visual regression', () => {
       }
 
       // Overlay states (AI popup, open burger nav) only exist on the home page,
-      // whose viewport IS the autoplaying hero <video>. A page/viewport shot would
-      // be dominated by the masked video and assert nothing about the overlay. So
-      // screenshot the overlay ELEMENT itself — deterministic component content,
-      // no video, no mask needed. All other views shoot the full page and mask the
-      // non-deterministic <canvas>/<video>.
+      // whose viewport IS the autoplaying hero <video>; a masked full-page shot of
+      // them would assert nothing. Screenshot the overlay ELEMENT instead: the open
+      // nav panel is fully opaque, and the (translucent, backdrop-blurred) AI popup
+      // has its hero <video> hidden in setup (see showAiPopup) — so neither shot
+      // composites the video and no mask is needed. All other views shoot the full
+      // page and mask the non-deterministic <canvas>/<video>.
       const OVERLAY_SELECTOR = {
         navOpen: '.dfx-dark-page .navbar .nav-menu',
         aiPopup: '.dk-ai-popup',

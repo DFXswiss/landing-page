@@ -132,9 +132,17 @@ export async function openNav(page) {
 }
 
 // Wait for the timed AI popup to auto-appear (requires installVisualDeterminism
-// with { allowAiPopup: true }; it fires ~5s after DOMContentLoaded).
+// with { allowAiPopup: true }; it fires ~5s after DOMContentLoaded). The popup is
+// translucent + backdrop-blurred and sits over the autoplaying hero <video>, so
+// hide that video before the element shot — otherwise this would be the one
+// screenshot that composites a (non-deterministic) video frame with no mask.
 export async function showAiPopup(page) {
   await page.waitForSelector('.dk-ai-popup.is-visible', { state: 'visible', timeout: 15_000 });
+  await page.evaluate(() => {
+    document
+      .querySelectorAll('.dk-hero__video, .dk-hero__video video')
+      .forEach((el) => (el.style.visibility = 'hidden'));
+  });
   await page.waitForTimeout(300);
 }
 
