@@ -70,7 +70,7 @@
       "title": "Bitcoin & Krypto kaufen in der Schweiz | DFX Ramp",
       "intent": "Brand and main landing page for private and business users",
       "primary_cta": "https://app.dfx.swiss/?lang=de",
-      "structured_data": ["Organization", "WebApplication", "FAQPage", "BreadcrumbList"]
+      "structured_data": ["Organization", "WebApplication", "FAQPage", "WebSite"]
     },
     {
       "url": "https://dfx.swiss/dfx-toolbox.html",
@@ -143,20 +143,20 @@
   "technical_inventory": {
     "javascript": [
       {
+        "path": "/js/lib/i18n-core.js",
+        "purpose": "Shared i18n helpers (language resolution and app/docs link rewriting) used by i18n.js."
+      },
+      {
         "path": "/js/i18n.js",
-        "purpose": "Loads language JSON files and applies translations to data-i18n and data-i18n-html elements, including meta descriptions."
-      },
-      {
-        "path": "/js/cookie-banner.js",
-        "purpose": "Displays the multilingual cookie banner and stores accept/decline state in localStorage."
-      },
-      {
-        "path": "/js/sea-attribution.js",
-        "purpose": "Preserves UTM and ad click IDs across internal and app links; emits dfx_sea_click events into dataLayer for conversion CTA clicks."
+        "purpose": "Loads language JSON files and applies translations to data-i18n and data-i18n-html elements, plus the homepage meta tags."
       },
       {
         "path": "/js/dfx-dark-reveal.js",
-        "purpose": "Handles scroll reveal animations and visual presentation effects."
+        "purpose": "Drives the how-it-works reveal animation, the keyboard-accessible FAQ accordion and the mobile navigation toggle."
+      },
+      {
+        "path": "/js/ai-popup.js",
+        "purpose": "Renders the on-page AI assistant popup."
       },
       {
         "path": "/js/webflow.js",

@@ -37,10 +37,10 @@ Robots policy: https://dfx.swiss/robots.txt
 
 ## JavaScript Files
 
-- /js/i18n.js loads translations from /i18n/de.json, /i18n/en.json, /i18n/fr.json, and /i18n/it.json and updates visible copy plus meta descriptions by language.
-- /js/cookie-banner.js displays the consent banner and links to the DFX privacy policy.
-- /js/sea-attribution.js preserves UTM and ad click IDs across landing-page and app links and emits a neutral dataLayer event named dfx_sea_click on conversion CTA clicks.
-- /js/dfx-dark-reveal.js handles reveal animations.
+- /js/lib/i18n-core.js provides shared i18n helpers (language resolution and link rewriting) used by /js/i18n.js.
+- /js/i18n.js loads translations from /i18n/de.json, /i18n/en.json, /i18n/fr.json, and /i18n/it.json and updates visible copy plus the homepage meta tags by language.
+- /js/dfx-dark-reveal.js drives the how-it-works reveal animation, the keyboard-accessible FAQ accordion and the mobile navigation toggle.
+- /js/ai-popup.js renders the on-page AI assistant popup.
 - /js/webflow.js is the exported Webflow runtime.
 
 ## Support and Contacts

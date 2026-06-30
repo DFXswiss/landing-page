@@ -15,6 +15,9 @@
   --dk-red-hover: #e73955;
   --dk-red-glow: rgba(245, 81, 108, 0.18);
   --dk-red-soft: rgba(245, 81, 108, 0.10);
+  /* Lighter red used for body-text links on the dark navy FAQ background, where
+     --dk-red (#f5516c) only reaches ~3.8:1. #ff8a9e reaches ~5.5:1 (WCAG AA). */
+  --dk-red-link: #ff8a9e;
   --dk-white: #ffffff;
   --dk-border: rgba(255, 255, 255, 0.08);
   --dk-border-light: rgba(255, 255, 255, 0.12);
@@ -582,6 +585,8 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  /* Keep legible over the autoplaying hero video, like the other hero text. */
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
 }
 
 .dk-hero__hint-icon {
@@ -1899,7 +1904,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .dk-faq-section .faq_answer a {
-  color: var(--dk-red) !important;
+  color: var(--dk-red-link) !important;
   text-decoration: underline;
 }
 
@@ -2053,8 +2058,10 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 /* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
   .dk-hero__title,
+  .dk-hero__safe,
   .dk-hero__sub,
   .dk-hero__ctas,
+  .dk-hero__hint,
   .dk-hero__hint-icon,
   .dk-hero__ctas .dk-btn--primary {
     animation: none !important;

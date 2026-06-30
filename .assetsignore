@@ -14,9 +14,13 @@ js/clicktrack.js
 js/sea-attribution.js
 
 # Build / test / tooling
+node_modules/
 scripts/
 test/
 tests/
+coverage/
+playwright-report/
+test-results/
 *.mjs
 package.json
 package-lock.json
