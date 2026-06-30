@@ -9,35 +9,99 @@
 
 User-agent: *
 Allow: /
+Allow: /js/
+Allow: /css/
+Allow: /i18n/
+Allow: /images/
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
-# Major AI crawlers are explicitly welcome. Some honor only their own named
-# record, so each is listed in addition to the wildcard group above.
-User-agent: ClaudeBot
-Allow: /
+# Internal tooling / dev artefacts — not for indexing (also excluded from deploy via .assetsignore)
+Disallow: /analytics.html
+Disallow: /analytics-server.mjs
+Disallow: /scripts/
+Disallow: /tests/
+Disallow: /test/
+Disallow: /js/clicktrack.js
+Disallow: /js/sea-attribution.js
 
+# AI & LLM crawlers — explicitly welcome. Some honor only their own named
+# record, so each is listed in addition to the wildcard group above.
 User-agent: GPTBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Claude-Web
 Allow: /
 
-User-agent: CCBot
+User-agent: ClaudeBot
 Allow: /
 
-User-agent: Bytespider
+User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Amazonbot
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-User-agent: meta-externalagent
+User-agent: Bytespider
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: cohere-ai
 Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: iaskspider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Seekr
+Allow: /
+
+# LLM-readable profiles
+# https://dfx.swiss/llms.txt        — short company profile
+# https://dfx.swiss/llms-full.txt   — long-form profile with workflows, fees, FAQ
+# https://dfx.swiss/agents.txt      — instructions for AI agents and answer engines
+# https://dfx.swiss/ai-index.json   — structured inventory of pages, FAQs, JS and assets
 
 Sitemap: https://dfx.swiss/sitemap.xml

@@ -3,13 +3,15 @@
 
   function getLang() {
     var params = new URLSearchParams(window.location.search);
-    var urlLang = params.get('lang');
-    if (urlLang && SUPPORTED.indexOf(urlLang) !== -1) return urlLang;
-    try { var stored = localStorage.getItem('dfx-lang'); } catch(e) { var stored = null; }
-    if (stored && SUPPORTED.indexOf(stored) !== -1) return stored;
-    var browserLang = navigator.language.slice(0,2);
-    if (SUPPORTED.indexOf(browserLang) !== -1) return browserLang;
-    return 'de';
+    var storedLang = null;
+    try { storedLang = localStorage.getItem('dfx-lang'); } catch(e) { storedLang = null; }
+    return window.DfxI18nCore.resolveLang({
+      urlLang: params.get('lang'),
+      storedLang: storedLang,
+      navigatorLang: navigator.language,
+      supported: SUPPORTED,
+      defaultLang: 'de'
+    });
   }
 
   var lang = getLang();
@@ -36,13 +38,9 @@
   function updateAppLinks() {
     var links = document.querySelectorAll('a[href*="app.dfx.swiss"]');
     links.forEach(function(link) {
-      var href = link.getAttribute('href');
-      try {
-        var url = new URL(href);
-        url.searchParams.set('lang', lang);
-        link.setAttribute('href', url.toString());
-      } catch(e) {
-        // ignore malformed URLs
+      var next = window.DfxI18nCore.rewriteAppLink(link.getAttribute('href'), lang);
+      if (next !== null) {
+        link.setAttribute('href', next);
       }
     });
   }
@@ -51,8 +49,7 @@
   function updateDocsLinks() {
     var links = document.querySelectorAll('a[href*="docs.dfx.swiss"]');
     links.forEach(function(link) {
-      var href = link.getAttribute('href');
-      link.setAttribute('href', href.replace(/docs\.dfx\.swiss\/[a-z]{2}\//, 'docs.dfx.swiss/' + lang + '/'));
+      link.setAttribute('href', window.DfxI18nCore.rewriteDocsLink(link.getAttribute('href'), lang));
     });
   }
 
