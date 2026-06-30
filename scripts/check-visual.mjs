@@ -1,31 +1,43 @@
 #!/usr/bin/env node
 /**
  * Visual coverage gate. Fails closed (exit 1) unless:
- *   - a committed baseline exists for every page × project,
+ *   - a committed baseline exists for every view × applicable project,
  *   - there are no stray/orphan baseline files,
- *   - the Playwright report shows every visual screenshot test ran and passed
- *     (no missing report, no unexpected/flaky/skipped results).
+ *   - the Playwright report shows every applicable visual screenshot ran and
+ *     passed (no missing report, no unexpected/flaky results). Views that do not
+ *     apply to a project (e.g. the burger-nav view on desktop) are reported as
+ *     skipped and are not expected to produce a baseline.
  *
  * Run after `playwright test`, which writes playwright-report/results.json.
  */
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { PAGES, PROJECTS, screenshotName } from '../tests/pages.mjs';
+import { VIEWS, visualMatrix } from '../tests/pages.mjs';
 
 const root = process.cwd();
 const errors = [];
 const fail = (msg) => errors.push(msg);
 
 const SHOTS_DIR = join(root, 'tests', '__screenshots__');
+const matrix = visualMatrix();
+
+// --- 0. view slugs must be unique --------------------------------------------
+// Slugs are both the baseline filename and the Playwright test title. A duplicate
+// would make the two halves below disagree (matrix.length double-counts the pair
+// while the `expected` Set collapses the shared path), and two same-titled tests
+// would overwrite one baseline — so enforce uniqueness instead of trusting it.
+const seenSlugs = new Set();
+for (const view of VIEWS) {
+  if (seenSlugs.has(view.slug)) fail(`duplicate view slug: "${view.slug}"`);
+  seenSlugs.add(view.slug);
+}
 
 // --- 1. every expected baseline exists, and nothing else is committed --------
 const expected = new Set();
-for (const project of PROJECTS) {
-  for (const path of PAGES) {
-    const rel = join('tests', '__screenshots__', project, screenshotName(path));
-    expected.add(rel);
-    if (!existsSync(join(root, rel))) fail(`missing baseline: ${rel}`);
-  }
+for (const { view, project } of matrix) {
+  const rel = join('tests', '__screenshots__', project, `${view.slug}.png`);
+  expected.add(rel);
+  if (!existsSync(join(root, rel))) fail(`missing baseline: ${rel}`);
 }
 
 function listPngs(dir) {
@@ -40,10 +52,10 @@ function listPngs(dir) {
 }
 for (const png of listPngs(SHOTS_DIR)) {
   const rel = relative(root, png);
-  if (!expected.has(rel)) fail(`orphan baseline (no matching page × project): ${rel}`);
+  if (!expected.has(rel)) fail(`orphan baseline (no matching view × project): ${rel}`);
 }
 
-// --- 2. the Playwright report confirms every visual test passed --------------
+// --- 2. the Playwright report confirms every applicable visual test passed ----
 const reportPath = join(root, 'playwright-report', 'results.json');
 if (!existsSync(reportPath)) {
   fail('playwright-report/results.json not found — run `playwright test` first');
@@ -69,14 +81,15 @@ if (!existsSync(reportPath)) {
     .filter((spec) => spec.file && spec.file.endsWith('visual.spec.mjs'))
     .flatMap((spec) => spec.tests || []);
 
-  const expectedRuns = PAGES.length * PROJECTS.length;
-  if (visualTests.length !== expectedRuns) {
+  const passed = visualTests.filter((t) => t.status === 'expected').length;
+  const expectedRuns = matrix.length;
+  if (passed !== expectedRuns) {
     fail(
-      `expected ${expectedRuns} visual test runs (pages × projects) but the report has ${visualTests.length}`,
+      `expected ${expectedRuns} passing visual runs (views × applicable projects) but ${passed} passed (total report entries: ${visualTests.length})`,
     );
   }
   for (const test of visualTests) {
-    if (test.status !== 'expected') {
+    if (test.status !== 'expected' && test.status !== 'skipped') {
       fail(`visual test did not pass (status="${test.status}")`);
     }
   }
@@ -89,5 +102,5 @@ if (errors.length > 0) {
   process.exit(1);
 }
 console.log(
-  `check-visual: OK — ${PAGES.length} pages × ${PROJECTS.length} projects baselines present and all visual tests passed.`,
+  `check-visual: OK — ${matrix.length} view × project baselines present and all visual tests passed.`,
 );

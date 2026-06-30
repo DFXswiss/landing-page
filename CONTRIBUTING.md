@@ -52,7 +52,7 @@ checks**, so a PR that breaks any one of them cannot be merged.
 | HTML validity     | `npm run validate:html` | Valid markup on every page                                                                                                                            |
 | Site completeness | `npm run check:site`    | i18n key parity across de/en/fr/it, every `data-i18n` key translated, valid JSON/JSON-LD, internal links, sitemap, per-page `lang`/canonical/`og:url` |
 | Unit coverage     | `npm run test:coverage` | 100% line/branch/function/statement coverage of the extracted browser logic (`js/lib/**`)                                                             |
-| Visual regression | `npm run e2e:docker`    | Full-page screenshot of every page × viewport matches its committed baseline, then `check:visual`                                                     |
+| Visual regression | `npm run e2e:docker`    | Every view in the visual matrix (page × viewport × language × interactive state) matches its committed baseline, then `check:visual`                  |
 
 `npm run check` runs the first four locally in one go. The visual gate runs in a
 pinned container (see below).
@@ -98,8 +98,22 @@ npm run e2e:docker:update   # regenerate baselines after an intentional UI chang
 When you intentionally change the look of a page, run `e2e:docker:update` and
 commit the updated PNGs under `tests/__screenshots__/`.
 
-`<canvas>` and `<video>` elements are masked in the screenshots (they render
-non-deterministic pixels); the rest of each page is byte-compared.
+The visual matrix lives in `tests/pages.mjs` (`VIEWS`). It covers each public page
+across **three viewports** — `desktop-chromium`, `tablet-chromium` (834px, which
+exercises the `@media (max-width: 1024px)` layer and the burger nav) and
+`mobile-safari` — plus one extra **language** render per page (rotating en/fr/it,
+to catch localized layout/overflow) and three interactive **states** (open FAQ
+accordion, open burger nav, AI popup). Each view has a unique `slug` used for both
+the baseline filename and the test title. `check:visual` enforces that every
+view × applicable viewport has exactly one committed baseline and nothing is
+orphaned, and that the report ran them all (project-skipped views — e.g. the
+burger nav on desktop — are allowed).
+
+Full-page shots mask `<canvas>` and `<video>` (non-deterministic pixels) and
+byte-compare the rest. The two overlay states (AI popup, open burger nav) exist
+only on the home page, over the autoplaying hero `<video>` — so they are captured
+as **element** screenshots of the overlay itself (no video in frame, no mask),
+not a masked full-page shot that would assert nothing.
 
 ### Bumping Playwright
 

@@ -38,7 +38,7 @@ export async function blockExternalNoise(page) {
 // language, suppresses the timed AI popup, and makes IntersectionObserver fire
 // once, immediately, for every element so the scroll-reveal and how-it-works
 // sequence reach a single stable end state instead of depending on scroll.
-export async function installVisualDeterminism(page) {
+export async function installVisualDeterminism(page, { allowAiPopup = false } = {}) {
   // Pin reduced-motion so CSS/JS animations (hero pulses, the BTC Taro
   // auto-play carousel, the how-it-works sequence) settle to a single stable
   // end state instead of being captured mid-frame.
@@ -62,45 +62,88 @@ export async function installVisualDeterminism(page) {
     return route.continue();
   });
 
-  await page.addInitScript(() => {
-    try {
-      localStorage.setItem('dfx-lang', 'de');
-    } catch {
-      /* storage unavailable */
-    }
-    try {
-      sessionStorage.setItem('dfx-ai-popup-seen', '1');
-    } catch {
-      /* storage unavailable */
-    }
+  await page.addInitScript(
+    (opts) => {
+      try {
+        localStorage.setItem('dfx-lang', 'de');
+      } catch {
+        /* storage unavailable */
+      }
+      // The timed AI popup is suppressed by default so it never appears mid-shot;
+      // the dedicated ai-popup view opts back in via { allowAiPopup: true }.
+      if (!opts.allowAiPopup) {
+        try {
+          sessionStorage.setItem('dfx-ai-popup-seen', '1');
+        } catch {
+          /* storage unavailable */
+        }
+      }
 
-    // Chainable no-op for the (now un-loaded) animation libraries so inline
-    // `new Splide(...).mount()` / `gsap.timeline()...` neither throw nor animate.
-    const noop = new Proxy(function () {}, {
-      get: () => noop,
-      apply: () => noop,
-      construct: () => noop,
-    });
-    window.Splide = noop;
-    window.gsap = noop;
-    window.ScrollTrigger = noop;
-    window.MotionPathPlugin = noop;
+      // Chainable no-op for the (now un-loaded) animation libraries so inline
+      // `new Splide(...).mount()` / `gsap.timeline()...` neither throw nor animate.
+      const noop = new Proxy(function () {}, {
+        get: () => noop,
+        apply: () => noop,
+        construct: () => noop,
+      });
+      window.Splide = noop;
+      window.gsap = noop;
+      window.ScrollTrigger = noop;
+      window.MotionPathPlugin = noop;
 
-    class ImmediateIntersectionObserver {
-      constructor(callback) {
-        this._callback = callback;
+      class ImmediateIntersectionObserver {
+        constructor(callback) {
+          this._callback = callback;
+        }
+        observe(element) {
+          this._callback([{ target: element, isIntersecting: true, intersectionRatio: 1 }], this);
+        }
+        unobserve() {}
+        disconnect() {}
+        takeRecords() {
+          return [];
+        }
       }
-      observe(element) {
-        this._callback([{ target: element, isIntersecting: true, intersectionRatio: 1 }], this);
-      }
-      unobserve() {}
-      disconnect() {}
-      takeRecords() {
-        return [];
-      }
-    }
-    window.IntersectionObserver = ImmediateIntersectionObserver;
+      window.IntersectionObserver = ImmediateIntersectionObserver;
+    },
+    { allowAiPopup },
+  );
+}
+
+// --- interactive-state setups for the visual matrix --------------------------
+// Each is run after settle(), just before the screenshot, and waits for the
+// resulting state to be in the DOM so the shot is deterministic.
+
+// Open the first FAQ accordion (covers the expanded answer + its links, which
+// the default collapsed shot never shows).
+export async function openFirstFaq(page) {
+  await page.locator('.dfx-dark-page .faq_question').first().click();
+  await page.waitForSelector('.dfx-dark-page .faq_accordion.is-open .faq_answer', {
+    state: 'visible',
   });
+  await page.waitForTimeout(400);
+}
+
+// Open the burger / mobile navigation (only meaningful on the narrow viewports).
+export async function openNav(page) {
+  await page.locator('.dfx-dark-page .menu-button').first().click();
+  await page.waitForSelector('.dfx-dark-page .navbar .nav-menu.dk-open', { state: 'visible' });
+  await page.waitForTimeout(200);
+}
+
+// Wait for the timed AI popup to auto-appear (requires installVisualDeterminism
+// with { allowAiPopup: true }; it fires ~5s after DOMContentLoaded). The popup is
+// translucent + backdrop-blurred and sits over the autoplaying hero <video>, so
+// hide that video before the element shot — otherwise this would be the one
+// screenshot that composites a (non-deterministic) video frame with no mask.
+export async function showAiPopup(page) {
+  await page.waitForSelector('.dk-ai-popup.is-visible', { state: 'visible', timeout: 15_000 });
+  await page.evaluate(() => {
+    document
+      .querySelectorAll('.dk-hero__video, .dk-hero__video video')
+      .forEach((el) => (el.style.visibility = 'hidden'));
+  });
+  await page.waitForTimeout(300);
 }
 
 // Waits until the page has reached a stable visual state: media paused, every
