@@ -137,7 +137,8 @@
         e.stopPropagation();
         var open = !navMenu.classList.contains('dk-open');
         if (open && navbar) {
-          // anchor the fixed panel exactly to the navbar's bottom edge
+          // make sure the navbar is revealed, then anchor the panel to its bottom edge
+          navbar.classList.remove('nav-hidden');
           navMenu.style.top = Math.round(navbar.getBoundingClientRect().bottom) + 'px';
         }
         navMenu.classList.toggle('dk-open', open);
@@ -160,6 +161,31 @@
       window.addEventListener('resize', function() {
         if (window.innerWidth > 991) closeNav();
       });
+    }
+
+    // Auto-hide the navbar when scrolling down, reveal it when scrolling up.
+    var navbarEl = document.querySelector('.navbar');
+    if (navbarEl) {
+      var lastY = window.scrollY;
+      var ticking = false;
+      var DELTA = 6;
+      var TOP_ZONE = 120;
+      var update = function() {
+        var y = window.scrollY;
+        var menuOpen = document.querySelector('.dfx-dark-page .nav-menu.dk-open');
+        if (y <= TOP_ZONE || menuOpen) {
+          navbarEl.classList.remove('nav-hidden');
+        } else if (y > lastY + DELTA) {
+          navbarEl.classList.add('nav-hidden');      // scrolling down
+        } else if (y < lastY - DELTA) {
+          navbarEl.classList.remove('nav-hidden');   // scrolling up
+        }
+        lastY = y;
+        ticking = false;
+      };
+      window.addEventListener('scroll', function() {
+        if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
     }
   });
 })();

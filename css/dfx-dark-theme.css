@@ -334,6 +334,15 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   color: var(--dk-text);
 }
 
+/* Auto-hide on scroll down, reveal on scroll up (headroom pattern) */
+.dfx-dark-page .navbar {
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+.dfx-dark-page .navbar.nav-hidden {
+  transform: translateY(-100%) !important;
+}
+
 .dfx-dark-page main,
 .dfx-dark-page .main-wrapper {
   background: var(--dk-base);
@@ -1792,14 +1801,21 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .dfx-dark-page .section_support-hero {
-  min-height: auto !important;
-  background: linear-gradient(180deg, #0b3560, #0a3055) !important;
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh !important;
+  display: flex;
+  align-items: center;
+  background: var(--dk-base) !important;
   border-bottom: 1px solid var(--dk-border);
 }
 
 .dfx-dark-page .section_support-hero .padding-global.padding-section-hero.support {
+  position: relative;
+  z-index: 3;
+  width: 100%;
   padding-top: 7.25rem !important;
-  padding-bottom: 2rem !important;
+  padding-bottom: 3rem !important;
 }
 
 .dfx-dark-page .section_support-hero h1 {
@@ -1809,6 +1825,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   font-size: clamp(2.25rem, 4.4vw, 3.5rem) !important;
   line-height: 1.08 !important;
   color: var(--dk-white) !important;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.34);
 }
 
 .dfx-dark-page .section_services-faq .padding-global.padding-section-faq {
@@ -2062,6 +2079,9 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 
 /* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
+  .dfx-dark-page .navbar {
+    transition: none;
+  }
   .dk-hero__title,
   .dk-hero__sub,
   .dk-hero__ctas {
@@ -2113,9 +2133,10 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   .dk-section { padding: 3rem 0; }
 
   /* Hero */
-  /* First screen ends at the 30'000+ stat; the rest follows on scroll */
-  .dk-hero { min-height: calc(100vh - 200px); min-height: calc(100svh - 200px); align-items: flex-end; }
-  .dk-hero__content { padding: 5.5rem 0 3.25rem; }
+  /* Center the hero content vertically on mobile so short headlines don't
+     strand at the bottom with the next section bleeding in. */
+  .dk-hero { min-height: 100vh; min-height: 100svh; align-items: center; }
+  .dk-hero__content { padding: 6rem 0 3.5rem; }
   .dk-hero__title { font-size: clamp(1.9rem, 8vw, 2.35rem); line-height: 1.08; margin-bottom: 0.85rem; }
   .dk-hero__sub { font-size: 0.94rem; line-height: 1.55; margin-bottom: 1.25rem; }
   .dk-hero__ctas { flex-direction: column; gap: 0.75rem; }
@@ -2583,10 +2604,13 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
     border-color: rgba(245, 81, 108, 0.5) !important;
   }
 
-  /* Dropdown panel — fixed below a sticky navbar (robust across browsers) */
+  /* Fixed navbar (sticky breaks inside the overflow:auto page-wrapper on mobile,
+     causing it to scroll away and never return). Reveal-on-scroll-up handled in JS. */
   .dfx-dark-page .navbar {
-    position: sticky !important;
+    position: fixed !important;
     top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     z-index: 1100 !important;
   }
   .dfx-dark-page .nav-menu {
@@ -2627,10 +2651,85 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
     font-size: 1.02rem !important;
   }
   .dfx-dark-page .nav_button-wrapper {
-    flex-direction: row !important;
-    align-items: center;
-    gap: 0.75rem;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 1rem;
     width: 100%;
     margin-top: 1rem;
+  }
+
+  /* Primary CTA — full width on mobile */
+  .dfx-dark-page .nav-button.hide-desktop {
+    display: flex !important;
+    width: 100% !important;
+    height: 3rem !important;
+    border-radius: 12px !important;
+    font-weight: 600;
+  }
+
+  /* Language switcher: contained dark panel instead of the overflowing white card */
+  .dfx-dark-page .wg-element.hide-desktop {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+  .dfx-dark-page .wg-element .wg-dropdown-toggle {
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #fff !important;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .dfx-dark-page .wg-dropdown,
+  .dfx-dark-page .wg-dropdown.w--open {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0.75rem 0 0 !important;
+    padding: 1rem 1.1rem !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  .dfx-dark-page .wg-dropdown .wg-wrapper {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+  }
+  .dfx-dark-page .wg-dropdown .language {
+    color: #fff !important;
+    font-size: 0.95rem !important;
+    font-weight: 600;
+  }
+  .dfx-dark-page .wg-dropdown .weglot-switcher {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    padding-right: 0 !important;
+  }
+  .dfx-dark-page .wg-dropdown .switcher_link {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  }
+  .dfx-dark-page .wg-dropdown .switcher_link:hover,
+  .dfx-dark-page .wg-dropdown .switcher_link.w--current {
+    background: rgba(245, 81, 108, 0.16) !important;
+    border-color: rgba(245, 81, 108, 0.5) !important;
+    color: #fff !important;
+  }
+  .dfx-dark-page .wg-dropdown .wg-dropdown_arrow {
+    display: none !important;
   }
 }

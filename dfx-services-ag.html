@@ -50,10 +50,10 @@
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script src="js/i18n.js"></script>
-  <link href="css/dfx-dark-theme.css?v=20260623i" rel="stylesheet" type="text/css">
+  <link href="css/dfx-dark-theme.css?v=20260701d" rel="stylesheet" type="text/css">
   <script src="js/sea-attribution.js" defer></script>
   <script src="js/clicktrack.js?v=2.1" defer></script>
-  <script src="js/dfx-dark-reveal.js?v=20260623e" defer></script>
+  <script src="js/dfx-dark-reveal.js?v=20260701d" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -154,7 +154,7 @@
   <style>
     /* ===== BASE ===== */
     :root {
-      --sa-base: #072440;
+      --sa-base: #0a3055; /* match the shared --dk-base used by all other pages */
       --sa-surface: #0a2d4f;
       --sa-surface-2: #1d2943;
       --sa-surface-3: #052e61;
@@ -169,14 +169,23 @@
       --sa-border-light: rgba(255, 255, 255, 0.1);
     }
 
-    .sa-page {
-      background: var(--sa-base);
+    /* Keep the bespoke hero background identical after opting into the shared
+       dfx-dark-page navbar/menu system (overrides .dfx-dark-page's --dk-base). */
+    .sa-page.dfx-dark-page,
+    .sa-page.dfx-dark-page main,
+    .sa-page.dfx-dark-page .main-wrapper {
+      background: var(--sa-base) !important;
       overflow-x: hidden;
     }
 
-    .sa-page .navbar {
-      background-color: rgba(120, 140, 165, 0.45) !important;
-      backdrop-filter: blur(50px);
+    /* Navbar: transparent over the hero at the top, solid navy once scrolled —
+       matches the Webflow scroll interaction used on all other pages. */
+    .sa-page.dfx-dark-page .navbar {
+      background-color: transparent !important;
+      transition: background-color 0.3s ease;
+    }
+    .sa-page.dfx-dark-page .navbar.sa-nav-scrolled {
+      background-color: rgba(7, 36, 64, 0.8) !important;
     }
 
 
@@ -1019,8 +1028,8 @@
       .sa-section { padding: 3.5rem 0; }
 
       /* Hero */
-      .sa-hero { min-height: 76vh; align-items: flex-end; }
-      .sa-hero__content { padding: 5.5rem 0 2.5rem; }
+      .sa-hero { min-height: 100vh; min-height: 100svh; align-items: center; }
+      .sa-hero__content { padding: 6rem 0 3.5rem; }
       .sa-hero__title { font-size: clamp(1.9rem, 8vw, 2.45rem); line-height: 1.08; margin-bottom: 0.9rem; }
       .sa-hero__sub { font-size: 0.94rem; line-height: 1.55; margin-bottom: 1.35rem; }
       .sa-hero__ctas { flex-direction: column; gap: 0.75rem; }
@@ -1115,8 +1124,8 @@
     /* Extra small screens (iPhone SE, etc.) */
     @media (max-width: 480px) {
       .sa-container { padding: 0 0.875rem; }
-      .sa-hero { min-height: 72vh; }
-      .sa-hero__content { padding: 5rem 0 2rem; }
+      .sa-hero { min-height: 100vh; min-height: 100svh; }
+      .sa-hero__content { padding: 5.5rem 0 3rem; }
       .sa-hero__title { font-size: 1.75rem; }
       .sa-hero__sub { font-size: 0.88rem; }
       .sa-scrollline { display: none; }
@@ -1151,7 +1160,7 @@
   }
   </script>
 </head>
-<body class="body sa-page">
+<body class="body dfx-dark-page sa-page">
   <div class="page-wrapper" role="document">
     <!-- SCROLL LINE -->
     <div class="sa-scrollline" aria-hidden="true">
@@ -1968,6 +1977,19 @@
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
+  })();
+  </script>
+  <script>
+  /* Solidify the navbar background once the user scrolls past the hero top,
+     matching the transparent→solid navbar on every other page. */
+  (function () {
+    var navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    function onScroll() {
+      navbar.classList.toggle('sa-nav-scrolled', window.scrollY > 30);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   })();
   </script>
 </body>
