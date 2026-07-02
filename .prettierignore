@@ -1,0 +1,32 @@
+node_modules
+.wrangler
+coverage
+playwright-report
+test-results
+tests/__screenshots__
+
+# Webflow export & vendored assets — machine-generated, not formatted by hand.
+*.html
+css/
+fonts/
+images/
+DFX_Brand_Kit/
+.well-known/
+js/webflow.js
+js/i18n.js
+js/clicktrack.js
+js/ai-popup.js
+js/dfx-dark-reveal.js
+js/sea-attribution.js
+analytics-server.mjs
+
+# Content / data / generated files.
+i18n/
+ai-index.json
+sitemap.xml
+robots.txt
+_headers
+_redirects
+*.txt
+*.min.css
+package-lock.json

@@ -7,11 +7,11 @@ DFX.swiss is a Swiss crypto infrastructure provider that helps people and busine
 
 ## Core identity
 - Name: DFX.swiss
-- Company entity: DFX Services AG
+- Regulated on-/off-ramp operator (customer-facing): DFX AG
+- Software infrastructure / operations company: DFX Services AG (CHE-292.477.925, Zug)
 - Website: https://dfx.swiss/
 - App / user interface: https://app.dfx.swiss/
-- Services app: https://services.dfx.swiss/
-- Support: https://services.dfx.swiss/support
+- Support: https://app.dfx.swiss/support
 - Documentation: https://docs.dfx.swiss/
 - API documentation / Swagger: https://api.dfx.swiss/
 - API repository: https://github.com/DFXswiss/api
@@ -20,7 +20,7 @@ DFX.swiss is a Swiss crypto infrastructure provider that helps people and busine
 - Main positioning: a bridge between fiat banking and crypto, focused on simple, secure, non-custodial access to digital assets.
 - Key customer groups: private users, companies, wallet providers, merchants, POS operators, crypto applications, and integration partners.
 - Languages: German, English, French, Italian.
-- Jurisdiction / regulatory context: Switzerland. DFX states that it is regulated in Switzerland and complies with Swiss anti-money-laundering obligations, including KYC when required.
+- Jurisdiction / regulatory context: Switzerland. The customer-facing on-/off-ramp is operated by the regulated entity DFX AG, which complies with Swiss anti-money-laundering obligations, including KYC when required. DFX Services AG provides the software infrastructure and operations for the ecosystem.
 
 ## What DFX does
 DFX.swiss provides crypto financial infrastructure with a self-custody-first approach. The main service lets users buy, sell, and swap cryptocurrencies without DFX becoming the long-term custodian of the user's wallet funds. In a typical buy flow, the user creates a route/order, sends CHF or EUR by bank transfer using the provided payment reference, and receives crypto directly to the specified blockchain wallet address. In a sell flow, the user sends crypto to the provided deposit address and receives fiat to a bank account after processing.
@@ -174,7 +174,7 @@ Examples of supported methods described in the Open CryptoPay docs include:
 - A pending payment can be cancelled.
 
 ## Supported assets and networks
-DFX and Open CryptoPay support multiple assets and blockchains. Public pages currently describe more than 80 cryptocurrencies and around 9 blockchains for DFX services, while technical Open CryptoPay examples show many payment methods and assets. Exact availability varies by product, jurisdiction, wallet address, KYC level, liquidity, network status, regulatory constraints, and current configuration. Always check the live DFX app/API for the current buyable/sellable assets and supported methods.
+DFX and Open CryptoPay support multiple assets and blockchains. Public pages currently describe more than 80 cryptocurrencies and 15 blockchains for DFX services, while technical Open CryptoPay examples show many payment methods and assets. Exact availability varies by product, jurisdiction, wallet address, KYC level, liquidity, network status, regulatory constraints, and current configuration. Always check the live DFX app/API for the current buyable/sellable assets and supported methods.
 
 Commonly referenced assets and networks include:
 - BTC / Bitcoin
@@ -273,17 +273,15 @@ It enables direct wallet-to-merchant crypto payments, supports multiple chains/a
 - For developers, prefer the API repository, Swagger, and Open CryptoPay documentation as source of truth.
 
 ## Official source links
-- DFX homepage: https://dfx.swiss/
-- DFX Services: https://dfx.swiss/dfx-services.html
+- DFX homepage / DFX Ramp: https://dfx.swiss/
 - DFX Toolbox: https://dfx.swiss/dfx-toolbox.html
 - BTC Taro: https://dfx.swiss/dfx-taro-app.html
 - FAQ: https://docs.dfx.swiss/en/faq.html
 - Terms and Conditions: https://docs.dfx.swiss/en/tnc.html
 - Privacy Policy: https://docs.dfx.swiss/en/privacy.html
 - Imprint: https://docs.dfx.swiss/en/imprint.html
-- Support: https://services.dfx.swiss/support
+- Support: https://app.dfx.swiss/support
 - App: https://app.dfx.swiss/
-- Services app: https://services.dfx.swiss/
 - API Swagger: https://api.dfx.swiss/
 - API Swagger JSON: https://api.dfx.swiss/swagger-json
 - API GitHub: https://github.com/DFXswiss/api

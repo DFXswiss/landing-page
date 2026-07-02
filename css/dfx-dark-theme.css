@@ -15,6 +15,9 @@
   --dk-red-hover: #e73955;
   --dk-red-glow: rgba(245, 81, 108, 0.18);
   --dk-red-soft: rgba(245, 81, 108, 0.10);
+  /* Lighter red used for body-text links on the dark navy FAQ background, where
+     --dk-red (#f5516c) only reaches ~3.8:1. #ff8a9e reaches ~5.5:1 (WCAG AA). */
+  --dk-red-link: #ff8a9e;
   --dk-white: #ffffff;
   --dk-border: rgba(255, 255, 255, 0.08);
   --dk-border-light: rgba(255, 255, 255, 0.12);
@@ -193,11 +196,11 @@
 
 .dfx-dark-page .section_toolbox-code h3,
 .dfx-dark-page .section_toolbox-code h4 {
-  color: #5a6d85 !important;
+  color: var(--dk-text-dim) !important; /* AA contrast on dark navy gradient (~4.5:1) */
 }
 
 .dfx-dark-page .section_toolbox-code p {
-  color: #4a5d75 !important;
+  color: var(--dk-text-muted) !important; /* AA contrast on dark navy gradient (~6:1) */
   font-size: 1rem !important;
   line-height: 1.7 !important;
 }
@@ -251,7 +254,7 @@
 
 .dfx-dark-page .section_taro-btc h4,
 .dfx-dark-page .section_taro-btc .text-color-g950 {
-  color: #5a6d85 !important;
+  color: var(--dk-text-dim) !important; /* AA contrast on dark navy gradient (~4.5:1) */
 }
 
 .dfx-dark-page .section_taro-btc .text-color-r150 {
@@ -261,7 +264,7 @@
 .dfx-dark-page .section_taro-btc p,
 .dfx-dark-page .section_taro-btc div,
 .dfx-dark-page .section_taro-btc .dev-tabs_list-btn div {
-  color: #4a5d75 !important;
+  color: var(--dk-text-muted) !important; /* AA contrast on dark navy gradient (~6:1) */
 }
 
 .dfx-dark-page .section_taro-btc .number-wrapper,
@@ -591,6 +594,8 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  /* Keep legible over the autoplaying hero video, like the other hero text. */
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
 }
 
 .dk-hero__hint-icon {
@@ -1169,16 +1174,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 /* ===== REVEAL ANIMATION ===== */
-.dk-reveal {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.dk-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* ===== PARTNERS BAR ===== */
 .dk-partners {
@@ -1926,7 +1921,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .dk-faq-section .faq_answer a {
-  color: var(--dk-red) !important;
+  color: var(--dk-red-link) !important;
   text-decoration: underline;
 }
 
@@ -2083,16 +2078,15 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
     transition: none;
   }
   .dk-hero__title,
+  .dk-hero__safe,
   .dk-hero__sub,
-  .dk-hero__ctas {
-    animation: none;
+  .dk-hero__ctas,
+  .dk-hero__hint,
+  .dk-hero__hint-icon,
+  .dk-hero__ctas .dk-btn--primary {
+    animation: none !important;
     opacity: 1;
     transform: none;
-  }
-  .dk-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
   .dk-card, .dk-btn {
     transition: none;

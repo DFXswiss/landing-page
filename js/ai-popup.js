@@ -68,14 +68,47 @@
       });
     });
 
+    // Focus management for a non-modal, auto-appearing notice: we do NOT steal
+    // focus on appear (that would violate WCAG 2.4.3/3.2.1 for an unsolicited
+    // popup). We remember the previously focused element, keep Tab contained
+    // once the user actually enters the popup, and restore focus on close.
+    var lastFocused = document.activeElement;
+
+    function focusables() {
+      return Array.prototype.slice.call(
+        popup.querySelectorAll('a[href], button:not([disabled])')
+      );
+    }
+
     function close() {
       popup.classList.remove('is-visible');
       setTimeout(function() { if (popup.parentNode) popup.remove(); }, 400);
       document.removeEventListener('keydown', onKey);
+      // Only return focus if it currently sits inside the popup, so we never
+      // yank focus away from wherever the user has since moved.
+      if (popup.contains(document.activeElement) && lastFocused && lastFocused.focus) {
+        lastFocused.focus();
+      }
     }
 
     function onKey(e) {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape') {
+        close();
+        return;
+      }
+      if (e.key !== 'Tab' || !popup.contains(document.activeElement)) return;
+      // Contained tab cycle — engages only once focus is inside the popup.
+      var items = focusables();
+      if (!items.length) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
 
     popup.querySelector('.dk-ai-popup__close').addEventListener('click', close);

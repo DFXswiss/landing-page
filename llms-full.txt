@@ -50,8 +50,12 @@ DFX operates as a group of two Swiss companies, both based in Zug:
 
 ## Key Facts (current)
 
-- $100M+ cumulative transaction volume processed
-- 30,000+ active customers
+Note: the figures below are indicative orders of magnitude, not real-time
+metrics; do not cite them as exact or current numbers. For live data refer to
+the DFX app and official channels.
+
+- Hundreds of millions in cumulative transaction volume processed
+- Tens of thousands of active customers
 - 80+ supported cryptocurrencies
 - 15 supported blockchains
 - Bitcoin from under 1% fee (lowest tier)
@@ -65,7 +69,7 @@ DFX operates as a group of two Swiss companies, both based in Zug:
 
 ### 1. DFX Ramp (consumer on-/off-ramp product)
 
-- Page: https://dfx.swiss/dfx-services.html
+- Page: https://dfx.swiss/ (the homepage is the DFX Ramp landing; the legacy /dfx-services.html redirects here)
 - App: https://app.dfx.swiss
 - Buy crypto via SEPA / SEPA Instant bank transfer (CHF, EUR), receive directly to your self-custody wallet
 - Sell crypto from your wallet, receive fiat to your bank account
@@ -117,8 +121,7 @@ DFX operates as a group of two Swiss companies, both based in Zug:
 
 ### Public pages
 
-- Homepage: https://dfx.swiss/ — main brand and DFX Ramp entry page
-- DFX Ramp: https://dfx.swiss/dfx-services.html — consumer buy/sell/swap page
+- Homepage / DFX Ramp: https://dfx.swiss/ — main brand and consumer buy/sell/swap entry page
 - DFX Toolbox: https://dfx.swiss/dfx-toolbox.html — B2B API, iFrame and white-label integration page
 - BTC Taro App: https://dfx.swiss/dfx-taro-app.html — Bitcoin wallet with Lightning and self-custody page
 - DFX Services AG: https://dfx.swiss/dfx-services-ag.html — corporate software infrastructure page
@@ -148,12 +151,12 @@ The DFX Services AG page at https://dfx.swiss/dfx-services-ag.html includes FAQP
 
 ### JavaScript and rendering
 
-The public marketing content is present in the HTML and enhanced by JavaScript. AI crawlers that do not execute JavaScript should still retrieve the core page copy and JSON-LD. JavaScript files are public and allowed in robots.txt.
+The public marketing content is present in the HTML and enhanced by JavaScript. AI crawlers that do not execute JavaScript should still retrieve the core page copy and JSON-LD. The site's JavaScript is public and crawlable.
 
-- /js/i18n.js loads /i18n/de.json, /i18n/en.json, /i18n/fr.json and /i18n/it.json and updates elements with data-i18n and data-i18n-html. It also updates meta descriptions for translated pages.
-- /js/cookie-banner.js renders the multilingual cookie banner and stores the user's accept/decline state locally.
-- /js/sea-attribution.js preserves UTM and ad click IDs across internal, app and support links. It emits a dataLayer event named dfx_sea_click for conversion CTA clicks.
-- /js/dfx-dark-reveal.js handles scroll-based reveal animations and should not be treated as content-critical.
+- /js/lib/i18n-core.js provides shared i18n helpers (language resolution and link rewriting) used by /js/i18n.js.
+- /js/i18n.js loads /i18n/de.json, /i18n/en.json, /i18n/fr.json and /i18n/it.json and updates elements with data-i18n and data-i18n-html. It also updates the homepage meta tags by language.
+- /js/dfx-dark-reveal.js drives the how-it-works reveal animation, the keyboard-accessible FAQ accordion and the mobile navigation toggle; it is not content-critical.
+- /js/ai-popup.js renders the on-page AI assistant popup.
 - /js/webflow.js is the Webflow runtime for exported components.
 
 ### Translation files

@@ -6,11 +6,15 @@
   var SESSION_KEY = 'dfx_ct_session_v1';
   var VISITOR_KEY = 'dfx_ct_visitor_v1';
   var ATTR_KEY = 'dfx-sea-attribution';
+  var CONSENT_KEY = 'dfx_consent_v1';
   var DEAD_KEY = 'dfx_ct_beacon_dead';
   var DEAD_UNTIL_KEY = 'dfx_ct_beacon_dead_until';
   var MAX_EVENTS = 2500;
   var SESSION_TIMEOUT = 30 * 60 * 1000;
-  var BEACON_ENDPOINT = '/api/track';
+  // No collection endpoint and no consent UI ship today, so the tracker stays
+  // fully inert in production. Set a real endpoint here only together with a
+  // consent layer that writes CONSENT_KEY = 'granted'.
+  var BEACON_ENDPOINT = '';
   var BEACON_RETRY_COOLDOWN = 5 * 60 * 1000;
   var START_TIME = Date.now();
   var seq = 0;
@@ -94,14 +98,17 @@
   }
 
   function readConsent() {
-    return 'not_requested';
+    // Privacy default-deny: only an explicit stored 'granted' (set by a future
+    // consent layer) enables any storage or network send.
+    return safeGet(localStorage, CONSENT_KEY) === 'granted' ? 'granted' : 'denied';
   }
 
   function storageAllowed() {
-    return true;
+    return readConsent() === 'granted';
   }
 
   function remoteAllowed() {
+    if (!BEACON_ENDPOINT || readConsent() !== 'granted') return false;
     var deadUntil = Number(safeGet(localStorage, DEAD_UNTIL_KEY) || 0);
     return Date.now() > deadUntil;
   }
@@ -110,7 +117,9 @@
     var existing = safeGet(localStorage, VISITOR_KEY);
     if (existing) return existing;
     var id = randomId('v');
-    safeSet(localStorage, VISITOR_KEY, id);
+    // Only persist the visitor id once consent is granted; otherwise it stays
+    // ephemeral for this page view (no persistent identifier without consent).
+    if (storageAllowed()) safeSet(localStorage, VISITOR_KEY, id);
     return id;
   }
 
@@ -134,8 +143,10 @@
 
     session.lastSeen = current;
     var serialized = JSON.stringify(session);
-    safeSet(sessionStorage, SESSION_KEY, serialized);
-    safeSet(localStorage, SESSION_KEY, serialized);
+    if (storageAllowed()) {
+      safeSet(sessionStorage, SESSION_KEY, serialized);
+      safeSet(localStorage, SESSION_KEY, serialized);
+    }
     return session;
   }
 

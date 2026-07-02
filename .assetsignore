@@ -1,0 +1,44 @@
+# Files excluded from the Cloudflare Pages deployment.
+# `wrangler pages deploy .` uploads the whole directory; .gitignore is NOT honoured,
+# so dev/test/tooling assets must be listed here to keep them off the public CDN.
+
+# Internal analytics dashboard + local-only collector (client-side auth, not for prod)
+analytics.html
+analytics-server.mjs
+
+# Deprecated legacy ramp page — 301-redirected to / (homepage is the "DFX Ramp" landing)
+dfx-services.html
+
+# Client tracking stack — disabled in production until a consent layer + endpoint exist
+js/clicktrack.js
+js/sea-attribution.js
+
+# Build / test / tooling
+node_modules/
+scripts/
+test/
+tests/
+coverage/
+playwright-report/
+test-results/
+*.mjs
+package.json
+package-lock.json
+playwright.config.mjs
+vitest.config.mjs
+.htmlvalidate.json
+.prettierrc.json
+.prettierignore
+
+# Contributor docs (not public-facing)
+CONTRIBUTING.md
+README.md
+
+# VCS / CI metadata
+.git/
+.github/
+.gitignore
+.assetsignore
+
+# Apache-only artefact, ignored by Pages
+.htaccess

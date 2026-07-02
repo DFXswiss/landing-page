@@ -1,24 +1,14 @@
 import { expect, test } from '@playwright/test';
-
-const pages = [
-  '/',
-  '/dfx-services.html',
-  '/dfx-toolbox.html',
-  '/dfx-taro-app.html',
-  '/dfx-services-ag.html',
-  '/faq.html',
-  '/help.html'
-];
+import { PAGES } from './pages.mjs';
+import { blockExternalNoise } from './helpers.mjs';
 
 test.describe('static site smoke checks', () => {
-  for (const path of pages) {
-    test(`${path} loads without obvious layout overflow`, async ({ page }) => {
-      const consoleErrors = [];
-      page.on('console', (message) => {
-        if (message.type() === 'error') {
-          consoleErrors.push(message.text());
-        }
-      });
+  for (const path of PAGES) {
+    test(`${path} loads, renders and has no uncaught script errors`, async ({ page }) => {
+      const pageErrors = [];
+      page.on('pageerror', (error) => pageErrors.push(error.message));
+
+      await blockExternalNoise(page);
 
       const response = await page.goto(path);
       expect(response?.ok()).toBeTruthy();
@@ -33,9 +23,9 @@ test.describe('static site smoke checks', () => {
         const viewportWidth = document.documentElement.clientWidth;
         return documentWidth - viewportWidth;
       });
-
       expect(overflow).toBeLessThanOrEqual(2);
-      expect(consoleErrors).toEqual([]);
+
+      expect(pageErrors).toEqual([]);
     });
   }
 });

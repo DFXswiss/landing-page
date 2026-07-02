@@ -109,6 +109,15 @@ async function serveStatic(req, res, pathname) {
     send(res, 403, 'Forbidden', { 'Content-Type': 'text/plain; charset=utf-8' });
     return;
   }
+  // Never expose VCS metadata, dependencies, or tooling/source dirs — even
+  // though this is a local-only tool, don't hand out the whole repo.
+  const segments = relativePath.split(/[/\\]+/).filter(Boolean);
+  const blocked = new Set(['.git', 'node_modules', 'scripts', 'tests', 'test', '.github', 'data']);
+  const hidden = segments.some((s) => s.startsWith('.') && s !== '.well-known');
+  if (hidden || segments.some((s) => blocked.has(s))) {
+    send(res, 403, 'Forbidden', { 'Content-Type': 'text/plain; charset=utf-8' });
+    return;
+  }
 
   try {
     const info = await stat(candidate);
