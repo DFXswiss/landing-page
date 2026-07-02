@@ -1818,6 +1818,12 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   background: linear-gradient(to top, #0b3560 14%, rgba(11, 53, 96, 0.72) 48%, transparent);
 }
 
+/* The 60vh hero crops the 16:9 video vertically – anchor near the top so the
+   summit stays in frame; the bottom crop disappears under the gradient */
+.dfx-dark-page .section_support-hero .dk-hero__video video {
+  object-position: 50% 0%;
+}
+
 .dfx-dark-page .section_support-hero .padding-global.padding-section-hero.support {
   position: relative;
   z-index: 3;
