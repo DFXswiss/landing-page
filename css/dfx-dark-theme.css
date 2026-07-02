@@ -1773,8 +1773,15 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   transition: transform 0.3s ease;
 }
 
+/* !important beats the inline rotate(90deg) that the Webflow interaction sets */
 .dfx-dark-page .faq_accordion.is-open .faq_icon-wrapper {
-  transform: rotate(180deg);
+  transform: rotate(180deg) !important;
+}
+
+/* Webflow caps .faq_text at 80% width – let questions use the full row */
+.dfx-dark-page .faq_question .faq_text {
+  width: auto !important;
+  flex: 1 !important;
 }
 
 /* ===== FAQ SECTION REDESIGN ===== */
@@ -1801,8 +1808,14 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   min-height: 60vh !important;
   display: flex;
   align-items: center;
-  background: var(--dk-base) !important;
-  border-bottom: 1px solid var(--dk-border);
+  background: #0b3560 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Dissolve the hero video into the FAQ section background – no hard seam */
+.dfx-dark-page .section_support-hero .dk-hero__gradient {
+  height: 78%;
+  background: linear-gradient(to top, #0b3560 14%, rgba(11, 53, 96, 0.72) 48%, transparent);
 }
 
 .dfx-dark-page .section_support-hero .padding-global.padding-section-hero.support {
