@@ -51,7 +51,7 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script src="js/lib/i18n-core.js"></script>
   <script src="js/i18n.js"></script>
-  <link href="css/dfx-dark-theme.css?v=20260702b" rel="stylesheet" type="text/css">
+  <link href="css/dfx-dark-theme.css?v=20260703a" rel="stylesheet" type="text/css">
   <script src="js/dfx-dark-reveal.js?v=20260701d" defer></script>
   <script type="application/ld+json">
   {
@@ -181,7 +181,10 @@
        matches the Webflow scroll interaction used on all other pages. */
     .sa-page.dfx-dark-page .navbar {
       background-color: transparent !important;
-      transition: background-color 0.3s ease;
+      /* keep transform animated – the shared headroom navbar slides via transform */
+      transition:
+        transform 0.35s ease,
+        background-color 0.3s ease;
     }
     .sa-page.dfx-dark-page .navbar.sa-nav-scrolled {
       background-color: rgba(7, 36, 64, 0.8) !important;

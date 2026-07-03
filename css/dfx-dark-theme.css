@@ -1778,12 +1778,6 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   transform: rotate(180deg) !important;
 }
 
-/* Webflow caps .faq_text at 80% width – let questions use the full row */
-.dfx-dark-page .faq_question .faq_text {
-  width: auto !important;
-  flex: 1 !important;
-}
-
 /* ===== FAQ SECTION REDESIGN ===== */
 .dk-faq-section .dk-faq-list {
   max-width: 800px;
