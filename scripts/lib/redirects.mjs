@@ -1,7 +1,7 @@
-// `_redirects` parsing, extracted from scripts/check-site.mjs so the
-// completeness gate and the redirect regression test share one source of
-// truth for Cloudflare Pages matching semantics instead of each keeping its
-// own copy of the regex.
+// Parses Cloudflare Pages' `_redirects` file into matchable rules. A rule's
+// `:placeholder` matches exactly one path segment and never a trailing slash
+// — so `/app/:rest` and `/app/:rest/` are distinct rules — while `*` matches
+// the rest of the path, trailing slash included.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -32,9 +32,8 @@ export function loadRedirectMatchers(root) {
   return loadRedirectRules(root).map((rule) => rule.regex);
 }
 
-// The first rule (in file order) whose source matches `pathname`, or
-// `undefined` if none does — mirrors Cloudflare Pages' first-match-wins
-// evaluation.
+// Returns the first rule (in file order) whose source matches `pathname`, or
+// `undefined` if none does.
 export function findMatchingRule(root, pathname) {
   return loadRedirectRules(root).find((rule) => rule.regex.test(pathname));
 }
