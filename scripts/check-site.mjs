@@ -16,6 +16,7 @@
  */
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { extname, join } from 'node:path';
+import { loadRedirectMatchers } from './lib/redirects.mjs';
 
 const root = process.cwd();
 const errors = [];
@@ -141,23 +142,7 @@ for (const key of usedKeys) {
 // --- 5. internal links / asset references resolve ----------------------------
 // A same-origin path is valid if it maps to a file OR matches a _redirects rule
 // (Cloudflare Pages serves those as 301s, not 404s).
-function loadRedirectMatchers() {
-  if (!existsSync(join(root, '_redirects'))) return [];
-  const matchers = [];
-  for (const line of read('_redirects').split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-    const source = trimmed.split(/\s+/)[0];
-    if (!source.startsWith('/')) continue;
-    const pattern = source
-      .replace(/[.+^${}()|[\]\\]/g, '\\$&') // escape regex metachars (keeps * : /)
-      .replace(/:[A-Za-z0-9_]+/g, '[^/]+') // :placeholder → one path segment
-      .replace(/\*/g, '.*'); // splat → rest of path
-    matchers.push(new RegExp(`^${pattern}$`));
-  }
-  return matchers;
-}
-const redirectMatchers = loadRedirectMatchers();
+const redirectMatchers = loadRedirectMatchers(root);
 const isRedirected = (pathname) => redirectMatchers.some((re) => re.test(pathname));
 
 function checkReference(file, value) {
