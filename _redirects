@@ -1,6 +1,11 @@
 # App entry points (API ref-system)
+# :placeholder matches exactly one path segment WITHOUT a trailing slash, so
+# referral links like /app/services/ (which real users copy) fall through the
+# rules below unless the trailing-slash variants are listed separately.
 /app                      https://api.dfx.swiss/v1/app                          301
+/app/                     https://api.dfx.swiss/v1/app                          301
 /app/:seg1/:seg2          https://api.dfx.swiss/v1/app/:seg1?code=:seg2         301
+/app/:rest/               https://api.dfx.swiss/v1/app/:rest                    301
 /app/:rest                https://api.dfx.swiss/v1/app/:rest                    301
 /:path/app                https://api.dfx.swiss/v1/app?orig=:path               301
 
