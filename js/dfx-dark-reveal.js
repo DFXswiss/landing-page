@@ -183,7 +183,7 @@
         if (e.key === 'Escape') closeNav();
       });
       window.addEventListener('resize', function() {
-        if (window.innerWidth > 991) closeNav();
+        if (window.matchMedia('(min-width: 1280px)').matches) closeNav();
       });
     }
 
