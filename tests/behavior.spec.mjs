@@ -58,7 +58,7 @@ test.describe('client behavior', () => {
     expect(keys.attribution).toBeNull();
   });
 
-  test('at 1100px the desktop login is hidden and the burger is visible; the dark-theme nav panel keeps dk-open on in-range resize and drops it above the breakpoint', async ({
+  test('at 1100px the desktop login is hidden and the burger is visible; the dark-theme nav panel is visible after open and in-range resize; at 1400px it has no dk-open and the desktop login is visible with a login href and a label', async ({
     page,
   }) => {
     await page.setViewportSize({ width: 1100, height: 800 });
@@ -67,10 +67,11 @@ test.describe('client behavior', () => {
 
     const menuButton = page.locator('.dfx-dark-page .menu-button').first();
     const navPanel = page.locator('.dfx-dark-page .navbar .nav-menu');
-    await expect(page.locator('.nav-button--secondary.hide-tablet')).not.toBeVisible();
+    const desktopLogin = page.locator('.nav-button--secondary.hide-tablet');
+    await expect(desktopLogin).not.toBeVisible();
     await expect(menuButton).toBeVisible();
     await menuButton.click();
-    await expect(navPanel).toContainClass('dk-open');
+    await expect(navPanel).toBeVisible();
 
     await page.evaluate(() => {
       window.__navResizeSeen = false;
@@ -80,9 +81,12 @@ test.describe('client behavior', () => {
     });
     await page.setViewportSize({ width: 1050, height: 800 });
     await page.waitForFunction(() => window.__navResizeSeen === true);
-    await expect(navPanel).toContainClass('dk-open');
+    await expect(navPanel).toBeVisible();
 
     await page.setViewportSize({ width: 1400, height: 800 });
     await expect(navPanel).not.toContainClass('dk-open');
+    await expect(desktopLogin).toBeVisible();
+    await expect(desktopLogin).toHaveAttribute('href', /app\.dfx\.swiss\/login/);
+    await expect(desktopLogin).toHaveText(/\S/);
   });
 });
