@@ -57,4 +57,32 @@ test.describe('client behavior', () => {
     expect(keys.visitor).toBeNull();
     expect(keys.attribution).toBeNull();
   });
+
+  test('at 1100px the desktop login is hidden and the burger is visible; the dark-theme nav panel keeps dk-open on in-range resize and drops it above the breakpoint', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1100, height: 800 });
+    await page.goto('/');
+    await page.waitForFunction(visibilityRestored);
+
+    const menuButton = page.locator('.dfx-dark-page .menu-button').first();
+    const navPanel = page.locator('.dfx-dark-page .navbar .nav-menu');
+    await expect(page.locator('.nav-button--secondary.hide-tablet')).not.toBeVisible();
+    await expect(menuButton).toBeVisible();
+    await menuButton.click();
+    await expect(navPanel).toContainClass('dk-open');
+
+    await page.evaluate(() => {
+      window.__navResizeSeen = false;
+      window.addEventListener('resize', () => {
+        window.__navResizeSeen = true;
+      });
+    });
+    await page.setViewportSize({ width: 1050, height: 800 });
+    await page.waitForFunction(() => window.__navResizeSeen === true);
+    await expect(navPanel).toContainClass('dk-open');
+
+    await page.setViewportSize({ width: 1400, height: 800 });
+    await expect(navPanel).not.toContainClass('dk-open');
+  });
 });

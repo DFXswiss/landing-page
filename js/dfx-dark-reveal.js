@@ -183,7 +183,9 @@
         if (e.key === 'Escape') closeNav();
       });
       window.addEventListener('resize', function() {
-        if (window.matchMedia('(min-width: 1280px)').matches) closeNav();
+        // Complement of `@media (max-width: 1279px)` in css/dfx-dark-theme.css —
+        // not a second pixel threshold.
+        if (window.matchMedia('not all and (max-width: 1279px)').matches) closeNav();
       });
     }
 
