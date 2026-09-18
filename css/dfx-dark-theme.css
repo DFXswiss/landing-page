@@ -2741,9 +2741,10 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   }
 }
 
-/* 991.98–1279 px: dfx-new.webflow.css only flips hide-tablet / hide-desktop at
-   max-width 991px. This block starts at 991.98px so the switch meets that edge. */
-@media screen and (min-width: 991.98px) and (max-width: 1279px) {
+/* Collapsed range: dfx-new.webflow.css only flips hide-tablet / hide-desktop
+   below 992 px. This block applies the same switch across the whole raised
+   collapse range, so no width sits between the two. */
+@media screen and (max-width: 1279px) {
   .dfx-dark-page .nav-button.hide-tablet {
     display: none;
   }
