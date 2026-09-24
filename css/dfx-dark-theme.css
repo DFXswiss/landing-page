@@ -2582,11 +2582,11 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   }
 }
 
-/* ===== MOBILE NAV — on-brand burger + working dropdown (≤991px, Webflow collapse) =====
+/* ===== MOBILE NAV — on-brand burger + working dropdown (≤1279px, Webflow collapse) =====
    Webflow's default burger is a light-grey box and its nav toggle isn't wired on
    the dark theme, so the menu never opened. This styles the button on-brand and the
    panel; js/dfx-dark-reveal.js toggles `.dk-open`. */
-@media (max-width: 991px) {
+@media screen and (max-width: 1279px) {
   .dfx-dark-page .menu-button {
     width: 48px !important;
     height: 48px !important;
@@ -2739,4 +2739,44 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   .dfx-dark-page .wg-dropdown .wg-dropdown_arrow {
     display: none !important;
   }
+}
+
+/* Collapsed range: dfx-new.webflow.css only flips hide-tablet / hide-desktop
+   below 992 px. This block applies the same switch across the whole raised
+   collapse range, so no width sits between the two. */
+@media screen and (max-width: 1279px) {
+  .dfx-dark-page .nav-button.hide-tablet {
+    display: none;
+  }
+  .dfx-dark-page .wg-element.hide-tablet {
+    display: none;
+  }
+  .dfx-dark-page .wg-element.hide-desktop {
+    display: flex;
+  }
+  .dfx-dark-page .nav_button-wrapper {
+    display: flex;
+  }
+}
+
+/* Secondary nav CTA: the account login for returning users. Deliberately lower
+   visual weight than the red primary CTA — it inherits .nav-button geometry
+   (height, radius, padding, min-width), so both sit on one baseline. */
+.dfx-dark-page .nav-button.nav-button--secondary {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: var(--dfx-white);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.dfx-dark-page .nav-button.nav-button--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: var(--dfx-white);
+}
+
+.dfx-dark-page .nav-button_wrapper {
+  gap: 0.75rem;
 }
