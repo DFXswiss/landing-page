@@ -1018,23 +1018,23 @@ Webflow.push(function () {
                   <span data-i18n="map.opencrypto_cta">Mehr zu Open CryptoPay</span>
                 </span>
               </a>
-              <div class="home-map_legend">
-                <div class="home-map_legend-line">
-                  <div class="home-map_legend-point is-red"></div>
-                  <p data-i18n="map.available">Bereits verfügbar</p>
-                </div>
-                <div class="home-map_legend-line">
-                  <div class="home-map_legend-point is-yellow"></div>
-                  <p data-i18n="map.preparation">In Vorbereitung</p>
-                </div>
-                <div class="home-map_legend-line">
-                  <div class="home-map_legend-point is-gray"></div>
-                  <p data-i18n="map.planned">Geplant / in Prüfung</p>
-                </div>
-              </div>
             </div>
-            <div class="map-wrapper">
-              <div class="map w-embed w-iframe"><iframe src="https://google.com/maps/d/embed?mid=1DzX6z5tnUqn1zlzFnL6G58xREItorRM&ehbc=2E312F&noprof=1" width="100%" height="100%" title="Karte der Open CryptoPay Standorte" loading="lazy"></iframe></div>
+            <div id="dfx-places-map-wrap" class="map-wrapper"><div id="dfx-places-map" class="map"></div></div>
+            <p id="dfx-places-status" hidden></p>
+            <div id="dfx-places-table-wrap" hidden>
+              <table id="dfx-places-table">
+                <thead>
+                  <tr>
+                    <th scope="col"><span data-i18n="map.col_name">Name</span></th>
+                    <th scope="col"><span data-i18n="map.col_location">Ort</span></th>
+                    <th scope="col"><span data-i18n="map.col_country">Land</span></th>
+                    <th scope="col"><span data-i18n="map.col_shop">Shop</span></th>
+                    <th scope="col"><span data-i18n="map.col_provider">Tech-Anbieter</span></th>
+                    <th scope="col"><span class="dfx-places-activity-label"><span class="dfx-places-col-label" data-i18n="map.col_activity">Aktivität</span></span></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1540,5 +1540,7 @@ document.addEventListener('DOMContentLoaded', function () {
     else init();
   })();
   </script>
+  <link rel="stylesheet" href="css/dfx-places.css">
+  <script src="js/dfx-places.js"></script>
 </body>
 </html>

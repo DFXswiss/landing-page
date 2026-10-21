@@ -15,6 +15,60 @@ const NOISE_HOSTS = [
   /(^|\.)ytimg\.com$/,
 ];
 
+// Homepage map fixtures. The route matches host and path; query strings are ignored.
+const MAP_FILTERS_FIXTURE = {
+  activities: ['daily', 'within7Days', 'within30Days', 'olderThan30Days', 'none'],
+  countries: ['CH'],
+  shopNames: ['SPAR', 'others'],
+  techProviders: [
+    {
+      name: 'DFX.swiss',
+      blockchains: ['Bitcoin'],
+      assets: ['BTC'],
+      pairs: [{ blockchain: 'Bitcoin', asset: 'BTC' }],
+    },
+    {
+      name: '21.gifts',
+      blockchains: ['Liquid'],
+      assets: ['L-BTC'],
+      pairs: [{ blockchain: 'Liquid', asset: 'L-BTC' }],
+    },
+  ],
+};
+
+const MAP_PLACES_FIXTURE = {
+  places: [
+    {
+      id: 'npub1sampleplace000000000000000000000000000000000000000000000000',
+      name: 'Sample',
+      techProvider: 'DFX.swiss',
+      country: 'CH',
+      shopName: 'SPAR',
+      activity: 'daily',
+      lat: 46.8,
+      lon: 8.23,
+      street: 'Bahnstrasse',
+      houseNumber: '1',
+      postalCode: '8001',
+      city: 'Zurich',
+    },
+    {
+      id: 'npub1giftplace00000000000000000000000000000000000000000000000000',
+      name: 'Gift Shop',
+      techProvider: '21.gifts',
+      country: 'CH',
+      shopName: 'others',
+      activity: 'daily',
+      lat: 47.37,
+      lon: 8.54,
+      street: 'Other',
+      houseNumber: '2',
+      postalCode: '8002',
+      city: 'Zurich',
+    },
+  ],
+};
+
 export async function blockExternalNoise(page) {
   await page.route('**/*', (route) => {
     let host = '';
@@ -53,6 +107,25 @@ export async function installVisualDeterminism(page, { allowAiPopup = false } = 
       pathname = url.pathname;
     } catch {
       return route.continue();
+    }
+    if (host.includes('openfreemap')) {
+      return route.fulfill({ status: 200, contentType: 'image/png', body: '' });
+    }
+    if (host === 'dev-api.opencryptopay.io' || host === 'api.opencryptopay.io') {
+      if (pathname === '/map/filters') {
+        return route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify(MAP_FILTERS_FIXTURE),
+        });
+      }
+      if (pathname === '/map/places') {
+        return route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify(MAP_PLACES_FIXTURE),
+        });
+      }
     }
     const isNoise = NOISE_HOSTS.some((pattern) => pattern.test(host));
     const isAnimationLib = /(^|\.)jsdelivr\.net$/.test(host) && pathname.endsWith('.js');

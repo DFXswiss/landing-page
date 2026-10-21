@@ -262,7 +262,40 @@ for (const page of publicPages) {
 
 // --- 8. unused i18n keys (warning only) -------------------------------------
 // Keys consumed by js/i18n.js directly rather than through a data-i18n element.
-const JS_CONSUMED_KEYS = new Set(['meta.title', 'meta.description']);
+const JS_CONSUMED_KEYS = new Set([
+  'meta.title',
+  'meta.description',
+  'map.view',
+  'map.view_map',
+  'map.view_table',
+  'map.filter_country',
+  'map.filter_name',
+  'map.filter_blockchain',
+  'map.filter_asset',
+  'map.filter_activity',
+  'map.filter_all',
+  'map.empty',
+  'map.load_error',
+  'map.col_name',
+  'map.col_location',
+  'map.col_country',
+  'map.col_shop',
+  'map.col_provider',
+  'map.col_activity',
+  'map.csv',
+  'map.activity_daily',
+  'map.activity_weekly',
+  'map.activity_monthly',
+  'map.activity_idle',
+  'map.activity_none',
+  'map.activity_help_label',
+  'map.activity_daily_help',
+  'map.activity_weekly_help',
+  'map.activity_monthly_help',
+  'map.activity_idle_help',
+  'map.activity_none_help',
+  'map.activity_hierarchy',
+]);
 if (dicts.de) {
   for (const key of Object.keys(dicts.de)) {
     if (!usedKeys.has(key) && !JS_CONSUMED_KEYS.has(key)) {
