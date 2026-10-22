@@ -152,9 +152,6 @@
         zoom: 7,
       });
       map.addControl(new window.maplibregl.NavigationControl(), 'top-right');
-      map.on('error', function (event) {
-        if (!event || !event.error) return;
-      });
       return map;
     });
   }
