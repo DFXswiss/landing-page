@@ -54,7 +54,6 @@
   }
 
   function currentLang() {
-    if (!window.DfxI18nCore || typeof window.DfxI18nCore.resolveLang !== 'function') return 'de';
     var params = new URLSearchParams(window.location.search);
     var storedLang = null;
     try {

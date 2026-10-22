@@ -284,10 +284,6 @@
   cursor: pointer;
 }
 
-.dfx-places-stores-csv[hidden] {
-  display: none;
-}
-
 #dfx-places-table-wrap {
   display: block;
   margin-top: 2.75rem;
