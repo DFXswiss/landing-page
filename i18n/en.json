@@ -93,7 +93,6 @@
   "map.view": "View",
   "map.view_map": "Map",
   "map.view_table": "Table",
-  "map.filter_country": "Country",
   "map.filter_name": "Name",
   "map.filter_blockchain": "Blockchain",
   "map.filter_asset": "Asset",

@@ -268,7 +268,6 @@ const JS_CONSUMED_KEYS = new Set([
   'map.view',
   'map.view_map',
   'map.view_table',
-  'map.filter_country',
   'map.filter_name',
   'map.filter_blockchain',
   'map.filter_asset',
