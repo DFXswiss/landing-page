@@ -111,8 +111,8 @@
         dict = body;
       })
       .catch(function (error) {
-        dict = null;
         if (error && error.name === 'AbortError') return;
+        throw error;
       });
   }
 
@@ -874,7 +874,9 @@
 
     syncPaymentOptions();
 
-    var view = 'map';
+    var view = map ? 'map' : 'table';
+    nodes.mapWrap.hidden = view !== 'map';
+    nodes.tableWrap.hidden = view !== 'table';
     var row = document.createElement('div');
     row.className = 'dfx-places-map-filters';
     [nameControl, chainControl, assetControl, activityControl].forEach(function (control) {
@@ -889,12 +891,12 @@
     var mapButton = document.createElement('button');
     mapButton.type = 'button';
     mapButton.className = 'dfx-places-view-switch-choice';
-    mapButton.setAttribute('aria-pressed', 'true');
+    mapButton.setAttribute('aria-pressed', view === 'map' ? 'true' : 'false');
     mapButton.textContent = t('map.view_map');
     var tableButton = document.createElement('button');
     tableButton.type = 'button';
     tableButton.className = 'dfx-places-view-switch-choice';
-    tableButton.setAttribute('aria-pressed', 'false');
+    tableButton.setAttribute('aria-pressed', view === 'table' ? 'true' : 'false');
     tableButton.textContent = t('map.view_table');
     pill.appendChild(mapButton);
     pill.appendChild(tableButton);
@@ -1098,7 +1100,8 @@
           markers.push(createMarker(place));
         });
       }
-      if (rows.length === 0) setStatus('map.empty');
+      if (!map) setStatus('map.load_error');
+      else if (rows.length === 0) setStatus('map.empty');
       else setStatus(null);
       if (map && !nodes.mapWrap.hidden) map.resize();
       frameVisibleMarkers();
@@ -1119,7 +1122,14 @@
         })
         .then(function (body) {
           if (placesTask !== controller) return;
-          loadedPlaces = body && Array.isArray(body.places) ? body.places : [];
+          if (
+            !body ||
+            typeof body !== 'object' ||
+            Array.isArray(body) ||
+            !Array.isArray(body.places)
+          )
+            throw new Error('places');
+          loadedPlaces = body.places;
           placesReady = true;
           showPlaces(loadedPlaces);
         })
@@ -1127,6 +1137,7 @@
           if (error && error.name === 'AbortError') return;
           if (placesTask !== controller) return;
           setStatus('map.load_error');
+          if (row.parentNode) row.parentNode.removeChild(row);
         });
     }
 
@@ -1165,7 +1176,6 @@
         function (error) {
           if (error && error.name === 'AbortError') return;
           setStatus('map.load_error');
-          return ensure(null).loadPlaces();
         },
       );
   }
