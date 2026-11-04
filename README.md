@@ -14,7 +14,7 @@ for the site. The dev dependencies exist only for formatting and the test gates.
 
 ## Development
 
-Requires Node 22 and (for the visual gate) Docker.
+Requires Node 24 (>=24.0.0 <25) and (for the visual gate) Docker.
 
 ```bash
 npm install
