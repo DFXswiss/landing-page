@@ -69,14 +69,38 @@ const MAP_PLACES_FIXTURE = {
   ],
 };
 
+// The smoke check listens for page errors. A live map request that fails
+// access control becomes one on WebKit, so the same fixtures the visual
+// suite uses stand in here too. A route registered later still wins.
+function fulfillMapApi(route, host, pathname) {
+  if (host !== 'dev-api.opencryptopay.io' && host !== 'api.opencryptopay.io') return false;
+  const body =
+    pathname === '/map/filters'
+      ? MAP_FILTERS_FIXTURE
+      : pathname === '/map/places'
+        ? MAP_PLACES_FIXTURE
+        : null;
+  if (!body) return false;
+  route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify(body),
+  });
+  return true;
+}
+
 export async function blockExternalNoise(page) {
   await page.route('**/*', (route) => {
     let host = '';
+    let pathname = '';
     try {
-      host = new URL(route.request().url()).hostname;
+      const url = new URL(route.request().url());
+      host = url.hostname;
+      pathname = url.pathname;
     } catch {
       return route.continue();
     }
+    if (fulfillMapApi(route, host, pathname)) return;
     if (NOISE_HOSTS.some((pattern) => pattern.test(host))) {
       return route.fulfill({ status: 200, contentType: 'text/plain', body: '' });
     }
@@ -111,22 +135,7 @@ export async function installVisualDeterminism(page, { allowAiPopup = false } = 
     if (host.includes('openfreemap')) {
       return route.fulfill({ status: 200, contentType: 'image/png', body: '' });
     }
-    if (host === 'dev-api.opencryptopay.io' || host === 'api.opencryptopay.io') {
-      if (pathname === '/map/filters') {
-        return route.fulfill({
-          status: 200,
-          contentType: 'application/json',
-          body: JSON.stringify(MAP_FILTERS_FIXTURE),
-        });
-      }
-      if (pathname === '/map/places') {
-        return route.fulfill({
-          status: 200,
-          contentType: 'application/json',
-          body: JSON.stringify(MAP_PLACES_FIXTURE),
-        });
-      }
-    }
+    if (fulfillMapApi(route, host, pathname)) return;
     const isNoise = NOISE_HOSTS.some((pattern) => pattern.test(host));
     const isAnimationLib = /(^|\.)jsdelivr\.net$/.test(host) && pathname.endsWith('.js');
     if (isNoise || isAnimationLib) {
