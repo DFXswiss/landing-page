@@ -302,17 +302,19 @@ test.describe('client behavior', () => {
       expect(scripts.some((src) => src.includes('outage-notice.js'))).toBe(false);
     });
 
-    test('the homepage popup details link points to the incident page', async ({ page }) => {
+    test('the homepage popup details link points to the security incident page', async ({
+      page,
+    }) => {
       await page.removeLocatorHandler(outagePopupDialog(page));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
       const details = page.locator('.outage-popup__source a', {
-        hasText: 'Details zum Vorfall / Incident details',
+        hasText: 'Mehr Infos / More info',
       });
       await expect(details).toHaveAttribute('href', 'security-incident.html');
       await expect(details).not.toHaveAttribute('target');
-      await expect(details).toHaveText('Details zum Vorfall / Incident details');
+      await expect(details).toHaveText('Mehr Infos / More info');
     });
   });
 
@@ -529,7 +531,7 @@ test.describe('client behavior', () => {
         await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
         await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
         await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        await expect(popupDetails(page)).toHaveText('Details zum Vorfall / Incident details');
+        await expect(popupDetails(page)).toHaveText('Mehr Infos / More info');
         await expect(popupDetails(page)).toHaveCount(1);
         await expect(popupDetails(page)).not.toHaveAttribute('target');
         await expect(popupSource(page)).toHaveText('DFX on X');
@@ -545,6 +547,18 @@ test.describe('client behavior', () => {
         }
       });
     }
+
+    test('the notice bar and popup dialog use DFX blue with white text', async ({ page }) => {
+      await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(notice(page)).toBeVisible();
+      await expect(notice(page)).toHaveCSS('background-color', 'rgb(18, 67, 112)');
+      await expect(notice(page)).toHaveCSS('color', 'rgb(255, 255, 255)');
+      await expect(outagePopupDialog(page)).toHaveCSS('background-color', 'rgb(18, 67, 112)');
+      await expect(outagePopupDialog(page)).toHaveCSS('color', 'rgb(255, 255, 255)');
+    });
 
     test('the popup shows the same German and English text for ?lang=de, ?lang=en and ?lang=fr', async ({
       page,
