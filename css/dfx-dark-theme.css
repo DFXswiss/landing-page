@@ -2806,7 +2806,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
    load of the home page, independent of the bar's end instant. z-index sits
    above the navbar (1100) and the AI popup (9998). Fixed overlay only, so the
    document layout does not change. The box scrolls on its own when the text is
-   taller than the viewport, so the OK button stays reachable. */
+   taller than the viewport, so the more-info button stays reachable. */
 .outage-popup {
   position: fixed;
   inset: 0;
@@ -2824,6 +2824,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .outage-popup__dialog {
+  position: relative;
   box-sizing: border-box;
   max-width: min(36rem, calc(100vw - 2rem));
   max-height: calc(100vh - 2rem);
@@ -2845,7 +2846,8 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 /* js/outage-notice.js focuses the box programmatically so it opens at its
-   beginning; no focus ring on the box itself. OK and the link keep theirs. */
+   beginning; no focus ring on the box itself. The close button and links keep
+   theirs. */
 .outage-popup__dialog:focus {
   outline: none;
 }
@@ -2870,6 +2872,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
    here keeps the heading white on DFX blue. */
 .dfx-dark-page .outage-popup__title {
   margin: 0 0 1rem;
+  padding-right: 2.75rem;
   color: #ffffff !important;
   font-size: 1.375rem;
   font-weight: 700;
@@ -2903,19 +2906,46 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .outage-popup__close {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0.625rem 2rem;
-  border: none;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #124370;
+  background-color: transparent;
+  color: #ffffff;
   font: inherit;
-  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
 }
 
 .outage-popup__close:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.outage-popup__more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.625rem 2rem;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #124370;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.outage-popup__more:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 2px;
 }

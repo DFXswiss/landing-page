@@ -224,8 +224,9 @@ export async function openNav(page) {
 }
 
 // The home page shows the security popup on every load until a later
-// deployment removes it, so no baseline may contain it: click OK and wait until
-// it is hidden. The click waits until i18n.js has made the page visible.
+// deployment removes it, so no baseline may contain it: click the close button
+// and wait until it is hidden. The click waits until i18n.js has made the page
+// visible.
 export async function closeOutagePopup(page) {
   const popup = page.locator('.outage-popup');
   await expect(popup).toBeVisible();

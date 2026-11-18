@@ -155,8 +155,8 @@ test.describe('client behavior', () => {
     // outage notice tests' own setFixedTime/install calls come later and win.
     await page.clock.setFixedTime(VISUAL_FIXED_TIME);
     // The security popup covers the home page on every load. Checks that do not
-    // care about it get it closed with OK whenever it blocks an action or an
-    // assertion; the popup checks remove this handler again.
+    // care about it get it closed with the close button whenever it blocks an
+    // action or an assertion; the popup checks remove this handler again.
     await page.addLocatorHandler(outagePopupDialog(page), async () => {
       await page.locator('.outage-popup__close').click();
     });
@@ -309,7 +309,7 @@ test.describe('client behavior', () => {
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
-      const details = page.locator('.outage-popup__source a', {
+      const details = page.locator('.outage-popup__more', {
         hasText: 'Mehr Infos / More info',
       });
       await expect(details).toHaveAttribute('href', 'security-incident.html');
@@ -503,8 +503,7 @@ test.describe('client behavior', () => {
       popupSectionDe(page).locator('.outage-popup__text--important');
     const popupImportantEn = (page) =>
       popupSectionEn(page).locator('.outage-popup__text--important');
-    const popupDetails = (page) =>
-      page.locator('.outage-popup__source a[href="security-incident.html"]');
+    const popupMore = (page) => page.locator('.outage-popup__more');
     const popupSource = (page) =>
       page.locator('.outage-popup__source a[href^="https://x.com/dfx_swiss/status/"]');
     const popupClose = (page) => page.locator('.outage-popup__close');
@@ -531,14 +530,16 @@ test.describe('client behavior', () => {
         await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
         await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
         await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        await expect(popupDetails(page)).toHaveText('Mehr Infos / More info');
-        await expect(popupDetails(page)).toHaveCount(1);
-        await expect(popupDetails(page)).not.toHaveAttribute('target');
+        await expect(popupMore(page)).toHaveText('Mehr Infos / More info');
+        await expect(popupMore(page)).toHaveCount(1);
+        await expect(popupMore(page)).toHaveAttribute('href', 'security-incident.html');
+        await expect(popupMore(page)).not.toHaveAttribute('target');
         await expect(popupSource(page)).toHaveText('DFX on X');
         await expect(popupSource(page)).toHaveAttribute('href', SECURITY_POST_URL);
         await expect(popupSource(page)).toHaveAttribute('target', '_blank');
         await expect(popupSource(page)).toHaveAttribute('rel', 'noopener noreferrer');
-        await expect(popupClose(page)).toHaveText('OK');
+        await expect(popupClose(page)).toHaveAccessibleName('Schliessen / Close');
+        await expect(outagePopupDialog(page).locator('a')).toHaveCount(2);
         await expect(outagePopupDialog(page)).toBeFocused();
         if (barVisible) {
           await expect(notice(page)).toBeVisible();
@@ -610,7 +611,7 @@ test.describe('client behavior', () => {
       expect(placement.inside).toBe(true);
     });
 
-    test('at 320x568 the popup box fits the viewport and OK can be scrolled into view and clicked', async ({
+    test('at 320x568 the popup box fits the viewport and the more-info button can be scrolled into view', async ({
       page,
     }) => {
       await page.setViewportSize({ width: 320, height: 568 });
@@ -622,14 +623,14 @@ test.describe('client behavior', () => {
       expect(box.y).toBeGreaterThanOrEqual(0);
       expect(box.y + box.height).toBeLessThanOrEqual(568);
 
-      await popupClose(page).scrollIntoViewIfNeeded();
-      await expect(popupClose(page)).toBeInViewport();
+      await popupMore(page).scrollIntoViewIfNeeded();
+      await expect(popupMore(page)).toBeInViewport();
       await popupClose(page).click();
 
       await expect(popup(page)).toBeHidden();
     });
 
-    test('at 320x568 the popup stacks German above English, opens at its beginning with the German heading in view and OK can be scrolled into view and clicked', async ({
+    test('at 320x568 the popup stacks German above English and opens at its beginning with the German heading in view', async ({
       page,
     }) => {
       await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
@@ -639,7 +640,7 @@ test.describe('client behavior', () => {
       await expect(popup(page)).toBeVisible();
       await expect(outagePopupDialog(page)).toBeFocused();
 
-      // Focusing must not scroll the box towards the OK button at its end.
+      // Focusing must not scroll the box towards the more-info button at its end.
       expect(await outagePopupDialog(page).evaluate((dialog) => dialog.scrollTop)).toBe(0);
 
       const deBox = await popupSectionDe(page).boundingBox();
@@ -658,7 +659,13 @@ test.describe('client behavior', () => {
     });
 
     for (const [trigger, close] of [
-      ['a click on OK', (page) => popupClose(page).click()],
+      [
+        'a click on the Schliessen / Close button',
+        async (page) => {
+          await expect(popupClose(page)).toHaveAccessibleName('Schliessen / Close');
+          await popupClose(page).click();
+        },
+      ],
       [
         'a click on the backdrop outside the dialog box',
         (page) => popup(page).click({ position: { x: 5, y: 5 } }),
@@ -693,6 +700,24 @@ test.describe('client behavior', () => {
         await expect(popup(page)).toBeVisible();
       });
     }
+
+    test('the more-info button sits below both language sections and navigates to the incident page', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(popup(page)).toBeVisible();
+
+      const deBox = await popupSectionDe(page).boundingBox();
+      const enBox = await popupSectionEn(page).boundingBox();
+      const moreBox = await popupMore(page).boundingBox();
+      expect(deBox.y + deBox.height).toBeLessThanOrEqual(moreBox.y);
+      expect(enBox.y + enBox.height).toBeLessThanOrEqual(moreBox.y);
+
+      await popupMore(page).click();
+      await expect(page).toHaveURL(/security-incident(?:\.html)?$/);
+    });
 
     test('in a tab opened before the end instant the bar hides itself at the end instant, the navbar returns to the top and the open popup stays open', async ({
       page,

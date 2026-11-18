@@ -33,8 +33,8 @@
   // i18n.js keeps the page at visibility: hidden until the translations are
   // applied, and a hidden element cannot take focus, so the dialog box is
   // focused once the page has become visible. The box itself takes focus, not
-  // the OK button at the end of the text: focusing the button would scroll the
-  // box to its bottom on small screens, and the heading and the warning at the
+  // a control further down: focusing the more-info button would scroll the box
+  // to its bottom on small screens, and the heading and the warning at the
   // beginning must be visible first. preventScroll and scrollTop = 0 keep the
   // box at its beginning.
   function showPopup() {
