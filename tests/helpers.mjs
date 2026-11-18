@@ -116,7 +116,13 @@ export async function blockExternalNoise(page) {
 // language, suppresses the timed AI popup, and makes IntersectionObserver fire
 // once, immediately, for every element so the scroll-reveal and how-it-works
 // sequence reach a single stable end state instead of depending on scroll.
+// The page clock is pinned after the outage notice end so the time-limited
+// notice is hidden in every baseline, whatever day the suite runs.
+const VISUAL_FIXED_TIME = new Date('2026-11-19T00:00:00+01:00');
+
 export async function installVisualDeterminism(page, { allowAiPopup = false } = {}) {
+  await page.clock.setFixedTime(VISUAL_FIXED_TIME);
+
   // Pin reduced-motion so CSS/JS animations (hero pulses, the BTC Taro
   // auto-play carousel, the how-it-works sequence) settle to a single stable
   // end state instead of being captured mid-frame.
