@@ -16,6 +16,14 @@ const SECURITY_WARNING_DE =
   'Bitte sende bis auf Weiteres keine Kryptowährungen an DFX-Einzahlungsadressen.';
 const SECURITY_WARNING_EN =
   'Please do not send any cryptocurrency to DFX deposit addresses until further notice.';
+const RESTART_DE =
+  'Wir planen, den DFX-Service am Donnerstag, 19. November 2026, um 09:00 Uhr MEZ wieder in Betrieb zu nehmen.';
+const RESTART_EN = 'We plan to resume the DFX service on Thursday, 19 November 2026, at 09:00 CET.';
+const POPUP_SUPPORT_DE = 'Du kannst dich jederzeit per E-Mail an support@dfx.swiss wenden.';
+const POPUP_SUPPORT_EN = 'You can contact us at any time at support@dfx.swiss.';
+const INCIDENT_SUPPORT_DE = 'Kunden können sich jederzeit per E-Mail an support@dfx.swiss wenden.';
+const INCIDENT_SUPPORT_EN = 'Customers can contact us at any time at support@dfx.swiss.';
+const SUPPORT_HREF = 'mailto:support@dfx.swiss';
 
 const SHOP_FILTERS = {
   activities: ['daily', 'within7Days', 'within30Days', 'olderThan30Days', 'none'],
@@ -155,8 +163,8 @@ test.describe('client behavior', () => {
     // outage notice tests' own setFixedTime/install calls come later and win.
     await page.clock.setFixedTime(VISUAL_FIXED_TIME);
     // The security popup covers the home page on every load. Checks that do not
-    // care about it get it closed with OK whenever it blocks an action or an
-    // assertion; the popup checks remove this handler again.
+    // care about it get it closed with the close button whenever it blocks an
+    // action or an assertion; the popup checks remove this handler again.
     await page.addLocatorHandler(outagePopupDialog(page), async () => {
       await page.locator('.outage-popup__close').click();
     });
@@ -238,6 +246,24 @@ test.describe('client behavior', () => {
       await expect(english(page).locator('code')).toHaveCount(1);
       await expect(english(page).locator('code')).toHaveText(attackerAddress);
       await expect(english(page)).toContainText('CHF 40,000');
+      await expect(german(page)).toContainText(RESTART_DE);
+      await expect(german(page)).toContainText(INCIDENT_SUPPORT_DE);
+      await expect(english(page)).toContainText(RESTART_EN);
+      await expect(english(page)).toContainText(INCIDENT_SUPPORT_EN);
+      await expect(german(page)).not.toContainText(
+        'In den nächsten Stunden schalten wir zuerst den Support wieder ein, danach die Kaufoption und anschliessend die Verkaufsoption.',
+      );
+      await expect(english(page)).not.toContainText(
+        'Over the next few hours we will first switch support back on, then the buy option and after that the sell option.',
+      );
+      await expect(german(page).locator(`a[href="${SUPPORT_HREF}"]`)).toHaveCount(1);
+      await expect(english(page).locator(`a[href="${SUPPORT_HREF}"]`)).toHaveCount(1);
+
+      const color = (locator) => locator.evaluate((node) => getComputedStyle(node).color);
+      const supportLinkColor = await color(german(page).locator(`a[href="${SUPPORT_HREF}"]`));
+      const jumpLinkColor = await color(jumpLinks(page).filter({ hasText: 'Deutsch' }));
+      expect(supportLinkColor).toBe(jumpLinkColor);
+      expect(supportLinkColor).not.toBe('rgb(0, 0, 238)');
 
       await expect(german(page).locator('h1')).toHaveCount(1);
       await expect(german(page).locator('h2')).toHaveCount(6);
@@ -302,17 +328,19 @@ test.describe('client behavior', () => {
       expect(scripts.some((src) => src.includes('outage-notice.js'))).toBe(false);
     });
 
-    test('the homepage popup details link points to the incident page', async ({ page }) => {
+    test('the homepage popup details link points to the security incident page', async ({
+      page,
+    }) => {
       await page.removeLocatorHandler(outagePopupDialog(page));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
-      const details = page.locator('.outage-popup__source a', {
-        hasText: 'Details zum Vorfall / Incident details',
+      const details = page.locator('.outage-popup__more', {
+        hasText: 'Mehr Infos / More info',
       });
       await expect(details).toHaveAttribute('href', 'security-incident.html');
       await expect(details).not.toHaveAttribute('target');
-      await expect(details).toHaveText('Details zum Vorfall / Incident details');
+      await expect(details).toHaveText('Mehr Infos / More info');
     });
   });
 
@@ -354,7 +382,7 @@ test.describe('client behavior', () => {
     test('before the end instant the notice is shown above the navbar in the active language', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
@@ -375,7 +403,7 @@ test.describe('client behavior', () => {
     test('with the notice shown the open burger panel starts at the navbar bottom and its max-height is reduced by the notice height', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
       await page.setViewportSize({ width: 834, height: 1112 });
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
@@ -416,10 +444,10 @@ test.describe('client behavior', () => {
     test('a visibilitychange event before the end instant reschedules the timer so the notice hides itself at the end instant', async ({
       page,
     }) => {
-      await page.clock.install({ time: new Date('2026-11-18T11:00:00.000+01:00') });
+      await page.clock.install({ time: new Date('2026-11-19T08:00:00.000+01:00') });
       // The installed clock keeps running in real time; pause it so a slow page
       // load cannot move the time on before the visibility check.
-      await page.clock.pauseAt(new Date('2026-11-18T11:00:01.000+01:00'));
+      await page.clock.pauseAt(new Date('2026-11-19T08:00:01.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();
@@ -427,7 +455,7 @@ test.describe('client behavior', () => {
       // setSystemTime moves Date without firing or shifting timers, like a timer
       // that lost time while the device slept: the initial timer is still about
       // an hour away, so only a timer rescheduled by the event can fire in time.
-      await page.clock.setSystemTime(new Date('2026-11-18T11:59:59.000+01:00'));
+      await page.clock.setSystemTime(new Date('2026-11-19T08:59:59.000+01:00'));
       await page.evaluate(() => {
         document.dispatchEvent(new Event('visibilitychange'));
       });
@@ -444,14 +472,14 @@ test.describe('client behavior', () => {
       test(`a ${eventName} event after the end instant hides the notice without waiting for the timer`, async ({
         page,
       }) => {
-        await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
         await page.goto('/?lang=en');
         await page.waitForFunction(visibilityRestored);
         await expect(notice(page)).toBeVisible();
 
         // The pending timer still has an hour to go, so only the event can hide
         // the notice here.
-        await page.clock.setFixedTime(new Date('2026-11-18T12:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-11-19T09:00:00.000+01:00'));
         await page.evaluate(
           ([name, targetName]) => {
             const eventTarget = targetName === 'document' ? document : window;
@@ -471,7 +499,7 @@ test.describe('client behavior', () => {
       });
     }
 
-    for (const instant of ['2026-11-18T12:00:00.000+01:00', '2026-11-18T12:00:00.001+01:00']) {
+    for (const instant of ['2026-11-19T09:00:00.000+01:00', '2026-11-19T09:00:00.001+01:00']) {
       test(`at/after the end instant (${instant}) the notice stays hidden`, async ({ page }) => {
         await page.clock.setFixedTime(new Date(instant));
         await page.goto('/?lang=en');
@@ -501,15 +529,18 @@ test.describe('client behavior', () => {
       popupSectionDe(page).locator('.outage-popup__text--important');
     const popupImportantEn = (page) =>
       popupSectionEn(page).locator('.outage-popup__text--important');
-    const popupDetails = (page) =>
-      page.locator('.outage-popup__source a[href="security-incident.html"]');
+    const popupMore = (page) => page.locator('.outage-popup__more');
     const popupSource = (page) =>
       page.locator('.outage-popup__source a[href^="https://x.com/dfx_swiss/status/"]');
     const popupClose = (page) => page.locator('.outage-popup__close');
+    const popupTextDe = (page) => popupSectionDe(page).locator('.outage-popup__text');
+    const popupTextEn = (page) => popupSectionEn(page).locator('.outage-popup__text');
+    const popupMailtoDe = (page) => popupSectionDe(page).locator(`a[href="${SUPPORT_HREF}"]`);
+    const popupMailtoEn = (page) => popupSectionEn(page).locator(`a[href="${SUPPORT_HREF}"]`);
 
     for (const [instant, barVisible] of [
-      ['2026-11-18T11:00:00.000+01:00', true],
-      ['2026-11-18T13:00:00.000+01:00', false],
+      ['2026-11-19T08:00:00.000+01:00', true],
+      ['2026-11-19T10:00:00.000+01:00', false],
     ]) {
       test(`at ${instant} the popup shows the security notice with the dialog box focused and the bar is ${barVisible ? 'visible' : 'hidden'}`, async ({
         page,
@@ -529,14 +560,26 @@ test.describe('client behavior', () => {
         await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
         await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
         await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        await expect(popupDetails(page)).toHaveText('Details zum Vorfall / Incident details');
-        await expect(popupDetails(page)).toHaveCount(1);
-        await expect(popupDetails(page)).not.toHaveAttribute('target');
+        await expect(popupTextDe(page)).toHaveCount(8);
+        await expect(popupTextEn(page)).toHaveCount(8);
+        await expect(popupTextDe(page).nth(5)).toHaveText(RESTART_DE);
+        await expect(popupTextDe(page).nth(6)).toHaveText(POPUP_SUPPORT_DE);
+        await expect(popupTextEn(page).nth(5)).toHaveText(RESTART_EN);
+        await expect(popupTextEn(page).nth(6)).toHaveText(POPUP_SUPPORT_EN);
+        await expect(popupMailtoDe(page)).toHaveCount(1);
+        await expect(popupMailtoDe(page)).toHaveText('support@dfx.swiss');
+        await expect(popupMailtoEn(page)).toHaveCount(1);
+        await expect(popupMailtoEn(page)).toHaveText('support@dfx.swiss');
+        await expect(popupMore(page)).toHaveText('Mehr Infos / More info');
+        await expect(popupMore(page)).toHaveCount(1);
+        await expect(popupMore(page)).toHaveAttribute('href', 'security-incident.html');
+        await expect(popupMore(page)).not.toHaveAttribute('target');
         await expect(popupSource(page)).toHaveText('DFX on X');
         await expect(popupSource(page)).toHaveAttribute('href', SECURITY_POST_URL);
         await expect(popupSource(page)).toHaveAttribute('target', '_blank');
         await expect(popupSource(page)).toHaveAttribute('rel', 'noopener noreferrer');
-        await expect(popupClose(page)).toHaveText('OK');
+        await expect(popupClose(page)).toHaveAccessibleName('Schliessen / Close');
+        await expect(outagePopupDialog(page).locator('a')).toHaveCount(4);
         await expect(outagePopupDialog(page)).toBeFocused();
         if (barVisible) {
           await expect(notice(page)).toBeVisible();
@@ -545,6 +588,18 @@ test.describe('client behavior', () => {
         }
       });
     }
+
+    test('the notice bar and popup dialog use DFX blue with white text', async ({ page }) => {
+      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(notice(page)).toBeVisible();
+      await expect(notice(page)).toHaveCSS('background-color', 'rgb(18, 67, 112)');
+      await expect(notice(page)).toHaveCSS('color', 'rgb(255, 255, 255)');
+      await expect(outagePopupDialog(page)).toHaveCSS('background-color', 'rgb(18, 67, 112)');
+      await expect(outagePopupDialog(page)).toHaveCSS('color', 'rgb(255, 255, 255)');
+    });
 
     test('the popup shows the same German and English text for ?lang=de, ?lang=en and ?lang=fr', async ({
       page,
@@ -596,7 +651,7 @@ test.describe('client behavior', () => {
       expect(placement.inside).toBe(true);
     });
 
-    test('at 320x568 the popup box fits the viewport and OK can be scrolled into view and clicked', async ({
+    test('at 320x568 the popup box fits the viewport and the more-info button can be scrolled into view', async ({
       page,
     }) => {
       await page.setViewportSize({ width: 320, height: 568 });
@@ -608,24 +663,24 @@ test.describe('client behavior', () => {
       expect(box.y).toBeGreaterThanOrEqual(0);
       expect(box.y + box.height).toBeLessThanOrEqual(568);
 
-      await popupClose(page).scrollIntoViewIfNeeded();
-      await expect(popupClose(page)).toBeInViewport();
+      await popupMore(page).scrollIntoViewIfNeeded();
+      await expect(popupMore(page)).toBeInViewport();
       await popupClose(page).click();
 
       await expect(popup(page)).toBeHidden();
     });
 
-    test('at 320x568 the popup stacks German above English, opens at its beginning with the German heading in view and OK can be scrolled into view and clicked', async ({
+    test('at 320x568 the popup stacks German above English and opens at its beginning with the German heading in view', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
       await page.setViewportSize({ width: 320, height: 568 });
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(popup(page)).toBeVisible();
       await expect(outagePopupDialog(page)).toBeFocused();
 
-      // Focusing must not scroll the box towards the OK button at its end.
+      // Focusing must not scroll the box towards the more-info button at its end.
       expect(await outagePopupDialog(page).evaluate((dialog) => dialog.scrollTop)).toBe(0);
 
       const deBox = await popupSectionDe(page).boundingBox();
@@ -644,7 +699,13 @@ test.describe('client behavior', () => {
     });
 
     for (const [trigger, close] of [
-      ['a click on OK', (page) => popupClose(page).click()],
+      [
+        'a click on the Schliessen / Close button',
+        async (page) => {
+          await expect(popupClose(page)).toHaveAccessibleName('Schliessen / Close');
+          await popupClose(page).click();
+        },
+      ],
       [
         'a click on the backdrop outside the dialog box',
         (page) => popup(page).click({ position: { x: 5, y: 5 } }),
@@ -654,7 +715,7 @@ test.describe('client behavior', () => {
       test(`${trigger} closes the popup for this page load, the bar stays visible and a reload shows it again`, async ({
         page,
       }) => {
-        await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
         await page.goto('/?lang=en');
         await page.waitForFunction(visibilityRestored);
         await expect(popup(page)).toBeVisible();
@@ -680,13 +741,31 @@ test.describe('client behavior', () => {
       });
     }
 
+    test('the more-info button sits below both language sections and navigates to the incident page', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(popup(page)).toBeVisible();
+
+      const deBox = await popupSectionDe(page).boundingBox();
+      const enBox = await popupSectionEn(page).boundingBox();
+      const moreBox = await popupMore(page).boundingBox();
+      expect(deBox.y + deBox.height).toBeLessThanOrEqual(moreBox.y);
+      expect(enBox.y + enBox.height).toBeLessThanOrEqual(moreBox.y);
+
+      await popupMore(page).click();
+      await expect(page).toHaveURL(/security-incident(?:\.html)?$/);
+    });
+
     test('in a tab opened before the end instant the bar hides itself at the end instant, the navbar returns to the top and the open popup stays open', async ({
       page,
     }) => {
-      await page.clock.install({ time: new Date('2026-11-18T11:59:59.000+01:00') });
+      await page.clock.install({ time: new Date('2026-11-19T08:59:59.000+01:00') });
       // The installed clock keeps running in real time; pause it so a slow page
       // load cannot reach the end instant before the visibility check.
-      await page.clock.pauseAt(new Date('2026-11-18T11:59:59.500+01:00'));
+      await page.clock.pauseAt(new Date('2026-11-19T08:59:59.500+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();
