@@ -2780,3 +2780,41 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 .dfx-dark-page .nav-button_wrapper {
   gap: 0.75rem;
 }
+
+/* ===== OUTAGE NOTICE (home page) =====
+   In-flow bar above the navbar; js/outage-notice.js un-hides it only before the
+   end instant. Dark text on amber is ~12:1 contrast (WCAG AA). */
+.outage-notice {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  background-color: #ffc107;
+  color: #111111;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.outage-notice[hidden] {
+  display: none;
+}
+
+/* The navbar is position: fixed at top 0; while the notice is shown,
+   js/outage-notice.js keeps --outage-notice-offset at the on-screen height of
+   the notice so the navbar sits below it instead of covering it.
+   The burger panel (.nav-menu) is a descendant of the navbar, whose
+   will-change: transform / backdrop-filter make it the containing block of the
+   panel's position: fixed. The panel's top: 72px is therefore relative to the
+   navbar and already moves with it; only its max-height has to shrink by the
+   offset so the bottom entries stay inside the viewport. */
+.has-outage-notice .dfx-dark-page .navbar {
+  top: var(--outage-notice-offset) !important;
+}
+
+@media screen and (max-width: 1279px) {
+  .has-outage-notice .dfx-dark-page .nav-menu {
+    max-height: calc(100vh - 72px - var(--outage-notice-offset)) !important;
+  }
+}
