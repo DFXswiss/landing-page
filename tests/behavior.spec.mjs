@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
-import { blockExternalNoise } from './helpers.mjs';
+import { blockExternalNoise, openNav } from './helpers.mjs';
 
 const en = JSON.parse(readFileSync(new URL('../i18n/en.json', import.meta.url), 'utf8'));
 const de = JSON.parse(readFileSync(new URL('../i18n/de.json', import.meta.url), 'utf8'));
@@ -216,6 +216,164 @@ test.describe('client behavior', () => {
     await expect(desktopLogin).toBeVisible();
     await expect(desktopLogin).toHaveAttribute('href', /app\.dfx\.swiss\/login/);
     await expect(desktopLogin).toHaveText(/\S/);
+  });
+
+  test.describe('outage notice', () => {
+    const notice = (page) => page.locator('.outage-notice');
+
+    test('before the end instant the notice is shown above the navbar in the active language', async ({
+      page,
+    }) => {
+      await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(notice(page)).toBeVisible();
+      await expect(notice(page)).toHaveAttribute('role', 'status');
+      await expect(notice(page)).toHaveText(en['notice.outage']);
+
+      // The fixed navbar must sit below the in-flow notice, not cover it.
+      await expect
+        .poll(async () => {
+          const noticeBox = await notice(page).boundingBox();
+          const navBox = await page.locator('.navbar').first().boundingBox();
+          return navBox.y - (noticeBox.y + noticeBox.height);
+        })
+        .toBeCloseTo(0, 0);
+    });
+
+    test('with the notice shown the open burger panel starts at the navbar bottom and its max-height is reduced by the notice height', async ({
+      page,
+    }) => {
+      await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+      await page.setViewportSize({ width: 834, height: 1112 });
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(notice(page)).toBeVisible();
+
+      await openNav(page);
+
+      const navbar = page.locator('.dfx-dark-page .navbar').first();
+      const navPanel = page.locator('.dfx-dark-page .navbar .nav-menu');
+
+      // The panel is positioned relative to the navbar (its containing block),
+      // so it must not be shifted by the notice offset a second time.
+      await expect
+        .poll(async () => {
+          const navBox = await navbar.boundingBox();
+          const panelBox = await navPanel.boundingBox();
+          return Math.abs(panelBox.y - (navBox.y + navBox.height));
+        })
+        .toBeLessThanOrEqual(1);
+
+      // The panel keeps its existing full-viewport min-height, so only its
+      // max-height has to shrink by the notice height on top of the 72px navbar.
+      await expect
+        .poll(() =>
+          page.evaluate(() => {
+            const panel = document.querySelector('.dfx-dark-page .navbar .nav-menu');
+            const noticeEl = document.querySelector('.outage-notice');
+            const maxHeight = parseFloat(getComputedStyle(panel).maxHeight);
+            const noticeHeight = noticeEl.getBoundingClientRect().height;
+            return Math.abs(maxHeight - (window.innerHeight - 72 - noticeHeight));
+          }),
+        )
+        .toBeLessThanOrEqual(1);
+    });
+
+    test('in a tab opened before the end instant the notice hides itself at the end instant and the navbar returns to the top', async ({
+      page,
+    }) => {
+      await page.clock.install({ time: new Date('2026-11-18T11:59:59.000+01:00') });
+      // The installed clock keeps running in real time; pause it so a slow page
+      // load cannot reach the end instant before the visibility check.
+      await page.clock.pauseAt(new Date('2026-11-18T11:59:59.500+01:00'));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(notice(page)).toBeVisible();
+
+      await page.clock.fastForward(2000);
+
+      await expect(notice(page)).toBeHidden();
+      await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
+      await expect
+        .poll(async () => {
+          const navBox = await page.locator('.navbar').first().boundingBox();
+          return Math.abs(navBox.y);
+        })
+        .toBeLessThanOrEqual(1);
+    });
+
+    test('a visibilitychange event before the end instant reschedules the timer so the notice hides itself at the end instant', async ({
+      page,
+    }) => {
+      await page.clock.install({ time: new Date('2026-11-18T11:00:00.000+01:00') });
+      // The installed clock keeps running in real time; pause it so a slow page
+      // load cannot move the time on before the visibility check.
+      await page.clock.pauseAt(new Date('2026-11-18T11:00:01.000+01:00'));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(notice(page)).toBeVisible();
+
+      // setSystemTime moves Date without firing or shifting timers, like a timer
+      // that lost time while the device slept: the initial timer is still about
+      // an hour away, so only a timer rescheduled by the event can fire in time.
+      await page.clock.setSystemTime(new Date('2026-11-18T11:59:59.000+01:00'));
+      await page.evaluate(() => {
+        document.dispatchEvent(new Event('visibilitychange'));
+      });
+      await page.clock.fastForward(2000);
+
+      await expect(notice(page)).toBeHidden();
+      await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
+    });
+
+    for (const [eventName, target] of [
+      ['visibilitychange', 'document'],
+      ['pageshow', 'window'],
+    ]) {
+      test(`a ${eventName} event after the end instant hides the notice without waiting for the timer`, async ({
+        page,
+      }) => {
+        await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+        await page.goto('/?lang=en');
+        await page.waitForFunction(visibilityRestored);
+        await expect(notice(page)).toBeVisible();
+
+        // The pending timer still has an hour to go, so only the event can hide
+        // the notice here.
+        await page.clock.setFixedTime(new Date('2026-11-18T12:00:00.000+01:00'));
+        await page.evaluate(
+          ([name, targetName]) => {
+            const eventTarget = targetName === 'document' ? document : window;
+            eventTarget.dispatchEvent(new Event(name));
+          },
+          [eventName, target],
+        );
+
+        await expect(notice(page)).toBeHidden();
+        await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
+        await expect
+          .poll(async () => {
+            const navBox = await page.locator('.navbar').first().boundingBox();
+            return Math.abs(navBox.y);
+          })
+          .toBeLessThanOrEqual(1);
+      });
+    }
+
+    for (const instant of ['2026-11-18T12:00:00.000+01:00', '2026-11-18T12:00:00.001+01:00']) {
+      test(`at/after the end instant (${instant}) the notice stays hidden`, async ({ page }) => {
+        await page.clock.setFixedTime(new Date(instant));
+        await page.goto('/?lang=en');
+        await page.waitForFunction(visibilityRestored);
+        await page.waitForFunction(() => window.DfxOutageNotice !== undefined);
+
+        await expect(notice(page)).toHaveText(en['notice.outage']);
+        await expect(notice(page)).toBeHidden();
+        await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
+      });
+    }
   });
 
   test.describe('shop map', () => {

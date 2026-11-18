@@ -6,7 +6,7 @@ exist only for formatting and the quality gates below.
 
 ## Setup
 
-- **Node 22** (`engines.node >= 22`)
+- **Node 24** (`engines.node >=24.0.0 <25`)
 - **Docker** — only for the visual regression gate
 
 ```bash
