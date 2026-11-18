@@ -1,6 +1,8 @@
 // Shared helpers for the Playwright suite. Filename has no `spec`/`test` suffix
 // so Playwright does not pick it up as a test file.
 
+import { expect } from '@playwright/test';
+
 // Third-party widgets/iframes whose content is non-deterministic (live Trustpilot
 // reviews, Google Maps tiles, YouTube embeds). They are fulfilled with an empty
 // 200 so they neither render variable pixels nor produce an error page. First
@@ -117,8 +119,10 @@ export async function blockExternalNoise(page) {
 // once, immediately, for every element so the scroll-reveal and how-it-works
 // sequence reach a single stable end state instead of depending on scroll.
 // The page clock is pinned after the outage notice end so the time-limited
-// notice is hidden in every baseline, whatever day the suite runs.
-const VISUAL_FIXED_TIME = new Date('2026-11-19T00:00:00+01:00');
+// notice bar is hidden in every baseline, whatever day the suite runs. The
+// behavior suite pins the same instant by default. The security popup does not
+// depend on the clock; the visual spec closes it with closeOutagePopup().
+export const VISUAL_FIXED_TIME = new Date('2026-11-19T00:00:00+01:00');
 
 export async function installVisualDeterminism(page, { allowAiPopup = false } = {}) {
   await page.clock.setFixedTime(VISUAL_FIXED_TIME);
@@ -217,6 +221,16 @@ export async function openNav(page) {
   await page.locator('.dfx-dark-page .menu-button').first().click();
   await page.waitForSelector('.dfx-dark-page .navbar .nav-menu.dk-open', { state: 'visible' });
   await page.waitForTimeout(200);
+}
+
+// The home page shows the security popup on every load until a later
+// deployment removes it, so no baseline may contain it: click OK and wait until
+// it is hidden. The click waits until i18n.js has made the page visible.
+export async function closeOutagePopup(page) {
+  const popup = page.locator('.outage-popup');
+  await expect(popup).toBeVisible();
+  await popup.locator('.outage-popup__close').click();
+  await expect(popup).toBeHidden();
 }
 
 // Wait for the timed AI popup to auto-appear (requires installVisualDeterminism

@@ -265,6 +265,32 @@
 </head>
 <body class="body dfx-dark-page">
   <div class="outage-notice" role="status" data-i18n="notice.outage" hidden>Systemunterbruch bei DFX bis heute, 18. November 2026, 12:00 Uhr MEZ.</div>
+  <div class="outage-popup" hidden>
+    <div class="outage-popup__dialog" role="dialog" aria-modal="true" aria-labelledby="outage-popup-title-de outage-popup-title-en" tabindex="-1">
+      <div class="outage-popup__content">
+        <section class="outage-popup__section" lang="de" aria-labelledby="outage-popup-title-de">
+          <h2 class="outage-popup__title" id="outage-popup-title-de">DFX Sicherheitsupdate – Wichtiger Hinweis</h2>
+          <p class="outage-popup__text">Wir verzeichnen derzeit einen Sicherheitsvorfall, der DFX-Einzahlungsadressen betrifft.</p>
+          <p class="outage-popup__text">Es wurden keine Kundendaten und keine Kundengelder kompromittiert. DFX arbeitet non-custodial und verwahrt keine Kundengelder.</p>
+          <p class="outage-popup__text outage-popup__text--important">⚠️ Wichtig: Bitte sende bis auf Weiteres keine Kryptowährungen an DFX-Einzahlungsadressen. Dies gilt auch für bereits gespeicherte Einzahlungsadressen. Gelder, die an kompromittierte Adressen gesendet werden, können gefährdet sein.</p>
+          <p class="outage-popup__text">Wir arbeiten daran, alle betroffenen Adressen zu ersetzen und unsere Dienste so schnell und sicher wie möglich wiederherzustellen.</p>
+          <p class="outage-popup__text">Wir informieren dich, sobald die neuen Einzahlungsadressen verfügbar sind und Transaktionen wieder sicher möglich sind.</p>
+          <p class="outage-popup__text">Vielen Dank für deine Geduld und dein Verständnis.</p>
+        </section>
+        <section class="outage-popup__section" lang="en" aria-labelledby="outage-popup-title-en">
+          <h2 class="outage-popup__title" id="outage-popup-title-en">DFX Security Update – Important Notice</h2>
+          <p class="outage-popup__text">We are currently experiencing a security incident affecting DFX deposit addresses.</p>
+          <p class="outage-popup__text">No customer data or customer funds have been compromised. DFX operates on a non-custodial basis and does not hold customer funds.</p>
+          <p class="outage-popup__text outage-popup__text--important">⚠️ Important: Please do not send any cryptocurrency to DFX deposit addresses until further notice. This also applies to previously saved deposit addresses. Funds sent to compromised addresses may be at risk.</p>
+          <p class="outage-popup__text">We are working to replace all affected addresses and restore our services as quickly and safely as possible.</p>
+          <p class="outage-popup__text">We will inform you as soon as the new deposit addresses are available and transactions can safely resume.</p>
+          <p class="outage-popup__text">Thank you for your patience and understanding.</p>
+        </section>
+      </div>
+      <p class="outage-popup__source"><a href="https://x.com/dfx_swiss/status/2122956475865677875" target="_blank" rel="noopener noreferrer">DFX on X</a></p>
+      <button type="button" class="outage-popup__close">OK</button>
+    </div>
+  </div>
   <div class="page-wrapper">
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
       <div class="padding-global padding-section-nav">
