@@ -3090,6 +3090,20 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   font-weight: 700;
 }
 
+.dfx-dark-page .incident-page__text a {
+  color: var(--dk-red-link);
+  text-decoration: underline;
+}
+
+.dfx-dark-page .incident-page__text a:hover {
+  color: var(--dk-white);
+}
+
+.dfx-dark-page .incident-page__text a:focus-visible {
+  outline: 2px solid var(--dk-red-link);
+  outline-offset: 3px;
+}
+
 .incident-page__code {
   display: inline;
   padding: 0.1em 0.35em;

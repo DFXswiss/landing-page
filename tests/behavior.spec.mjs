@@ -259,6 +259,12 @@ test.describe('client behavior', () => {
       await expect(german(page).locator(`a[href="${SUPPORT_HREF}"]`)).toHaveCount(1);
       await expect(english(page).locator(`a[href="${SUPPORT_HREF}"]`)).toHaveCount(1);
 
+      const color = (locator) => locator.evaluate((node) => getComputedStyle(node).color);
+      const supportLinkColor = await color(german(page).locator(`a[href="${SUPPORT_HREF}"]`));
+      const jumpLinkColor = await color(jumpLinks(page).filter({ hasText: 'Deutsch' }));
+      expect(supportLinkColor).toBe(jumpLinkColor);
+      expect(supportLinkColor).not.toBe('rgb(0, 0, 238)');
+
       await expect(german(page).locator('h1')).toHaveCount(1);
       await expect(german(page).locator('h2')).toHaveCount(6);
       await expect(english(page).locator('h2')).toHaveText('Security incident of 18 November 2026');
