@@ -25,6 +25,7 @@ Robots policy: https://dfx.swiss/robots.txt
 - DFX Services AG: https://dfx.swiss/dfx-services-ag.html
 - FAQ: https://dfx.swiss/faq.html
 - Support: https://dfx.swiss/help.html
+- Security incident: https://dfx.swiss/security-incident.html
 
 ## Interpretation Rules
 

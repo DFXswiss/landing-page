@@ -207,6 +207,115 @@ test.describe('client behavior', () => {
     expect(keys.attribution).toBeNull();
   });
 
+  test.describe('security incident page', () => {
+    const attackerAddress = '0x767e21D61C4Bfa67Ffc6AE5E5C1B6F36ab24dA81';
+    const sections = (page) => page.locator('.incident-page__section');
+    const german = (page) => page.locator('#de');
+    const english = (page) => page.locator('#en');
+    const jumpLinks = (page) => page.locator('.incident-page__jump a');
+
+    test('shows the German h1, both sections in order, both amounts and the address in each section', async ({
+      page,
+    }) => {
+      await page.goto('/security-incident.html');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(page.locator('h1')).toHaveCount(1);
+      await expect(page.locator('h1')).toHaveText('Sicherheitsvorfall vom 18. November 2026');
+      await expect(sections(page)).toHaveCount(2);
+      await expect(german(page)).toHaveAttribute('lang', 'de');
+      await expect(english(page)).toHaveAttribute('lang', 'en');
+
+      const [first, second] = await sections(page).evaluateAll((nodes) =>
+        nodes.map((node) => ({ id: node.id, lang: node.lang })),
+      );
+      expect(first).toEqual({ id: 'de', lang: 'de' });
+      expect(second).toEqual({ id: 'en', lang: 'en' });
+
+      await expect(german(page).locator('code')).toHaveCount(1);
+      await expect(german(page).locator('code')).toHaveText(attackerAddress);
+      await expect(german(page)).toContainText("40'000 CHF");
+      await expect(english(page).locator('code')).toHaveCount(1);
+      await expect(english(page).locator('code')).toHaveText(attackerAddress);
+      await expect(english(page)).toContainText('CHF 40,000');
+
+      await expect(german(page).locator('h1')).toHaveCount(1);
+      await expect(german(page).locator('h2')).toHaveCount(6);
+      await expect(english(page).locator('h2')).toHaveText('Security incident of 18 November 2026');
+      await expect(english(page).locator('h3')).toHaveCount(6);
+    });
+
+    test('keeps both language sections visible regardless of the site language', async ({
+      page,
+    }) => {
+      for (const lang of ['de', 'en', 'fr']) {
+        await page.goto(`/security-incident.html?lang=${lang}`);
+        await page.waitForFunction(visibilityRestored);
+        await expect(german(page)).toBeVisible();
+        await expect(english(page)).toBeVisible();
+        await expect(german(page).locator('h1')).toHaveText(
+          'Sicherheitsvorfall vom 18. November 2026',
+        );
+        await expect(english(page).locator('h2')).toHaveText(
+          'Security incident of 18 November 2026',
+        );
+      }
+    });
+
+    test('the jump links scroll to the German and English sections below the fixed navbar', async ({
+      page,
+    }) => {
+      await page.goto('/security-incident.html');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(jumpLinks(page)).toHaveText(['Deutsch', 'English']);
+      await expect(jumpLinks(page).first()).toHaveAttribute('href', '#de');
+      await expect(jumpLinks(page).nth(1)).toHaveAttribute('href', '#en');
+
+      for (const [name, sectionId] of [
+        ['English', 'en'],
+        ['Deutsch', 'de'],
+      ]) {
+        await jumpLinks(page).filter({ hasText: name }).click();
+        await expect(page).toHaveURL(new RegExp(`#${sectionId}$`));
+        await expect
+          .poll(() =>
+            page.evaluate((id) => {
+              const heading = document.querySelector(`#${id} > :first-child`);
+              const navbar = document.querySelector('.navbar');
+              return heading.getBoundingClientRect().top - navbar.getBoundingClientRect().bottom;
+            }, sectionId),
+          )
+          .toBeGreaterThanOrEqual(0);
+      }
+    });
+
+    test('has no security popup, outage bar or outage script', async ({ page }) => {
+      await page.goto('/security-incident.html');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(page.locator('.outage-popup')).toHaveCount(0);
+      await expect(page.locator('.outage-notice')).toHaveCount(0);
+      const scripts = await page
+        .locator('script[src]')
+        .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('src')));
+      expect(scripts.some((src) => src.includes('outage-notice.js'))).toBe(false);
+    });
+
+    test('the homepage popup details link points to the incident page', async ({ page }) => {
+      await page.removeLocatorHandler(outagePopupDialog(page));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+
+      const details = page.locator('.outage-popup__source a', {
+        hasText: 'Details zum Vorfall / Incident details',
+      });
+      await expect(details).toHaveAttribute('href', 'security-incident.html');
+      await expect(details).not.toHaveAttribute('target');
+      await expect(details).toHaveText('Details zum Vorfall / Incident details');
+    });
+  });
+
   test('at 1100px the desktop login is hidden and the burger is visible; the dark-theme nav panel is visible after open and in-range resize; at 1400px it has no dk-open and the desktop login is visible with a login href and a label', async ({
     page,
   }) => {
@@ -392,7 +501,10 @@ test.describe('client behavior', () => {
       popupSectionDe(page).locator('.outage-popup__text--important');
     const popupImportantEn = (page) =>
       popupSectionEn(page).locator('.outage-popup__text--important');
-    const popupSource = (page) => page.locator('.outage-popup__source a');
+    const popupDetails = (page) =>
+      page.locator('.outage-popup__source a[href="security-incident.html"]');
+    const popupSource = (page) =>
+      page.locator('.outage-popup__source a[href^="https://x.com/dfx_swiss/status/"]');
     const popupClose = (page) => page.locator('.outage-popup__close');
 
     for (const [instant, barVisible] of [
@@ -417,6 +529,9 @@ test.describe('client behavior', () => {
         await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
         await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
         await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
+        await expect(popupDetails(page)).toHaveText('Details zum Vorfall / Incident details');
+        await expect(popupDetails(page)).toHaveCount(1);
+        await expect(popupDetails(page)).not.toHaveAttribute('target');
         await expect(popupSource(page)).toHaveText('DFX on X');
         await expect(popupSource(page)).toHaveAttribute('href', SECURITY_POST_URL);
         await expect(popupSource(page)).toHaveAttribute('target', '_blank');

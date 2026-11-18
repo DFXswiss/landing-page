@@ -75,6 +75,14 @@
   </url>
 
   <url>
+    <loc>https://dfx.swiss/security-incident.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dfx.swiss/security-incident.html"/>
+  </url>
+
+  <url>
     <loc>https://dfx.swiss/llms.txt</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
