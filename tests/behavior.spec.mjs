@@ -1,11 +1,21 @@
 import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
-import { blockExternalNoise, openNav } from './helpers.mjs';
+import { VISUAL_FIXED_TIME, blockExternalNoise, openNav } from './helpers.mjs';
 
 const en = JSON.parse(readFileSync(new URL('../i18n/en.json', import.meta.url), 'utf8'));
 const de = JSON.parse(readFileSync(new URL('../i18n/de.json', import.meta.url), 'utf8'));
 
 const visibilityRestored = () => getComputedStyle(document.documentElement).visibility !== 'hidden';
+
+const outagePopupDialog = (page) => page.locator('.outage-popup__dialog');
+
+const SECURITY_POST_URL = 'https://x.com/dfx_swiss/status/2122956475865677875';
+const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Wichtiger Hinweis';
+const SECURITY_TITLE_EN = 'DFX Security Update – Important Notice';
+const SECURITY_WARNING_DE =
+  'Bitte sende bis auf Weiteres keine Kryptowährungen an DFX-Einzahlungsadressen.';
+const SECURITY_WARNING_EN =
+  'Please do not send any cryptocurrency to DFX deposit addresses until further notice.';
 
 const SHOP_FILTERS = {
   activities: ['daily', 'within7Days', 'within30Days', 'olderThan30Days', 'none'],
@@ -139,6 +149,17 @@ test.describe('client behavior', () => {
   // one project. The visual + smoke suites still cover both viewports.
   test.beforeEach(async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop-chromium', 'desktop-only behavior checks');
+    // The outage notice bar depends on the wall clock, so the clock is pinned
+    // after its end instant by default to keep the other checks independent of
+    // the day the suite runs. This hook runs before every test body, so the
+    // outage notice tests' own setFixedTime/install calls come later and win.
+    await page.clock.setFixedTime(VISUAL_FIXED_TIME);
+    // The security popup covers the home page on every load. Checks that do not
+    // care about it get it closed with OK whenever it blocks an action or an
+    // assertion; the popup checks remove this handler again.
+    await page.addLocatorHandler(outagePopupDialog(page), async () => {
+      await page.locator('.outage-popup__close').click();
+    });
     await blockExternalNoise(page);
   });
 
@@ -218,7 +239,7 @@ test.describe('client behavior', () => {
     await expect(desktopLogin).toHaveText(/\S/);
   });
 
-  test.describe('outage notice', () => {
+  test.describe('outage notice bar', () => {
     const notice = (page) => page.locator('.outage-notice');
 
     test('before the end instant the notice is shown above the navbar in the active language', async ({
@@ -251,6 +272,8 @@ test.describe('client behavior', () => {
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();
 
+      // The locator handler closes the popup, whose backdrop would otherwise
+      // intercept the click on the burger button.
       await openNav(page);
 
       const navbar = page.locator('.dfx-dark-page .navbar').first();
@@ -278,29 +301,6 @@ test.describe('client behavior', () => {
             return Math.abs(maxHeight - (window.innerHeight - 72 - noticeHeight));
           }),
         )
-        .toBeLessThanOrEqual(1);
-    });
-
-    test('in a tab opened before the end instant the notice hides itself at the end instant and the navbar returns to the top', async ({
-      page,
-    }) => {
-      await page.clock.install({ time: new Date('2026-11-18T11:59:59.000+01:00') });
-      // The installed clock keeps running in real time; pause it so a slow page
-      // load cannot reach the end instant before the visibility check.
-      await page.clock.pauseAt(new Date('2026-11-18T11:59:59.500+01:00'));
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-      await expect(notice(page)).toBeVisible();
-
-      await page.clock.fastForward(2000);
-
-      await expect(notice(page)).toBeHidden();
-      await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
-      await expect
-        .poll(async () => {
-          const navBox = await page.locator('.navbar').first().boundingBox();
-          return Math.abs(navBox.y);
-        })
         .toBeLessThanOrEqual(1);
     });
 
@@ -374,6 +374,222 @@ test.describe('client behavior', () => {
         await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
       });
     }
+  });
+
+  test.describe('security popup', () => {
+    // These checks open and close the popup themselves.
+    test.beforeEach(async ({ page }) => {
+      await page.removeLocatorHandler(outagePopupDialog(page));
+    });
+
+    const notice = (page) => page.locator('.outage-notice');
+    const popup = (page) => page.locator('.outage-popup');
+    const popupSectionDe = (page) => page.locator('.outage-popup__section[lang="de"]');
+    const popupSectionEn = (page) => page.locator('.outage-popup__section[lang="en"]');
+    const popupTitleDe = (page) => page.locator('#outage-popup-title-de');
+    const popupTitleEn = (page) => page.locator('#outage-popup-title-en');
+    const popupImportantDe = (page) =>
+      popupSectionDe(page).locator('.outage-popup__text--important');
+    const popupImportantEn = (page) =>
+      popupSectionEn(page).locator('.outage-popup__text--important');
+    const popupSource = (page) => page.locator('.outage-popup__source a');
+    const popupClose = (page) => page.locator('.outage-popup__close');
+
+    for (const [instant, barVisible] of [
+      ['2026-11-18T11:00:00.000+01:00', true],
+      ['2026-11-18T13:00:00.000+01:00', false],
+    ]) {
+      test(`at ${instant} the popup shows the security notice with the dialog box focused and the bar is ${barVisible ? 'visible' : 'hidden'}`, async ({
+        page,
+      }) => {
+        await page.clock.setFixedTime(new Date(instant));
+        await page.goto('/?lang=en');
+        await page.waitForFunction(visibilityRestored);
+
+        await expect(popup(page)).toBeVisible();
+        await expect(outagePopupDialog(page)).toHaveAttribute(
+          'aria-labelledby',
+          'outage-popup-title-de outage-popup-title-en',
+        );
+        await expect(page.getByRole('dialog', { name: SECURITY_TITLE_DE })).toBeVisible();
+        await expect(page.getByRole('dialog', { name: SECURITY_TITLE_EN })).toBeVisible();
+        await expect(popupTitleDe(page)).toHaveText(SECURITY_TITLE_DE);
+        await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
+        await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
+        await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
+        await expect(popupSource(page)).toHaveText('DFX on X');
+        await expect(popupSource(page)).toHaveAttribute('href', SECURITY_POST_URL);
+        await expect(popupSource(page)).toHaveAttribute('target', '_blank');
+        await expect(popupSource(page)).toHaveAttribute('rel', 'noopener noreferrer');
+        await expect(popupClose(page)).toHaveText('OK');
+        await expect(outagePopupDialog(page)).toBeFocused();
+        if (barVisible) {
+          await expect(notice(page)).toBeVisible();
+        } else {
+          await expect(notice(page)).toBeHidden();
+        }
+      });
+    }
+
+    test('the popup shows the same German and English text for ?lang=de, ?lang=en and ?lang=fr', async ({
+      page,
+    }) => {
+      const texts = [];
+      for (const lang of ['de', 'en', 'fr']) {
+        await page.goto(`/?lang=${lang}`);
+        await page.waitForFunction(visibilityRestored);
+        expect((await outagePopupDialog(page).getAttribute('lang')) ?? '').toBe('');
+        await expect(popupSectionDe(page)).toHaveAttribute('lang', 'de');
+        await expect(popupSectionEn(page)).toHaveAttribute('lang', 'en');
+        await expect(popupTitleDe(page)).toHaveText(SECURITY_TITLE_DE);
+        await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
+        await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
+        await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
+        texts.push(await outagePopupDialog(page).textContent());
+      }
+      expect(texts[0]).toBe(texts[1]);
+      expect(texts[1]).toBe(texts[2]);
+    });
+
+    test('at 1440x900 the popup shows the sections side by side, fully inside the viewport and centred horizontally', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(popup(page)).toBeVisible();
+
+      const deBox = await popupSectionDe(page).boundingBox();
+      const enBox = await popupSectionEn(page).boundingBox();
+      expect(deBox.x + deBox.width).toBeLessThanOrEqual(enBox.x);
+
+      // The backdrop is position: fixed with inset: 0, so it spans the viewport
+      // without its scrollbars (clientWidth/clientHeight).
+      const placement = await outagePopupDialog(page).evaluate((dialog) => {
+        const box = dialog.getBoundingClientRect();
+        const viewport = document.documentElement;
+        return {
+          centreOffset: Math.abs(box.left + box.width / 2 - viewport.clientWidth / 2),
+          inside:
+            box.left >= 0 &&
+            box.top >= 0 &&
+            box.right <= viewport.clientWidth &&
+            box.bottom <= viewport.clientHeight,
+        };
+      });
+      expect(placement.centreOffset).toBeLessThanOrEqual(2);
+      expect(placement.inside).toBe(true);
+    });
+
+    test('at 320x568 the popup box fits the viewport and OK can be scrolled into view and clicked', async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 320, height: 568 });
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(popup(page)).toBeVisible();
+
+      const box = await outagePopupDialog(page).boundingBox();
+      expect(box.y).toBeGreaterThanOrEqual(0);
+      expect(box.y + box.height).toBeLessThanOrEqual(568);
+
+      await popupClose(page).scrollIntoViewIfNeeded();
+      await expect(popupClose(page)).toBeInViewport();
+      await popupClose(page).click();
+
+      await expect(popup(page)).toBeHidden();
+    });
+
+    test('at 320x568 the popup stacks German above English, opens at its beginning with the German heading in view and OK can be scrolled into view and clicked', async ({
+      page,
+    }) => {
+      await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+      await page.setViewportSize({ width: 320, height: 568 });
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(popup(page)).toBeVisible();
+      await expect(outagePopupDialog(page)).toBeFocused();
+
+      // Focusing must not scroll the box towards the OK button at its end.
+      expect(await outagePopupDialog(page).evaluate((dialog) => dialog.scrollTop)).toBe(0);
+
+      const deBox = await popupSectionDe(page).boundingBox();
+      const enBox = await popupSectionEn(page).boundingBox();
+      expect(deBox.y + deBox.height).toBeLessThanOrEqual(enBox.y);
+
+      const titleDeBox = await popupTitleDe(page).boundingBox();
+      expect(titleDeBox.y).toBeGreaterThanOrEqual(0);
+      expect(titleDeBox.y + titleDeBox.height).toBeLessThanOrEqual(568);
+
+      await popupClose(page).scrollIntoViewIfNeeded();
+      await expect(popupClose(page)).toBeInViewport();
+      await popupClose(page).click();
+
+      await expect(popup(page)).toBeHidden();
+    });
+
+    for (const [trigger, close] of [
+      ['a click on OK', (page) => popupClose(page).click()],
+      [
+        'a click on the backdrop outside the dialog box',
+        (page) => popup(page).click({ position: { x: 5, y: 5 } }),
+      ],
+      ['the Escape key', (page) => page.keyboard.press('Escape')],
+    ]) {
+      test(`${trigger} closes the popup for this page load, the bar stays visible and a reload shows it again`, async ({
+        page,
+      }) => {
+        await page.clock.setFixedTime(new Date('2026-11-18T11:00:00.000+01:00'));
+        await page.goto('/?lang=en');
+        await page.waitForFunction(visibilityRestored);
+        await expect(popup(page)).toBeVisible();
+        await expect(outagePopupDialog(page)).toBeFocused();
+
+        await close(page);
+
+        await expect(popup(page)).toBeHidden();
+        await expect(notice(page)).toBeVisible();
+
+        // A re-check of the bar's time rule must not bring the closed popup back.
+        await page.evaluate(() => {
+          document.dispatchEvent(new Event('visibilitychange'));
+          window.dispatchEvent(new Event('pageshow'));
+        });
+        await expect(popup(page)).toBeHidden();
+        await expect(notice(page)).toBeVisible();
+
+        // Nothing is stored: the next page load shows the popup again.
+        await page.reload();
+        await page.waitForFunction(visibilityRestored);
+        await expect(popup(page)).toBeVisible();
+      });
+    }
+
+    test('in a tab opened before the end instant the bar hides itself at the end instant, the navbar returns to the top and the open popup stays open', async ({
+      page,
+    }) => {
+      await page.clock.install({ time: new Date('2026-11-18T11:59:59.000+01:00') });
+      // The installed clock keeps running in real time; pause it so a slow page
+      // load cannot reach the end instant before the visibility check.
+      await page.clock.pauseAt(new Date('2026-11-18T11:59:59.500+01:00'));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+      await expect(notice(page)).toBeVisible();
+      await expect(popup(page)).toBeVisible();
+
+      await page.clock.fastForward(2000);
+
+      await expect(notice(page)).toBeHidden();
+      await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
+      await expect
+        .poll(async () => {
+          const navBox = await page.locator('.navbar').first().boundingBox();
+          return Math.abs(navBox.y);
+        })
+        .toBeLessThanOrEqual(1);
+      await expect(popup(page)).toBeVisible();
+      await expect(outagePopupDialog(page)).toBeFocused();
+    });
   });
 
   test.describe('shop map', () => {
