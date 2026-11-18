@@ -2889,6 +2889,16 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   font-weight: 700;
 }
 
+.outage-popup__text a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.outage-popup__text a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
 .outage-popup__source {
   margin: 0 0 1.25rem;
   color: #ffffff;
