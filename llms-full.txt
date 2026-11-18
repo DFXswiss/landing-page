@@ -127,6 +127,7 @@ the DFX app and official channels.
 - DFX Services AG: https://dfx.swiss/dfx-services-ag.html — corporate software infrastructure page
 - FAQ: https://dfx.swiss/faq.html — canonical FAQ page
 - Support: https://dfx.swiss/help.html — ticket and contact routing
+- Security incident: https://dfx.swiss/security-incident.html — report on the 18 November 2026 incident (German and English)
 
 ### FAQ coverage
 
@@ -285,6 +286,7 @@ A: Support is available at https://app.dfx.swiss/support — ticket and FAQ. Ave
 - Documentation: https://docs.dfx.swiss
 - FAQ: https://dfx.swiss/faq.html
 - Support / contact: https://dfx.swiss/help.html
+- Security incident: https://dfx.swiss/security-incident.html
 - DFX Services AG: https://dfx.swiss/dfx-services-ag.html
 - BTC Taro App: https://dfx.swiss/dfx-taro-app.html
 - DFX Toolbox: https://dfx.swiss/dfx-toolbox.html

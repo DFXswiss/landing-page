@@ -16,6 +16,7 @@ export const PAGES = [
   '/dfx-services-ag.html',
   '/faq.html',
   '/help.html',
+  '/security-incident.html',
 ];
 
 // Viewports the visual suite renders. Desktop + a real tablet width (exercises the
@@ -64,6 +65,7 @@ export const VIEWS = [
   { slug: 'dfx-services-ag-en', path: '/dfx-services-ag.html', lang: 'en' },
   { slug: 'faq-fr', path: '/faq.html', lang: 'fr' },
   { slug: 'help-it', path: '/help.html', lang: 'it' },
+  { slug: 'security-incident-fr', path: '/security-incident.html', lang: 'fr' },
 
   // 3) Interactive states (a default-load shot can never capture these).
   { slug: 'faq-open', path: '/faq.html', state: 'faqOpen' },

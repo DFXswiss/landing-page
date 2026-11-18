@@ -111,6 +111,13 @@
       "intent": "Support landing page with ticket and FAQ routing",
       "primary_cta": "https://app.dfx.swiss/support/tickets",
       "structured_data": ["ContactPage", "BreadcrumbList"]
+    },
+    {
+      "url": "https://dfx.swiss/security-incident.html",
+      "file": "security-incident.html",
+      "title": "Sicherheitsvorfall vom 18. November 2026 | DFX",
+      "intent": "Public bilingual incident report for 18 November 2026",
+      "primary_cta": "https://dfx.swiss/security-incident.html"
     }
   ],
   "faq_topics": [
