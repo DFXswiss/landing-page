@@ -382,7 +382,7 @@ test.describe('client behavior', () => {
     test('before the end instant the notice is shown above the navbar in the active language', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
@@ -403,7 +403,7 @@ test.describe('client behavior', () => {
     test('with the notice shown the open burger panel starts at the navbar bottom and its max-height is reduced by the notice height', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
       await page.setViewportSize({ width: 834, height: 1112 });
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
@@ -444,10 +444,10 @@ test.describe('client behavior', () => {
     test('a visibilitychange event before the end instant reschedules the timer so the notice hides itself at the end instant', async ({
       page,
     }) => {
-      await page.clock.install({ time: new Date('2026-11-19T08:00:00.000+01:00') });
+      await page.clock.install({ time: new Date('2026-11-19T00:00:00.000+01:00') });
       // The installed clock keeps running in real time; pause it so a slow page
       // load cannot move the time on before the visibility check.
-      await page.clock.pauseAt(new Date('2026-11-19T08:00:01.000+01:00'));
+      await page.clock.pauseAt(new Date('2026-11-19T00:00:01.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();
@@ -455,7 +455,7 @@ test.describe('client behavior', () => {
       // setSystemTime moves Date without firing or shifting timers, like a timer
       // that lost time while the device slept: the initial timer is still about
       // an hour away, so only a timer rescheduled by the event can fire in time.
-      await page.clock.setSystemTime(new Date('2026-11-19T08:59:59.000+01:00'));
+      await page.clock.setSystemTime(new Date('2026-11-19T00:59:59.000+01:00'));
       await page.evaluate(() => {
         document.dispatchEvent(new Event('visibilitychange'));
       });
@@ -472,14 +472,14 @@ test.describe('client behavior', () => {
       test(`a ${eventName} event after the end instant hides the notice without waiting for the timer`, async ({
         page,
       }) => {
-        await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
         await page.goto('/?lang=en');
         await page.waitForFunction(visibilityRestored);
         await expect(notice(page)).toBeVisible();
 
         // The pending timer still has an hour to go, so only the event can hide
         // the notice here.
-        await page.clock.setFixedTime(new Date('2026-11-19T09:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-11-19T01:00:00.000+01:00'));
         await page.evaluate(
           ([name, targetName]) => {
             const eventTarget = targetName === 'document' ? document : window;
@@ -499,7 +499,7 @@ test.describe('client behavior', () => {
       });
     }
 
-    for (const instant of ['2026-11-19T09:00:00.000+01:00', '2026-11-19T09:00:00.001+01:00']) {
+    for (const instant of ['2026-11-19T01:00:00.000+01:00', '2026-11-19T01:00:00.001+01:00']) {
       test(`at/after the end instant (${instant}) the notice stays hidden`, async ({ page }) => {
         await page.clock.setFixedTime(new Date(instant));
         await page.goto('/?lang=en');
@@ -539,8 +539,8 @@ test.describe('client behavior', () => {
     const popupMailtoEn = (page) => popupSectionEn(page).locator(`a[href="${SUPPORT_HREF}"]`);
 
     for (const [instant, barVisible] of [
-      ['2026-11-19T08:00:00.000+01:00', true],
-      ['2026-11-19T10:00:00.000+01:00', false],
+      ['2026-11-19T00:00:00.000+01:00', true],
+      ['2026-11-19T02:00:00.000+01:00', false],
     ]) {
       test(`at ${instant} the popup shows the security notice with the dialog box focused and the bar is ${barVisible ? 'visible' : 'hidden'}`, async ({
         page,
@@ -590,7 +590,7 @@ test.describe('client behavior', () => {
     }
 
     test('the notice bar and popup dialog use DFX blue with white text', async ({ page }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
@@ -673,7 +673,7 @@ test.describe('client behavior', () => {
     test('at 320x568 the popup stacks German above English and opens at its beginning with the German heading in view', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
       await page.setViewportSize({ width: 320, height: 568 });
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
@@ -715,7 +715,7 @@ test.describe('client behavior', () => {
       test(`${trigger} closes the popup for this page load, the bar stays visible and a reload shows it again`, async ({
         page,
       }) => {
-        await page.clock.setFixedTime(new Date('2026-11-19T08:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
         await page.goto('/?lang=en');
         await page.waitForFunction(visibilityRestored);
         await expect(popup(page)).toBeVisible();
@@ -762,10 +762,10 @@ test.describe('client behavior', () => {
     test('in a tab opened before the end instant the bar hides itself at the end instant, the navbar returns to the top and the open popup stays open', async ({
       page,
     }) => {
-      await page.clock.install({ time: new Date('2026-11-19T08:59:59.000+01:00') });
+      await page.clock.install({ time: new Date('2026-11-19T00:59:59.000+01:00') });
       // The installed clock keeps running in real time; pause it so a slow page
       // load cannot reach the end instant before the visibility check.
-      await page.clock.pauseAt(new Date('2026-11-19T08:59:59.500+01:00'));
+      await page.clock.pauseAt(new Date('2026-11-19T00:59:59.500+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();
