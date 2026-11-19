@@ -122,7 +122,7 @@ export async function blockExternalNoise(page) {
 // notice bar is hidden in every baseline, whatever day the suite runs. The
 // behavior suite pins the same instant by default. The security popup does not
 // depend on the clock; the visual spec closes it with closeOutagePopup().
-export const VISUAL_FIXED_TIME = new Date('2026-11-20T00:00:00+01:00');
+export const VISUAL_FIXED_TIME = new Date('2027-01-02T00:00:00+01:00');
 
 export async function installVisualDeterminism(page, { allowAiPopup = false } = {}) {
   await page.clock.setFixedTime(VISUAL_FIXED_TIME);

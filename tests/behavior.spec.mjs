@@ -13,17 +13,19 @@ const SECURITY_POST_URL = 'https://x.com/dfx_swiss/status/2122956475865677875';
 const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Wichtiger Hinweis';
 const SECURITY_TITLE_EN = 'DFX Security Update – Important Notice';
 const SECURITY_WARNING_DE =
-  'Bitte sende bis auf Weiteres keine Kryptowährungen an DFX-Einzahlungsadressen.';
+  'Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.';
 const SECURITY_WARNING_EN =
-  'Please do not send any cryptocurrency to DFX deposit addresses until further notice.';
+  'Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.';
+const POPUP_BUY_DE = 'Käufe sind möglich. Banküberweisungen für Käufe dürfen jederzeit gesendet werden.';
+const POPUP_BUY_EN = 'Purchases are possible. Bank transfers for purchases may be sent at any time.';
 const RESTART_DE =
   'Wir planen, den DFX-Service am Donnerstag, 19. November 2026, um 09:00 Uhr MEZ wieder in Betrieb zu nehmen.';
 const RESTART_EN = 'We plan to resume the DFX service on Thursday, 19 November 2026, at 09:00 CET.';
-const POPUP_SUPPORT_DE = 'Du kannst dich jederzeit per E-Mail an support@dfx.swiss wenden.';
-const POPUP_SUPPORT_EN = 'You can contact us at any time at support@dfx.swiss.';
-const INCIDENT_SUPPORT_DE = 'Kunden können sich jederzeit per E-Mail an support@dfx.swiss wenden.';
-const INCIDENT_SUPPORT_EN = 'Customers can contact us at any time at support@dfx.swiss.';
-const SUPPORT_HREF = 'mailto:support@dfx.swiss';
+const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
+const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
+const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
+const INCIDENT_X_EN = 'Latest update from DFX: DFX on X';
+const SUPPORT_HREF = 'https://app.dfx.swiss/support/tickets';
 
 const SHOP_FILTERS = {
   activities: ['daily', 'within7Days', 'within30Days', 'olderThan30Days', 'none'],
@@ -250,6 +252,11 @@ test.describe('client behavior', () => {
       await expect(german(page)).toContainText(INCIDENT_SUPPORT_DE);
       await expect(english(page)).toContainText(RESTART_EN);
       await expect(english(page)).toContainText(INCIDENT_SUPPORT_EN);
+      await expect(german(page)).toContainText(INCIDENT_X_DE);
+      await expect(english(page)).toContainText(INCIDENT_X_EN);
+      await expect(german(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute('target', '_blank');
+      await expect(english(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute('target', '_blank');
+      await expect(page.locator('a[href^="mailto:support@dfx.swiss"]')).toHaveCount(0);
       await expect(german(page)).not.toContainText(
         'In den nächsten Stunden schalten wir zuerst den Support wieder ein, danach die Kaufoption und anschliessend die Verkaufsoption.',
       );
@@ -382,7 +389,7 @@ test.describe('client behavior', () => {
     test('before the end instant the notice is shown above the navbar in the active language', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
@@ -403,7 +410,7 @@ test.describe('client behavior', () => {
     test('with the notice shown the open burger panel starts at the navbar bottom and its max-height is reduced by the notice height', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
       await page.setViewportSize({ width: 834, height: 1112 });
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
@@ -444,10 +451,10 @@ test.describe('client behavior', () => {
     test('a visibilitychange event before the end instant reschedules the timer so the notice hides itself at the end instant', async ({
       page,
     }) => {
-      await page.clock.install({ time: new Date('2026-11-19T00:00:00.000+01:00') });
+      await page.clock.install({ time: new Date('2026-12-31T23:00:00.000+01:00') });
       // The installed clock keeps running in real time; pause it so a slow page
       // load cannot move the time on before the visibility check.
-      await page.clock.pauseAt(new Date('2026-11-19T00:00:01.000+01:00'));
+      await page.clock.pauseAt(new Date('2026-12-31T23:00:01.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();
@@ -455,7 +462,7 @@ test.describe('client behavior', () => {
       // setSystemTime moves Date without firing or shifting timers, like a timer
       // that lost time while the device slept: the initial timer is still about
       // an hour away, so only a timer rescheduled by the event can fire in time.
-      await page.clock.setSystemTime(new Date('2026-11-19T00:59:59.000+01:00'));
+      await page.clock.setSystemTime(new Date('2026-12-31T23:59:59.000+01:00'));
       await page.evaluate(() => {
         document.dispatchEvent(new Event('visibilitychange'));
       });
@@ -472,14 +479,14 @@ test.describe('client behavior', () => {
       test(`a ${eventName} event after the end instant hides the notice without waiting for the timer`, async ({
         page,
       }) => {
-        await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
         await page.goto('/?lang=en');
         await page.waitForFunction(visibilityRestored);
         await expect(notice(page)).toBeVisible();
 
         // The pending timer still has an hour to go, so only the event can hide
         // the notice here.
-        await page.clock.setFixedTime(new Date('2026-11-19T01:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2027-01-01T00:00:00.000+01:00'));
         await page.evaluate(
           ([name, targetName]) => {
             const eventTarget = targetName === 'document' ? document : window;
@@ -499,7 +506,7 @@ test.describe('client behavior', () => {
       });
     }
 
-    for (const instant of ['2026-11-19T01:00:00.000+01:00', '2026-11-19T01:00:00.001+01:00']) {
+    for (const instant of ['2027-01-01T00:00:00.000+01:00', '2027-01-01T00:00:00.001+01:00']) {
       test(`at/after the end instant (${instant}) the notice stays hidden`, async ({ page }) => {
         await page.clock.setFixedTime(new Date(instant));
         await page.goto('/?lang=en');
@@ -535,12 +542,11 @@ test.describe('client behavior', () => {
     const popupClose = (page) => page.locator('.outage-popup__close');
     const popupTextDe = (page) => popupSectionDe(page).locator('.outage-popup__text');
     const popupTextEn = (page) => popupSectionEn(page).locator('.outage-popup__text');
-    const popupMailtoDe = (page) => popupSectionDe(page).locator(`a[href="${SUPPORT_HREF}"]`);
-    const popupMailtoEn = (page) => popupSectionEn(page).locator(`a[href="${SUPPORT_HREF}"]`);
+    const popupOk = (page) => page.locator('.outage-popup__ok');
 
     for (const [instant, barVisible] of [
-      ['2026-11-19T00:00:00.000+01:00', true],
-      ['2026-11-19T02:00:00.000+01:00', false],
+      ['2026-12-31T23:00:00.000+01:00', true],
+      ['2027-01-01T01:00:00.000+01:00', false],
     ]) {
       test(`at ${instant} the popup shows the security notice with the dialog box focused and the bar is ${barVisible ? 'visible' : 'hidden'}`, async ({
         page,
@@ -560,26 +566,20 @@ test.describe('client behavior', () => {
         await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
         await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
         await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        await expect(popupTextDe(page)).toHaveCount(8);
-        await expect(popupTextEn(page)).toHaveCount(8);
-        await expect(popupTextDe(page).nth(5)).toHaveText(RESTART_DE);
-        await expect(popupTextDe(page).nth(6)).toHaveText(POPUP_SUPPORT_DE);
-        await expect(popupTextEn(page).nth(5)).toHaveText(RESTART_EN);
-        await expect(popupTextEn(page).nth(6)).toHaveText(POPUP_SUPPORT_EN);
-        await expect(popupMailtoDe(page)).toHaveCount(1);
-        await expect(popupMailtoDe(page)).toHaveText('support@dfx.swiss');
-        await expect(popupMailtoEn(page)).toHaveCount(1);
-        await expect(popupMailtoEn(page)).toHaveText('support@dfx.swiss');
+        await expect(popupTextDe(page)).toHaveCount(4);
+        await expect(popupTextEn(page)).toHaveCount(4);
+        await expect(popupTextDe(page).nth(2)).toHaveText(POPUP_BUY_DE);
+        await expect(popupTextEn(page).nth(2)).toHaveText(POPUP_BUY_EN);
+        await expect(outagePopupDialog(page).locator('a[href^="mailto:"]')).toHaveCount(0);
+        await expect(popupOk(page)).toHaveText('OK');
+        await expect(popupOk(page)).toHaveAttribute('type', 'button');
         await expect(popupMore(page)).toHaveText('Mehr Infos / More info');
         await expect(popupMore(page)).toHaveCount(1);
         await expect(popupMore(page)).toHaveAttribute('href', 'security-incident.html');
         await expect(popupMore(page)).not.toHaveAttribute('target');
-        await expect(popupSource(page)).toHaveText('DFX on X');
-        await expect(popupSource(page)).toHaveAttribute('href', SECURITY_POST_URL);
-        await expect(popupSource(page)).toHaveAttribute('target', '_blank');
-        await expect(popupSource(page)).toHaveAttribute('rel', 'noopener noreferrer');
+        await expect(popupSource(page)).toHaveCount(0);
         await expect(popupClose(page)).toHaveAccessibleName('Schliessen / Close');
-        await expect(outagePopupDialog(page).locator('a')).toHaveCount(4);
+        await expect(outagePopupDialog(page).locator('a')).toHaveCount(1);
         await expect(outagePopupDialog(page)).toBeFocused();
         if (barVisible) {
           await expect(notice(page)).toBeVisible();
@@ -589,8 +589,18 @@ test.describe('client behavior', () => {
       });
     }
 
+    test('the OK button closes the popup', async ({ page }) => {
+      await page.clock.setFixedTime(new Date('2027-01-01T01:00:00.000+01:00'));
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(popup(page)).toBeVisible();
+      await popupOk(page).click();
+      await expect(popup(page)).toBeHidden();
+    });
+
     test('the notice bar and popup dialog use DFX blue with white text', async ({ page }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
@@ -673,7 +683,7 @@ test.describe('client behavior', () => {
     test('at 320x568 the popup stacks German above English and opens at its beginning with the German heading in view', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
+      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
       await page.setViewportSize({ width: 320, height: 568 });
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
@@ -715,7 +725,7 @@ test.describe('client behavior', () => {
       test(`${trigger} closes the popup for this page load, the bar stays visible and a reload shows it again`, async ({
         page,
       }) => {
-        await page.clock.setFixedTime(new Date('2026-11-19T00:00:00.000+01:00'));
+        await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
         await page.goto('/?lang=en');
         await page.waitForFunction(visibilityRestored);
         await expect(popup(page)).toBeVisible();
@@ -762,10 +772,10 @@ test.describe('client behavior', () => {
     test('in a tab opened before the end instant the bar hides itself at the end instant, the navbar returns to the top and the open popup stays open', async ({
       page,
     }) => {
-      await page.clock.install({ time: new Date('2026-11-19T00:59:59.000+01:00') });
+      await page.clock.install({ time: new Date('2026-12-31T23:59:59.000+01:00') });
       // The installed clock keeps running in real time; pause it so a slow page
       // load cannot reach the end instant before the visibility check.
-      await page.clock.pauseAt(new Date('2026-11-19T00:59:59.500+01:00'));
+      await page.clock.pauseAt(new Date('2026-12-31T23:59:59.500+01:00'));
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();

@@ -21,6 +21,10 @@
   if (!popupClose) {
     throw new Error('outage-notice: the .outage-popup__close button is missing');
   }
+  var popupOk = popup.querySelector('.outage-popup__ok');
+  if (!popupOk) {
+    throw new Error('outage-notice: the .outage-popup__ok button is missing');
+  }
 
   var root = document.documentElement;
 
@@ -51,6 +55,7 @@
       focusObserver.disconnect();
       popup.setAttribute('hidden', '');
       popupClose.removeEventListener('click', closePopup);
+      popupOk.removeEventListener('click', closePopup);
       popup.removeEventListener('click', onPopupBackdropClick);
       document.removeEventListener('keydown', onPopupKeydown);
     }
@@ -67,6 +72,7 @@
 
     popup.removeAttribute('hidden');
     popupClose.addEventListener('click', closePopup);
+    popupOk.addEventListener('click', closePopup);
     popup.addEventListener('click', onPopupBackdropClick);
     document.addEventListener('keydown', onPopupKeydown);
     focusObserver.observe(root, { attributes: true, attributeFilter: ['style'] });

@@ -2960,6 +2960,36 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   outline-offset: 2px;
 }
 
+/* Mehr Infos and OK side by side, wrapping on narrow screens; OK has the same
+   size as Mehr Infos but is outlined, so the two actions stay distinct. */
+.outage-popup__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.outage-popup__ok {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.625rem 2rem;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.outage-popup__ok:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
 /* Wide viewports: German and English side by side in equal columns. The
    dialog gets the extra width it needs for two readable text columns. */
 @media screen and (min-width: 900px) {
