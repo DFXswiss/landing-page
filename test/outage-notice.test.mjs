@@ -8,35 +8,35 @@ const { OUTAGE_NOTICE_END, isOutageNoticeActive, millisecondsUntilOutageNoticeEn
   window.DfxOutageNotice;
 
 describe('OUTAGE_NOTICE_END', () => {
-  test('is 18 November 2026, 12:00 CET', () => {
-    expect(OUTAGE_NOTICE_END.toISOString()).toBe('2026-11-18T11:00:00.000Z');
+  test('is 1 January 2027, 00:00 CET', () => {
+    expect(OUTAGE_NOTICE_END.toISOString()).toBe('2026-12-31T23:00:00.000Z');
   });
 });
 
 describe('isOutageNoticeActive', () => {
   test('is active one millisecond before the end', () => {
-    expect(isOutageNoticeActive(new Date('2026-11-18T10:59:59.999Z'))).toBe(true);
+    expect(isOutageNoticeActive(new Date('2026-12-31T22:59:59.999Z'))).toBe(true);
   });
 
   test('is inactive exactly at the end', () => {
-    expect(isOutageNoticeActive(new Date('2026-11-18T11:00:00.000Z'))).toBe(false);
+    expect(isOutageNoticeActive(new Date('2026-12-31T23:00:00.000Z'))).toBe(false);
   });
 
   test('is inactive after the end', () => {
-    expect(isOutageNoticeActive(new Date('2026-11-19T00:00:00.000Z'))).toBe(false);
+    expect(isOutageNoticeActive(new Date('2027-01-01T23:00:00.000Z'))).toBe(false);
   });
 });
 
 describe('millisecondsUntilOutageNoticeEnd', () => {
   test('returns 1000 one second before the end', () => {
-    expect(millisecondsUntilOutageNoticeEnd(new Date('2026-11-18T10:59:59.000Z'))).toBe(1000);
+    expect(millisecondsUntilOutageNoticeEnd(new Date('2026-12-31T22:59:59.000Z'))).toBe(1000);
   });
 
   test('returns 0 exactly at the end', () => {
-    expect(millisecondsUntilOutageNoticeEnd(new Date('2026-11-18T11:00:00.000Z'))).toBe(0);
+    expect(millisecondsUntilOutageNoticeEnd(new Date('2026-12-31T23:00:00.000Z'))).toBe(0);
   });
 
   test('returns a negative number after the end', () => {
-    expect(millisecondsUntilOutageNoticeEnd(new Date('2026-11-18T11:00:01.000Z'))).toBe(-1000);
+    expect(millisecondsUntilOutageNoticeEnd(new Date('2026-12-31T23:00:01.000Z'))).toBe(-1000);
   });
 });

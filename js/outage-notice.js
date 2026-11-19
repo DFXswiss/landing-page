@@ -21,6 +21,10 @@
   if (!popupClose) {
     throw new Error('outage-notice: the .outage-popup__close button is missing');
   }
+  var popupOk = popup.querySelector('.outage-popup__ok');
+  if (!popupOk) {
+    throw new Error('outage-notice: the .outage-popup__ok button is missing');
+  }
 
   var root = document.documentElement;
 
@@ -33,8 +37,8 @@
   // i18n.js keeps the page at visibility: hidden until the translations are
   // applied, and a hidden element cannot take focus, so the dialog box is
   // focused once the page has become visible. The box itself takes focus, not
-  // the OK button at the end of the text: focusing the button would scroll the
-  // box to its bottom on small screens, and the heading and the warning at the
+  // a control further down: focusing the more-info button would scroll the box
+  // to its bottom on small screens, and the heading and the warning at the
   // beginning must be visible first. preventScroll and scrollTop = 0 keep the
   // box at its beginning.
   function showPopup() {
@@ -51,6 +55,7 @@
       focusObserver.disconnect();
       popup.setAttribute('hidden', '');
       popupClose.removeEventListener('click', closePopup);
+      popupOk.removeEventListener('click', closePopup);
       popup.removeEventListener('click', onPopupBackdropClick);
       document.removeEventListener('keydown', onPopupKeydown);
     }
@@ -67,6 +72,7 @@
 
     popup.removeAttribute('hidden');
     popupClose.addEventListener('click', closePopup);
+    popupOk.addEventListener('click', closePopup);
     popup.addEventListener('click', onPopupBackdropClick);
     document.addEventListener('keydown', onPopupKeydown);
     focusObserver.observe(root, { attributes: true, attributeFilter: ['style'] });

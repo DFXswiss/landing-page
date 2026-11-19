@@ -2783,13 +2783,14 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 
 /* ===== OUTAGE NOTICE (home page) =====
    In-flow bar above the navbar; js/outage-notice.js un-hides it only before the
-   end instant. Dark text on amber is ~12:1 contrast (WCAG AA). */
+   end instant. White text on DFX blue is ~10:1 contrast (WCAG AA). */
 .outage-notice {
   box-sizing: border-box;
   width: 100%;
   padding: 0.625rem 1rem;
-  background-color: #ffc107;
-  color: #111111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  background-color: #124370;
+  color: #ffffff;
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.4;
@@ -2805,7 +2806,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
    load of the home page, independent of the bar's end instant. z-index sits
    above the navbar (1100) and the AI popup (9998). Fixed overlay only, so the
    document layout does not change. The box scrolls on its own when the text is
-   taller than the viewport, so the OK button stays reachable. */
+   taller than the viewport, so the more-info button stays reachable. */
 .outage-popup {
   position: fixed;
   inset: 0;
@@ -2823,6 +2824,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .outage-popup__dialog {
+  position: relative;
   box-sizing: border-box;
   max-width: min(36rem, calc(100vw - 2rem));
   max-height: calc(100vh - 2rem);
@@ -2832,9 +2834,10 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 12px;
-  background-color: #ffc107;
-  color: #111111;
+  background-color: #124370;
+  color: #ffffff;
   font-size: 1rem;
   line-height: 1.55;
   text-align: left;
@@ -2843,7 +2846,8 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 /* js/outage-notice.js focuses the box programmatically so it opens at its
-   beginning; no focus ring on the box itself. OK and the link keep theirs. */
+   beginning; no focus ring on the box itself. The close button and links keep
+   theirs. */
 .outage-popup__dialog:focus {
   outline: none;
 }
@@ -2861,14 +2865,15 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 /* Stacked on narrow screens: a thin rule separates German from English. */
 .outage-popup__section + .outage-popup__section {
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(17, 17, 17, 0.35);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 /* .dfx-dark-page h2 forces white text with !important; the higher specificity
-   here keeps the heading dark on amber. */
+   here keeps the heading white on DFX blue. */
 .dfx-dark-page .outage-popup__title {
   margin: 0 0 1rem;
-  color: #111111 !important;
+  padding-right: 2.75rem;
+  color: #ffffff !important;
   font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.3;
@@ -2877,45 +2882,112 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 
 .outage-popup__text {
   margin: 0 0 0.875rem;
-  color: #111111;
+  color: #ffffff;
 }
 
 .outage-popup__text--important {
   font-weight: 700;
 }
 
+.outage-popup__text a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.outage-popup__text a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
 .outage-popup__source {
   margin: 0 0 1.25rem;
-  color: #111111;
+  color: #ffffff;
   font-size: 0.875rem;
 }
 
 .outage-popup__source a {
-  color: #111111;
+  color: #ffffff;
   text-decoration: underline;
 }
 
 .outage-popup__source a:focus-visible {
-  outline: 3px solid #111111;
+  outline: 3px solid #ffffff;
   outline-offset: 2px;
 }
 
 .outage-popup__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.outage-popup__close:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.outage-popup__more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 44px;
   min-height: 44px;
   padding: 0.625rem 2rem;
-  border: none;
   border-radius: 8px;
-  background-color: #111111;
+  background-color: #ffffff;
+  color: #124370;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.outage-popup__more:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Mehr Infos and OK side by side, wrapping on narrow screens; OK has the same
+   size as Mehr Infos but is outlined, so the two actions stay distinct. */
+.outage-popup__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.outage-popup__ok {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.625rem 2rem;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background-color: transparent;
   color: #ffffff;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
 }
 
-.outage-popup__close:focus-visible {
-  outline: 3px solid #111111;
-  outline-offset: 3px;
+.outage-popup__ok:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
 }
 
 /* Wide viewports: German and English side by side in equal columns. The
@@ -3046,6 +3118,20 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 .dfx-dark-page .incident-page__text--important {
   color: var(--dk-text) !important;
   font-weight: 700;
+}
+
+.dfx-dark-page .incident-page__text a {
+  color: var(--dk-red-link);
+  text-decoration: underline;
+}
+
+.dfx-dark-page .incident-page__text a:hover {
+  color: var(--dk-white);
+}
+
+.dfx-dark-page .incident-page__text a:focus-visible {
+  outline: 2px solid var(--dk-red-link);
+  outline-offset: 3px;
 }
 
 .incident-page__code {
