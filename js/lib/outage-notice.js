@@ -12,7 +12,7 @@
 
   // The notice disappears on its own at this instant, so no second deployment
   // is needed to remove it.
-  var OUTAGE_NOTICE_END = new Date('2026-11-19T09:00:00+01:00');
+  var OUTAGE_NOTICE_END = new Date('2026-11-19T01:00:00+01:00');
 
   function isOutageNoticeActive(now) {
     return now.getTime() < OUTAGE_NOTICE_END.getTime();
