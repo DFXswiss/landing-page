@@ -10,21 +10,28 @@ const visibilityRestored = () => getComputedStyle(document.documentElement).visi
 const outagePopupDialog = (page) => page.locator('.outage-popup__dialog');
 
 const SECURITY_POST_URL = 'https://x.com/dfx_swiss/status/2122956475865677875';
-const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Wichtiger Hinweis';
-const SECURITY_TITLE_EN = 'DFX Security Update – Important Notice';
+const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Alle Core-Funktionen wieder verfügbar';
+const SECURITY_TITLE_EN = 'DFX Security Update – All core features available again';
 const SECURITY_WARNING_DE =
   'Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.';
 const SECURITY_WARNING_EN =
   'Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.';
-const POPUP_BUY_DE = 'Käufe sind möglich. Banküberweisungen für Käufe dürfen jederzeit gesendet werden.';
-const POPUP_BUY_EN = 'Purchases are possible. Bank transfers for purchases may be sent at any time.';
-const RESTART_DE =
-  'Wir planen, den DFX-Service am Donnerstag, 19. November 2026, um 09:00 Uhr MEZ wieder in Betrieb zu nehmen.';
-const RESTART_EN = 'We plan to resume the DFX service on Thursday, 19 November 2026, at 09:00 CET.';
+const POPUP_STATUS_DE =
+  'Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.';
+const POPUP_STATUS_EN =
+  'Buying and selling on the most popular blockchains is fully operational again.';
+const RESUMED_DE =
+  'Alle DFX-Core-Funktionen sind wieder verfügbar. Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.';
+const RESUMED_EN =
+  'All DFX core features are available again. Buying and selling on the most popular blockchains is fully operational again.';
+const FINANCIAL_DE =
+  'DFX kann den entstandenen Schaden aus der laufenden Geschäftstätigkeit finanzieren. DFX ist solvent, erwirtschaftet einen positiven Cashflow und befindet sich auch nach diesem Vorfall in einer finanziell gesunden Lage.';
+const FINANCIAL_EN =
+  'DFX is able to finance the damage incurred from its ongoing operating activities. DFX is solvent, generates a positive cash flow and remains in a sound financial position after this incident.';
 const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
 const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
-const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
-const INCIDENT_X_EN = 'Latest update from DFX: DFX on X';
+const INCIDENT_X_DE = 'Meldung von DFX vom 18. November 2026: DFX on X';
+const INCIDENT_X_EN = 'DFX announcement of 18 November 2026: DFX on X';
 const SUPPORT_HREF = 'https://app.dfx.swiss/support/tickets';
 
 const SHOP_FILTERS = {
@@ -244,13 +251,15 @@ test.describe('client behavior', () => {
 
       await expect(german(page).locator('code')).toHaveCount(1);
       await expect(german(page).locator('code')).toHaveText(attackerAddress);
-      await expect(german(page)).toContainText("40'000 CHF");
+      await expect(german(page)).toContainText("etwas weniger als 50'000 CHF");
       await expect(english(page).locator('code')).toHaveCount(1);
       await expect(english(page).locator('code')).toHaveText(attackerAddress);
-      await expect(english(page)).toContainText('CHF 40,000');
-      await expect(german(page)).toContainText(RESTART_DE);
+      await expect(english(page)).toContainText('slightly less than CHF 50,000');
+      await expect(german(page)).toContainText(FINANCIAL_DE);
+      await expect(english(page)).toContainText(FINANCIAL_EN);
+      await expect(german(page)).toContainText(RESUMED_DE);
       await expect(german(page)).toContainText(INCIDENT_SUPPORT_DE);
-      await expect(english(page)).toContainText(RESTART_EN);
+      await expect(english(page)).toContainText(RESUMED_EN);
       await expect(english(page)).toContainText(INCIDENT_SUPPORT_EN);
       await expect(german(page)).toContainText(INCIDENT_X_DE);
       await expect(english(page)).toContainText(INCIDENT_X_EN);
@@ -273,9 +282,9 @@ test.describe('client behavior', () => {
       expect(supportLinkColor).not.toBe('rgb(0, 0, 238)');
 
       await expect(german(page).locator('h1')).toHaveCount(1);
-      await expect(german(page).locator('h2')).toHaveCount(6);
+      await expect(german(page).locator('h2')).toHaveCount(8);
       await expect(english(page).locator('h2')).toHaveText('Security incident of 18 November 2026');
-      await expect(english(page).locator('h3')).toHaveCount(6);
+      await expect(english(page).locator('h3')).toHaveCount(8);
     });
 
     test('keeps both language sections visible regardless of the site language', async ({
@@ -566,10 +575,10 @@ test.describe('client behavior', () => {
         await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
         await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
         await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        await expect(popupTextDe(page)).toHaveCount(4);
-        await expect(popupTextEn(page)).toHaveCount(4);
-        await expect(popupTextDe(page).nth(2)).toHaveText(POPUP_BUY_DE);
-        await expect(popupTextEn(page).nth(2)).toHaveText(POPUP_BUY_EN);
+        await expect(popupTextDe(page)).toHaveCount(3);
+        await expect(popupTextEn(page)).toHaveCount(3);
+        await expect(popupTextDe(page).nth(0)).toHaveText(POPUP_STATUS_DE);
+        await expect(popupTextEn(page).nth(0)).toHaveText(POPUP_STATUS_EN);
         await expect(outagePopupDialog(page).locator('a[href^="mailto:"]')).toHaveCount(0);
         await expect(popupOk(page)).toHaveText('OK');
         await expect(popupOk(page)).toHaveAttribute('type', 'button');
