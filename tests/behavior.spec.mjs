@@ -25,9 +25,9 @@ const RESUMED_DE =
 const RESUMED_EN =
   'All DFX core features are available again. Buying and selling on the most popular blockchains is fully operational again.';
 const FINANCIAL_DE =
-  'DFX kann den entstandenen Schaden aus der laufenden Geschäftstätigkeit finanzieren. DFX ist solvent, erwirtschaftet einen positiven Cashflow und befindet sich in einer finanziell gesunden Lage.';
+  'DFX kann den entstandenen Schaden aus der laufenden Geschäftstätigkeit finanzieren. DFX ist solvent, erwirtschaftet einen positiven Cashflow und befindet sich auch nach diesem Vorfall in einer finanziell gesunden Lage.';
 const FINANCIAL_EN =
-  'DFX is able to finance the damage incurred from its ongoing operating activities. DFX is solvent, generates a positive cash flow and is in a sound financial position.';
+  'DFX is able to finance the damage incurred from its ongoing operating activities. DFX is solvent, generates a positive cash flow and remains in a sound financial position after this incident.';
 const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
 const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
 const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
