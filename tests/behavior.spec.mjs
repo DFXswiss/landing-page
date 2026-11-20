@@ -10,17 +10,16 @@ const visibilityRestored = () => getComputedStyle(document.documentElement).visi
 const outagePopupDialog = (page) => page.locator('.outage-popup__dialog');
 
 const SECURITY_POST_URL = 'https://x.com/dfx_swiss/status/2122956475865677875';
-const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Wichtiger Hinweis';
-const SECURITY_TITLE_EN = 'DFX Security Update – Important Notice';
+const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Alle Funktionen wieder verfügbar';
+const SECURITY_TITLE_EN = 'DFX Security Update – All features available again';
 const SECURITY_WARNING_DE =
   'Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.';
 const SECURITY_WARNING_EN =
   'Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.';
-const POPUP_BUY_DE = 'Käufe sind möglich. Banküberweisungen für Käufe dürfen jederzeit gesendet werden.';
-const POPUP_BUY_EN = 'Purchases are possible. Bank transfers for purchases may be sent at any time.';
-const RESTART_DE =
-  'Wir planen, den DFX-Service am Donnerstag, 19. November 2026, um 09:00 Uhr MEZ wieder in Betrieb zu nehmen.';
-const RESTART_EN = 'We plan to resume the DFX service on Thursday, 19 November 2026, at 09:00 CET.';
+const POPUP_STATUS_DE = 'Alle DFX-Kernfunktionen sind wieder verfügbar: Kaufen, Verkaufen und Tauschen.';
+const POPUP_STATUS_EN = 'All DFX core features are available again: buying, selling and swapping.';
+const RESUMED_DE = 'Alle DFX-Kernfunktionen sind wieder verfügbar.';
+const RESUMED_EN = 'All DFX core features are available again.';
 const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
 const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
 const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
@@ -248,9 +247,9 @@ test.describe('client behavior', () => {
       await expect(english(page).locator('code')).toHaveCount(1);
       await expect(english(page).locator('code')).toHaveText(attackerAddress);
       await expect(english(page)).toContainText('CHF 40,000');
-      await expect(german(page)).toContainText(RESTART_DE);
+      await expect(german(page)).toContainText(RESUMED_DE);
       await expect(german(page)).toContainText(INCIDENT_SUPPORT_DE);
-      await expect(english(page)).toContainText(RESTART_EN);
+      await expect(english(page)).toContainText(RESUMED_EN);
       await expect(english(page)).toContainText(INCIDENT_SUPPORT_EN);
       await expect(german(page)).toContainText(INCIDENT_X_DE);
       await expect(english(page)).toContainText(INCIDENT_X_EN);
@@ -566,10 +565,10 @@ test.describe('client behavior', () => {
         await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
         await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
         await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        await expect(popupTextDe(page)).toHaveCount(4);
-        await expect(popupTextEn(page)).toHaveCount(4);
-        await expect(popupTextDe(page).nth(2)).toHaveText(POPUP_BUY_DE);
-        await expect(popupTextEn(page).nth(2)).toHaveText(POPUP_BUY_EN);
+        await expect(popupTextDe(page)).toHaveCount(3);
+        await expect(popupTextEn(page)).toHaveCount(3);
+        await expect(popupTextDe(page).nth(0)).toHaveText(POPUP_STATUS_DE);
+        await expect(popupTextEn(page).nth(0)).toHaveText(POPUP_STATUS_EN);
         await expect(outagePopupDialog(page).locator('a[href^="mailto:"]')).toHaveCount(0);
         await expect(popupOk(page)).toHaveText('OK');
         await expect(popupOk(page)).toHaveAttribute('type', 'button');
