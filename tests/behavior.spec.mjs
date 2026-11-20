@@ -10,16 +10,19 @@ const visibilityRestored = () => getComputedStyle(document.documentElement).visi
 const outagePopupDialog = (page) => page.locator('.outage-popup__dialog');
 
 const SECURITY_POST_URL = 'https://x.com/dfx_swiss/status/2122956475865677875';
-const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Alle Funktionen wieder verfügbar';
-const SECURITY_TITLE_EN = 'DFX Security Update – All features available again';
+const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Alle Core-Funktionen wieder verfügbar';
+const SECURITY_TITLE_EN = 'DFX Security Update – All core features available again';
 const SECURITY_WARNING_DE =
   'Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.';
 const SECURITY_WARNING_EN =
   'Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.';
-const POPUP_STATUS_DE = 'Alle DFX-Kernfunktionen sind wieder verfügbar: Kaufen, Verkaufen und Tauschen.';
-const POPUP_STATUS_EN = 'All DFX core features are available again: buying, selling and swapping.';
-const RESUMED_DE = 'Alle DFX-Kernfunktionen sind wieder verfügbar.';
-const RESUMED_EN = 'All DFX core features are available again.';
+const POPUP_STATUS_DE =
+  'Alle DFX-Core-Funktionen sind wieder verfügbar: Kaufen und Verkaufen. Tauschen ist noch nicht möglich.';
+const POPUP_STATUS_EN =
+  'All DFX core features are available again: buying and selling. Swapping is not available yet.';
+const RESUMED_DE =
+  'Alle DFX-Core-Funktionen sind wieder verfügbar. Tauschen ist noch nicht möglich.';
+const RESUMED_EN = 'All DFX core features are available again. Swapping is not available yet.';
 const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
 const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
 const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
