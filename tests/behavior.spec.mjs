@@ -30,8 +30,8 @@ const FINANCIAL_EN =
   'DFX is able to finance the damage incurred from its ongoing operating activities. DFX is solvent, generates a positive cash flow and remains in a sound financial position after this incident.';
 const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
 const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
-const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
-const INCIDENT_X_EN = 'Latest update from DFX: DFX on X';
+const INCIDENT_X_DE = 'Meldung von DFX vom 18. November 2026: DFX on X';
+const INCIDENT_X_EN = 'DFX announcement of 18 November 2026: DFX on X';
 const SUPPORT_HREF = 'https://app.dfx.swiss/support/tickets';
 
 const SHOP_FILTERS = {
