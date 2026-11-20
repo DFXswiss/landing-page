@@ -276,9 +276,9 @@ test.describe('client behavior', () => {
       expect(supportLinkColor).not.toBe('rgb(0, 0, 238)');
 
       await expect(german(page).locator('h1')).toHaveCount(1);
-      await expect(german(page).locator('h2')).toHaveCount(6);
+      await expect(german(page).locator('h2')).toHaveCount(7);
       await expect(english(page).locator('h2')).toHaveText('Security incident of 18 November 2026');
-      await expect(english(page).locator('h3')).toHaveCount(6);
+      await expect(english(page).locator('h3')).toHaveCount(7);
     });
 
     test('keeps both language sections visible regardless of the site language', async ({

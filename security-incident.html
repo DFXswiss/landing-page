@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Sicherheitsvorfall vom 18. November 2026 | DFX</title>
-  <meta content="Details zum Sicherheitsvorfall bei DFX vom 18. November 2026: was passiert ist, was betroffen ist und welche Massnahmen DFX ergriffen hat." name="description">
+  <meta content="Sicherheitsvorfall bei DFX vom 18. November 2026: aktueller Stand, was passiert ist, was betroffen war und welche Massnahmen DFX ergriffen hat." name="description">
   <meta name="keywords" content="Sicherheitsvorfall, DFX, Security Incident, Hot Wallets, Bug Bounty, 18. November 2026">
   <meta content="Sicherheitsvorfall vom 18. November 2026 | DFX" property="og:title">
-  <meta content="Details zum Sicherheitsvorfall bei DFX vom 18. November 2026: was passiert ist, was betroffen ist und welche Massnahmen DFX ergriffen hat." property="og:description">
+  <meta content="Sicherheitsvorfall bei DFX vom 18. November 2026: aktueller Stand, was passiert ist, was betroffen war und welche Massnahmen DFX ergriffen hat." property="og:description">
   <meta property="og:image" content="https://dfx.swiss/images/og_image.png">
   <meta property="og:image:secure_url" content="https://dfx.swiss/images/og_image.png">
   <meta property="og:image:type" content="image/png">
@@ -15,7 +15,7 @@
   <meta property="og:image:alt" content="Sicherheitsvorfall vom 18. November 2026 | DFX">
   <meta property="og:site_name" content="DFX">
   <meta content="Sicherheitsvorfall vom 18. November 2026 | DFX" property="twitter:title">
-  <meta content="Details zum Sicherheitsvorfall bei DFX vom 18. November 2026: was passiert ist, was betroffen ist und welche Massnahmen DFX ergriffen hat." property="twitter:description">
+  <meta content="Sicherheitsvorfall bei DFX vom 18. November 2026: aktueller Stand, was passiert ist, was betroffen war und welche Massnahmen DFX ergriffen hat." property="twitter:description">
   <meta content="https://dfx.swiss/images/og_image.png" property="twitter:image">
   <meta content="Sicherheitsvorfall vom 18. November 2026 | DFX" property="twitter:image:alt">
   <meta property="og:type" content="website">
@@ -207,54 +207,58 @@ Webflow.push(function () {
         <section class="incident-page__section" id="de" lang="de" aria-labelledby="incident-de-title">
           <h1 class="incident-page__title" id="incident-de-title">Sicherheitsvorfall vom 18. November 2026</h1>
           <p class="incident-page__date">Stand: 20. November 2026</p>
+          <h2 class="incident-page__heading">Aktueller Stand</h2>
+          <p class="incident-page__text">Alle DFX-Core-Funktionen sind wieder verfügbar. Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.</p>
+          <p class="incident-page__text incident-page__text--important">Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.</p>
           <h2 class="incident-page__heading">Was ist passiert?</h2>
           <p class="incident-page__text">Ein Angreifer hat sich Zugriff auf das GitHub-Konto eines DFX-Administrators verschafft. Über dieses Konto konnte er ein Deployment auf die produktiven Server von DFX ausführen. Das geschah am 18. November 2026 um ca. 01:00 Uhr Schweizer Zeit.</p>
           <p class="incident-page__text">Anschliessend hat er die Serverumgebung nach Passwörtern und Private Keys durchsucht. Dabei gelang es ihm, sämtliche Private Keys unserer Hot Wallets zu kopieren. Danach begann er, Gelder abzuziehen. Die abgezogenen Gelder belaufen sich auf ca. 40'000 CHF.</p>
           <p class="incident-page__text">Adresse des Angreifers: <code class="incident-page__code">0x767e21D61C4Bfa67Ffc6AE5E5C1B6F36ab24dA81</code></p>
-          <p class="incident-page__text">Ein DFX-Administrator hat den Zugriff am Morgen gegen ca. 07:00 Uhr bemerkt und den Server sofort vom Netzwerk genommen. Danach haben wir begonnen, das Ausmass des Schadens zu evaluieren und den Schaden zu begrenzen.</p>
-          <h2 class="incident-page__heading">Was ist betroffen?</h2>
+          <p class="incident-page__text">Ein DFX-Administrator hat den Zugriff am Morgen des 18. November gegen ca. 07:00 Uhr bemerkt und den Server sofort vom Netzwerk genommen. Danach haben wir das Ausmass des Schadens evaluiert und den Schaden begrenzt.</p>
+          <h2 class="incident-page__heading">Was war betroffen?</h2>
           <p class="incident-page__text">Der Angreifer hat keine Kundendaten abgegriffen.</p>
           <p class="incident-page__text">Kundenkonten bei DFX sind grundsätzlich sicher. Eingehende Banktransaktionen von Kunden sind sicher.</p>
-          <p class="incident-page__text incident-page__text--important">Aber: Alle DFX Hot Wallets sind kompromittiert und müssen zwingend ersetzt werden. Das betrifft die DFX-internen Adressen, aber auch die Deposit-Adressen der einzelnen Kunden für Krypto-Einzahlungen. Diese Adressen sind kompromittiert und dürfen nicht mehr genutzt werden.</p>
+          <p class="incident-page__text incident-page__text--important">Aber: Alle DFX Hot Wallets waren kompromittiert und mussten ersetzt werden. Das betraf die DFX-internen Adressen, aber auch die Deposit-Adressen der einzelnen Kunden für Krypto-Einzahlungen. Diese alten Adressen dürfen nicht mehr genutzt werden.</p>
           <h2 class="incident-page__heading">Was hat DFX unternommen?</h2>
           <p class="incident-page__text">DFX hat als Erstes alle Server vom Netz genommen, danach die Situation analysiert und Sofortmassnahmen ergriffen, um weiteren Schaden abzuwenden.</p>
-          <p class="incident-page__text">Alle Private Keys, Adressen, Access Tokens und weiteren Zugangsdaten werden rotiert.</p>
-          <p class="incident-page__text">DFX informiert die Kunden schnellstmöglich, keine Einzahlungen an Krypto-Deposit-Adressen vorzunehmen.</p>
+          <p class="incident-page__text">DFX hat neue Hot Wallets und neue Einzahlungsadressen eingerichtet. Alle Private Keys, Access Tokens und weiteren Zugangsdaten werden rotiert.</p>
+          <p class="incident-page__text">DFX hat die Kunden informiert, keine Krypto-Einzahlungen an die alten Deposit-Adressen vorzunehmen.</p>
           <h2 class="incident-page__heading">Bug-Bounty-Programm</h2>
-          <p class="incident-page__text">DFX unterhält seit mehreren Jahren ein Bug-Bounty-Programm, um solche Sicherheitsvorfälle zu vermeiden. In den letzten Jahren wurden darüber viele Schwachstellen gemeldet und behoben. Das Bug Bounty war auf 10'000 CHF limitiert.</p>
-          <p class="incident-page__text">Wir verstehen, dass eine Limitierung auf 10'000 CHF für einen Service wie DFX heute nicht mehr zeitgemäss ist. Wir erhöhen das Bug-Bounty-Programm deshalb per Freitag, 20. November 2026, auf 50'000 CHF. Wer eine Sicherheitslücke meldet, erhält damit bis zu 50'000 CHF pro Sicherheitslücke.</p>
+          <p class="incident-page__text">DFX unterhält seit mehreren Jahren ein Bug-Bounty-Programm, um solche Sicherheitsvorfälle zu vermeiden. In den letzten Jahren wurden darüber viele Schwachstellen gemeldet und behoben. Das Bug Bounty war bisher auf 10'000 CHF limitiert.</p>
+          <p class="incident-page__text">Wir verstehen, dass eine Limitierung auf 10'000 CHF für einen Service wie DFX heute nicht mehr zeitgemäss ist. Wir haben das Bug-Bounty-Programm deshalb per Freitag, 20. November 2026, auf 50'000 CHF erhöht. Wer eine Sicherheitslücke meldet, erhält damit bis zu 50'000 CHF pro Sicherheitslücke.</p>
           <h2 class="incident-page__heading">Änderungen bei Deployments</h2>
-          <p class="incident-page__text">Ab heute gibt es keine automatisierten GitHub-Deployments mehr. Jedes Deployment auf einen Produktivserver muss von einem Administrator mit einem speziellen SSH-Key freigegeben werden. Zusätzlich prüfen wir die Umsetzung eines Systems, bei dem es jeweils die Freigabe von zwei Administratoren braucht.</p>
+          <p class="incident-page__text">Seit dem 18. November 2026 gibt es keine automatisierten GitHub-Deployments mehr. Jedes Deployment auf einen Produktivserver muss von einem Administrator mit einem speziellen SSH-Key freigegeben werden. Zusätzlich prüfen wir die Umsetzung eines Systems, bei dem es jeweils die Freigabe von zwei Administratoren braucht.</p>
           <h2 class="incident-page__heading">Wie geht es weiter?</h2>
-          <p class="incident-page__text">Wir nehmen die Sicherheit unserer Kundendaten und der finanziellen Vermögenswerte extrem ernst und setzen alles daran, den Betrieb möglichst sicher wieder hochzufahren. Wir sind stolz darauf, grösseren Schaden abgewendet zu haben, und geben alles, um unseren Service jeden Tag besser und sicherer zu machen.</p>
-          <p class="incident-page__text">Alle DFX-Core-Funktionen sind wieder verfügbar. Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.</p>
+          <p class="incident-page__text">Wir nehmen die Sicherheit unserer Kundendaten und der finanziellen Vermögenswerte extrem ernst. Wir sind stolz darauf, grösseren Schaden abgewendet zu haben, und geben alles, um unseren Service jeden Tag besser und sicherer zu machen.</p>
           <p class="incident-page__text">Fragen: <a href="https://app.dfx.swiss/support/tickets">Support-Ticket erstellen</a></p>
           <p class="incident-page__text">Aktuelle Meldung von DFX: <a href="https://x.com/dfx_swiss/status/2122956475865677875" target="_blank" rel="noopener noreferrer">DFX on X</a></p>
         </section>
         <section class="incident-page__section" id="en" lang="en" aria-labelledby="incident-en-title">
           <h2 class="incident-page__title incident-page__title--secondary" id="incident-en-title">Security incident of 18 November 2026</h2>
           <p class="incident-page__date">As of 20 November 2026</p>
+          <h3 class="incident-page__heading">Current status</h3>
+          <p class="incident-page__text">All DFX core features are available again. Buying and selling on the most popular blockchains is fully operational again.</p>
+          <p class="incident-page__text incident-page__text--important">Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.</p>
           <h3 class="incident-page__heading">What happened?</h3>
           <p class="incident-page__text">An attacker gained access to the GitHub account of a DFX administrator. Through this account he was able to run a deployment to DFX's production servers. This happened on 18 November 2026 at around 01:00 Swiss time.</p>
           <p class="incident-page__text">He then searched the server environment for passwords and private keys and managed to copy all private keys of our hot wallets. After that he started to withdraw funds. The funds withdrawn amount to approximately CHF 40,000.</p>
           <p class="incident-page__text">Attacker's address: <code class="incident-page__code">0x767e21D61C4Bfa67Ffc6AE5E5C1B6F36ab24dA81</code></p>
-          <p class="incident-page__text">A DFX administrator noticed the access in the morning at around 07:00 and immediately disconnected the server from the network. We then started to assess the extent of the damage and to contain it.</p>
-          <h3 class="incident-page__heading">What is affected?</h3>
+          <p class="incident-page__text">A DFX administrator noticed the access on the morning of 18 November at around 07:00 and immediately disconnected the server from the network. We then assessed the extent of the damage and contained it.</p>
+          <h3 class="incident-page__heading">What was affected?</h3>
           <p class="incident-page__text">The attacker did not obtain any customer data.</p>
           <p class="incident-page__text">Customer accounts at DFX are fundamentally safe. Incoming bank transactions from customers are safe.</p>
-          <p class="incident-page__text incident-page__text--important">However: all DFX hot wallets are compromised and must be replaced. This includes DFX's internal addresses as well as the individual customers' deposit addresses for crypto deposits. These addresses are compromised and must no longer be used.</p>
+          <p class="incident-page__text incident-page__text--important">However: all DFX hot wallets were compromised and had to be replaced. This included DFX's internal addresses as well as the individual customers' deposit addresses for crypto deposits. These old addresses must no longer be used.</p>
           <h3 class="incident-page__heading">What has DFX done?</h3>
           <p class="incident-page__text">DFX first took all servers offline, then analysed the situation and took immediate measures to prevent further damage.</p>
-          <p class="incident-page__text">All private keys, addresses, access tokens and other credentials are being rotated.</p>
-          <p class="incident-page__text">DFX is informing customers as quickly as possible not to make any deposits to crypto deposit addresses.</p>
+          <p class="incident-page__text">DFX has set up new hot wallets and new deposit addresses. All private keys, access tokens and other credentials are being rotated.</p>
+          <p class="incident-page__text">DFX has informed customers not to make any crypto deposits to the old deposit addresses.</p>
           <h3 class="incident-page__heading">Bug bounty programme</h3>
-          <p class="incident-page__text">DFX has been running a bug bounty programme for several years to prevent security incidents like this one. Many vulnerabilities have been reported and fixed through it in recent years. The bug bounty was limited to CHF 10,000.</p>
-          <p class="incident-page__text">We understand that a limit of CHF 10,000 is no longer appropriate for a service like DFX. We are therefore raising the bug bounty programme to CHF 50,000 as of Friday, 20 November 2026. Anyone who reports a vulnerability can receive up to CHF 50,000 per vulnerability.</p>
+          <p class="incident-page__text">DFX has been running a bug bounty programme for several years to prevent security incidents like this one. Many vulnerabilities have been reported and fixed through it in recent years. Until now, the bug bounty was limited to CHF 10,000.</p>
+          <p class="incident-page__text">We understand that a limit of CHF 10,000 is no longer appropriate for a service like DFX. We have therefore raised the bug bounty programme to CHF 50,000 as of Friday, 20 November 2026. Anyone who reports a vulnerability can receive up to CHF 50,000 per vulnerability.</p>
           <h3 class="incident-page__heading">Changes to deployments</h3>
-          <p class="incident-page__text">As of today there are no automated GitHub deployments any more. Every deployment to a production server must be approved by an administrator with a dedicated SSH key. In addition, we are evaluating a system that requires the approval of two administrators for each deployment.</p>
+          <p class="incident-page__text">Since 18 November 2026 there have been no automated GitHub deployments. Every deployment to a production server must be approved by an administrator with a dedicated SSH key. In addition, we are evaluating a system that requires the approval of two administrators for each deployment.</p>
           <h3 class="incident-page__heading">What happens next?</h3>
-          <p class="incident-page__text">We take the security of our customers' data and financial assets extremely seriously and are doing everything we can to bring operations back up as safely as possible. We are proud to have prevented greater damage and are giving our all to make our service better and more secure every day.</p>
-          <p class="incident-page__text">All DFX core features are available again. Buying and selling on the most popular blockchains is fully operational again.</p>
+          <p class="incident-page__text">We take the security of our customers' data and financial assets extremely seriously. We are proud to have prevented greater damage and are giving our all to make our service better and more secure every day.</p>
           <p class="incident-page__text">Questions: <a href="https://app.dfx.swiss/support/tickets">Open a support ticket</a></p>
           <p class="incident-page__text">Latest update from DFX: <a href="https://x.com/dfx_swiss/status/2122956475865677875" target="_blank" rel="noopener noreferrer">DFX on X</a></p>
         </section>
