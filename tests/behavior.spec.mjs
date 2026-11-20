@@ -24,6 +24,10 @@ const RESUMED_DE =
   'Alle DFX-Core-Funktionen sind wieder verfügbar. Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.';
 const RESUMED_EN =
   'All DFX core features are available again. Buying and selling on the most popular blockchains is fully operational again.';
+const FINANCIAL_DE =
+  'DFX kann den entstandenen Schaden aus der laufenden Geschäftstätigkeit finanzieren. DFX ist solvent, erwirtschaftet einen positiven Cashflow und befindet sich in einer finanziell gesunden Lage.';
+const FINANCIAL_EN =
+  'DFX is able to finance the damage incurred from its ongoing operating activities. DFX is solvent, generates a positive cash flow and is in a sound financial position.';
 const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
 const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
 const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
@@ -251,6 +255,8 @@ test.describe('client behavior', () => {
       await expect(english(page).locator('code')).toHaveCount(1);
       await expect(english(page).locator('code')).toHaveText(attackerAddress);
       await expect(english(page)).toContainText('slightly less than CHF 50,000');
+      await expect(german(page)).toContainText(FINANCIAL_DE);
+      await expect(english(page)).toContainText(FINANCIAL_EN);
       await expect(german(page)).toContainText(RESUMED_DE);
       await expect(german(page)).toContainText(INCIDENT_SUPPORT_DE);
       await expect(english(page)).toContainText(RESUMED_EN);
@@ -276,9 +282,9 @@ test.describe('client behavior', () => {
       expect(supportLinkColor).not.toBe('rgb(0, 0, 238)');
 
       await expect(german(page).locator('h1')).toHaveCount(1);
-      await expect(german(page).locator('h2')).toHaveCount(7);
+      await expect(german(page).locator('h2')).toHaveCount(8);
       await expect(english(page).locator('h2')).toHaveText('Security incident of 18 November 2026');
-      await expect(english(page).locator('h3')).toHaveCount(7);
+      await expect(english(page).locator('h3')).toHaveCount(8);
     });
 
     test('keeps both language sections visible regardless of the site language', async ({
