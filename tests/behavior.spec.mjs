@@ -16,13 +16,10 @@ const SECURITY_WARNING_DE =
   'Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.';
 const SECURITY_WARNING_EN =
   'Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.';
-const POPUP_STATUS_DE =
-  'Alle DFX-Core-Funktionen sind wieder verfügbar: Kaufen und Verkaufen. Tauschen ist noch nicht möglich.';
-const POPUP_STATUS_EN =
-  'All DFX core features are available again: buying and selling. Swapping is not available yet.';
-const RESUMED_DE =
-  'Alle DFX-Core-Funktionen sind wieder verfügbar. Tauschen ist noch nicht möglich.';
-const RESUMED_EN = 'All DFX core features are available again. Swapping is not available yet.';
+const POPUP_STATUS_DE = 'Alle DFX-Core-Funktionen sind wieder verfügbar: Kaufen und Verkaufen.';
+const POPUP_STATUS_EN = 'All DFX core features are available again: buying and selling.';
+const RESUMED_DE = 'Alle DFX-Core-Funktionen sind wieder verfügbar.';
+const RESUMED_EN = 'All DFX core features are available again.';
 const INCIDENT_SUPPORT_DE = 'Fragen: Support-Ticket erstellen';
 const INCIDENT_SUPPORT_EN = 'Questions: Open a support ticket';
 const INCIDENT_X_DE = 'Aktuelle Meldung von DFX: DFX on X';
