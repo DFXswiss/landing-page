@@ -247,10 +247,10 @@ test.describe('client behavior', () => {
 
       await expect(german(page).locator('code')).toHaveCount(1);
       await expect(german(page).locator('code')).toHaveText(attackerAddress);
-      await expect(german(page)).toContainText("40'000 CHF");
+      await expect(german(page)).toContainText("etwas weniger als 50'000 CHF");
       await expect(english(page).locator('code')).toHaveCount(1);
       await expect(english(page).locator('code')).toHaveText(attackerAddress);
-      await expect(english(page)).toContainText('CHF 40,000');
+      await expect(english(page)).toContainText('slightly less than CHF 50,000');
       await expect(german(page)).toContainText(RESUMED_DE);
       await expect(german(page)).toContainText(INCIDENT_SUPPORT_DE);
       await expect(english(page)).toContainText(RESUMED_EN);
