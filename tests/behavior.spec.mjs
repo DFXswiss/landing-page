@@ -240,8 +240,14 @@ test.describe('client behavior', () => {
       await expect(english(page)).toContainText(INCIDENT_SUPPORT_EN);
       await expect(german(page)).toContainText(INCIDENT_X_DE);
       await expect(english(page)).toContainText(INCIDENT_X_EN);
-      await expect(german(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute('target', '_blank');
-      await expect(english(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute('target', '_blank');
+      await expect(german(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute(
+        'target',
+        '_blank',
+      );
+      await expect(english(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute(
+        'target',
+        '_blank',
+      );
       await expect(page.locator('a[href^="mailto:support@dfx.swiss"]')).toHaveCount(0);
       await expect(german(page)).not.toContainText(
         'In den nächsten Stunden schalten wir zuerst den Support wieder ein, danach die Kaufoption und anschliessend die Verkaufsoption.',

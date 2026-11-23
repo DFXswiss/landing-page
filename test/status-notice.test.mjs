@@ -30,7 +30,10 @@ describe('activeNoticeTitles', () => {
     expect(
       activeNoticeTitles({
         ok: true,
-        incidents: [incident({ id: 3, title: ' Bank connection interrupted ' }), incident({ id: 2 })],
+        incidents: [
+          incident({ id: 3, title: ' Bank connection interrupted ' }),
+          incident({ id: 2 }),
+        ],
       }),
     ).toEqual(['Bank connection interrupted', 'Scheduled maintenance']);
   });
@@ -49,9 +52,9 @@ describe('activeNoticeTitles', () => {
   });
 
   it('does not read the title of a notice that is not shown', () => {
-    expect(activeNoticeTitles({ ok: true, incidents: [incident({ title: '', active: false })] })).toEqual(
-      [],
-    );
+    expect(
+      activeNoticeTitles({ ok: true, incidents: [incident({ title: '', active: false })] }),
+    ).toEqual([]);
   });
 
   for (const payload of [null, undefined, 'ok', { ok: false, incidents: [] }, { incidents: [] }]) {
