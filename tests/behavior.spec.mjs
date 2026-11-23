@@ -534,14 +534,14 @@ test.describe('client behavior', () => {
       });
     }
 
-    test('the home page has no security popup and the note sits directly below the hero', async ({
+    test('the home page has no security popup and the note sits directly above the security section', async ({
       page,
     }) => {
       await page.goto('/');
       await page.waitForFunction(visibilityRestored);
 
       await expect(page.locator('.outage-popup')).toHaveCount(0);
-      await expect(page.locator('.dk-hero + .dk-incident')).toHaveCount(1);
+      await expect(page.locator('.dk-incident + section[aria-label="Security"]')).toHaveCount(1);
       await expect(note(page)).toBeVisible();
     });
   });

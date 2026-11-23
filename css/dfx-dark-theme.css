@@ -2786,6 +2786,11 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
    status page shows a notice. White text on DFX blue is ~10:1 contrast
    (WCAG AA). */
 .status-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
   box-sizing: border-box;
   width: 100%;
   padding: 0.625rem 1rem;
@@ -2804,15 +2809,27 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 .status-notice__list {
+  min-width: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Button to the right of the notice text; it wraps below the text when the
+   bar is too narrow for both. */
 .status-notice__link {
-  color: #ffffff;
-  font-weight: 400;
-  text-decoration: underline;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.25rem 1rem;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #124370;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .status-notice__link:focus-visible {
@@ -2839,7 +2856,7 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
 }
 
 /* ===== SECURITY INCIDENT NOTE (home page) =====
-   Plain text section below the hero with the note on the incident of
+   Plain text section above the security section with the note on the incident of
    18 November 2026 and the link to the full report. */
 .dk-incident {
   padding: 3rem 0;
