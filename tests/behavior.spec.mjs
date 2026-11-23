@@ -1,25 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
-import { VISUAL_FIXED_TIME, blockExternalNoise, openNav } from './helpers.mjs';
+import { STATUS_NOTICES_URL, blockExternalNoise, openNav, stubStatusNotices } from './helpers.mjs';
 
 const en = JSON.parse(readFileSync(new URL('../i18n/en.json', import.meta.url), 'utf8'));
 const de = JSON.parse(readFileSync(new URL('../i18n/de.json', import.meta.url), 'utf8'));
 
 const visibilityRestored = () => getComputedStyle(document.documentElement).visibility !== 'hidden';
 
-const outagePopupDialog = (page) => page.locator('.outage-popup__dialog');
-
 const SECURITY_POST_URL = 'https://x.com/dfx_swiss/status/2122956475865677875';
-const SECURITY_TITLE_DE = 'DFX Sicherheitsupdate – Alle Core-Funktionen wieder verfügbar';
-const SECURITY_TITLE_EN = 'DFX Security Update – All core features available again';
-const SECURITY_WARNING_DE =
-  'Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.';
-const SECURITY_WARNING_EN =
-  'Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.';
-const POPUP_STATUS_DE =
-  'Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.';
-const POPUP_STATUS_EN =
-  'Buying and selling on the most popular blockchains is fully operational again.';
 const RESUMED_DE =
   'Alle DFX-Core-Funktionen sind wieder verfügbar. Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.';
 const RESUMED_EN =
@@ -166,17 +154,6 @@ test.describe('client behavior', () => {
   // one project. The visual + smoke suites still cover both viewports.
   test.beforeEach(async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop-chromium', 'desktop-only behavior checks');
-    // The outage notice bar depends on the wall clock, so the clock is pinned
-    // after its end instant by default to keep the other checks independent of
-    // the day the suite runs. This hook runs before every test body, so the
-    // outage notice tests' own setFixedTime/install calls come later and win.
-    await page.clock.setFixedTime(VISUAL_FIXED_TIME);
-    // The security popup covers the home page on every load. Checks that do not
-    // care about it get it closed with the close button whenever it blocks an
-    // action or an assertion; the popup checks remove this handler again.
-    await page.addLocatorHandler(outagePopupDialog(page), async () => {
-      await page.locator('.outage-popup__close').click();
-    });
     await blockExternalNoise(page);
   });
 
@@ -263,8 +240,14 @@ test.describe('client behavior', () => {
       await expect(english(page)).toContainText(INCIDENT_SUPPORT_EN);
       await expect(german(page)).toContainText(INCIDENT_X_DE);
       await expect(english(page)).toContainText(INCIDENT_X_EN);
-      await expect(german(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute('target', '_blank');
-      await expect(english(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute('target', '_blank');
+      await expect(german(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute(
+        'target',
+        '_blank',
+      );
+      await expect(english(page).locator(`a[href="${SECURITY_POST_URL}"]`)).toHaveAttribute(
+        'target',
+        '_blank',
+      );
       await expect(page.locator('a[href^="mailto:support@dfx.swiss"]')).toHaveCount(0);
       await expect(german(page)).not.toContainText(
         'In den nächsten Stunden schalten wir zuerst den Support wieder ein, danach die Kaufoption und anschliessend die Verkaufsoption.',
@@ -332,31 +315,16 @@ test.describe('client behavior', () => {
       }
     });
 
-    test('has no security popup, outage bar or outage script', async ({ page }) => {
+    test('has no security popup, status notice bar or status notice script', async ({ page }) => {
       await page.goto('/security-incident.html');
       await page.waitForFunction(visibilityRestored);
 
       await expect(page.locator('.outage-popup')).toHaveCount(0);
-      await expect(page.locator('.outage-notice')).toHaveCount(0);
+      await expect(page.locator('.status-notice')).toHaveCount(0);
       const scripts = await page
         .locator('script[src]')
         .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('src')));
-      expect(scripts.some((src) => src.includes('outage-notice.js'))).toBe(false);
-    });
-
-    test('the homepage popup details link points to the security incident page', async ({
-      page,
-    }) => {
-      await page.removeLocatorHandler(outagePopupDialog(page));
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-
-      const details = page.locator('.outage-popup__more', {
-        hasText: 'Mehr Infos / More info',
-      });
-      await expect(details).toHaveAttribute('href', 'security-incident.html');
-      await expect(details).not.toHaveAttribute('target');
-      await expect(details).toHaveText('Mehr Infos / More info');
+      expect(scripts.some((src) => src.includes('status-notice.js'))).toBe(false);
     });
   });
 
@@ -392,19 +360,40 @@ test.describe('client behavior', () => {
     await expect(desktopLogin).toHaveText(/\S/);
   });
 
-  test.describe('outage notice bar', () => {
-    const notice = (page) => page.locator('.outage-notice');
+  test.describe('status notice bar', () => {
+    const notice = (page) => page.locator('.status-notice');
+    const noticeItems = (page) => notice(page).locator('.status-notice__item');
+    const incident = (overrides) => ({
+      id: 1,
+      title: 'Scheduled maintenance',
+      active: true,
+      pin: true,
+      ...overrides,
+    });
 
-    test('before the end instant the notice is shown above the navbar in the active language', async ({
+    test('with active notices on the status page the bar lists their titles above the navbar and links to the status page', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
+      await stubStatusNotices(page, [
+        incident({ id: 3, title: 'Bank connection interrupted' }),
+        incident({ id: 2 }),
+        incident({ id: 1, title: 'Resolved', active: false }),
+      ]);
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
 
       await expect(notice(page)).toBeVisible();
       await expect(notice(page)).toHaveAttribute('role', 'status');
-      await expect(notice(page)).toHaveText(en['notice.outage']);
+      await expect(noticeItems(page)).toHaveText([
+        'Bank connection interrupted',
+        'Scheduled maintenance',
+      ]);
+      const link = notice(page).locator('.status-notice__link');
+      await expect(link).toHaveText(en['notice.status_link']);
+      await expect(link).toHaveAttribute('href', 'https://status.dfx.swiss/');
+      await expect(link).toHaveAttribute('target', '_blank');
+      await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      await expect(page.locator('html')).toHaveClass(/\bhas-status-notice\b/);
 
       // The fixed navbar must sit below the in-flow notice, not cover it.
       await expect
@@ -416,17 +405,26 @@ test.describe('client behavior', () => {
         .toBeCloseTo(0, 0);
     });
 
+    test('a notice title is shown as text and never interpreted as markup', async ({ page }) => {
+      const title = '<img src="x" onerror="window.__statusNoticeMarkup = true"><b>Maintenance</b>';
+      await stubStatusNotices(page, [incident({ title })]);
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(noticeItems(page)).toHaveText([title]);
+      await expect(notice(page).locator('img, b')).toHaveCount(0);
+      expect(await page.evaluate(() => window.__statusNoticeMarkup)).toBeUndefined();
+    });
+
     test('with the notice shown the open burger panel starts at the navbar bottom and its max-height is reduced by the notice height', async ({
       page,
     }) => {
-      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
+      await stubStatusNotices(page, [incident()]);
       await page.setViewportSize({ width: 834, height: 1112 });
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
       await expect(notice(page)).toBeVisible();
 
-      // The locator handler closes the popup, whose backdrop would otherwise
-      // intercept the click on the burger button.
       await openNav(page);
 
       const navbar = page.locator('.dfx-dark-page .navbar').first();
@@ -448,7 +446,7 @@ test.describe('client behavior', () => {
         .poll(() =>
           page.evaluate(() => {
             const panel = document.querySelector('.dfx-dark-page .navbar .nav-menu');
-            const noticeEl = document.querySelector('.outage-notice');
+            const noticeEl = document.querySelector('.status-notice');
             const maxHeight = parseFloat(getComputedStyle(panel).maxHeight);
             const noticeHeight = noticeEl.getBoundingClientRect().height;
             return Math.abs(maxHeight - (window.innerHeight - 72 - noticeHeight));
@@ -457,351 +455,94 @@ test.describe('client behavior', () => {
         .toBeLessThanOrEqual(1);
     });
 
-    test('a visibilitychange event before the end instant reschedules the timer so the notice hides itself at the end instant', async ({
+    test('without an active notice the bar stays hidden and the navbar stays at the top', async ({
       page,
     }) => {
-      await page.clock.install({ time: new Date('2026-12-31T23:00:00.000+01:00') });
-      // The installed clock keeps running in real time; pause it so a slow page
-      // load cannot move the time on before the visibility check.
-      await page.clock.pauseAt(new Date('2026-12-31T23:00:01.000+01:00'));
+      await stubStatusNotices(page, [
+        incident({ id: 2, title: 'Resolved', active: false }),
+        incident({ id: 1, title: 'Unpinned', pin: false }),
+      ]);
+      const answered = page.waitForResponse(STATUS_NOTICES_URL);
       await page.goto('/?lang=en');
       await page.waitForFunction(visibilityRestored);
-      await expect(notice(page)).toBeVisible();
-
-      // setSystemTime moves Date without firing or shifting timers, like a timer
-      // that lost time while the device slept: the initial timer is still about
-      // an hour away, so only a timer rescheduled by the event can fire in time.
-      await page.clock.setSystemTime(new Date('2026-12-31T23:59:59.000+01:00'));
-      await page.evaluate(() => {
-        document.dispatchEvent(new Event('visibilitychange'));
-      });
-      await page.clock.fastForward(2000);
+      await (await answered).finished();
 
       await expect(notice(page)).toBeHidden();
-      await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
-    });
-
-    for (const [eventName, target] of [
-      ['visibilitychange', 'document'],
-      ['pageshow', 'window'],
-    ]) {
-      test(`a ${eventName} event after the end instant hides the notice without waiting for the timer`, async ({
-        page,
-      }) => {
-        await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
-        await page.goto('/?lang=en');
-        await page.waitForFunction(visibilityRestored);
-        await expect(notice(page)).toBeVisible();
-
-        // The pending timer still has an hour to go, so only the event can hide
-        // the notice here.
-        await page.clock.setFixedTime(new Date('2027-01-01T00:00:00.000+01:00'));
-        await page.evaluate(
-          ([name, targetName]) => {
-            const eventTarget = targetName === 'document' ? document : window;
-            eventTarget.dispatchEvent(new Event(name));
-          },
-          [eventName, target],
-        );
-
-        await expect(notice(page)).toBeHidden();
-        await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
-        await expect
-          .poll(async () => {
-            const navBox = await page.locator('.navbar').first().boundingBox();
-            return Math.abs(navBox.y);
-          })
-          .toBeLessThanOrEqual(1);
-      });
-    }
-
-    for (const instant of ['2027-01-01T00:00:00.000+01:00', '2027-01-01T00:00:00.001+01:00']) {
-      test(`at/after the end instant (${instant}) the notice stays hidden`, async ({ page }) => {
-        await page.clock.setFixedTime(new Date(instant));
-        await page.goto('/?lang=en');
-        await page.waitForFunction(visibilityRestored);
-        await page.waitForFunction(() => window.DfxOutageNotice !== undefined);
-
-        await expect(notice(page)).toHaveText(en['notice.outage']);
-        await expect(notice(page)).toBeHidden();
-        await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
-      });
-    }
-  });
-
-  test.describe('security popup', () => {
-    // These checks open and close the popup themselves.
-    test.beforeEach(async ({ page }) => {
-      await page.removeLocatorHandler(outagePopupDialog(page));
-    });
-
-    const notice = (page) => page.locator('.outage-notice');
-    const popup = (page) => page.locator('.outage-popup');
-    const popupSectionDe = (page) => page.locator('.outage-popup__section[lang="de"]');
-    const popupSectionEn = (page) => page.locator('.outage-popup__section[lang="en"]');
-    const popupTitleDe = (page) => page.locator('#outage-popup-title-de');
-    const popupTitleEn = (page) => page.locator('#outage-popup-title-en');
-    const popupImportantDe = (page) =>
-      popupSectionDe(page).locator('.outage-popup__text--important');
-    const popupImportantEn = (page) =>
-      popupSectionEn(page).locator('.outage-popup__text--important');
-    const popupMore = (page) => page.locator('.outage-popup__more');
-    const popupSource = (page) =>
-      page.locator('.outage-popup__source a[href^="https://x.com/dfx_swiss/status/"]');
-    const popupClose = (page) => page.locator('.outage-popup__close');
-    const popupTextDe = (page) => popupSectionDe(page).locator('.outage-popup__text');
-    const popupTextEn = (page) => popupSectionEn(page).locator('.outage-popup__text');
-    const popupOk = (page) => page.locator('.outage-popup__ok');
-
-    for (const [instant, barVisible] of [
-      ['2026-12-31T23:00:00.000+01:00', true],
-      ['2027-01-01T01:00:00.000+01:00', false],
-    ]) {
-      test(`at ${instant} the popup shows the security notice with the dialog box focused and the bar is ${barVisible ? 'visible' : 'hidden'}`, async ({
-        page,
-      }) => {
-        await page.clock.setFixedTime(new Date(instant));
-        await page.goto('/?lang=en');
-        await page.waitForFunction(visibilityRestored);
-
-        await expect(popup(page)).toBeVisible();
-        await expect(outagePopupDialog(page)).toHaveAttribute(
-          'aria-labelledby',
-          'outage-popup-title-de outage-popup-title-en',
-        );
-        await expect(page.getByRole('dialog', { name: SECURITY_TITLE_DE })).toBeVisible();
-        await expect(page.getByRole('dialog', { name: SECURITY_TITLE_EN })).toBeVisible();
-        await expect(popupTitleDe(page)).toHaveText(SECURITY_TITLE_DE);
-        await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
-        await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
-        await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        await expect(popupTextDe(page)).toHaveCount(3);
-        await expect(popupTextEn(page)).toHaveCount(3);
-        await expect(popupTextDe(page).nth(0)).toHaveText(POPUP_STATUS_DE);
-        await expect(popupTextEn(page).nth(0)).toHaveText(POPUP_STATUS_EN);
-        await expect(outagePopupDialog(page).locator('a[href^="mailto:"]')).toHaveCount(0);
-        await expect(popupOk(page)).toHaveText('OK');
-        await expect(popupOk(page)).toHaveAttribute('type', 'button');
-        await expect(popupMore(page)).toHaveText('Mehr Infos / More info');
-        await expect(popupMore(page)).toHaveCount(1);
-        await expect(popupMore(page)).toHaveAttribute('href', 'security-incident.html');
-        await expect(popupMore(page)).not.toHaveAttribute('target');
-        await expect(popupSource(page)).toHaveCount(0);
-        await expect(popupClose(page)).toHaveAccessibleName('Schliessen / Close');
-        await expect(outagePopupDialog(page).locator('a')).toHaveCount(1);
-        await expect(outagePopupDialog(page)).toBeFocused();
-        if (barVisible) {
-          await expect(notice(page)).toBeVisible();
-        } else {
-          await expect(notice(page)).toBeHidden();
-        }
-      });
-    }
-
-    test('the OK button closes the popup', async ({ page }) => {
-      await page.clock.setFixedTime(new Date('2027-01-01T01:00:00.000+01:00'));
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-
-      await expect(popup(page)).toBeVisible();
-      await popupOk(page).click();
-      await expect(popup(page)).toBeHidden();
-    });
-
-    test('the notice bar and popup dialog use DFX blue with white text', async ({ page }) => {
-      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-
-      await expect(notice(page)).toBeVisible();
-      await expect(notice(page)).toHaveCSS('background-color', 'rgb(18, 67, 112)');
-      await expect(notice(page)).toHaveCSS('color', 'rgb(255, 255, 255)');
-      await expect(outagePopupDialog(page)).toHaveCSS('background-color', 'rgb(18, 67, 112)');
-      await expect(outagePopupDialog(page)).toHaveCSS('color', 'rgb(255, 255, 255)');
-    });
-
-    test('the popup shows the same German and English text for ?lang=de, ?lang=en and ?lang=fr', async ({
-      page,
-    }) => {
-      const texts = [];
-      for (const lang of ['de', 'en', 'fr']) {
-        await page.goto(`/?lang=${lang}`);
-        await page.waitForFunction(visibilityRestored);
-        expect((await outagePopupDialog(page).getAttribute('lang')) ?? '').toBe('');
-        await expect(popupSectionDe(page)).toHaveAttribute('lang', 'de');
-        await expect(popupSectionEn(page)).toHaveAttribute('lang', 'en');
-        await expect(popupTitleDe(page)).toHaveText(SECURITY_TITLE_DE);
-        await expect(popupTitleEn(page)).toHaveText(SECURITY_TITLE_EN);
-        await expect(popupImportantDe(page)).toContainText(SECURITY_WARNING_DE);
-        await expect(popupImportantEn(page)).toContainText(SECURITY_WARNING_EN);
-        texts.push(await outagePopupDialog(page).textContent());
-      }
-      expect(texts[0]).toBe(texts[1]);
-      expect(texts[1]).toBe(texts[2]);
-    });
-
-    test('at 1440x900 the popup shows the sections side by side, fully inside the viewport and centred horizontally', async ({
-      page,
-    }) => {
-      await page.setViewportSize({ width: 1440, height: 900 });
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-      await expect(popup(page)).toBeVisible();
-
-      const deBox = await popupSectionDe(page).boundingBox();
-      const enBox = await popupSectionEn(page).boundingBox();
-      expect(deBox.x + deBox.width).toBeLessThanOrEqual(enBox.x);
-
-      // The backdrop is position: fixed with inset: 0, so it spans the viewport
-      // without its scrollbars (clientWidth/clientHeight).
-      const placement = await outagePopupDialog(page).evaluate((dialog) => {
-        const box = dialog.getBoundingClientRect();
-        const viewport = document.documentElement;
-        return {
-          centreOffset: Math.abs(box.left + box.width / 2 - viewport.clientWidth / 2),
-          inside:
-            box.left >= 0 &&
-            box.top >= 0 &&
-            box.right <= viewport.clientWidth &&
-            box.bottom <= viewport.clientHeight,
-        };
-      });
-      expect(placement.centreOffset).toBeLessThanOrEqual(2);
-      expect(placement.inside).toBe(true);
-    });
-
-    test('at 320x568 the popup box fits the viewport and the more-info button can be scrolled into view', async ({
-      page,
-    }) => {
-      await page.setViewportSize({ width: 320, height: 568 });
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-      await expect(popup(page)).toBeVisible();
-
-      const box = await outagePopupDialog(page).boundingBox();
-      expect(box.y).toBeGreaterThanOrEqual(0);
-      expect(box.y + box.height).toBeLessThanOrEqual(568);
-
-      await popupMore(page).scrollIntoViewIfNeeded();
-      await expect(popupMore(page)).toBeInViewport();
-      await popupClose(page).click();
-
-      await expect(popup(page)).toBeHidden();
-    });
-
-    test('at 320x568 the popup stacks German above English and opens at its beginning with the German heading in view', async ({
-      page,
-    }) => {
-      await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
-      await page.setViewportSize({ width: 320, height: 568 });
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-      await expect(popup(page)).toBeVisible();
-      await expect(outagePopupDialog(page)).toBeFocused();
-
-      // Focusing must not scroll the box towards the more-info button at its end.
-      expect(await outagePopupDialog(page).evaluate((dialog) => dialog.scrollTop)).toBe(0);
-
-      const deBox = await popupSectionDe(page).boundingBox();
-      const enBox = await popupSectionEn(page).boundingBox();
-      expect(deBox.y + deBox.height).toBeLessThanOrEqual(enBox.y);
-
-      const titleDeBox = await popupTitleDe(page).boundingBox();
-      expect(titleDeBox.y).toBeGreaterThanOrEqual(0);
-      expect(titleDeBox.y + titleDeBox.height).toBeLessThanOrEqual(568);
-
-      await popupClose(page).scrollIntoViewIfNeeded();
-      await expect(popupClose(page)).toBeInViewport();
-      await popupClose(page).click();
-
-      await expect(popup(page)).toBeHidden();
-    });
-
-    for (const [trigger, close] of [
-      [
-        'a click on the Schliessen / Close button',
-        async (page) => {
-          await expect(popupClose(page)).toHaveAccessibleName('Schliessen / Close');
-          await popupClose(page).click();
-        },
-      ],
-      [
-        'a click on the backdrop outside the dialog box',
-        (page) => popup(page).click({ position: { x: 5, y: 5 } }),
-      ],
-      ['the Escape key', (page) => page.keyboard.press('Escape')],
-    ]) {
-      test(`${trigger} closes the popup for this page load, the bar stays visible and a reload shows it again`, async ({
-        page,
-      }) => {
-        await page.clock.setFixedTime(new Date('2026-12-31T23:00:00.000+01:00'));
-        await page.goto('/?lang=en');
-        await page.waitForFunction(visibilityRestored);
-        await expect(popup(page)).toBeVisible();
-        await expect(outagePopupDialog(page)).toBeFocused();
-
-        await close(page);
-
-        await expect(popup(page)).toBeHidden();
-        await expect(notice(page)).toBeVisible();
-
-        // A re-check of the bar's time rule must not bring the closed popup back.
-        await page.evaluate(() => {
-          document.dispatchEvent(new Event('visibilitychange'));
-          window.dispatchEvent(new Event('pageshow'));
-        });
-        await expect(popup(page)).toBeHidden();
-        await expect(notice(page)).toBeVisible();
-
-        // Nothing is stored: the next page load shows the popup again.
-        await page.reload();
-        await page.waitForFunction(visibilityRestored);
-        await expect(popup(page)).toBeVisible();
-      });
-    }
-
-    test('the more-info button sits below both language sections and navigates to the incident page', async ({
-      page,
-    }) => {
-      await page.setViewportSize({ width: 1440, height: 900 });
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-      await expect(popup(page)).toBeVisible();
-
-      const deBox = await popupSectionDe(page).boundingBox();
-      const enBox = await popupSectionEn(page).boundingBox();
-      const moreBox = await popupMore(page).boundingBox();
-      expect(deBox.y + deBox.height).toBeLessThanOrEqual(moreBox.y);
-      expect(enBox.y + enBox.height).toBeLessThanOrEqual(moreBox.y);
-
-      await popupMore(page).click();
-      await expect(page).toHaveURL(/security-incident(?:\.html)?$/);
-    });
-
-    test('in a tab opened before the end instant the bar hides itself at the end instant, the navbar returns to the top and the open popup stays open', async ({
-      page,
-    }) => {
-      await page.clock.install({ time: new Date('2026-12-31T23:59:59.000+01:00') });
-      // The installed clock keeps running in real time; pause it so a slow page
-      // load cannot reach the end instant before the visibility check.
-      await page.clock.pauseAt(new Date('2026-12-31T23:59:59.500+01:00'));
-      await page.goto('/?lang=en');
-      await page.waitForFunction(visibilityRestored);
-      await expect(notice(page)).toBeVisible();
-      await expect(popup(page)).toBeVisible();
-
-      await page.clock.fastForward(2000);
-
-      await expect(notice(page)).toBeHidden();
-      await expect(page.locator('html')).not.toHaveClass(/\bhas-outage-notice\b/);
+      await expect(noticeItems(page)).toHaveCount(0);
+      await expect(page.locator('html')).not.toHaveClass(/\bhas-status-notice\b/);
       await expect
         .poll(async () => {
           const navBox = await page.locator('.navbar').first().boundingBox();
           return Math.abs(navBox.y);
         })
         .toBeLessThanOrEqual(1);
-      await expect(popup(page)).toBeVisible();
-      await expect(outagePopupDialog(page)).toBeFocused();
+    });
+
+    test('when the status page cannot be read the bar stays hidden and the failure is reported as a page error', async ({
+      page,
+    }) => {
+      const pageErrors = [];
+      page.on('pageerror', (error) => pageErrors.push(error.message));
+      await page.route(STATUS_NOTICES_URL, (route) =>
+        route.fulfill({
+          status: 503,
+          contentType: 'text/plain',
+          headers: { 'access-control-allow-origin': '*' },
+          body: '',
+        }),
+      );
+      await page.goto('/?lang=en');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect
+        .poll(() => pageErrors)
+        .toEqual(['status-notice: the status page answered with HTTP 503']);
+      await expect(notice(page)).toBeHidden();
+      await expect(page.locator('html')).not.toHaveClass(/\bhas-status-notice\b/);
+    });
+  });
+
+  test.describe('security incident note', () => {
+    const note = (page) => page.locator('.dk-incident');
+
+    for (const [lang, strings] of [
+      ['de', de],
+      ['en', en],
+    ]) {
+      test(`the home page shows the note as plain text in ${lang} with one link to the security incident page`, async ({
+        page,
+      }) => {
+        await page.goto(`/?lang=${lang}`);
+        await page.waitForFunction(visibilityRestored);
+
+        await expect(note(page).getByRole('heading', { level: 2 })).toHaveText(
+          strings['incident.heading'],
+        );
+        await expect(note(page).locator('.dk-incident__text')).toHaveText([
+          strings['incident.status'],
+          strings['incident.warning'],
+          strings['incident.customer_data'],
+        ]);
+        await expect(note(page).locator('.dk-incident__text--important')).toHaveText(
+          strings['incident.warning'],
+        );
+        const more = note(page).locator('a');
+        await expect(more).toHaveCount(1);
+        await expect(more).toHaveText(strings['incident.more']);
+        await expect(more).toHaveAttribute('href', 'security-incident.html');
+        await expect(more).not.toHaveAttribute('target');
+      });
+    }
+
+    test('the home page has no security popup and the note sits directly above the security section', async ({
+      page,
+    }) => {
+      await page.goto('/');
+      await page.waitForFunction(visibilityRestored);
+
+      await expect(page.locator('.outage-popup')).toHaveCount(0);
+      await expect(page.locator('.dk-incident + section[aria-label="Security"]')).toHaveCount(1);
+      await expect(note(page)).toBeVisible();
     });
   });
 
