@@ -2781,10 +2781,11 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   gap: 0.75rem;
 }
 
-/* ===== OUTAGE NOTICE (home page) =====
-   In-flow bar above the navbar; js/outage-notice.js un-hides it only before the
-   end instant. White text on DFX blue is ~10:1 contrast (WCAG AA). */
-.outage-notice {
+/* ===== STATUS NOTICE (home page) =====
+   In-flow bar above the navbar; js/status-notice.js un-hides it only while the
+   status page shows a notice. White text on DFX blue is ~10:1 contrast
+   (WCAG AA). */
+.status-notice {
   box-sizing: border-box;
   width: 100%;
   padding: 0.625rem 1rem;
@@ -2798,233 +2799,84 @@ body.dfx-dark-page .section_taro-btc .cc-active .number-wrapper {
   overflow-wrap: anywhere;
 }
 
-.outage-notice[hidden] {
+.status-notice[hidden] {
   display: none;
 }
 
-/* Centred popup with the security notice; js/outage-notice.js shows it on every
-   load of the home page, independent of the bar's end instant. z-index sits
-   above the navbar (1100) and the AI popup (9998). Fixed overlay only, so the
-   document layout does not change. The box scrolls on its own when the text is
-   taller than the viewport, so the more-info button stays reachable. */
-.outage-popup {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.outage-popup[hidden] {
-  display: none;
-}
-
-.outage-popup__dialog {
-  position: relative;
-  box-sizing: border-box;
-  max-width: min(36rem, calc(100vw - 2rem));
-  max-height: calc(100vh - 2rem);
-  /* Where supported, dvh follows the visible area while mobile browser bars
-     are shown, so the whole box stays on screen. */
-  max-height: calc(100dvh - 2rem);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 12px;
-  background-color: #124370;
-  color: #ffffff;
-  font-size: 1rem;
-  line-height: 1.55;
-  text-align: left;
-  overflow-wrap: break-word;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
-}
-
-/* js/outage-notice.js focuses the box programmatically so it opens at its
-   beginning; no focus ring on the box itself. The close button and links keep
-   theirs. */
-.outage-popup__dialog:focus {
-  outline: none;
-}
-
-.outage-popup__content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.25rem;
-}
-
-.outage-popup__section {
-  min-width: 0;
-}
-
-/* Stacked on narrow screens: a thin rule separates German from English. */
-.outage-popup__section + .outage-popup__section {
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-/* .dfx-dark-page h2 forces white text with !important; the higher specificity
-   here keeps the heading white on DFX blue. */
-.dfx-dark-page .outage-popup__title {
-  margin: 0 0 1rem;
-  padding-right: 2.75rem;
-  color: #ffffff !important;
-  font-size: 1.375rem;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: normal;
-}
-
-.outage-popup__text {
-  margin: 0 0 0.875rem;
-  color: #ffffff;
-}
-
-.outage-popup__text--important {
-  font-weight: 700;
-}
-
-.outage-popup__text a {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.outage-popup__text a:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 2px;
-}
-
-.outage-popup__source {
-  margin: 0 0 1.25rem;
-  color: #ffffff;
-  font-size: 0.875rem;
-}
-
-.outage-popup__source a {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.outage-popup__source a:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 2px;
-}
-
-.outage-popup__close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+.status-notice__list {
+  margin: 0;
   padding: 0;
-  border: 0;
-  border-radius: 8px;
-  background-color: transparent;
+  list-style: none;
+}
+
+.status-notice__link {
   color: #ffffff;
-  font: inherit;
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
+  font-weight: 400;
+  text-decoration: underline;
 }
 
-.outage-popup__close:focus-visible {
+.status-notice__link:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 2px;
-}
-
-.outage-popup__more {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0.625rem 2rem;
-  border-radius: 8px;
-  background-color: #ffffff;
-  color: #124370;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.outage-popup__more:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 2px;
-}
-
-/* Mehr Infos and OK side by side, wrapping on narrow screens; OK has the same
-   size as Mehr Infos but is outlined, so the two actions stay distinct. */
-.outage-popup__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.outage-popup__ok {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0.625rem 2rem;
-  border: 2px solid #ffffff;
-  border-radius: 8px;
-  background-color: transparent;
-  color: #ffffff;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.outage-popup__ok:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 2px;
-}
-
-/* Wide viewports: German and English side by side in equal columns. The
-   dialog gets the extra width it needs for two readable text columns. */
-@media screen and (min-width: 900px) {
-  .outage-popup__dialog {
-    max-width: min(64rem, calc(100vw - 2rem));
-  }
-
-  .outage-popup__content {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .outage-popup__section + .outage-popup__section {
-    padding-top: 0;
-    border-top: 0;
-  }
 }
 
 /* The navbar is position: fixed at top 0; while the notice is shown,
-   js/outage-notice.js keeps --outage-notice-offset at the on-screen height of
+   js/status-notice.js keeps --status-notice-offset at the on-screen height of
    the notice so the navbar sits below it instead of covering it.
    The burger panel (.nav-menu) is a descendant of the navbar, whose
    will-change: transform / backdrop-filter make it the containing block of the
    panel's position: fixed. The panel's top: 72px is therefore relative to the
    navbar and already moves with it; only its max-height has to shrink by the
    offset so the bottom entries stay inside the viewport. */
-.has-outage-notice .dfx-dark-page .navbar {
-  top: var(--outage-notice-offset) !important;
+.has-status-notice .dfx-dark-page .navbar {
+  top: var(--status-notice-offset) !important;
 }
 
 @media screen and (max-width: 1279px) {
-  .has-outage-notice .dfx-dark-page .nav-menu {
-    max-height: calc(100vh - 72px - var(--outage-notice-offset)) !important;
+  .has-status-notice .dfx-dark-page .nav-menu {
+    max-height: calc(100vh - 72px - var(--status-notice-offset)) !important;
   }
+}
+
+/* ===== SECURITY INCIDENT NOTE (home page) =====
+   Plain text section below the hero with the note on the incident of
+   18 November 2026 and the link to the full report. */
+.dk-incident {
+  padding: 3rem 0;
+}
+
+/* .dfx-dark-page h2 forces its own size and colour with !important; the higher
+   specificity here keeps this heading smaller than a section title. */
+.dfx-dark-page .dk-incident__title {
+  margin: 0 0 1rem;
+  color: #ffffff !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: normal;
+}
+
+.dk-incident__text {
+  max-width: 48rem;
+  margin: 0 0 0.875rem;
+  color: var(--dk-text);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.dk-incident__text--important {
+  font-weight: 700;
+}
+
+.dk-incident__more {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.dk-incident__more:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
 }
 
 /* ===== SECURITY INCIDENT PAGE =====

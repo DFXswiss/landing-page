@@ -1,8 +1,6 @@
 // Shared helpers for the Playwright suite. Filename has no `spec`/`test` suffix
 // so Playwright does not pick it up as a test file.
 
-import { expect } from '@playwright/test';
-
 // Third-party widgets/iframes whose content is non-deterministic (live Trustpilot
 // reviews, Google Maps tiles, YouTube embeds). They are fulfilled with an empty
 // 200 so they neither render variable pixels nor produce an error page. First
@@ -91,6 +89,34 @@ function fulfillMapApi(route, host, pathname) {
   return true;
 }
 
+// The home page reads the notices of the public status page. The suites never
+// reach that host: without a route of its own a test gets an empty list, so the
+// bar stays hidden. The answer carries the header a real cross-origin read
+// needs. A route registered later still wins (see stubStatusNotices).
+const STATUS_NOTICES_HOST = 'status.dfx.swiss';
+const STATUS_NOTICES_PATH = '/api/status-page/dfx/incident-history';
+
+function statusNoticesResponse(incidents) {
+  return {
+    status: 200,
+    contentType: 'application/json',
+    headers: { 'access-control-allow-origin': '*' },
+    body: JSON.stringify({ ok: true, incidents }),
+  };
+}
+
+function fulfillStatusNotices(route, host, pathname) {
+  if (host !== STATUS_NOTICES_HOST || pathname !== STATUS_NOTICES_PATH) return false;
+  route.fulfill(statusNoticesResponse([]));
+  return true;
+}
+
+export const STATUS_NOTICES_URL = `https://${STATUS_NOTICES_HOST}${STATUS_NOTICES_PATH}`;
+
+export async function stubStatusNotices(page, incidents) {
+  await page.route(STATUS_NOTICES_URL, (route) => route.fulfill(statusNoticesResponse(incidents)));
+}
+
 export async function blockExternalNoise(page) {
   await page.route('**/*', (route) => {
     let host = '';
@@ -103,6 +129,7 @@ export async function blockExternalNoise(page) {
       return route.continue();
     }
     if (fulfillMapApi(route, host, pathname)) return;
+    if (fulfillStatusNotices(route, host, pathname)) return;
     if (NOISE_HOSTS.some((pattern) => pattern.test(host))) {
       return route.fulfill({ status: 200, contentType: 'text/plain', body: '' });
     }
@@ -118,10 +145,9 @@ export async function blockExternalNoise(page) {
 // language, suppresses the timed AI popup, and makes IntersectionObserver fire
 // once, immediately, for every element so the scroll-reveal and how-it-works
 // sequence reach a single stable end state instead of depending on scroll.
-// The page clock is pinned after the outage notice end so the time-limited
-// notice bar is hidden in every baseline, whatever day the suite runs. The
-// behavior suite pins the same instant by default. The security popup does not
-// depend on the clock; the visual spec closes it with closeOutagePopup().
+// The page clock is pinned so no baseline depends on the day the suite runs.
+// The status notice bar is hidden in every baseline, because the stubbed status
+// page lists no notice.
 export const VISUAL_FIXED_TIME = new Date('2027-01-02T00:00:00+01:00');
 
 export async function installVisualDeterminism(page, { allowAiPopup = false } = {}) {
@@ -146,6 +172,7 @@ export async function installVisualDeterminism(page, { allowAiPopup = false } = 
       return route.fulfill({ status: 200, contentType: 'image/png', body: '' });
     }
     if (fulfillMapApi(route, host, pathname)) return;
+    if (fulfillStatusNotices(route, host, pathname)) return;
     const isNoise = NOISE_HOSTS.some((pattern) => pattern.test(host));
     const isAnimationLib = /(^|\.)jsdelivr\.net$/.test(host) && pathname.endsWith('.js');
     if (isNoise || isAnimationLib) {
@@ -221,17 +248,6 @@ export async function openNav(page) {
   await page.locator('.dfx-dark-page .menu-button').first().click();
   await page.waitForSelector('.dfx-dark-page .navbar .nav-menu.dk-open', { state: 'visible' });
   await page.waitForTimeout(200);
-}
-
-// The home page shows the security popup on every load until a later
-// deployment removes it, so no baseline may contain it: click the close button
-// and wait until it is hidden. The click waits until i18n.js has made the page
-// visible.
-export async function closeOutagePopup(page) {
-  const popup = page.locator('.outage-popup');
-  await expect(popup).toBeVisible();
-  await popup.locator('.outage-popup__close').click();
-  await expect(popup).toBeHidden();
 }
 
 // Wait for the timed AI popup to auto-appear (requires installVisualDeterminism

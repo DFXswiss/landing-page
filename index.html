@@ -160,8 +160,8 @@
   <script src="js/i18n.js"></script>
   <script src="js/dfx-dark-reveal.js?v=20260701d" defer></script>
   <script src="js/ai-popup.js" defer></script>
-  <script src="js/lib/outage-notice.js?v=20261119b"></script>
-  <script src="js/outage-notice.js?v=20261119b" defer></script>
+  <script src="js/lib/status-notice.js?v=20261123a"></script>
+  <script src="js/status-notice.js?v=20261123a" defer></script>
   <style>
 .news-card_text-dots {
 	overflow: hidden;
@@ -264,29 +264,9 @@
   </script>
 </head>
 <body class="body dfx-dark-page">
-  <div class="outage-notice" role="status" data-i18n="notice.outage" hidden>Alle DFX-Core-Funktionen sind wieder verfügbar. Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben.</div>
-  <div class="outage-popup" hidden>
-    <div class="outage-popup__dialog" role="dialog" aria-modal="true" aria-labelledby="outage-popup-title-de outage-popup-title-en" tabindex="-1">
-      <button type="button" class="outage-popup__close" aria-label="Schliessen / Close">×</button>
-      <div class="outage-popup__content">
-        <section class="outage-popup__section" lang="de" aria-labelledby="outage-popup-title-de">
-          <h2 class="outage-popup__title" id="outage-popup-title-de">DFX Sicherheitsupdate – Alle Core-Funktionen wieder verfügbar</h2>
-          <p class="outage-popup__text">Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.</p>
-          <p class="outage-popup__text outage-popup__text--important">Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.</p>
-          <p class="outage-popup__text">Kundendaten waren bei diesem Zwischenfall nicht betroffen.</p>
-        </section>
-        <section class="outage-popup__section" lang="en" aria-labelledby="outage-popup-title-en">
-          <h2 class="outage-popup__title" id="outage-popup-title-en">DFX Security Update – All core features available again</h2>
-          <p class="outage-popup__text">Buying and selling on the most popular blockchains is fully operational again.</p>
-          <p class="outage-popup__text outage-popup__text--important">Do not send crypto tokens to any deposit address you received from DFX before 18 November 2026 — these addresses must no longer be used.</p>
-          <p class="outage-popup__text">Customer data was not affected by this incident.</p>
-        </section>
-      </div>
-      <div class="outage-popup__actions">
-        <a class="outage-popup__more" href="security-incident.html">Mehr Infos / More info</a>
-        <button type="button" class="outage-popup__ok">OK</button>
-      </div>
-    </div>
+  <div class="status-notice" role="status" hidden>
+    <ul class="status-notice__list"></ul>
+    <a class="status-notice__link" href="https://status.dfx.swiss/" target="_blank" rel="noopener noreferrer" data-i18n="notice.status_link">Zur Statusseite</a>
   </div>
   <div class="page-wrapper">
     <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="200" data-doc-height="1">
@@ -497,6 +477,17 @@ Webflow.push(function () {
         </div>
       </div>
       </div>
+
+      <!-- SECURITY INCIDENT OF 18 NOVEMBER 2026 -->
+      <section class="dk-section dk-section--base dk-incident" aria-labelledby="incident-heading">
+        <div class="dk-container">
+          <h2 class="dk-incident__title" id="incident-heading" data-i18n="incident.heading">Sicherheitsvorfall vom 18. November 2026</h2>
+          <p class="dk-incident__text" data-i18n="incident.status">Alle DFX-Core-Funktionen sind wieder verfügbar. Kaufen und Verkaufen der beliebtesten Blockchains ist wieder vollständig in Betrieb.</p>
+          <p class="dk-incident__text dk-incident__text--important" data-i18n="incident.warning">Senden Sie keine Crypto Tokens an Einzahlungsadressen, die Sie vor dem 18. November 2026 von DFX erhalten haben — diese Adressen dürfen nicht mehr verwendet werden.</p>
+          <p class="dk-incident__text" data-i18n="incident.customer_data">Kundendaten waren bei diesem Zwischenfall nicht betroffen.</p>
+          <a class="dk-incident__more" href="security-incident.html" data-i18n="incident.more">Mehr Infos zum Vorfall</a>
+        </div>
+      </section>
 
       <!-- SECURITY PILLARS -->
       <section class="dk-section dk-section--light" aria-label="Security">
@@ -1390,6 +1381,7 @@ Webflow.push(function () {
               <a href="https://github.com/DFXswiss/landing-page/tree/develop/DFX_Brand_Kit" target="_blank" rel="noopener noreferrer" class="footer_link" data-i18n="footer.brand_kit">Brand Kit</a>
               <a href="https://github.com/dfxswiss" target="_blank" rel="noopener noreferrer" class="footer_link" data-i18n="footer.github">Github</a>
               <a href="https://app.dfx.swiss/support" target="_blank" rel="noopener noreferrer" class="footer_link" data-i18n="footer.support">Support</a>
+              <a href="https://status.dfx.swiss/" target="_blank" rel="noopener noreferrer" class="footer_link" data-i18n="footer.status">Status</a>
             </div>
             <div class="footer_link-wrapper">
               <div class="text-style-allcaps text-size-s" data-i18n="footer.company">Unternehmen</div>

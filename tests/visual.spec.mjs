@@ -1,7 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { VIEWS, projectsForView } from './pages.mjs';
 import {
-  closeOutagePopup,
   installVisualDeterminism,
   settle,
   openFirstFaq,
@@ -31,12 +30,6 @@ test.describe('visual regression', () => {
       await installVisualDeterminism(page, { allowAiPopup: view.state === 'aiPopup' });
       await page.goto(urlFor(view), { waitUntil: 'load' });
       await settle(page);
-
-      // The security popup is part of the home page only and must not appear in
-      // any baseline; it also covers the burger button of the navOpen state.
-      if (view.path === '/') {
-        await closeOutagePopup(page);
-      }
 
       if (view.state) {
         await STATE_SETUP[view.state](page);
